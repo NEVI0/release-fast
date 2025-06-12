@@ -1,0 +1,48 @@
+@import 'tailwindcss';
+
+:root {
+  --primary: #3d37ed;
+  --primary-action: #1c15db;
+  --secondary: #edc937;
+  --secondary-action: #d4ae12;
+
+  --body: #fbfbfc;
+  --container: #ffffff;
+
+  --text-primary: #100f15;
+  --text-secondary: #7e7e84;
+
+  --border: #e4e4e7;
+}
+
+@theme inline {
+  --color-primary: var(--primary);
+  --color-primary-action: var(--primary-action);
+  --color-secondary: var(--secondary);
+  --color-secondary-action: var(--secondary-action);
+
+  --color-body: var(--body);
+  --color-container: var(--container);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+
+  --color-border: var(--border);
+}
+
+html {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+body {
+  box-sizing: border-box;
+  background: var(--color-body);
+  color: var(--color-text-primary);
+}
+
+a,
+input,
+button {
+  outline: none;
+}
