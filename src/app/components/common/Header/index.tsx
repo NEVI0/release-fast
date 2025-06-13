@@ -19,7 +19,7 @@ export default async function Header() {
 
         <nav className="flex items-center gap-4 h-full">
           <Link
-            href="/"
+            href="/#research-section"
             className="h-full flex items-center justify-center font-semibold underline text-primary"
           >
             Quero saber sobre este produto!

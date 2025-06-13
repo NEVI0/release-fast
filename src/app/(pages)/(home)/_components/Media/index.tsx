@@ -22,7 +22,10 @@ export default function Media() {
         nulla.
       </p>
 
-      <Link href="/" className="font-semibold underline text-primary">
+      <Link
+        href="/#research-section"
+        className="font-semibold underline text-primary"
+      >
         Gostou? Continue lendo um pouco mais...
       </Link>
     </section>

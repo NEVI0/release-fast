@@ -4,7 +4,7 @@
   --primary: #3d37ed;
   --primary-action: #1c15db;
   --secondary: #edc937;
-  --secondary-action: #d4ae12;
+  --secondary-action: #e4bb19;
 
   --body: #fbfbfc;
   --container: #ffffff;
@@ -31,12 +31,15 @@
 }
 
 html {
-  overflow-x: auto;
   scroll-behavior: smooth;
 }
 
 body {
   box-sizing: border-box;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
   background: var(--color-body);
   color: var(--color-text-primary);
 }

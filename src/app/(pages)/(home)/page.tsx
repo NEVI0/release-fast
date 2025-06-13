@@ -13,9 +13,9 @@ export default function Home() {
     <>
       <Hero />
       <SolutionFlow />
-      <HorizontalDivider />
+      <HorizontalDivider id="media-section" />
       <Media />
-      <HorizontalDivider />
+      <HorizontalDivider id="research-section" />
       <Research />
       <HorizontalDivider />
       <Form />

@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import { ExternalLink } from 'lucide-react';
+
 import { Info } from './components';
 
 export default function Research() {
   return (
-    <section id="research" className="flex flex-col items-center gap-8">
+    <section className="flex flex-col items-center gap-8">
       <h2 className="text-2xl font-bold">Mas por que dessa solução?? 🧐</h2>
 
       <div className="flex items-start justify-center gap-8">
