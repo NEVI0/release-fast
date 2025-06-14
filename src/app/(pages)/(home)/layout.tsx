@@ -2,7 +2,9 @@ import type { Metadata } from 'next';
 import { Source_Sans_3 } from 'next/font/google';
 
 import { Header, Content, Footer } from '@app/components/common';
-import './globals.css';
+import { DOCUMENT_HEAD } from '@app/constants/document-head';
+
+import '../globals.css';
 
 const sourceSans3 = Source_Sans_3({
   subsets: ['latin'],
@@ -10,8 +12,8 @@ const sourceSans3 = Source_Sans_3({
 });
 
 export const metadata: Metadata = {
-  title: 'Release Fast',
-  description: 'Ferramenta para notificação de releases de software',
+  title: DOCUMENT_HEAD.TITLE,
+  description: DOCUMENT_HEAD.DESCRIPTION,
 };
 
 interface RootLayoutProps {

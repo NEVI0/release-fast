@@ -21,7 +21,7 @@ export default function Hero() {
 
       <Link href="#media-section">
         <Button variant="secondary">
-          Como funciona? <ArrowDown className="size-5" />
+          Como funciona <ArrowDown className="size-5" />
         </Button>
       </Link>
     </section>
