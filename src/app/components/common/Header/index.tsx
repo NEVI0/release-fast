@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
+import { VerticalDivider } from '@app/components/ui';
+
 export default async function Header() {
   return (
     <header className="flex items-center justify-center w-full h-[80px] border-b border-border">
@@ -19,10 +21,50 @@ export default async function Header() {
 
         <nav className="flex items-center gap-4 h-full">
           <Link
-            href="/#research-section"
+            href="/"
+            className="h-full flex items-center justify-center focus:text-primary hover:text-primary"
+          >
+            Início
+          </Link>
+
+          <VerticalDivider />
+
+          <Link
+            href="/#media-section"
+            className="h-full flex items-center justify-center focus:text-primary hover:text-primary"
+          >
+            Como funciona
+          </Link>
+
+          <VerticalDivider />
+
+          <Link
+            href="/#plans"
+            className="h-full flex items-center justify-center focus:text-primary hover:text-primary"
+          >
+            Planos
+          </Link>
+
+          <VerticalDivider />
+
+          <Link
+            href="/auth"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="h-full flex items-center justify-center focus:text-primary hover:text-primary"
+          >
+            Login
+          </Link>
+
+          <VerticalDivider />
+
+          <Link
+            href="/auth/create-account"
+            target="_blank"
+            rel="noopener noreferrer"
             className="h-full flex items-center justify-center font-semibold underline text-primary"
           >
-            Quero saber sobre este produto!
+            Criar minha conta
           </Link>
         </nav>
       </div>
