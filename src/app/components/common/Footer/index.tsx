@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Instagram, Linkedin, Github } from 'lucide-react';
 
 import { VerticalDivider } from '@app/components/ui';
@@ -32,10 +33,30 @@ export default function Footer() {
 
       <ScrollToTopButton />
 
-      <div className="flex items-center justify-center w-full h-[40px] bg-border/25">
-        <small className="text-text-secondary text-sm">
-          &copy; Copyright Company name - {new Date().getFullYear()}
-        </small>
+      <div className="flex items-center justify-center w-full h-[50px] bg-border/25">
+        <div className="flex items-center justify-between h-full w-6xl px-8 mx-auto ">
+          <small className="text-text-secondary text-sm">
+            &copy; Copyright Company name - {new Date().getFullYear()}
+          </small>
+
+          <nav className="flex items-center gap-4 h-full">
+            <Link
+              href="/privacy"
+              className="text-text-secondary text-sm focus:underline hover:underline"
+            >
+              Política de Privacidade
+            </Link>
+
+            <VerticalDivider />
+
+            <Link
+              href="/terms"
+              className="text-text-secondary text-sm focus:underline hover:underline"
+            >
+              Termos de Uso
+            </Link>
+          </nav>
+        </div>
       </div>
     </footer>
   );
