@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Source_Sans_3 } from 'next/font/google';
 
+import { Dash } from '@app/components/common';
 import { DOCUMENT_HEAD } from '@app/constants/document-head';
 
 import '../globals.css';
@@ -19,7 +20,9 @@ interface RootLayoutProps {
   children: React.ReactNode;
 }
 
-export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
+export default function DashboardLayout({
+  children,
+}: Readonly<RootLayoutProps>) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <head>
@@ -28,7 +31,13 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
       </head>
 
       <body className={sourceSans3.className} suppressHydrationWarning>
-        {children}
+        <Dash.Wrapper>
+          <Dash.Sidebar />
+          <Dash.Content>
+            <Dash.Header />
+            <Dash.Main>{children}</Dash.Main>
+          </Dash.Content>
+        </Dash.Wrapper>
       </body>
     </html>
   );
