@@ -1,2 +1,1 @@
-export { default as AppleButton } from './AppleButton';
-export { default as GoogleButton } from './GoogleButton';
+export { default as Return } from './Return';

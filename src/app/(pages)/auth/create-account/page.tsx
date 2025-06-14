@@ -2,18 +2,20 @@
 
 import { useState } from 'react';
 
+import Image from 'next/image';
+
 import { Eye, EyeOff, Mail, User } from 'lucide-react';
 
-import { Auth } from '@app/components/common';
 import { Button, HorizontalDivider, Input } from '@app/components/ui';
-
-import { AppleButton, GoogleButton } from '../_components';
+import { Return } from '../_components';
 
 export default function CreateAccount() {
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   return (
-    <Auth>
+    <>
+      <Return href="/auth" text="Voltar para login" />
+
       <header className="flex flex-col gap-2">
         <h1 className="font-bold text-4xl">
           <strong className="text-primary">Criar conta</strong> no Release Fast
@@ -55,9 +57,36 @@ export default function CreateAccount() {
       </section>
 
       <footer className="flex flex-col gap-4">
-        <GoogleButton>Criar com Google</GoogleButton>
-        <AppleButton>Criar com Apple</AppleButton>
+        <Button variant="default">
+          <Image
+            src="/icons/google-icon.png"
+            alt="Google Icon"
+            width={24}
+            height={24}
+          />
+          Criar com Google
+        </Button>
+
+        <Button variant="default">
+          <Image
+            src="/icons/microsoft-icon.png"
+            alt="Microsoft Icon"
+            width={24}
+            height={24}
+          />
+          Criar com Microsoft
+        </Button>
+
+        <Button variant="default">
+          <Image
+            src="/icons/apple-icon.png"
+            alt="Apple Icon"
+            width={24}
+            height={24}
+          />
+          Criar com Apple
+        </Button>
       </footer>
-    </Auth>
+    </>
   );
 }

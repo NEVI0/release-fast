@@ -1,20 +1,19 @@
 'use client';
 
 import { useState } from 'react';
+
 import Link from 'next/link';
+import Image from 'next/image';
 
 import { Eye, EyeOff, Mail } from 'lucide-react';
 
-import { Auth } from '@app/components/common';
 import { Button, HorizontalDivider, Input } from '@app/components/ui';
-
-import { AppleButton, GoogleButton } from './_components';
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   return (
-    <Auth>
+    <>
       <header className="flex flex-col gap-2">
         <h1 className="font-bold text-4xl">
           Release Fast <strong className="text-primary">Login</strong>
@@ -61,8 +60,35 @@ export default function Login() {
       </section>
 
       <footer className="flex flex-col gap-4">
-        <GoogleButton>Entrar com Google</GoogleButton>
-        <AppleButton>Entrar com Apple</AppleButton>
+        <Button variant="default">
+          <Image
+            src="/icons/google-icon.png"
+            alt="Google Icon"
+            width={24}
+            height={24}
+          />
+          Entrar com Google
+        </Button>
+
+        <Button variant="default">
+          <Image
+            src="/icons/microsoft-icon.png"
+            alt="Microsoft Icon"
+            width={24}
+            height={24}
+          />
+          Entrar com Microsoft
+        </Button>
+
+        <Button variant="default">
+          <Image
+            src="/icons/apple-icon.png"
+            alt="Apple Icon"
+            width={24}
+            height={24}
+          />
+          Entrar com Apple
+        </Button>
       </footer>
 
       <Link
@@ -71,6 +97,6 @@ export default function Login() {
       >
         Não tem uma conta? Crie sua conta aqui
       </Link>
-    </Auth>
+    </>
   );
 }

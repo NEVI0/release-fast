@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Source_Sans_3 } from 'next/font/google';
 
+import { Content } from '@app/components/common';
 import { DOCUMENT_HEAD } from '@app/constants/document-head';
 
 import '../globals.css';
@@ -28,7 +29,7 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
       </head>
 
       <body className={sourceSans3.className} suppressHydrationWarning>
-        {children}
+        <Content.Auth>{children}</Content.Auth>
       </body>
     </html>
   );
