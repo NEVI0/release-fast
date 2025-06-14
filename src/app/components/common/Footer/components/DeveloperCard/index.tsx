@@ -12,7 +12,7 @@ export default function DeveloperCard() {
           Criado por Névio Costa Magagnin
         </p>
 
-        <small className="text-center md:text-left text-text-secondary">
+        <small className="text-center text-sm md:text-left text-text-secondary">
           Engenheiro de Software & UI/UX Designer
         </small>
       </div>
