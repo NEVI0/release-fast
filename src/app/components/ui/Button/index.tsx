@@ -1,6 +1,6 @@
 import { concatClasses } from '@app/helpers';
 
-export type ButtonVariant = 'primary' | 'secondary';
+export type ButtonVariant = 'default' | 'primary' | 'secondary';
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -8,6 +8,8 @@ interface ButtonProps {
 }
 
 const BUTTON_VARIANT: Record<ButtonVariant, string> = {
+  default:
+    'text-text-primary bg-container border border-border enabled:hover:border-border-action enabled:focus:border-border-action',
   primary:
     'text-white bg-primary enabled:hover:bg-primary-action enabled:focus:bg-primary-action',
   secondary:
