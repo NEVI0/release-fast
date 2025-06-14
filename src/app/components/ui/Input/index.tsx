@@ -28,7 +28,7 @@ export default function Input({
 
       <div
         className={concatClasses(
-          'h-[48px] px-6 rounded-xl flex items-center gap-2 disabled:cursor-not-allowed bg-container border border-border',
+          'h-[48px] px-6 rounded-xl flex items-center gap-2 disabled:cursor-not-allowed bg-container border border-border focus-within:border-primary transition-colors',
           !!error && 'border-red-600',
           className
         )}

@@ -10,7 +10,7 @@ export default function IconButton({ icon, ...props }: IconButtonProps) {
     <button
       {...props}
       className={concatClasses(
-        'w-[40px] h-[40px] md:w-[44px] md:h-[44px] flex items-center justify-center rounded-xl text-primary hover:bg-primary/15 transition-colors cursor-pointer',
+        'w-[40px] h-[40px] md:w-[44px] md:h-[44px] flex items-center justify-center rounded-xl text-primary focus:bg-primary/15 hover:bg-primary/15 transition-colors cursor-pointer',
         props.className
       )}
     >
