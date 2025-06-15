@@ -4,7 +4,7 @@ import { Source_Sans_3 } from 'next/font/google';
 import { Header, Content, Footer, TopLoader } from '@app/components/common';
 import { DOCUMENT_HEAD } from '@app/constants/document-head';
 
-import '../globals.css';
+import '@app/css/globals.css';
 
 const sourceSans3 = Source_Sans_3({
   subsets: ['latin'],
