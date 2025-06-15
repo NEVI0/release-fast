@@ -3,5 +3,7 @@ interface DashContentProps {
 }
 
 export default function DashContent({ children }: DashContentProps) {
-  return <div className="w-full h-full">{children}</div>;
+  return (
+    <main className="w-full h-full flex flex-col gap-8 p-8">{children}</main>
+  );
 }

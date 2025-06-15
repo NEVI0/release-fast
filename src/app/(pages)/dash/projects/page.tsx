@@ -1,13 +1,13 @@
 import { Breadcrumb } from '@app/components/ui';
 
-export default function Dashboard() {
+export default function Projects() {
   return (
     <>
       <header className="flex items-center justify-between">
         <Breadcrumb
           items={[
             { label: 'Dashboard', href: '/dash' },
-            { label: 'Início', href: '/dash' },
+            { label: 'Projetos', href: '/projects' },
           ]}
         />
 
