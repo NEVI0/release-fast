@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Source_Sans_3 } from 'next/font/google';
 
-import { Dash } from '@app/components/common';
+import { Dash, TopLoader } from '@app/components/common';
 import { DOCUMENT_HEAD } from '@app/constants/document-head';
 
 import '../globals.css';
@@ -31,12 +31,11 @@ export default function DashboardLayout({
       </head>
 
       <body className={sourceSans3.className} suppressHydrationWarning>
+        <TopLoader />
+
         <Dash.Wrapper>
           <Dash.Sidebar />
-          <Dash.Content>
-            <Dash.Header />
-            <Dash.Main>{children}</Dash.Main>
-          </Dash.Content>
+          <Dash.Content>{children}</Dash.Content>
         </Dash.Wrapper>
       </body>
     </html>

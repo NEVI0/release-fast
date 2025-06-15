@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Source_Sans_3 } from 'next/font/google';
 
-import { Header, Content, Footer } from '@app/components/common';
+import { Header, Content, Footer, TopLoader } from '@app/components/common';
 import { DOCUMENT_HEAD } from '@app/constants/document-head';
 
 import '../globals.css';
@@ -29,6 +29,8 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
       </head>
 
       <body className={sourceSans3.className} suppressHydrationWarning>
+        <TopLoader />
+
         <Header />
         <Content.Home>{children}</Content.Home>
         <Footer />

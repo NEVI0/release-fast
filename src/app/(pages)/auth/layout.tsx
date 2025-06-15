@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Source_Sans_3 } from 'next/font/google';
 
-import { Content } from '@app/components/common';
+import { Content, TopLoader } from '@app/components/common';
 import { DOCUMENT_HEAD } from '@app/constants/document-head';
 
 import '../globals.css';
@@ -20,7 +20,7 @@ interface RootLayoutProps {
   children: React.ReactNode;
 }
 
-export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
+export default function AuthLayout({ children }: Readonly<RootLayoutProps>) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <head>
@@ -29,6 +29,8 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
       </head>
 
       <body className={sourceSans3.className} suppressHydrationWarning>
+        <TopLoader />
+
         <Content.Auth>{children}</Content.Auth>
       </body>
     </html>
