@@ -2,19 +2,19 @@ import { concatClasses } from '@app/helpers';
 
 interface IconButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  icon: React.ReactNode;
+  icon: React.ElementType;
 }
 
-export default function IconButton({ icon, ...props }: IconButtonProps) {
+export default function IconButton({ icon: Icon, ...props }: IconButtonProps) {
   return (
     <button
       {...props}
       className={concatClasses(
-        'w-[40px] h-[40px] md:w-[44px] md:h-[44px] flex items-center justify-center rounded-xl text-primary focus:bg-primary/15 hover:bg-primary/15 transition-colors cursor-pointer',
+        'w-[40px] h-[40px] flex items-center justify-center rounded-xl text-primary focus:bg-primary/15 hover:bg-primary/15 transition-colors cursor-pointer',
         props.className
       )}
     >
-      {icon}
+      <Icon className="size-5" />
     </button>
   );
 }
