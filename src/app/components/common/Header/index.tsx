@@ -66,7 +66,7 @@ export default async function Header() {
           <VerticalDivider />
 
           <Link
-            href="/auth/create-account"
+            href="/auth/sign-up"
             className="h-full flex items-center justify-center font-semibold underline text-primary"
           >
             Criar minha conta

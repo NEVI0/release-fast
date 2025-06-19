@@ -24,7 +24,7 @@ export default function Hero() {
           <Button>Como funciona</Button>
         </Link>
 
-        <Link href="/auth/create-account">
+        <Link href="/auth/sign-up">
           <Button variant="secondary">
             Comece de graça <ArrowRight className="size-5" />
           </Button>
