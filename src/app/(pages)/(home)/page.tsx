@@ -1,24 +1,24 @@
 import { HorizontalDivider } from '@app/components/ui';
 import {
-  Form,
   Hero,
-  Media,
+  HowItWorks,
   Mention,
-  Research,
-  SolutionFlow,
+  About,
+  Plans,
+  TrianglesShapes,
 } from './_components';
 
 export default function Home() {
   return (
     <>
+      <TrianglesShapes />
       <Hero />
-      <SolutionFlow />
-      <HorizontalDivider id="media-section" />
-      <Media />
-      <HorizontalDivider id="research-section" />
-      <Research />
-      <HorizontalDivider />
-      <Form />
+      <HorizontalDivider id="how-it-works-section" />
+      <HowItWorks />
+      <HorizontalDivider id="about-section" />
+      <About />
+      <HorizontalDivider id="plans-section" />
+      <Plans />
       <HorizontalDivider />
       <Mention />
     </>

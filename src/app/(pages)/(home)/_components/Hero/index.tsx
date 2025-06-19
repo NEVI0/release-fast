@@ -1,29 +1,35 @@
 import Link from 'next/link';
-import { ArrowDown } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 import { Button } from '@app/components/ui';
 
 export default function Hero() {
   return (
-    <section className="flex flex-col gap-8 items-center justify-center h-[524px]">
-      <div className="flex flex-col gap-2 w-[80%]">
+    <section className="relative flex flex-col gap-8 items-center justify-center h-[600px]">
+      <div className="flex flex-col gap-2 w-[80%] relative z-10">
         <h1 className="text-center font-bold text-4xl">
           Notifique seus usuários de forma{' '}
           <strong className="text-primary">clara</strong> e{' '}
-          <strong className="text-primary">objetiva</strong>!
+          <strong className="text-primary">eficiente</strong>!
         </h1>
 
         <h2 className="text-center font-semibold text-2xl text-text-secondary">
-          Configure notificações personalizadas no seu sistema rapidamente e em
-          cada alteração seu usuário saberá de tudo. 😎
+          Gere releases de seu sistema automaticamente com I.A e notifique seus
+          usuários de cada alteração. 😎
         </h2>
       </div>
 
-      <Link href="#media-section">
-        <Button variant="secondary">
-          Como funciona <ArrowDown className="size-5" />
-        </Button>
-      </Link>
+      <div className="flex items-center justify-center gap-4 relative z-10">
+        <Link href="#how-it-works-section">
+          <Button>Como funciona</Button>
+        </Link>
+
+        <Link href="/auth/create-account">
+          <Button variant="secondary">
+            Comece de graça <ArrowRight className="size-5" />
+          </Button>
+        </Link>
+      </div>
     </section>
   );
 }

@@ -1,6 +1,6 @@
-export { default as Form } from './Form';
+export { default as About } from './About';
 export { default as Hero } from './Hero';
-export { default as Media } from './Media';
+export { default as HowItWorks } from './HowItWorks';
 export { default as Mention } from './Mention';
-export { default as Research } from './Research';
-export { default as SolutionFlow } from './SolutionFlow';
+export { default as Plans } from './Plans';
+export { default as TrianglesShapes } from './TrianglesShapes';
