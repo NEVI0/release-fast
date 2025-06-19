@@ -1,22 +1,18 @@
 import { Mail } from 'lucide-react';
 
+import Link from 'next/link';
+
 import { Button, Input } from '@app/components/ui';
-import { Return } from '../_components';
+import { Header, TopLogo } from '../_components';
 
 export default function ForgotPassword() {
   return (
     <>
-      <Return href="/auth" text="Voltar para login" />
+      <TopLogo />
 
-      <header className="flex flex-col gap-2">
-        <h1 className="font-bold text-4xl">
-          <strong className="text-primary">Recuperar</strong> senha
-        </h1>
-
-        <h2 className="font-semibold text-2xl text-text-secondary">
-          Digite o e-mail de sua conta cadastrada abaixo
-        </h2>
-      </header>
+      <Header subtitle="Digite o e-mail de sua conta cadastrada abaixo">
+        <strong className="text-primary">Recuperar</strong> senha
+      </Header>
 
       <p className="text-text-secondary">
         O e-mail será enviado para você e nele contém todas as informações
@@ -39,6 +35,13 @@ export default function ForgotPassword() {
           Enviar código
         </Button>
       </form>
+
+      <Link
+        href="/auth"
+        className="text-center font-semibold underline text-primary"
+      >
+        Voltar para login
+      </Link>
     </>
   );
 }

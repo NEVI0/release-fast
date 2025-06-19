@@ -7,22 +7,19 @@ import Image from 'next/image';
 
 import { Eye, EyeOff, Mail } from 'lucide-react';
 
-import { Button, HorizontalDivider, Input } from '@app/components/ui';
+import { Button, Input } from '@app/components/ui';
+import { Header, OrSection, TopLogo } from './_components';
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   return (
     <>
-      <header className="flex flex-col gap-2">
-        <h1 className="font-bold text-4xl">
-          Release Fast <strong className="text-primary">Login</strong>
-        </h1>
+      <TopLogo />
 
-        <h2 className="font-semibold text-2xl text-text-secondary">
-          Acessar minha conta
-        </h2>
-      </header>
+      <Header subtitle="Acessar minha conta">
+        Release Fast <strong className="text-primary">Login</strong>
+      </Header>
 
       <form action="#" className="flex flex-col gap-8">
         <div className="flex flex-col gap-4">
@@ -55,16 +52,12 @@ export default function Login() {
         </Button>
       </form>
 
-      <section className="flex items-center justify-center gap-8">
-        <HorizontalDivider className="w-[64px]" />
-        <small className="text-text-secondary text-sm">OU</small>
-        <HorizontalDivider className="w-[64px]" />
-      </section>
+      <OrSection />
 
       <footer className="flex flex-col gap-4">
         <Button variant="default">
           <Image
-            src="/icons/google-icon.png"
+            src="/icons/google.png"
             alt="Google Icon"
             width={24}
             height={24}
@@ -74,27 +67,27 @@ export default function Login() {
 
         <Button variant="default">
           <Image
-            src="/icons/microsoft-icon.png"
-            alt="Microsoft Icon"
+            src="/icons/github.png"
+            alt="Github Icon"
             width={24}
             height={24}
           />
-          Entrar com Microsoft
+          Entrar com Github
         </Button>
 
         <Button variant="default">
           <Image
-            src="/icons/apple-icon.png"
-            alt="Apple Icon"
+            src="/icons/gitlab.png"
+            alt="Gitlab Icon"
             width={24}
             height={24}
           />
-          Entrar com Apple
+          Entrar com Gitlab
         </Button>
       </footer>
 
       <Link
-        href="/auth/create-account"
+        href="/auth/sign-up"
         className="text-center font-semibold underline text-primary"
       >
         Não tem uma conta? Crie sua conta aqui
