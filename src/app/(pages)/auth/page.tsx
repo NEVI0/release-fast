@@ -50,7 +50,9 @@ export default function Login() {
           </Link>
         </div>
 
-        <Button type="submit">Entrar</Button>
+        <Button type="submit" variant="primary">
+          Entrar
+        </Button>
       </form>
 
       <section className="flex items-center justify-center gap-8">

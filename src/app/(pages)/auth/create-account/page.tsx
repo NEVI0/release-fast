@@ -47,7 +47,9 @@ export default function CreateAccount() {
           />
         </div>
 
-        <Button type="submit">Criar conta</Button>
+        <Button type="submit" variant="primary">
+          Criar conta
+        </Button>
       </form>
 
       <section className="flex items-center justify-center gap-8">

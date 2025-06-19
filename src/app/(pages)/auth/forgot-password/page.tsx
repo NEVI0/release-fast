@@ -35,7 +35,9 @@ export default function ForgotPassword() {
           />
         </div>
 
-        <Button type="submit">Enviar código</Button>
+        <Button type="submit" variant="primary">
+          Enviar código
+        </Button>
       </form>
     </>
   );
