@@ -22,7 +22,7 @@ export default async function Header() {
         <nav className="flex items-center gap-4 h-full">
           <Link
             href="/"
-            className="h-full flex items-center justify-center focus:text-primary hover:text-primary"
+            className="h-full flex items-center justify-center focus:underline focus:text-primary hover:underline hover:text-primary"
           >
             Início
           </Link>
@@ -30,8 +30,8 @@ export default async function Header() {
           <VerticalDivider />
 
           <Link
-            href="/#media-section"
-            className="h-full flex items-center justify-center focus:text-primary hover:text-primary"
+            href="/#how-it-works-section"
+            className="h-full flex items-center justify-center focus:underline focus:text-primary hover:underline hover:text-primary"
           >
             Como funciona
           </Link>
@@ -39,8 +39,17 @@ export default async function Header() {
           <VerticalDivider />
 
           <Link
-            href="/#plans"
-            className="h-full flex items-center justify-center focus:text-primary hover:text-primary"
+            href="/#about-section"
+            className="h-full flex items-center justify-center focus:underline focus:text-primary hover:underline hover:text-primary"
+          >
+            Sobre
+          </Link>
+
+          <VerticalDivider />
+
+          <Link
+            href="/#plans-section"
+            className="h-full flex items-center justify-center focus:underline focus:text-primary hover:underline hover:text-primary"
           >
             Planos
           </Link>
@@ -49,9 +58,7 @@ export default async function Header() {
 
           <Link
             href="/auth"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="h-full flex items-center justify-center focus:text-primary hover:text-primary"
+            className="h-full flex items-center justify-center focus:underline focus:text-primary hover:underline hover:text-primary"
           >
             Login
           </Link>
@@ -60,8 +67,6 @@ export default async function Header() {
 
           <Link
             href="/auth/create-account"
-            target="_blank"
-            rel="noopener noreferrer"
             className="h-full flex items-center justify-center font-semibold underline text-primary"
           >
             Criar minha conta

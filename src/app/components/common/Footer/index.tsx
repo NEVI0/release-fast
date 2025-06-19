@@ -14,19 +14,19 @@ export default function Footer() {
           <nav className="flex items-center gap-4 h-full">
             <SocialLink
               href="https://www.instagram.com/nevio_costa/"
-              icon={<Instagram />}
+              icon={Instagram}
             />
 
             <VerticalDivider />
 
             <SocialLink
               href="https://www.linkedin.com/in/n%C3%A9vio-magagnin-045710177/"
-              icon={<Linkedin />}
+              icon={Linkedin}
             />
 
             <VerticalDivider />
 
-            <SocialLink href="https://github.com/NEVI0" icon={<Github />} />
+            <SocialLink href="https://github.com/NEVI0" icon={Github} />
           </nav>
         </div>
       </div>
