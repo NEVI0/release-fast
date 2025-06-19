@@ -4,7 +4,7 @@ import { Source_Sans_3 } from 'next/font/google';
 import { Dash, TopLoader } from '@app/components/common';
 import { DOCUMENT_HEAD } from '@app/constants/document-head';
 
-import '@app/css/globals.css';
+import '@app/css/dash.css';
 
 const sourceSans3 = Source_Sans_3({
   subsets: ['latin'],
