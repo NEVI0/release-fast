@@ -31,7 +31,7 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
       <body className={sourceSans3.className} suppressHydrationWarning>
         <TopLoader />
 
-        <Header />
+        <Header.Home />
         <Content.Home>{children}</Content.Home>
         <Footer />
       </body>

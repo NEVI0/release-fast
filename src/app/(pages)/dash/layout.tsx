@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import { Source_Sans_3 } from 'next/font/google';
 
-import { Dash, TopLoader } from '@app/components/common';
+import { Header, Content, Footer, TopLoader } from '@app/components/common';
 import { DOCUMENT_HEAD } from '@app/constants/document-head';
 
-import '@app/css/dash.css';
+import '@app/css/globals.css';
 
 const sourceSans3 = Source_Sans_3({
   subsets: ['latin'],
@@ -33,10 +33,9 @@ export default function DashboardLayout({
       <body className={sourceSans3.className} suppressHydrationWarning>
         <TopLoader />
 
-        <Dash.Wrapper>
-          <Dash.Sidebar />
-          <Dash.Content>{children}</Dash.Content>
-        </Dash.Wrapper>
+        <Header.Dash />
+        <Content.Dash>{children}</Content.Dash>
+        <Footer />
       </body>
     </html>
   );
