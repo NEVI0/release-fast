@@ -1,18 +1,10 @@
-import { Breadcrumb } from '@app/components/ui';
+import { Cards, Header } from './_components';
 
-export default function Dashboard() {
+export default function DashboardPage() {
   return (
     <>
-      <header className="flex items-center justify-between">
-        <Breadcrumb
-          items={[
-            { label: 'Dashboard', href: '/dash' },
-            { label: 'Início', href: '/dash' },
-          ]}
-        />
-
-        <div className="flex items-center gap-2">treste</div>
-      </header>
+      <Header />
+      <Cards />
     </>
   );
 }

@@ -1,6 +1,6 @@
 import { Header } from './_components';
 
-export default function Settings() {
+export default function SettingsPage() {
   return (
     <>
       <Header />

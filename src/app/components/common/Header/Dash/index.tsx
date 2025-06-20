@@ -18,7 +18,9 @@ export default function DashHeader() {
         </Link>
 
         <nav className="flex items-center gap-4 h-full">
-          <NavLink href="/dash">Projetos</NavLink>
+          <NavLink href="/dash">Início</NavLink>
+          <VerticalDivider />
+          <NavLink href="/dash/projects">Projetos</NavLink>
           <VerticalDivider />
           <NavLink href="/dash/settings">Configurações</NavLink>
           <VerticalDivider />

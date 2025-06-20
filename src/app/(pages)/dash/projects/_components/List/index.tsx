@@ -3,6 +3,7 @@ import { ChevronRight, Plus } from 'lucide-react';
 import { Button, IconButton } from '@app/components/ui';
 
 import { concatClasses } from '@app/helpers';
+import Link from 'next/link';
 
 export default function List() {
   return (
@@ -13,10 +14,12 @@ export default function List() {
           <h4 className="text-text-secondary">Total de projetos: 5</h4>
         </div>
 
-        <Button>
-          Adicionar novo projeto
-          <Plus className="size-5" />
-        </Button>
+        <Link href="/dash/projects/create">
+          <Button>
+            Adicionar novo projeto
+            <Plus className="size-5" />
+          </Button>
+        </Link>
       </div>
 
       <div className="rounded-2xl border border-border  overflow-hidden">
@@ -40,7 +43,7 @@ export default function List() {
                 <tr
                   key={index}
                   className={concatClasses(
-                    'text-left h-[64px]',
+                    'text-left h-[64px] hover:bg-border/20 transition-colors',
                     !isLast && 'border-b border-border'
                   )}
                 >

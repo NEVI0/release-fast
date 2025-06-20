@@ -1,6 +1,6 @@
 import { Header, List } from './_components';
 
-export default function Projects() {
+export default function ProjectsPage() {
   return (
     <>
       <Header />
