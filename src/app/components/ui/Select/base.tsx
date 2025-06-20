@@ -38,7 +38,7 @@ function BaseSelectTrigger({
     <SelectPrimitive.Trigger
       data-slot="select-trigger"
       className={concatClasses(
-        'h-[48px] px-6 rounded-xl flex items-center gap-2 disabled:cursor-not-allowed bg-container border border-border transition-colors',
+        'h-[48px] px-6 rounded-xl flex items-center gap-2 disabled:cursor-not-allowed bg-container border border-border hover:not-focus:border-border-action transition-colors',
         className
       )}
       {...props}
