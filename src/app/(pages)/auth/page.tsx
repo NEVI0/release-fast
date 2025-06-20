@@ -10,7 +10,7 @@ import { Eye, EyeOff, Mail } from 'lucide-react';
 import { Button, Input } from '@app/components/ui';
 import { Header, OrSection, TopLogo } from './_components';
 
-export default function Login() {
+export default function LoginPage() {
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   return (

@@ -3,7 +3,7 @@ import { ChevronRight } from 'lucide-react';
 import { LINKS } from '@app/constants/links';
 import { Breadcrumb } from '@app/components/ui';
 
-export default function Terms() {
+export default function TermsPage() {
   return (
     <>
       <Breadcrumb

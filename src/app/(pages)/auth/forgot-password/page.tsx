@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Button, Input } from '@app/components/ui';
 import { Header, TopLogo } from '../_components';
 
-export default function ForgotPassword() {
+export default function ForgotPasswordPage() {
   return (
     <>
       <TopLogo />
