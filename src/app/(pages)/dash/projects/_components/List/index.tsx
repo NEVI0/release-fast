@@ -54,7 +54,9 @@ export default function List() {
                   <th className="font-normal px-8">Status</th>
                   <th className="font-normal px-8 w-[100px]">
                     <div className="flex items-center justify-center">
-                      <IconButton icon={ChevronRight} />
+                      <Link href={`/dash/projects/${index + 1}`}>
+                        <IconButton icon={ChevronRight} />
+                      </Link>
                     </div>
                   </th>
                 </tr>

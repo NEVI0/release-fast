@@ -1,3 +1,10 @@
+import { Form, Header } from './_components';
+
 export default function CreatePage() {
-  return <div>CreatePage</div>;
+  return (
+    <>
+      <Header />
+      <Form />
+    </>
+  );
 }

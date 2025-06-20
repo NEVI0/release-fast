@@ -1,6 +1,6 @@
 import { Header } from './_components';
 
-export default function ProfilePage() {
+export default function ProjectPage() {
   return (
     <>
       <Header />

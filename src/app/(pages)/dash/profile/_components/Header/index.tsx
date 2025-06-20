@@ -6,17 +6,17 @@ export default function Header() {
       <Breadcrumb
         items={[
           { label: 'Dashboard', href: '/dash' },
-          { label: 'Projetos', href: '/dash/projects' },
+          { label: 'Minha conta', href: '/profile' },
         ]}
       />
 
       <div className="flex flex-col gap-2">
         <h1 className="font-bold text-4xl">
-          Meus <strong className="text-primary">Projetos</strong>
+          Minha <strong className="text-primary">conta</strong>
         </h1>
 
         <h2 className="font-semibold text-2xl text-text-secondary">
-          Gerencie seus projetos e suas releases
+          Gerencie suas informações e preferências
         </h2>
       </div>
     </section>
