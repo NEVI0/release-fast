@@ -6,7 +6,7 @@ import { NavLink } from '../components';
 
 export default function DashHeader() {
   return (
-    <header className="flex items-center justify-center w-full h-[80px] border-b border-border">
+    <header className="flex items-center justify-center w-full h-[80px] border-b border-border bg-container">
       <div className="flex items-center justify-between h-full w-6xl mx-auto px-6 md:px-8 ">
         <Link href="/" className="h-full flex items-center font-medium">
           <Image
