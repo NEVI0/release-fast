@@ -2,15 +2,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { VerticalDivider } from '@app/components/ui';
+import { NavLink } from '../components';
 
 export default function DashHeader() {
   return (
     <header className="flex items-center justify-center w-full h-[80px] border-b border-border">
       <div className="flex items-center justify-between h-full w-6xl mx-auto px-6 md:px-8 ">
-        <Link
-          href="/"
-          className="h-full flex items-center justify-center font-medium"
-        >
+        <Link href="/" className="h-full flex items-center font-medium">
           <Image
             src="/images/logo.png"
             alt="Release Fast Logo"
@@ -20,56 +18,18 @@ export default function DashHeader() {
         </Link>
 
         <nav className="flex items-center gap-4 h-full">
-          <Link
-            href="/"
-            className="h-full flex items-center justify-center focus:underline focus:text-primary hover:underline hover:text-primary"
-          >
-            Início
-          </Link>
-
+          <NavLink href="/dash">Projetos</NavLink>
+          <VerticalDivider />
+          <NavLink href="/dash/settings">Configurações</NavLink>
+          <VerticalDivider />
+          <NavLink href="/auth/logout">Sair</NavLink>
           <VerticalDivider />
 
           <Link
-            href="/#how-it-works-section"
-            className="h-full flex items-center justify-center focus:underline focus:text-primary hover:underline hover:text-primary"
-          >
-            Como funciona
-          </Link>
-
-          <VerticalDivider />
-
-          <Link
-            href="/#about-section"
-            className="h-full flex items-center justify-center focus:underline focus:text-primary hover:underline hover:text-primary"
-          >
-            Sobre
-          </Link>
-
-          <VerticalDivider />
-
-          <Link
-            href="/#plans-section"
-            className="h-full flex items-center justify-center focus:underline focus:text-primary hover:underline hover:text-primary"
-          >
-            Planos
-          </Link>
-
-          <VerticalDivider />
-
-          <Link
-            href="/auth"
-            className="h-full flex items-center justify-center focus:underline focus:text-primary hover:underline hover:text-primary"
-          >
-            Login
-          </Link>
-
-          <VerticalDivider />
-
-          <Link
-            href="/auth/sign-up"
+            href="/dash/profile"
             className="h-full flex items-center justify-center font-semibold underline text-primary"
           >
-            Criar minha conta
+            Minha conta
           </Link>
         </nav>
       </div>
