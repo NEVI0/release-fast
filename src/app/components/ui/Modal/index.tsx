@@ -27,7 +27,7 @@ export default function Modal({ isOpen, onClose, children }: ModalProps) {
   if (!isOpen) return null;
 
   return (
-    <dialog className="fixed top-0 left-0 w-full h-full bg-black/15 backdrop-blur-sm z-50 flex items-center justify-center">
+    <dialog className="fixed top-0 left-0 w-full h-full bg-white/15 backdrop-blur-sm z-50 flex items-center justify-center">
       <div ref={modalBoxRef} className="flex items-center justify-center">
         {children}
       </div>
