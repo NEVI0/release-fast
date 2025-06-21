@@ -12,12 +12,10 @@ export default function Header() {
       />
 
       <div className="flex flex-col gap-2">
-        <h1 className="font-bold text-4xl">
-          Meu <strong className="text-primary">projeto</strong>
-        </h1>
+        <h1 className="font-bold text-4xl">Nome do projeto</h1>
 
         <h2 className="font-semibold text-2xl text-text-secondary">
-          Informações do projeto
+          Descrição do projeto
         </h2>
       </div>
     </section>

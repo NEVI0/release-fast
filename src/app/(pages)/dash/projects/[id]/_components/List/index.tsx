@@ -1,4 +1,4 @@
-import { ChevronRight, Plus } from 'lucide-react';
+import { ChevronRight, Edit3, ExternalLink, Plus } from 'lucide-react';
 
 import { Button, IconButton } from '@app/components/ui';
 
@@ -10,13 +10,13 @@ export default function List() {
     <section className="flex flex-col gap-4">
       <div className="flex items-center justify-between">
         <div>
-          <h3 className="text-lg font-semibold">Listagem de projetos</h3>
-          <h4 className="text-text-secondary">Total de projetos: 5</h4>
+          <h3 className="text-lg font-semibold">Listagem de versões</h3>
+          <h4 className="text-text-secondary">Total de versões: 5</h4>
         </div>
 
-        <Link href="/dash/projects/create">
+        <Link href="/dash/projects/1/create-version">
           <Button>
-            Adicionar novo projeto
+            Adicionar nova versão
             <Plus className="size-5" />
           </Button>
         </Link>
@@ -26,12 +26,13 @@ export default function List() {
         <table className="border-collapse w-full bg-container text-text-primary">
           <thead>
             <tr className="border-b border-border text-left h-[64px]">
-              <th className="px-8">Nome</th>
+              <th className="px-8">Versão</th>
               <th className="px-8">Descrição</th>
               <th className="px-8">Criado em</th>
-              <th className="px-8">Versão atual</th>
-              <th className="px-8">Status</th>
-              <th className="px-8 w-[100px] text-center">Detalhes</th>
+              <th className="px-8 text-center w-[144px] text-nowrap">Editar</th>
+              <th className="px-8 text-center w-[144px] text-nowrap">
+                Link público
+              </th>
             </tr>
           </thead>
 
@@ -50,12 +51,19 @@ export default function List() {
                   <th className="font-normal px-8">Nome</th>
                   <th className="font-normal px-8">Descrição</th>
                   <th className="font-normal px-8">Criado em</th>
-                  <th className="font-normal px-8">Versão atual</th>
-                  <th className="font-normal px-8">Status</th>
-                  <th className="font-normal px-8 w-[100px]">
+
+                  <th className="font-normal px-8 w-[144px]">
                     <div className="flex items-center justify-center">
-                      <Link href={`/dash/projects/${index + 1}`}>
-                        <IconButton icon={ChevronRight} />
+                      <Link href="/">
+                        <IconButton icon={Edit3} />
+                      </Link>
+                    </div>
+                  </th>
+
+                  <th className="font-normal px-8 w-[144px]">
+                    <div className="flex items-center justify-center">
+                      <Link href="/public/project/1/version/1">
+                        <IconButton icon={ExternalLink} />
                       </Link>
                     </div>
                   </th>
