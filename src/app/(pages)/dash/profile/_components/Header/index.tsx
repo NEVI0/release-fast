@@ -12,7 +12,7 @@ export default function Header() {
 
       <div className="flex flex-col gap-2">
         <h1 className="font-bold text-4xl">
-          Minha <strong className="text-primary">conta</strong>
+          Minha <strong className="text-primary">Conta</strong>
         </h1>
 
         <h2 className="font-semibold text-2xl text-text-secondary">
