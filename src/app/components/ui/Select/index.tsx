@@ -20,6 +20,7 @@ interface SelectProps {
   placeholder?: string;
   options: Option[];
   className?: string;
+  required?: boolean;
 }
 
 export default function Select({
@@ -28,12 +29,18 @@ export default function Select({
   placeholder,
   options,
   className,
+  required,
 }: SelectProps) {
   return (
     <div className={concatClasses('flex flex-col gap-2', className)}>
-      {label && <label htmlFor={id}>{label}</label>}
+      {label && (
+        <label htmlFor={id} className="flex items-center gap-2">
+          {label}
+          {required && <span className="text-red-600">*</span>}
+        </label>
+      )}
 
-      <BaseSelect>
+      <BaseSelect required={required}>
         <BaseSelectTrigger className="flex items-center justify-between">
           <BaseSelectValue placeholder={placeholder || 'Selecionar'} />
         </BaseSelectTrigger>

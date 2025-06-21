@@ -34,6 +34,7 @@ export default function Form() {
               { label: 'GitLab', value: 'gitlab' },
             ]}
             className="w-[300px]"
+            required
           />
 
           <Input

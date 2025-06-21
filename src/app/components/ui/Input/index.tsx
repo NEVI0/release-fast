@@ -25,7 +25,12 @@ export default function Input({
 }: InputProps & React.InputHTMLAttributes<HTMLInputElement>) {
   return (
     <div className={concatClasses('flex flex-col gap-2', className)}>
-      {label && <label htmlFor={id}>{label}</label>}
+      {label && (
+        <label htmlFor={id} className="flex items-center gap-2">
+          {label}
+          {props.required && <span className="text-red-600">*</span>}
+        </label>
+      )}
 
       <div
         className={concatClasses(
