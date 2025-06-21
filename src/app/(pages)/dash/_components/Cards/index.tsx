@@ -1,6 +1,6 @@
 import { Bell, Boxes, BrainCircuit } from 'lucide-react';
 
-import { Card } from '@app/components/ui';
+import { Card } from '@app/components/common';
 
 export default function Cards() {
   return (
