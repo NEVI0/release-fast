@@ -28,7 +28,7 @@ export default function Button({
     <button
       {...props}
       className={concatClasses(
-        'h-[48px]  px-6 rounded-xl font-semibold whitespace-nowrap flex items-center justify-center gap-4 transition-colors cursor-pointer disabled:cursor-not-allowed',
+        'h-[48px]  px-6 rounded-xl font-semibold whitespace-nowrap flex items-center justify-center gap-4 transition-colors cursor-pointer disabled:text-text-secondary disabled:cursor-not-allowed',
         BUTTON_VARIANT[variant],
         props.className
       )}
