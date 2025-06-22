@@ -6,7 +6,7 @@ export default function TopLogo() {
     <div className="absolute top-8 left-8">
       <Link href="/" className="h-full flex items-center justify-center">
         <Image
-          src="/images/logo.png"
+          src="/images/logo-dark.png"
           alt="Release Fast Logo"
           width={120}
           height={24}
