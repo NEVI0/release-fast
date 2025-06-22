@@ -49,8 +49,8 @@ export default function Plan({
         </div>
 
         <ul className="flex flex-col gap-2">
-          {features.map((feature) => (
-            <li key={feature} className="flex items-center gap-2">
+          {features.map((feature, index) => (
+            <li key={`${feature}-${index}`} className="flex items-center gap-2">
               <Check className="text-green-500 size-4" /> {feature}
             </li>
           ))}
