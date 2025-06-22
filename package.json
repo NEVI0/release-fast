@@ -2,6 +2,9 @@
   "name": "release-fast",
   "version": "0.1.0",
   "private": true,
+  "repository": "https://github.com/NEVI0/release-fast.git",
+  "author": "Nevio <nevio.dev@gmail.com>",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

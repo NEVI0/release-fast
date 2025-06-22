@@ -28,7 +28,7 @@ Release Fast is a comprehensive platform designed to streamline the software rel
 1. **Clone the repository**
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/NEVI0/release-fast.git
    cd release-fast
    ```
 
