@@ -22,8 +22,6 @@ export default function DashHeader() {
           <VerticalDivider />
           <NavLink href="/dash/projects">Projetos</NavLink>
           <VerticalDivider />
-          <NavLink href="/dash/settings">Configurações</NavLink>
-          <VerticalDivider />
           <NavLink href="/auth/logout">Sair</NavLink>
           <VerticalDivider />
 
