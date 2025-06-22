@@ -43,7 +43,7 @@ export default function Input({
           {...props}
           id={id}
           disabled={disabled}
-          className="h-full w-full"
+          className="h-full w-full text-text-primary placeholder:text-text-secondary"
         />
 
         {!!Icon && (
