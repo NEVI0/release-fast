@@ -1,10 +1,14 @@
+import Image from 'next/image';
+
 export default function DeveloperCard() {
   return (
     <div className="flex flex-col items-center md:flex-row gap-4">
-      <img
+      <Image
         src="/images/nevio.png"
         alt="Névio Costa Magagnin"
-        className="w-16 h-16 rounded-full"
+        width={52}
+        height={52}
+        className="rounded-full"
       />
 
       <div className="flex flex-col">
