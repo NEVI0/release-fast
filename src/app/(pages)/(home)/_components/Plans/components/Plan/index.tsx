@@ -1,13 +1,13 @@
 import { Check } from 'lucide-react';
 
 import { Badge, Button } from '@app/components/ui';
-import { concatClasses } from '@app/helpers';
+import { concatClasses, formatToCurrency } from '@app/helpers';
 
 type PlanVariant = 'normal' | 'main';
 
 interface PlanProps {
   title: string;
-  price: string;
+  price: number;
   features: string[];
   variant?: PlanVariant;
 }
@@ -42,7 +42,7 @@ export default function Plan({
                 variant === 'main' && 'text-primary'
               )}
             >
-              {price}
+              {formatToCurrency(price)}
             </p>
             <small className="text-sm text-text-secondary mb-[4px]">/mês</small>
           </div>

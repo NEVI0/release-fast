@@ -1,8 +1,19 @@
 import Link from 'next/link';
 
+import { makeFetchPlansUseCase } from '@factories/useCases';
+
 import { Plan } from './components';
+import { PlanType } from '@domain/entities';
+
+const PLAN_NAME_BY_TYPE: Record<PlanType, string> = {
+  starter: 'Iniciante',
+  pro: 'Profissional',
+  enterprise: 'Empresarial',
+};
 
 export default function Plans() {
+  const plans = makeFetchPlansUseCase().execute();
+
   return (
     <section className="flex flex-col items-center gap-8">
       <div className="flex flex-col items-center gap-2">
@@ -14,34 +25,15 @@ export default function Plans() {
       </div>
 
       <div className="flex items-center justify-center gap-8">
-        <Plan
-          title="Starter"
-          price="R$ 19,90"
-          features={[
-            'Até 3 projetos',
-            'Geração de release notes com I.A',
-            'Notificações por basicas',
-          ]}
-        />
-
-        <Plan
-          title="Professional"
-          price="R$ 49,90"
-          features={[
-            'Até 15 projetos',
-            'Geração de release notes com I.A',
-            'Sugestões avançadas com I.A',
-            'Notificações por basicas',
-            'Suporte priorizado',
-          ]}
-          variant="main"
-        />
-
-        <Plan
-          title="Starter"
-          price="R$ 20,00"
-          features={['Até 3 projetos', 'Até 3 projetos', 'Até 3 projetos']}
-        />
+        {plans.map((plan) => (
+          <Plan
+            key={plan.id}
+            title={PLAN_NAME_BY_TYPE[plan.type]}
+            price={plan.price}
+            features={plan.features}
+            variant={plan.type === 'pro' ? 'main' : 'normal'}
+          />
+        ))}
       </div>
 
       <div className="flex flex-col items-center gap-2">
