@@ -24,17 +24,19 @@ export default function DeleteProjectModal({
       <div className="flex flex-col items-center gap-8 bg-container border border-border p-8 rounded-4xl w-[85%] md:w-[500px]">
         <div className="flex flex-col gap-4">
           <div className="flex items-center justify-between w-full">
-            <h3 className="text-2xl font-bold">Excluir projeto</h3>
+            <h3 className="text-2xl text-text-primary font-bold">
+              Excluir projeto
+            </h3>
 
             <IconButton icon={X} onClick={onClose} />
           </div>
 
-          <p className="text-gray-600">
+          <p className="text-text-secondary">
             Tem certeza que deseja excluir seu projeto? Todos os dados serão
             deletados e está ação não pode ser desfeita.
           </p>
 
-          <p className="text-gray-600">
+          <p className="text-text-secondary">
             Se sim, digite "Deletar" no campo abaixo.
           </p>
         </div>

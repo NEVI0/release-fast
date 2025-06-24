@@ -1,7 +1,7 @@
-import { Box, Code2Icon, MessageSquare, Plus, X } from 'lucide-react';
+import Link from 'next/link';
+import { Box, Code2Icon, MessageSquare, Plus } from 'lucide-react';
 
 import { Button, Input, Select } from '@app/components/ui';
-import Link from 'next/link';
 
 export default function Form() {
   return (

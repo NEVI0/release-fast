@@ -14,15 +14,15 @@ export default function List() {
           <h4 className="text-text-secondary">Total de versões: 5</h4>
         </div>
 
-        <Link href="/dash/projects/1/create-version">
+        <Link href="/dash/projects/1/create-release">
           <Button>
-            Adicionar nova versão
+            Adicionar nova release
             <Plus className="size-5" />
           </Button>
         </Link>
       </div>
 
-      <div className="rounded-2xl border border-border  overflow-hidden">
+      <div className="rounded-2xl border border-border overflow-hidden">
         <table className="border-collapse w-full bg-container text-text-primary">
           <thead>
             <tr className="border-b border-border text-left h-[64px]">
