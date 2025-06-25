@@ -87,8 +87,8 @@ model Project {
 model Release {
   id                   String      @id @default(cuid())
   title                String
-  shortDescription     String?
-  fullDescription      String?
+  shortDescription     String
+  fullDescription      String
   version              String
   projectId            String
   createdAt            DateTime    @default(now())
