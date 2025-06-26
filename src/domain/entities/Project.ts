@@ -9,13 +9,13 @@ export interface ProjectAbstract {
 }
 
 interface ProjectProps {
-  id: string;
+  id?: string;
   name: string;
   description: string;
   userId: string;
 
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 export default class Project implements ProjectAbstract {
@@ -27,11 +27,11 @@ export default class Project implements ProjectAbstract {
   public updatedAt: ProjectAbstract['updatedAt'];
 
   constructor(props: ProjectProps) {
-    this.id = props.id;
+    this.id = props.id ?? '';
     this.name = props.name;
     this.description = props.description;
     this.userId = props.userId;
-    this.createdAt = props.createdAt;
-    this.updatedAt = props.updatedAt;
+    this.createdAt = props.createdAt ?? new Date();
+    this.updatedAt = props.updatedAt ?? new Date();
   }
 }

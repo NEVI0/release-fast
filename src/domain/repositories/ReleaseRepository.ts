@@ -1,7 +1,7 @@
 import { type ReleaseAbstract } from '@domain/entities';
 
 export default interface ReleaseRepositoryAbstract {
-  findAll(): Promise<ReleaseAbstract[]>;
+  findAll(projectId: string): Promise<ReleaseAbstract[]>;
   findById(id: string): Promise<ReleaseAbstract | null>;
 
   create(release: ReleaseAbstract): Promise<ReleaseAbstract>;
