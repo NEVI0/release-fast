@@ -31,7 +31,11 @@ export default class PrismaProjectRepository
 
   public async create(project: ProjectAbstract): Promise<ProjectAbstract> {
     const newProject = await this.prisma.project.create({
-      data: project,
+      data: {
+        name: project.name,
+        description: project.description,
+        userId: project.userId,
+      },
     });
 
     return new Project(newProject);
@@ -40,7 +44,11 @@ export default class PrismaProjectRepository
   public async update(project: ProjectAbstract): Promise<ProjectAbstract> {
     const updatedProject = await this.prisma.project.update({
       where: { id: project.id },
-      data: project,
+      data: {
+        name: project.name,
+        description: project.description,
+        userId: project.userId,
+      },
     });
 
     if (!updatedProject) throw new Error('Project not found');

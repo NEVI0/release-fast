@@ -31,7 +31,13 @@ export default class PrismaReleaseRepository
 
   public async create(release: ReleaseAbstract): Promise<ReleaseAbstract> {
     const newRelease = await this.prisma.release.create({
-      data: release,
+      data: {
+        title: release.title,
+        shortDescription: release.shortDescription,
+        fullDescription: release.fullDescription,
+        version: release.version,
+        projectId: release.projectId,
+      },
     });
 
     return new Release(newRelease);
@@ -40,7 +46,13 @@ export default class PrismaReleaseRepository
   public async update(release: ReleaseAbstract): Promise<ReleaseAbstract> {
     const updatedRelease = await this.prisma.release.update({
       where: { id: release.id },
-      data: release,
+      data: {
+        title: release.title,
+        shortDescription: release.shortDescription,
+        fullDescription: release.fullDescription,
+        version: release.version,
+        projectId: release.projectId,
+      },
     });
 
     if (!updatedRelease) throw new Error('Release not found');
