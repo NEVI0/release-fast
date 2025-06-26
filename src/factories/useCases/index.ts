@@ -1,10 +1,10 @@
-export { default as makeFetchPlansUseCase } from './makeFetchPlansUseCase';
 export { default as makeCreateProjectUseCase } from './makeCreateProjectUseCase';
 export { default as makeCreateReleaseUseCase } from './makeCreateReleaseUseCase';
 export { default as makeDeleteProjectByIdUseCase } from './makeDeleteProjectByIdUseCase';
 export { default as makeDeleteReleaseByIdUseCase } from './makeDeleteReleaseByIdUseCase';
 export { default as makeFetchAllProjectsUseCase } from './makeFetchAllProjectsUseCase';
 export { default as makeFetchAllReleasesUseCase } from './makeFetchAllReleasesUseCase';
+export { default as makeFetchPlansUseCase } from './makeFetchPlansUseCase';
 export { default as makeFetchProjectByIdUseCase } from './makeFetchProjectByIdUseCase';
 export { default as makeFetchReleaseByIdUseCase } from './makeFetchReleaseByIdUseCase';
 export { default as makeUpdateProjectUseCase } from './makeUpdateProjectUseCase';
