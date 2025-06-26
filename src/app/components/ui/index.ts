@@ -6,6 +6,7 @@ export { default as IconButton } from './IconButton';
 export { default as Input } from './Input';
 export { default as Modal } from './Modal';
 export { default as Select } from './Select';
+export { default as Skeleton } from './Skeleton';
 export { default as Switch } from './Switch';
 export { default as Textarea } from './Textarea';
 export { default as VerticalDivider } from './VerticalDivider';
