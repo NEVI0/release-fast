@@ -22,6 +22,7 @@ Release Fast is a comprehensive platform designed to streamline the software rel
 
 - Node.js 18+
 - npm, yarn, pnpm, or bun package manager
+- Docker and Docker Compose (for database)
 
 ### Installation
 
@@ -44,7 +45,29 @@ Release Fast is a comprehensive platform designed to streamline the software rel
    bun install
    ```
 
-3. **Run the development server**
+3. **Set up environment variables**
+
+   Create a `.env` file in the root directory and configure the required environment variables (see Environment Variables section below).
+
+4. **Start the database**
+
+   ```bash
+   npm run docker:up
+   ```
+
+5. **Generate Prisma client**
+
+   ```bash
+   npm run db:generate
+   ```
+
+6. **Push database schema**
+
+   ```bash
+   npm run db:push
+   ```
+
+7. **Run the development server**
 
    ```bash
    npm run dev
@@ -56,8 +79,119 @@ Release Fast is a comprehensive platform designed to streamline the software rel
    bun dev
    ```
 
-4. **Open your browser**
+8. **Open your browser**
    Navigate to [http://localhost:3000](http://localhost:3000) to view the application.
+
+## 🔧 Environment Variables
+
+This project requires several environment variables to function properly. Create a `.env` file in the root directory with the following variables:
+
+### Required Variables
+
+```env
+# Database variables
+DATABASE_USER=
+DATABASE_PASSWORD=
+DATABASE_HOST=
+DATABASE_PORT=
+DATABASE_NAME=
+DATABASE_SCHEMA=
+DATABASE_URL=postgresql://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}?schema=${DATABASE_SCHEMA}
+
+# Required by NextAuth to work properly
+AUTH_SECRET=
+
+# Google variables
+AUTH_GOOGLE_CLIENT_ID=
+AUTH_GOOGLE_CLIENT_SECRET=
+
+# Github variables
+AUTH_GITHUB_CLIENT_ID=
+AUTH_GITHUB_CLIENT_SECRET=
+
+# Gitlab variables
+AUTH_GITLAB_CLIENT_ID=
+AUTH_GITLAB_CLIENT_SECRET=
+```
+
+### Setting Up Authentication Providers
+
+#### Google OAuth
+
+1. Go to the [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a new project or select an existing one
+3. Enable the Google+ API
+4. Go to "Credentials" and create an OAuth 2.0 Client ID
+5. Set the authorized redirect URI to: `http://localhost:3000/api/auth/callback/google`
+6. Copy the Client ID and Client Secret to your `.env` file
+
+#### GitHub OAuth
+
+1. Go to [GitHub Settings > Developer settings > OAuth Apps](https://github.com/settings/developers)
+2. Click "New OAuth App"
+3. Set the Authorization callback URL to: `http://localhost:3000/api/auth/callback/github`
+4. Copy the Client ID and Client Secret to your `.env` file
+
+#### GitLab OAuth
+
+1. Go to [GitLab Settings > Applications](https://gitlab.com/-/profile/applications)
+2. Click "New application"
+3. Set the Redirect URI to: `http://localhost:3000/api/auth/callback/gitlab`
+4. Copy the Application ID and Secret to your `.env` file
+
+### Database Configuration
+
+The `DATABASE_URL` follows this format:
+
+```
+postgresql://USERNAME:PASSWORD@HOST:PORT/DATABASE_NAME?schema=SCHEMA_NAME
+```
+
+For local development with Docker:
+
+- **Username**: `postgres`
+- **Password**: `postgres`
+- **Host**: `localhost`
+- **Port**: `5432`
+- **Database**: `release_fast`
+- **Schema**: `public`
+
+### Environment File Example
+
+Create a `.env` file in the root directory:
+
+```env
+# Database
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/release_fast?schema=public"
+
+# Google OAuth
+GOOGLE_CLIENT_ID="123456789-abcdefghijklmnop.apps.googleusercontent.com"
+GOOGLE_CLIENT_SECRET="GOCSPX-your-secret-here"
+
+# GitHub OAuth
+GITHUB_CLIENT_ID="your-github-client-id"
+GITHUB_CLIENT_SECRET="your-github-client-secret"
+
+# GitLab OAuth
+GITLAB_CLIENT_ID="your-gitlab-client-id"
+GITLAB_CLIENT_SECRET="your-gitlab-client-secret"
+```
+
+### Production Environment
+
+For production deployment, make sure to:
+
+1. **Use a production database** (e.g., PostgreSQL on AWS RDS, Google Cloud SQL, or similar)
+2. **Update redirect URIs** in your OAuth provider settings to use your production domain
+3. **Set secure environment variables** in your hosting platform
+4. **Use HTTPS** for all authentication callbacks
+
+### Security Notes
+
+- **Never commit your `.env` file** to version control
+- **Use strong, unique secrets** for each OAuth provider
+- **Rotate secrets regularly** in production
+- **Use environment-specific configurations** for different deployment stages
 
 ## 📦 Dependencies
 
