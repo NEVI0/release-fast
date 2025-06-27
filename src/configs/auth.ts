@@ -8,6 +8,15 @@ import Gitlab from 'next-auth/providers/gitlab';
 import { PrismaAdapter } from '@auth/prisma-adapter';
 import { prisma } from './prisma';
 
+const {
+  GOOGLE_CLIENT_ID,
+  GOOGLE_CLIENT_SECRET,
+  GITHUB_CLIENT_ID,
+  GITHUB_CLIENT_SECRET,
+  GITLAB_CLIENT_ID,
+  GITLAB_CLIENT_SECRET,
+} = process.env;
+
 export const { handlers, signIn, signOut, auth } = NextAuth({
   adapter: PrismaAdapter(prisma),
   providers: [
@@ -17,8 +26,17 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         password: { label: 'Password', type: 'password' },
       },
     }),
-    Google,
-    Github,
-    Gitlab,
+    Google({
+      clientId: GOOGLE_CLIENT_ID!,
+      clientSecret: GOOGLE_CLIENT_SECRET!,
+    }),
+    Github({
+      clientId: GITHUB_CLIENT_ID!,
+      clientSecret: GITHUB_CLIENT_SECRET!,
+    }),
+    Gitlab({
+      clientId: GITLAB_CLIENT_ID!,
+      clientSecret: GITLAB_CLIENT_SECRET!,
+    }),
   ],
 });
