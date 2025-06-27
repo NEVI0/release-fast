@@ -3,12 +3,10 @@
 import { useState } from 'react';
 
 import Link from 'next/link';
-import Image from 'next/image';
-
 import { Eye, EyeOff, Mail } from 'lucide-react';
 
 import { Button, Input } from '@app/components/ui';
-import { Header, OrSection, TopLogo } from './_components';
+import { AuthProviders, Header, OrSection, TopLogo } from './_components';
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -53,38 +51,7 @@ export default function LoginPage() {
       </form>
 
       <OrSection />
-
-      <footer className="flex flex-col gap-4">
-        <Button variant="default">
-          <Image
-            src="/icons/google.png"
-            alt="Google Icon"
-            width={24}
-            height={24}
-          />
-          Entrar com Google
-        </Button>
-
-        <Button variant="default">
-          <Image
-            src="/icons/github.png"
-            alt="Github Icon"
-            width={24}
-            height={24}
-          />
-          Entrar com Github
-        </Button>
-
-        <Button variant="default">
-          <Image
-            src="/icons/gitlab.png"
-            alt="Gitlab Icon"
-            width={24}
-            height={24}
-          />
-          Entrar com Gitlab
-        </Button>
-      </footer>
+      <AuthProviders />
 
       <Link
         href="/auth/sign-up"
