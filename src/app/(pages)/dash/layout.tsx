@@ -35,7 +35,13 @@ export default function DashboardLayout({
     <html lang="pt-BR" suppressHydrationWarning>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        {/* <link rel="icon" href="/logo.png" type="image/png" sizes="24x24" /> */}
+
+        <link
+          rel="icon"
+          href="/icons/top-logo.png"
+          type="image/png"
+          sizes="24x24"
+        />
       </head>
 
       <body className={sourceSans3.className} suppressHydrationWarning>
