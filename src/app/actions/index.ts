@@ -1,3 +1,4 @@
+export { default as accessAccountAction } from './accessAccountAction';
 export { default as createProjectAction } from './createProjectAction';
 export { default as createReleaseAction } from './createReleaseAction';
 export { default as deleteProjectByIdAction } from './deleteProjectByIdAction';
