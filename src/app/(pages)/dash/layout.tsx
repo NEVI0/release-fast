@@ -2,7 +2,13 @@ import type { Metadata } from 'next';
 import { Source_Sans_3 } from 'next/font/google';
 
 import { ThemeProvider } from '@app/contexts';
-import { Header, Content, Footer, TopLoader } from '@app/components/common';
+import {
+  Header,
+  Content,
+  Footer,
+  TopLoader,
+  Toaster,
+} from '@app/components/common';
 
 import { DOCUMENT_HEAD } from '@app/constants/document-head';
 
@@ -39,6 +45,8 @@ export default function DashboardLayout({
           <Header.Dash />
           <Content.Dash>{children}</Content.Dash>
           <Footer />
+
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
