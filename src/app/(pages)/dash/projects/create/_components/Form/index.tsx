@@ -1,14 +1,54 @@
+'use client';
+
+import { useState } from 'react';
+
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Box, Code2Icon, MessageSquare, Plus } from 'lucide-react';
 
+import { useToast } from '@app/hooks';
+import { createProjectAction } from '@app/actions';
 import { Button, Input, Select } from '@app/components/ui';
 
 export default function Form() {
+  const toast = useToast();
+  const router = useRouter();
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    try {
+      event.preventDefault();
+      setIsLoading(true);
+
+      const formData = new FormData(event.currentTarget);
+
+      const dto = {
+        name: String(formData.get('name')),
+        description: String(formData.get('description')),
+        userId: 'user-id',
+      };
+
+      const { success, message } = await createProjectAction(dto);
+      if (!success) throw new Error(message);
+
+      toast.success('Projeto criado com sucesso');
+      router.push('/dash/projects');
+    } catch (error) {
+      toast.error(
+        error instanceof Error ? error.message : 'Erro ao criar projeto'
+      );
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
   return (
-    <form action="#" className="flex flex-col gap-8">
+    <form className="flex flex-col gap-8" onSubmit={handleSubmit}>
       <div className="flex flex-col gap-4">
         <Input
           id="name"
+          name="name"
           type="text"
           label="Nome do projeto"
           placeholder="Ex.: E-commerce, Blog, etc."
@@ -18,6 +58,7 @@ export default function Form() {
 
         <Input
           id="description"
+          name="description"
           type="text"
           label="Descrição do projeto"
           placeholder="Uma breve descrição do projeto"
@@ -39,6 +80,7 @@ export default function Form() {
 
           <Input
             id="url"
+            name="url"
             type="text"
             label="URL do repositório do projeto"
             placeholder="Ex.: https://github.com/user/repo"
@@ -51,13 +93,18 @@ export default function Form() {
 
       <div className="flex items-center justify-end gap-4">
         <Link href="/dash/projects">
-          <Button type="button" className="w-[184px]">
+          <Button type="button" className="w-[184px]" disabled={isLoading}>
             Cancelar
           </Button>
         </Link>
 
-        <Button type="button" variant="primary" className="w-[184px]">
-          Criar projeto
+        <Button
+          type="submit"
+          variant="primary"
+          className="w-[184px]"
+          disabled={isLoading}
+        >
+          {isLoading ? 'Criando...' : 'Criar projeto'}
           <Plus className="size-5" />
         </Button>
       </div>
