@@ -27,7 +27,7 @@ export default function HomeHeader() {
           <NavLink href="/#plans-section">Planos</NavLink>
           <VerticalDivider />
 
-          {true ? (
+          {false ? (
             <Link
               href="/dash"
               className="h-full flex items-center justify-center font-semibold underline text-primary"
