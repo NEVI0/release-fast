@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { VerticalDivider } from '@app/components/ui';
-import { NavLink } from '../components';
+import { AuthLink, NavLink } from '../components';
 
 export default function HomeHeader() {
   return (
@@ -26,28 +26,7 @@ export default function HomeHeader() {
           <VerticalDivider />
           <NavLink href="/#plans-section">Planos</NavLink>
           <VerticalDivider />
-
-          {false ? (
-            <Link
-              href="/dash"
-              className="h-full flex items-center justify-center font-semibold underline text-primary"
-            >
-              Dashboard
-            </Link>
-          ) : (
-            <>
-              <NavLink href="/auth">Login</NavLink>
-
-              <VerticalDivider />
-
-              <Link
-                href="/auth/sign-up"
-                className="h-full flex items-center justify-center font-semibold underline text-primary"
-              >
-                Criar minha conta
-              </Link>
-            </>
-          )}
+          <AuthLink />
         </nav>
       </div>
     </header>
