@@ -89,6 +89,8 @@ This project requires several environment variables to function properly. Create
 ### Required Variables
 
 ```env
+NEXT_PUBLIC_APP_URL=
+
 # Database variables
 DATABASE_USER=
 DATABASE_PASSWORD=
@@ -155,27 +157,6 @@ For local development with Docker:
 - **Port**: `5432`
 - **Database**: `release_fast`
 - **Schema**: `public`
-
-### Environment File Example
-
-Create a `.env` file in the root directory:
-
-```env
-# Database
-DATABASE_URL="postgresql://postgres:postgres@localhost:5432/release_fast?schema=public"
-
-# Google OAuth
-GOOGLE_CLIENT_ID="123456789-abcdefghijklmnop.apps.googleusercontent.com"
-GOOGLE_CLIENT_SECRET="GOCSPX-your-secret-here"
-
-# GitHub OAuth
-GITHUB_CLIENT_ID="your-github-client-id"
-GITHUB_CLIENT_SECRET="your-github-client-secret"
-
-# GitLab OAuth
-GITLAB_CLIENT_ID="your-gitlab-client-id"
-GITLAB_CLIENT_SECRET="your-gitlab-client-secret"
-```
 
 ### Production Environment
 
