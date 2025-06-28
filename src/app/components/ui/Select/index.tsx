@@ -20,6 +20,7 @@ interface SelectProps {
   placeholder?: string;
   options: Option[];
   className?: string;
+  error?: string;
   required?: boolean;
 }
 
@@ -29,6 +30,7 @@ export default function Select({
   placeholder,
   options,
   className,
+  error,
   required,
 }: SelectProps) {
   return (
@@ -53,6 +55,10 @@ export default function Select({
           ))}
         </BaseSelectContent>
       </BaseSelect>
+
+      {!!error && (
+        <span className="text-red-600 text-sm font-medium">{error}</span>
+      )}
     </div>
   );
 }
