@@ -9,7 +9,7 @@ interface ButtonProps {
 
 const BUTTON_VARIANT: Record<ButtonVariant, string> = {
   default:
-    'text-text-primary bg-container border border-border enabled:hover:border-border-action enabled:focus:border-border-action',
+    'text-text-primary bg-container border border-border disabled:text-text-secondary enabled:hover:border-border-action enabled:focus:border-border-action',
   primary:
     'text-white bg-primary enabled:hover:bg-primary-action enabled:focus:bg-primary-action',
   secondary:
@@ -28,7 +28,7 @@ export default function Button({
     <button
       {...props}
       className={concatClasses(
-        'h-[48px]  px-6 rounded-xl font-semibold whitespace-nowrap flex items-center justify-center gap-4 transition-colors cursor-pointer disabled:text-text-secondary disabled:cursor-not-allowed',
+        'h-[48px]  px-6 rounded-xl font-semibold whitespace-nowrap flex items-center justify-center gap-4 transition-colors cursor-pointer disabled:cursor-not-allowed',
         BUTTON_VARIANT[variant],
         props.className
       )}
