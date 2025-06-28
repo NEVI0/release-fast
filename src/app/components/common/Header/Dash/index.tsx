@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
 import { VerticalDivider } from '@app/components/ui';
-import { NavLink } from '../components';
-import { ThemeLogo, ThemeToggle } from '@app/components/common';
+import { ThemeLogo } from '@app/components/common';
+import { LogoutLink, NavLink } from '../components';
 
 export default function DashHeader() {
   return (
@@ -29,7 +29,7 @@ export default function DashHeader() {
             <VerticalDivider />
             <NavLink href="/dash/projects">Projetos</NavLink>
             <VerticalDivider />
-            <NavLink href="/auth/logout">Sair</NavLink>
+            <LogoutLink />
             <VerticalDivider />
 
             <Link
