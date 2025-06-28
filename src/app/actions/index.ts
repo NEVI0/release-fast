@@ -7,5 +7,6 @@ export { default as fetchAllProjectsAction } from './fetchAllProjectsAction';
 export { default as fetchAllReleasesAction } from './fetchAllReleasesAction';
 export { default as fetchProjectByIdAction } from './fetchProjectByIdAction';
 export { default as fetchReleaseByIdAction } from './fetchReleaseByIdAction';
+export { default as fetchUserSession } from './fetchUserSession';
 export { default as updateProjectAction } from './updateProjectAction';
 export { default as updateReleaseAction } from './updateReleaseAction';
