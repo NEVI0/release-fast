@@ -1,35 +1,43 @@
 'use client';
 
 import { useState } from 'react';
+import { Session } from 'next-auth';
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Box, Code2Icon, MessageSquare, Plus } from 'lucide-react';
 
-import { useToast } from '@app/hooks';
+import {
+  createProjectValidationSchema,
+  CreateProjectValidationSchema,
+} from '@app/validation';
+
+import { useForm, useToast } from '@app/hooks';
 import { createProjectAction } from '@app/actions';
 import { Button, Input, Select } from '@app/components/ui';
 
-export default function Form() {
+interface FormProps {
+  session: Session;
+}
+
+export default function Form({ session }: FormProps) {
   const toast = useToast();
   const router = useRouter();
+  const form = useForm<CreateProjectValidationSchema>({
+    schema: createProjectValidationSchema,
+  });
 
   const [isLoading, setIsLoading] = useState(false);
 
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(data: CreateProjectValidationSchema) {
     try {
-      event.preventDefault();
       setIsLoading(true);
 
-      const formData = new FormData(event.currentTarget);
+      const { success, message } = await createProjectAction({
+        ...data,
+        userId: session.user?.id!,
+      });
 
-      const dto = {
-        name: String(formData.get('name')),
-        description: String(formData.get('description')),
-        userId: 'user-id',
-      };
-
-      const { success, message } = await createProjectAction(dto);
       if (!success) throw new Error(message);
 
       toast.success('Projeto criado com sucesso');
@@ -44,29 +52,32 @@ export default function Form() {
   }
 
   return (
-    <form className="flex flex-col gap-8" onSubmit={handleSubmit}>
+    <form
+      className="flex flex-col gap-8"
+      onSubmit={form.handleSubmit(handleSubmit)}
+    >
       <div className="flex flex-col gap-4">
         <Input
           id="name"
-          name="name"
           type="text"
           label="Nome do projeto"
           placeholder="Ex.: E-commerce, Blog, etc."
           icon={Box}
-          required
+          error={form.errors.name?.message}
+          {...form.register('name')}
         />
 
         <Input
           id="description"
-          name="description"
           type="text"
           label="Descrição do projeto"
           placeholder="Uma breve descrição do projeto"
           icon={MessageSquare}
-          required
+          error={form.errors.description?.message}
+          {...form.register('description')}
         />
 
-        <div className="flex items-center gap-4 w-full">
+        <div className="flex items-start gap-4 w-full">
           <Select
             id="repository-type"
             label="Tipo de repositório"
@@ -75,18 +86,19 @@ export default function Form() {
               { label: 'GitLab', value: 'gitlab' },
             ]}
             className="w-[300px]"
-            required
+            // error={form.errors.repositoryType?.message}
+            // {...form.register('repositoryType')}
           />
 
           <Input
             id="url"
-            name="url"
             type="text"
             label="URL do repositório do projeto"
             placeholder="Ex.: https://github.com/user/repo"
             icon={Code2Icon}
             className="w-full"
-            required
+            error={form.errors.url?.message}
+            {...form.register('url')}
           />
         </div>
       </div>
