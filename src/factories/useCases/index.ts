@@ -2,6 +2,7 @@ export { default as makeCreateProjectUseCase } from './makeCreateProjectUseCase'
 export { default as makeCreateReleaseUseCase } from './makeCreateReleaseUseCase';
 export { default as makeDeleteProjectByIdUseCase } from './makeDeleteProjectByIdUseCase';
 export { default as makeDeleteReleaseByIdUseCase } from './makeDeleteReleaseByIdUseCase';
+export { default as makeDeleteUserByIdUseCase } from './makeDeleteUserByIdUseCase';
 export { default as makeFetchAllProjectsUseCase } from './makeFetchAllProjectsUseCase';
 export { default as makeFetchAllReleasesUseCase } from './makeFetchAllReleasesUseCase';
 export { default as makeFetchPlansUseCase } from './makeFetchPlansUseCase';

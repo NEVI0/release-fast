@@ -1,8 +1,9 @@
 import 'server-only';
 
+import { ReleaseRepositoryAbstract } from '@domain/repositories';
 import { PrismaReleaseRepository } from '@infra/repositories';
 
-let instance: PrismaReleaseRepository;
+let instance: ReleaseRepositoryAbstract | null = null;
 
 export default function makeReleaseRepository() {
   if (!instance) {

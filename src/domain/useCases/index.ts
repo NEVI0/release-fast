@@ -2,6 +2,7 @@ export { default as CreateProjectUseCase } from './CreateProjectUseCase';
 export { default as CreateReleaseUseCase } from './CreateReleaseUseCase';
 export { default as DeleteProjectByIdUseCase } from './DeleteProjectByIdUseCase';
 export { default as DeleteReleaseByIdUseCase } from './DeleteReleaseByIdUseCase';
+export { default as DeleteUserByIdUseCase } from './DeleteUserByIdUseCase';
 export { default as FetchAllProjectsUseCase } from './FetchAllProjectsUseCase';
 export { default as FetchAllReleasesUseCase } from './FetchAllReleasesUseCase';
 export { default as FetchPlansUseCase } from './FetchPlansUseCase';

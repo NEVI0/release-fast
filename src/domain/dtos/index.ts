@@ -2,6 +2,7 @@ export type { default as CreateProjectDTO } from './CreateProjectDTO';
 export type { default as CreateReleaseDTO } from './CreateReleaseDTO';
 export type { default as DeleteProjectByIdDTO } from './DeleteProjectByIdDTO';
 export type { default as DeleteReleaseByIdDTO } from './DeleteReleaseByIdDTO';
+export type { default as DeleteUserByIdDTO } from './DeleteUserByIdDTO';
 export type { default as FetchAllProjectsDTO } from './FetchAllProjectsDTO';
 export type { default as FetchAllReleasesDTO } from './FetchAllReleasesDTO';
 export type { default as FetchProjectByIdDTO } from './FetchProjectByIdDTO';
