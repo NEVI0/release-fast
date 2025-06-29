@@ -33,6 +33,7 @@ export default async function fetchAllProjectsAction(
 
     return {
       success: false,
+      projects: [],
       message,
     };
   }
