@@ -7,7 +7,7 @@ import { makeFetchAllProjectsUseCase } from '@factories/useCases';
 import { handleError } from '@app/helpers';
 
 const schema = z.object({
-  userId: z.string().min(1, 'User ID is required'),
+  userId: z.string().min(1, 'O ID do usuário é obrigatório!'),
 });
 
 export default async function fetchAllProjectsAction(
@@ -18,7 +18,6 @@ export default async function fetchAllProjectsAction(
     const projects = await makeFetchAllProjectsUseCase().execute(dto);
 
     return {
-      success: true,
       projects: projects.map((project) => ({
         id: project.id,
         name: project.name,
@@ -32,7 +31,6 @@ export default async function fetchAllProjectsAction(
     const { message } = handleError(error, 'fetchAllProjectsAction');
 
     return {
-      success: false,
       projects: [],
       message,
     };
