@@ -1,70 +1,82 @@
+import Link from 'next/link';
+import { Suspense } from 'react';
 import { ChevronRight, Plus } from 'lucide-react';
 
-import { Button, IconButton } from '@app/components/ui';
+import { SessionAbstract } from '@domain/entities';
 
-import { concatClasses } from '@app/helpers';
-import Link from 'next/link';
+import { formatDate, generateRandomUUID } from '@app/helpers';
+import { fetchAllProjectsAction } from '@app/actions';
 
-export default function List() {
+import { Button, IconButton, Table } from '@app/components/ui';
+
+interface ListProps {
+  session: SessionAbstract;
+}
+
+export default async function List({ session }: ListProps) {
+  const { projects, success } = await fetchAllProjectsAction({
+    userId: session.user.id,
+  });
+
+  if (!success) {
+    return <section className="flex flex-col gap-4">Error</section>;
+  }
+
+  const columns = [
+    { id: generateRandomUUID(), children: 'Nome' },
+    { id: generateRandomUUID(), children: 'Descrição' },
+    { id: generateRandomUUID(), children: 'Criação em' },
+    { id: generateRandomUUID(), children: 'Última atualização em' },
+    { id: generateRandomUUID(), children: 'Detalhes', center: true },
+  ];
+
   return (
-    <section className="flex flex-col gap-4">
-      <div className="flex items-center justify-between">
-        <div>
-          <h3 className="text-lg font-semibold">Listagem de projetos</h3>
-          <h4 className="text-text-secondary">Total de projetos: 5</h4>
+    <Suspense fallback={<section>Carregando...</section>}>
+      <section className="flex flex-col gap-4">
+        <div className="flex items-center justify-between">
+          <div>
+            <h3 className="text-lg font-semibold">Listagem de projetos</h3>
+
+            <h4 className="text-text-secondary">
+              Total de projetos: {projects.length}
+            </h4>
+          </div>
+
+          <Link href="/dash/projects/create">
+            <Button>
+              Adicionar novo projeto
+              <Plus className="size-5" />
+            </Button>
+          </Link>
         </div>
 
-        <Link href="/dash/projects/create">
-          <Button>
-            Adicionar novo projeto
-            <Plus className="size-5" />
-          </Button>
-        </Link>
-      </div>
+        <Table>
+          <Table.Head columns={columns} />
 
-      <div className="rounded-2xl border border-border  overflow-hidden">
-        <table className="border-collapse w-full bg-container text-text-primary">
-          <thead>
-            <tr className="border-b border-border text-left h-[64px]">
-              <th className="px-8">Nome</th>
-              <th className="px-8">Descrição</th>
-              <th className="px-8">Criado em</th>
-              <th className="px-8">Versão atual</th>
-              <th className="px-8">Status</th>
-              <th className="px-8 w-[100px] text-center">Detalhes</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {new Array(5).fill(0).map((_, index) => {
-              const isLast = index === 4;
+          <Table.Body>
+            {projects.map((project, index) => {
+              const isLast = index === projects.length - 1;
 
               return (
-                <tr
-                  key={index}
-                  className={concatClasses(
-                    'text-left h-[64px] hover:bg-border/20 transition-colors',
-                    !isLast && 'border-b border-border'
-                  )}
-                >
-                  <th className="font-normal px-8">Nome</th>
-                  <th className="font-normal px-8">Descrição</th>
-                  <th className="font-normal px-8">Criado em</th>
-                  <th className="font-normal px-8">Versão atual</th>
-                  <th className="font-normal px-8">Status</th>
-                  <th className="font-normal px-8 w-[100px]">
+                <Table.Row id={project.id} isLast={isLast}>
+                  <Table.Data>{project.name}</Table.Data>
+                  <Table.Data>{project.description}</Table.Data>
+                  <Table.Data>{formatDate(project.createdAt)}</Table.Data>
+                  <Table.Data>{formatDate(project.updatedAt)}</Table.Data>
+
+                  <Table.Data>
                     <div className="flex items-center justify-center">
-                      <Link href={`/dash/projects/${index + 1}`}>
+                      <Link href={`/dash/projects/${project.id}`}>
                         <IconButton icon={ChevronRight} />
                       </Link>
                     </div>
-                  </th>
-                </tr>
+                  </Table.Data>
+                </Table.Row>
               );
             })}
-          </tbody>
-        </table>
-      </div>
-    </section>
+          </Table.Body>
+        </Table>
+      </section>
+    </Suspense>
   );
 }
