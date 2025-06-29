@@ -1,15 +1,12 @@
 'use server';
 
-import { signIn, signOut, auth } from '@configs/auth';
+import { signIn, auth } from '@configs/auth';
 
 type Provider = 'google' | 'github' | 'gitlab';
 
 export default async function accessAccountAction(provider?: Provider) {
   const session = await auth();
+  if (session) return;
 
-  if (!session) {
-    return await signIn(provider || 'google', { redirectTo: '/dash' });
-  }
-
-  return await signOut({ redirectTo: '/' });
+  return await signIn(provider || 'google', { redirectTo: '/dash' });
 }

@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 import { SessionAbstract } from '@domain/entities';
 
 import { useToast } from '@app/hooks';
-import { accessAccountAction, deleteUserByIdAction } from '@app/actions';
+import { deleteUserByIdAction, logoutAccountAction } from '@app/actions';
 
 import { Button, IconButton, Input, Modal } from '@app/components/ui';
 
@@ -40,7 +40,8 @@ export default function DeleteAccountModal({
       );
 
       await new Promise((resolve) => setTimeout(resolve, 3000));
-      accessAccountAction();
+
+      logoutAccountAction();
       router.replace('/');
     } catch (error) {
       toast.error(

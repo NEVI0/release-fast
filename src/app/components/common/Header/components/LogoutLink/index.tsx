@@ -1,11 +1,11 @@
 'use client';
 
-import { accessAccountAction } from '@app/actions';
+import { logoutAccountAction } from '@app/actions';
 
 export default function LogoutLink() {
   return (
     <button
-      onClick={() => accessAccountAction()}
+      onClick={logoutAccountAction}
       className="cursor-pointer h-full flex items-center justify-center focus:underline focus:text-primary hover:underline hover:text-primary"
     >
       Sair
