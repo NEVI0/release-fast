@@ -34,15 +34,15 @@ export default function Form({ session }: FormProps) {
     try {
       setIsLoading(true);
 
-      const { success, message } = await createProjectAction({
+      const { success, project, message } = await createProjectAction({
         ...data,
         userId: session.user.id,
       });
 
-      if (!success) throw new Error(message);
+      if (!success || !project) throw new Error(message);
 
       toast.success('Projeto criado com sucesso');
-      router.push('/dash/projects');
+      router.push('/dash/projects/' + project.id);
     } catch (error) {
       toast.error(
         error instanceof Error ? error.message : 'Erro ao criar projeto'
