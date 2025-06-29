@@ -3,6 +3,7 @@ export { default as createProjectAction } from './createProjectAction';
 export { default as createReleaseAction } from './createReleaseAction';
 export { default as deleteProjectByIdAction } from './deleteProjectByIdAction';
 export { default as deleteReleaseByIdAction } from './deleteReleaseByIdAction';
+export { default as deleteUserByIdAction } from './deleteUserByIdAction';
 export { default as fetchAllProjectsAction } from './fetchAllProjectsAction';
 export { default as fetchAllReleasesAction } from './fetchAllReleasesAction';
 export { default as fetchProjectByIdAction } from './fetchProjectByIdAction';
