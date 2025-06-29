@@ -58,7 +58,7 @@ export default async function List({ session }: ListProps) {
               const isLast = index === projects.length - 1;
 
               return (
-                <Table.Row id={project.id} isLast={isLast}>
+                <Table.Row key={project.id} isLast={isLast}>
                   <Table.Data>{project.name}</Table.Data>
                   <Table.Data>{project.description}</Table.Data>
                   <Table.Data>{formatDate(project.createdAt)}</Table.Data>
