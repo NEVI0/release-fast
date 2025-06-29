@@ -1,21 +1,57 @@
 'use client';
 
 import { useState } from 'react';
-
 import { X } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+
+import { SessionAbstract } from '@domain/entities';
+
+import { useToast } from '@app/hooks';
+import { accessAccountAction, deleteUserByIdAction } from '@app/actions';
 
 import { Button, IconButton, Input, Modal } from '@app/components/ui';
 
 interface DeleteAccountModalProps {
+  session: SessionAbstract;
+
   isOpen: boolean;
   onClose: () => void;
 }
 
 export default function DeleteAccountModal({
+  session,
   isOpen,
   onClose,
 }: DeleteAccountModalProps) {
+  const toast = useToast();
+  const router = useRouter();
+
   const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  async function handleDeleteAccount(event: React.FormEvent<HTMLFormElement>) {
+    try {
+      event.preventDefault();
+      setIsLoading(false);
+
+      await deleteUserByIdAction({ id: session.user.id });
+      toast.success(
+        'Sua conta foi deletada com sucesso! Você será redirecionado dentro de 3 segundos...'
+      );
+
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+      accessAccountAction();
+      router.replace('/');
+    } catch (error) {
+      toast.error(
+        error instanceof Error ? error.message : 'Erro ao excluir a conta'
+      );
+
+      setPassword('');
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
   const isDeleteButtonDisabled = password !== 'Deletar';
 
@@ -41,7 +77,10 @@ export default function DeleteAccountModal({
           </p>
         </div>
 
-        <form className="flex items-end gap-4 w-full">
+        <form
+          className="flex items-end gap-4 w-full"
+          onSubmit={handleDeleteAccount}
+        >
           <Input
             id="delete-account"
             placeholder={`Digite "Deletar" para confirmar`}
@@ -54,9 +93,9 @@ export default function DeleteAccountModal({
           <Button
             type="submit"
             variant="danger"
-            disabled={isDeleteButtonDisabled}
+            disabled={isDeleteButtonDisabled || isLoading}
           >
-            Excluir conta
+            {isLoading ? 'Excluindo...' : 'Excluir conta'}
           </Button>
         </form>
       </div>

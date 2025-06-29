@@ -1,15 +1,20 @@
 'use client';
 
 import { useState } from 'react';
-
 import { Edit3, ExternalLink, Lock, Trash2 } from 'lucide-react';
+
+import { SessionAbstract } from '@domain/entities';
 
 import { Setting, ThemeToggle } from '@app/components/common';
 import { Button } from '@app/components/ui';
 
 import { DeleteAccountModal } from './components';
 
-export default function Settings() {
+interface SettingsProps {
+  session: SessionAbstract;
+}
+
+export default function Settings({ session }: SettingsProps) {
   const [isDeleteAccountModalOpen, setIsDeleteAccountModalOpen] =
     useState(false);
 
@@ -78,6 +83,7 @@ export default function Settings() {
       </section>
 
       <DeleteAccountModal
+        session={session}
         isOpen={isDeleteAccountModalOpen}
         onClose={() => setIsDeleteAccountModalOpen(false)}
       />
