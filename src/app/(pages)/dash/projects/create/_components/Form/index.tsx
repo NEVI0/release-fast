@@ -1,11 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import { Session } from 'next-auth';
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Box, Code2Icon, MessageSquare, Plus } from 'lucide-react';
+
+import { SessionAbstract } from '@domain/entities';
 
 import {
   createProjectValidationSchema,
@@ -17,7 +18,7 @@ import { createProjectAction } from '@app/actions';
 import { Button, Input, Select } from '@app/components/ui';
 
 interface FormProps {
-  session: Session;
+  session: SessionAbstract;
 }
 
 export default function Form({ session }: FormProps) {
@@ -35,7 +36,7 @@ export default function Form({ session }: FormProps) {
 
       const { success, message } = await createProjectAction({
         ...data,
-        userId: session.user?.id!,
+        userId: session.user.id,
       });
 
       if (!success) throw new Error(message);
