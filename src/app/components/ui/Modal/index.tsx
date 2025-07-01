@@ -22,6 +22,10 @@ export default function Modal({ isOpen, onClose, children }: ModalProps) {
   useEffect(() => {
     if (typeof window === 'undefined') return;
     document.body.style.overflow = isOpen ? 'hidden' : 'auto';
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
   }, [isOpen]);
 
   if (!isOpen) return null;
