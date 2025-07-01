@@ -4,12 +4,18 @@ import { useState } from 'react';
 
 import { Edit3, Trash2 } from 'lucide-react';
 
+import { ProjectAbstract } from '@domain/entities';
+
 import { Setting } from '@app/components/common';
 import { Button } from '@app/components/ui';
 
 import { DeleteProjectModal } from './components';
 
-export default function Settings() {
+interface SettingsProps {
+  project: ProjectAbstract;
+}
+
+export default function Settings({ project }: SettingsProps) {
   const [isDeleteProjectModalOpen, setIsDeleteProjectModalOpen] =
     useState(false);
 
@@ -47,6 +53,7 @@ export default function Settings() {
       </section>
 
       <DeleteProjectModal
+        project={project}
         isOpen={isDeleteProjectModalOpen}
         onClose={() => setIsDeleteProjectModalOpen(false)}
       />

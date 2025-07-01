@@ -1,21 +1,55 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 import { X } from 'lucide-react';
 
+import { ProjectAbstract } from '@domain/entities';
+import { useToast } from '@app/hooks';
+
 import { Button, IconButton, Input, Modal } from '@app/components/ui';
+import { deleteProjectByIdAction } from '@app/actions';
 
 interface DeleteProjectModalProps {
+  project: ProjectAbstract;
   isOpen: boolean;
   onClose: () => void;
 }
 
 export default function DeleteProjectModal({
+  project,
   isOpen,
   onClose,
 }: DeleteProjectModalProps) {
+  const toast = useToast();
+  const router = useRouter();
+
   const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  async function handleDeleteProject(event: React.FormEvent<HTMLFormElement>) {
+    try {
+      event.preventDefault();
+      setIsLoading(false);
+
+      await deleteProjectByIdAction({ id: project.id });
+      toast.success(
+        'Projeto deletado com sucesso! Você será redirecionado dentro de 3 segundos...'
+      );
+
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+      router.replace('/dash/projects');
+    } catch (error) {
+      toast.error(
+        error instanceof Error ? error.message : 'Erro ao excluir o projeto'
+      );
+
+      setPassword('');
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
   const isDeleteButtonDisabled = password !== 'Deletar';
 
@@ -41,7 +75,10 @@ export default function DeleteProjectModal({
           </p>
         </div>
 
-        <form className="flex items-end gap-4 w-full">
+        <form
+          className="flex items-end gap-4 w-full"
+          onSubmit={handleDeleteProject}
+        >
           <Input
             id="delete-project"
             placeholder={`Digite "Deletar" para confirmar`}
@@ -54,9 +91,9 @@ export default function DeleteProjectModal({
           <Button
             type="submit"
             variant="danger"
-            disabled={isDeleteButtonDisabled}
+            disabled={isDeleteButtonDisabled || isLoading}
           >
-            Excluir projeto
+            {isLoading ? 'Excluindo projeto...' : 'Excluir projeto'}
           </Button>
         </form>
       </div>

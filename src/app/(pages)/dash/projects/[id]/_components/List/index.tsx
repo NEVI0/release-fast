@@ -1,11 +1,16 @@
-import { ChevronRight, Edit3, ExternalLink, Plus } from 'lucide-react';
+import Link from 'next/link';
+import { Edit3, ExternalLink, Plus } from 'lucide-react';
+
+import { ProjectAbstract } from '@domain/entities';
+import { concatClasses } from '@app/helpers';
 
 import { Button, IconButton } from '@app/components/ui';
 
-import { concatClasses } from '@app/helpers';
-import Link from 'next/link';
+interface ListProps {
+  project: ProjectAbstract;
+}
 
-export default function List() {
+export default function List({ project }: ListProps) {
   return (
     <section className="flex flex-col gap-4">
       <div className="flex items-center justify-between">
