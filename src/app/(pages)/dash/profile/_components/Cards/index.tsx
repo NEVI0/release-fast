@@ -1,9 +1,15 @@
 import { Calendar, BadgeCheck, Mail, MailCheck } from 'lucide-react';
 
+import { SessionAbstract } from '@domain/entities';
+
 import { Card } from '@app/components/common';
 import { Badge, Button } from '@app/components/ui';
 
-export default function Cards() {
+interface CardsProps {
+  session: SessionAbstract;
+}
+
+export default function Cards({ session }: CardsProps) {
   return (
     <section className="flex flex-col gap-4">
       <div className="flex items-center justify-between gap-4">
@@ -16,7 +22,7 @@ export default function Cards() {
         <Card title="Criado em" value="20 de junho de 2025" icon={Calendar} />
       </div>
 
-      <Card title="E-mail da conta" value="nevio@releasefast.com" icon={Mail}>
+      <Card title="E-mail da conta" value={session.user.email} icon={Mail}>
         {true ? (
           <Button variant="primary">
             Verificar e-mail <MailCheck className="size-5" />

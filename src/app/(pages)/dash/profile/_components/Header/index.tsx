@@ -1,6 +1,11 @@
+import { SessionAbstract } from '@domain/entities';
 import { Breadcrumb } from '@app/components/ui';
 
-export default function Header() {
+interface HeaderProps {
+  session: SessionAbstract;
+}
+
+export default function Header({ session }: HeaderProps) {
   return (
     <section className="flex flex-col gap-8">
       <Breadcrumb
@@ -12,7 +17,7 @@ export default function Header() {
 
       <div className="flex flex-col gap-2">
         <h1 className="font-bold text-4xl">
-          <strong className="text-primary">Olá</strong>, Névio Costa Magagnin
+          <strong className="text-primary">Olá</strong>, {session.user.name}
         </h1>
 
         <h2 className="font-semibold text-2xl text-text-secondary">

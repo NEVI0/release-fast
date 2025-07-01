@@ -11,8 +11,8 @@ export default async function ProfilePage() {
 
   return (
     <>
-      <Header />
-      <Cards />
+      <Header session={session} />
+      <Cards session={session} />
       <HorizontalDivider />
       <Settings session={session} />
     </>
