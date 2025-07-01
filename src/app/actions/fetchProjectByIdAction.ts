@@ -7,7 +7,7 @@ import { makeFetchProjectByIdUseCase } from '@factories/useCases';
 import { handleError } from '@app/helpers';
 
 const schema = z.object({
-  id: z.string().min(1, 'Project ID is required'),
+  id: z.string().min(1, 'O ID do projeto é obrigatório'),
 });
 
 export default async function fetchProjectByIdAction(
@@ -19,13 +19,12 @@ export default async function fetchProjectByIdAction(
 
     if (!project) {
       return {
-        success: false,
-        message: 'Project not found',
+        project: null,
+        message: 'Projeto não encontrado',
       };
     }
 
     return {
-      success: true,
       project: {
         id: project.id,
         name: project.name,
@@ -39,7 +38,7 @@ export default async function fetchProjectByIdAction(
     const { message } = handleError(error, 'fetchProjectByIdAction');
 
     return {
-      success: false,
+      project: null,
       message,
     };
   }
