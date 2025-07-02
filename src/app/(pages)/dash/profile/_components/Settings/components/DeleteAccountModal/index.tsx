@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { X } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
-import { SessionAbstract } from '@domain/entities';
+import { UserAbstract } from '@domain/entities';
 
 import { useToast } from '@app/hooks';
 import { deleteUserByIdAction, logoutAccountAction } from '@app/actions';
@@ -12,14 +12,14 @@ import { deleteUserByIdAction, logoutAccountAction } from '@app/actions';
 import { Button, IconButton, Input, Modal } from '@app/components/ui';
 
 interface DeleteAccountModalProps {
-  session: SessionAbstract;
+  user: UserAbstract;
 
   isOpen: boolean;
   onClose: () => void;
 }
 
 export default function DeleteAccountModal({
-  session,
+  user,
   isOpen,
   onClose,
 }: DeleteAccountModalProps) {
@@ -34,7 +34,7 @@ export default function DeleteAccountModal({
       event.preventDefault();
       setIsLoading(false);
 
-      await deleteUserByIdAction({ id: session.user.id });
+      await deleteUserByIdAction({ id: user.id });
       toast.success(
         'Sua conta foi deletada com sucesso! Você será redirecionado dentro de 3 segundos...'
       );

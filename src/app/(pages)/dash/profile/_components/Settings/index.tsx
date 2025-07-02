@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Edit3, ExternalLink, Lock, Trash2 } from 'lucide-react';
 
-import { SessionAbstract } from '@domain/entities';
+import { UserAbstract } from '@domain/entities';
 
 import { Setting, ThemeToggle } from '@app/components/common';
 import { Button } from '@app/components/ui';
@@ -11,10 +11,10 @@ import { Button } from '@app/components/ui';
 import { DeleteAccountModal } from './components';
 
 interface SettingsProps {
-  session: SessionAbstract;
+  user: UserAbstract;
 }
 
-export default function Settings({ session }: SettingsProps) {
+export default function Settings({ user }: SettingsProps) {
   const [isDeleteAccountModalOpen, setIsDeleteAccountModalOpen] =
     useState(false);
 
@@ -40,17 +40,6 @@ export default function Settings({ session }: SettingsProps) {
             >
               <Button>
                 Editar conta <Edit3 className="size-5" />
-              </Button>
-            </Setting>
-          </li>
-
-          <li>
-            <Setting
-              title="Editar senha"
-              description="Receba um e-mail para resetar sua senha"
-            >
-              <Button>
-                Editar senha <Lock className="size-5" />
               </Button>
             </Setting>
           </li>
@@ -83,7 +72,7 @@ export default function Settings({ session }: SettingsProps) {
       </section>
 
       <DeleteAccountModal
-        session={session}
+        user={user}
         isOpen={isDeleteAccountModalOpen}
         onClose={() => setIsDeleteAccountModalOpen(false)}
       />

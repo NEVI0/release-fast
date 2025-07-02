@@ -12,7 +12,11 @@ interface CardsProps {
 export default function Cards({ project }: CardsProps) {
   return (
     <section className="flex items-center justify-between gap-4">
-      <Card title="Versões criadas" value="33" icon={Code2} />
+      <Card
+        title="Repositório"
+        value="https://github.com/user/repo"
+        icon={Code2}
+      />
       <Card title="Última versão" value="v1.2.4" icon={Book} />
       <Card
         title="Criado em"
