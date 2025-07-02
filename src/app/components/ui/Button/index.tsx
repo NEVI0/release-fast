@@ -15,7 +15,7 @@ const BUTTON_VARIANT: Record<ButtonVariant, string> = {
   secondary:
     'text-textprimary bg-secondary enabled:hover:bg-secondary-action enabled:focus:bg-secondary-action',
   danger:
-    'text-text-primary bg-container border border-border enabled:hover:text-red-600 enabled:hover:border-red-600 enabled:focus:text-red-600 enabled:focus:border-red-600',
+    'text-text-primary bg-container border border-border disabled:text-text-secondary enabled:hover:text-red-600 enabled:hover:border-red-600 enabled:focus:text-red-600 enabled:focus:border-red-600',
 };
 
 export default function Button({
