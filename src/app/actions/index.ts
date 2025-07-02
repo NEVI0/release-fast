@@ -9,6 +9,7 @@ export { default as fetchAllReleasesAction } from './fetchAllReleasesAction';
 export { default as fetchProjectByIdAction } from './fetchProjectByIdAction';
 export { default as fetchReleaseByIdAction } from './fetchReleaseByIdAction';
 export { default as fetchUserSession } from './fetchUserSession';
+export { default as fetchUserByIdAction } from './fetchUserByIdAction';
 export { default as logoutAccountAction } from './logoutAccountAction';
 export { default as updateProjectAction } from './updateProjectAction';
 export { default as updateReleaseAction } from './updateReleaseAction';
