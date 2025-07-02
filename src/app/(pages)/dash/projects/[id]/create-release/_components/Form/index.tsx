@@ -1,10 +1,16 @@
 import Link from 'next/link';
 import { Code2Icon, FileText, MessageSquare, Plus } from 'lucide-react';
 
+import { ProjectAbstract } from '@domain/entities';
+
 import { Button, Input, Textarea } from '@app/components/ui';
 import { GenerateWithIAButton } from './components';
 
-export default function Form() {
+interface FormProps {
+  project: ProjectAbstract;
+}
+
+export default function Form({ project }: FormProps) {
   return (
     <form action="#" className="flex flex-col gap-8">
       <div className="flex flex-col gap-4">
@@ -38,7 +44,7 @@ export default function Form() {
       </div>
 
       <div className="flex items-center justify-end gap-4">
-        <Link href="/dash/projects/1">
+        <Link href={`/dash/projects/${project.id}`}>
           <Button type="button" className="w-[184px]">
             Cancelar
           </Button>

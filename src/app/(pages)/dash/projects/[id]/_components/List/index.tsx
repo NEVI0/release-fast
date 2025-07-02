@@ -19,7 +19,7 @@ export default function List({ project }: ListProps) {
           <h4 className="text-text-secondary">Total de versões: 5</h4>
         </div>
 
-        <Link href="/dash/projects/1/create-release">
+        <Link href={`/dash/projects/${project.id}/create-release`}>
           <Button>
             Adicionar nova release
             <Plus className="size-5" />

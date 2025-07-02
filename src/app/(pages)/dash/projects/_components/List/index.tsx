@@ -65,8 +65,12 @@ export default async function List({ session, columns }: ListProps) {
               <Table.Row key={project.id} isLast={isLast}>
                 <Table.Data>{project.name}</Table.Data>
                 <Table.Data>{project.description}</Table.Data>
-                <Table.Data>{formatDate(project.createdAt)}</Table.Data>
-                <Table.Data>{formatDate(project.updatedAt)}</Table.Data>
+                <Table.Data>
+                  {formatDate(project.createdAt, 'DD of MMMM of YYYY')}
+                </Table.Data>
+                <Table.Data>
+                  {formatDate(project.updatedAt, 'DD of MMMM of YYYY')}
+                </Table.Data>
 
                 <Table.Data>
                   <div className="flex items-center justify-center">
