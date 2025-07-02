@@ -20,7 +20,7 @@ const sourceSans3 = Source_Sans_3({
 });
 
 export const metadata: Metadata = {
-  title: `${DOCUMENT_HEAD.TITLE} | Dashboard`,
+  title: `${DOCUMENT_HEAD.TITLE} · Dashboard`,
   description: DOCUMENT_HEAD.DESCRIPTION,
 };
 

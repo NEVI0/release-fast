@@ -1,12 +1,19 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Plus } from 'lucide-react';
 
+import { DOCUMENT_HEAD } from '@app/constants/document-head';
 import { fetchProjectByIdAction } from '@app/actions';
 
 import { ErrorStatus } from '@app/components/common';
 import { Button, HorizontalDivider } from '@app/components/ui';
 
 import { Cards, Header, List, Settings } from './_components';
+
+export const metadata: Metadata = {
+  title: `${DOCUMENT_HEAD.TITLE} · Project Details`,
+  description: DOCUMENT_HEAD.DESCRIPTION,
+};
 
 interface Params {
   id: string;

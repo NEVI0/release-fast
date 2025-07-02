@@ -1,8 +1,17 @@
 import { Suspense } from 'react';
+
+import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 
+import { DOCUMENT_HEAD } from '@app/constants/document-head';
 import { fetchUserSession } from '@app/actions';
+
 import { Header, List, LoadingList } from './_components';
+
+export const metadata: Metadata = {
+  title: `${DOCUMENT_HEAD.TITLE} · Projects`,
+  description: DOCUMENT_HEAD.DESCRIPTION,
+};
 
 export default async function ProjectsPage() {
   const session = await fetchUserSession();

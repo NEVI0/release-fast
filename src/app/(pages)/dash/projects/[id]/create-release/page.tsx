@@ -1,7 +1,15 @@
+import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 
+import { DOCUMENT_HEAD } from '@app/constants/document-head';
 import { fetchProjectByIdAction } from '@app/actions';
+
 import { Form, Header } from './_components';
+
+export const metadata: Metadata = {
+  title: `${DOCUMENT_HEAD.TITLE} · Create Release`,
+  description: DOCUMENT_HEAD.DESCRIPTION,
+};
 
 interface Params {
   id: string;
