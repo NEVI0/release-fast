@@ -91,7 +91,6 @@ This project requires several environment variables to function properly. Create
 ```env
 NEXT_PUBLIC_APP_URL=
 
-# Database variables
 DATABASE_USER=
 DATABASE_PASSWORD=
 DATABASE_HOST=
@@ -100,20 +99,18 @@ DATABASE_NAME=
 DATABASE_SCHEMA=
 DATABASE_URL=postgresql://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}?schema=${DATABASE_SCHEMA}
 
-# Required by NextAuth to work properly
 AUTH_SECRET=
 
-# Google variables
 AUTH_GOOGLE_CLIENT_ID=
 AUTH_GOOGLE_CLIENT_SECRET=
 
-# Github variables
 AUTH_GITHUB_CLIENT_ID=
 AUTH_GITHUB_CLIENT_SECRET=
 
-# Gitlab variables
 AUTH_GITLAB_CLIENT_ID=
 AUTH_GITLAB_CLIENT_SECRET=
+
+OPENAI_API_KEY=
 ```
 
 ### Setting Up Authentication Providers
