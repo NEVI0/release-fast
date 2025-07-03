@@ -3,3 +3,5 @@ export {
   type HttpProviderOptions,
   type HttpProviderPayload,
 } from './HttpProvider';
+
+export type { default as AiAgentProviderAbstract } from './AiAgentProvider';

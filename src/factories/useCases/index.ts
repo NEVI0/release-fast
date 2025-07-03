@@ -9,5 +9,6 @@ export { default as makeFetchPlansUseCase } from './makeFetchPlansUseCase';
 export { default as makeFetchProjectByIdUseCase } from './makeFetchProjectByIdUseCase';
 export { default as makeFetchReleaseByIdUseCase } from './makeFetchReleaseByIdUseCase';
 export { default as makeFetchUserByIdUseCase } from './makeFetchUserByIdUseCase';
+export { default as makeGenerateByIaUseCase } from './makeGenerateByIaUseCase';
 export { default as makeUpdateProjectUseCase } from './makeUpdateProjectUseCase';
 export { default as makeUpdateReleaseUseCase } from './makeUpdateReleaseUseCase';

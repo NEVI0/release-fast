@@ -9,5 +9,6 @@ export { default as FetchPlansUseCase } from './FetchPlansUseCase';
 export { default as FetchProjectByIdUseCase } from './FetchProjectByIdUseCase';
 export { default as FetchReleaseByIdUseCase } from './FetchReleaseByIdUseCase';
 export { default as FetchUserByIdUseCase } from './FetchUserByIdUseCase';
+export { default as GenerateByIaUseCase } from './GenerateByIaUseCase';
 export { default as UpdateProjectUseCase } from './UpdateProjectUseCase';
 export { default as UpdateReleaseUseCase } from './UpdateReleaseUseCase';
