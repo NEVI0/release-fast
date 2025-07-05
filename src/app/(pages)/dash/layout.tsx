@@ -12,6 +12,7 @@ import {
 
 import { DOCUMENT_HEAD } from '@app/constants/document-head';
 
+import QueryProvider from './query-provider';
 import '@app/css/globals.css';
 
 const sourceSans3 = Source_Sans_3({
@@ -45,15 +46,17 @@ export default function DashboardLayout({
       </head>
 
       <body className={sourceSans3.className} suppressHydrationWarning>
-        <ThemeProvider>
-          <TopLoader />
+        <QueryProvider>
+          <ThemeProvider>
+            <TopLoader />
 
-          <Header.Dash />
-          <Content.Dash>{children}</Content.Dash>
-          <Footer />
+            <Header.Dash />
+            <Content.Dash>{children}</Content.Dash>
+            <Footer />
 
-          <Toaster />
-        </ThemeProvider>
+            <Toaster />
+          </ThemeProvider>
+        </QueryProvider>
       </body>
     </html>
   );
