@@ -15,8 +15,7 @@ export default class FetchHttpProvider implements HttpProviderAbstract {
     url: string,
     options?: HttpProviderOptions
   ) => {
-    const request = await fetch(this.buildRequestUrl(url), {
-      ...(options && { ...options }),
+    const request = await fetch(this.buildRequestUrl(url, options?.params), {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -35,7 +34,7 @@ export default class FetchHttpProvider implements HttpProviderAbstract {
     body: HttpProviderPayload,
     options?: HttpProviderOptions
   ) => {
-    const request = await fetch(this.buildRequestUrl(url), {
+    const request = await fetch(this.buildRequestUrl(url, options?.params), {
       ...(options && { ...options }),
       method: 'POST',
       headers: {
@@ -56,7 +55,7 @@ export default class FetchHttpProvider implements HttpProviderAbstract {
     body: HttpProviderPayload,
     options?: HttpProviderOptions
   ) => {
-    const request = await fetch(this.buildRequestUrl(url), {
+    const request = await fetch(this.buildRequestUrl(url, options?.params), {
       ...(options && { ...options }),
       method: 'PUT',
       headers: {
@@ -76,7 +75,7 @@ export default class FetchHttpProvider implements HttpProviderAbstract {
     url: string,
     options?: HttpProviderOptions
   ) => {
-    const request = await fetch(this.buildRequestUrl(url), {
+    const request = await fetch(this.buildRequestUrl(url, options?.params), {
       ...(options && { ...options }),
       method: 'DELETE',
       headers: {
@@ -91,9 +90,14 @@ export default class FetchHttpProvider implements HttpProviderAbstract {
     return response as T;
   };
 
-  private buildRequestUrl(url: string) {
-    console.log({ baseUrl: this.baseUrl });
-    return `${this.baseUrl}${url}`;
+  private buildRequestUrl(url: string, params?: HttpProviderOptions['params']) {
+    let query = '';
+    if (!!params) query = new URLSearchParams(params).toString();
+
+    let formattedUrl = `${this.baseUrl}${url}`;
+    if (!!query) formattedUrl += `?${query}`;
+
+    return formattedUrl;
   }
 
   private handleRequestError(error: any) {
