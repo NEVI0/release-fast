@@ -20,7 +20,6 @@ export default async function createProjectAction(dto: CreateProjectDTO) {
       },
     };
   } catch (error) {
-    console.log(error);
     const { message } = handleError(error, 'createProjectAction');
 
     return {
