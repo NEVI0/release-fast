@@ -92,6 +92,7 @@ export default class FetchHttpProvider implements HttpProviderAbstract {
   };
 
   private buildRequestUrl(url: string) {
+    console.log({ baseUrl: this.baseUrl });
     return `${this.baseUrl}${url}`;
   }
 

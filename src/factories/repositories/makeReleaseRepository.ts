@@ -1,7 +1,7 @@
 import 'server-only';
 
 import { ReleaseRepositoryAbstract } from '@domain/repositories';
-import { PrismaReleaseRepository } from '@infra/repositories';
+import PrismaReleaseRepository from '@infra/repositories/PrismaReleaseRepository';
 
 let instance: ReleaseRepositoryAbstract | null = null;
 

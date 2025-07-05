@@ -1,9 +1,10 @@
 'use server';
 
-import z from 'zod';
+import { z } from 'zod';
+
+import makeGenerateByIaUseCase from '@factories/useCases/makeGenerateByIaUseCase';
 
 import { GenerateByIaDTO } from '@domain/dtos';
-import { makeGenerateByIaUseCase } from '@factories/useCases';
 
 const schema = z.object({
   prompt: z.string().min(1, 'The prompt is required'),

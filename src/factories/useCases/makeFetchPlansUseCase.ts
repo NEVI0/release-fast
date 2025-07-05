@@ -1,4 +1,4 @@
-import { FetchPlansUseCase } from '@domain/useCases';
+import FetchPlansUseCase from '@domain/useCases/FetchPlansUseCase';
 
 let instance: FetchPlansUseCase | null = null;
 

@@ -2,8 +2,9 @@
 
 import { z } from 'zod';
 
+import makeFetchProjectByIdUseCase from '@factories/useCases/makeFetchProjectByIdUseCase';
+
 import { FetchProjectByIdDTO } from '@domain/dtos';
-import { makeFetchProjectByIdUseCase } from '@factories/useCases';
 import { handleError } from '@app/helpers';
 
 const schema = z.object({

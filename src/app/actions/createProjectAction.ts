@@ -1,7 +1,8 @@
 'use server';
 
+import makeCreateProjectUseCase from '@factories/useCases/makeCreateProjectUseCase';
+
 import { CreateProjectDTO } from '@domain/dtos';
-import { makeCreateProjectUseCase } from '@factories/useCases';
 import { handleError } from '@app/helpers';
 
 export default async function createProjectAction(dto: CreateProjectDTO) {

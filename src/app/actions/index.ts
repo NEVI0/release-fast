@@ -8,7 +8,7 @@ export { default as fetchAllProjectsAction } from './fetchAllProjectsAction';
 export { default as fetchAllReleasesAction } from './fetchAllReleasesAction';
 export { default as fetchProjectByIdAction } from './fetchProjectByIdAction';
 export { default as fetchReleaseByIdAction } from './fetchReleaseByIdAction';
-export { default as fetchUserRepositoriesAction } from './fetchUserRepositoriesAction';
+// export { default as fetchUserRepositoriesAction } from './fetchUserRepositoriesAction';
 export { default as fetchUserSession } from './fetchUserSession';
 export { default as fetchUserByIdAction } from './fetchUserByIdAction';
 export { default as generateByIaAction } from './generateByIaAction';

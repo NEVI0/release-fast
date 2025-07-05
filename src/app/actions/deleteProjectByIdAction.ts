@@ -2,8 +2,9 @@
 
 import { z } from 'zod';
 
+import makeDeleteProjectByIdUseCase from '@factories/useCases/makeDeleteProjectByIdUseCase';
+
 import { DeleteProjectByIdDTO } from '@domain/dtos';
-import { makeDeleteProjectByIdUseCase } from '@factories/useCases';
 import { handleError } from '@app/helpers';
 
 const schema = z.object({

@@ -1,6 +1,7 @@
 import { SessionProvider } from '@domain/entities';
-import { FetchUserRepositoriesUseCase } from '@domain/useCases';
-import { makeUserRepoRepository } from '@factories/repositories';
+
+import FetchUserRepositoriesUseCase from '@domain/useCases/FetchUserRepositoriesUseCase';
+import makeUserRepoRepository from '@factories/repositories/makeUserRepoRepository';
 
 interface Params {
   provider: SessionProvider;

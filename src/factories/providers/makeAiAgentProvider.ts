@@ -1,5 +1,6 @@
-import { GoogleGeminiAiAgentProvider } from '@infra/providers';
 import { AiAgentProviderAbstract } from '@domain/providers';
+
+import GoogleGeminiAiAgentProvider from '@infra/providers/GoogleGeminiAiAgentProvider';
 
 let instance: AiAgentProviderAbstract | null = null;
 

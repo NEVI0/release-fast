@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { makeFetchPlansUseCase } from '@factories/useCases';
+import makeFetchPlansUseCase from '@factories/useCases/makeFetchPlansUseCase';
 
 import { Plan } from './components';
 import { PlanType } from '@domain/entities';

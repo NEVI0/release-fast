@@ -1,7 +1,7 @@
 import 'server-only';
 
-import { DeleteProjectByIdUseCase } from '@domain/useCases';
-import { makeProjectRepository } from '@factories/repositories';
+import DeleteProjectByIdUseCase from '@domain/useCases/DeleteProjectByIdUseCase';
+import makeProjectRepository from '@factories/repositories/makeProjectRepository';
 
 let instance: DeleteProjectByIdUseCase | null = null;
 

@@ -1,7 +1,7 @@
 import 'server-only';
 
-import { CreateReleaseUseCase } from '@domain/useCases';
-import { makeReleaseRepository } from '@factories/repositories';
+import CreateReleaseUseCase from '@domain/useCases/CreateReleaseUseCase';
+import makeReleaseRepository from '@factories/repositories/makeReleaseRepository';
 
 let instance: CreateReleaseUseCase | null = null;
 

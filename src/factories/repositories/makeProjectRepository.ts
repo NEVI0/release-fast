@@ -1,7 +1,7 @@
 import 'server-only';
 
 import { ProjectRepositoryAbstract } from '@domain/repositories';
-import { PrismaProjectRepository } from '@infra/repositories';
+import PrismaProjectRepository from '@infra/repositories/PrismaProjectRepository';
 
 let instance: ProjectRepositoryAbstract | null = null;
 

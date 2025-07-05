@@ -1,7 +1,7 @@
 import 'server-only';
 
-import { DeleteReleaseByIdUseCase } from '@domain/useCases';
-import { makeReleaseRepository } from '@factories/repositories';
+import DeleteReleaseByIdUseCase from '@domain/useCases/DeleteReleaseByIdUseCase';
+import makeReleaseRepository from '@factories/repositories/makeReleaseRepository';
 
 let instance: DeleteReleaseByIdUseCase | null = null;
 

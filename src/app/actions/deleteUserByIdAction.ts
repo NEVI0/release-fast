@@ -2,8 +2,9 @@
 
 import { z } from 'zod';
 
+import makeDeleteUserByIdUseCase from '@factories/useCases/makeDeleteUserByIdUseCase';
+
 import { DeleteUserByIdDTO } from '@domain/dtos';
-import { makeDeleteUserByIdUseCase } from '@factories/useCases';
 import { handleError } from '@app/helpers';
 
 const schema = z.object({

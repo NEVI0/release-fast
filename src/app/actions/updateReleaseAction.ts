@@ -2,8 +2,9 @@
 
 import { z } from 'zod';
 
+import makeUpdateReleaseUseCase from '@factories/useCases/makeUpdateReleaseUseCase';
+
 import { UpdateReleaseDTO } from '@domain/dtos';
-import { makeUpdateReleaseUseCase } from '@factories/useCases';
 import { handleError } from '@app/helpers';
 
 const schema = z.object({

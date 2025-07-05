@@ -2,7 +2,8 @@
 
 import { z } from 'zod';
 
-import { makeFetchUserByIdUseCase } from '@factories/useCases';
+import makeFetchUserByIdUseCase from '@factories/useCases/makeFetchUserByIdUseCase';
+
 import { FetchUserByIdDTO } from '@domain/dtos';
 import { handleError } from '@app/helpers';
 

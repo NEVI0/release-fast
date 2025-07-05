@@ -2,8 +2,9 @@
 
 import { z } from 'zod';
 
+import makeFetchAllProjectsUseCase from '@factories/useCases/makeFetchAllProjectsUseCase';
+
 import { FetchAllProjectsDTO } from '@domain/dtos';
-import { makeFetchAllProjectsUseCase } from '@factories/useCases';
 import { handleError } from '@app/helpers';
 
 const schema = z.object({

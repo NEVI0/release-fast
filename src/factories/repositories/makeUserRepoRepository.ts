@@ -1,7 +1,8 @@
 import { UserRepoRepositoryAbstract } from '@domain/repositories';
-import { UserRepoRepository } from '@infra/repositories';
-import { makeHttpProvider } from '@factories/providers';
 import { SessionProvider } from '@domain/entities';
+
+import UserRepoRepository from '@infra/repositories/UserRepoRepository';
+import makeHttpProvider from '@factories/providers/makeHttpProvider';
 
 interface Params {
   provider: SessionProvider;

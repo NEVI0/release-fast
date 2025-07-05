@@ -1,7 +1,7 @@
 import 'server-only';
 
-import { FetchUserByIdUseCase } from '@domain/useCases';
-import { makeUserRepository } from '@factories/repositories';
+import FetchUserByIdUseCase from '@domain/useCases/FetchUserByIdUseCase';
+import makeUserRepository from '@factories/repositories/makeUserRepository';
 
 let instance: FetchUserByIdUseCase | null = null;
 

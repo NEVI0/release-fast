@@ -1,7 +1,7 @@
 import 'server-only';
 
-import { GenerateByIaUseCase } from '@domain/useCases';
-import { makeAiAgentProvider } from '@factories/providers';
+import GenerateByIaUseCase from '@domain/useCases/GenerateByIaUseCase';
+import makeAiAgentProvider from '@factories/providers/makeAiAgentProvider';
 
 let instance: GenerateByIaUseCase | null = null;
 
