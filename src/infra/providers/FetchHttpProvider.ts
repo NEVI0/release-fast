@@ -20,6 +20,7 @@ export default class FetchHttpProvider implements HttpProviderAbstract {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
+        ...(options?.headers && { ...options?.headers }),
       },
     });
 
@@ -39,6 +40,7 @@ export default class FetchHttpProvider implements HttpProviderAbstract {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        ...(options?.headers && { ...options?.headers }),
       },
       body: JSON.stringify(body),
     });
@@ -59,6 +61,7 @@ export default class FetchHttpProvider implements HttpProviderAbstract {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
+        ...(options?.headers && { ...options?.headers }),
       },
       body: JSON.stringify(body),
     });
@@ -78,6 +81,7 @@ export default class FetchHttpProvider implements HttpProviderAbstract {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
+        ...(options?.headers && { ...options?.headers }),
       },
     });
 
