@@ -1,6 +1,5 @@
 import NextAuth from 'next-auth';
 
-// import Credentials from 'next-auth/providers/credentials';
 import Google from 'next-auth/providers/google';
 import Github from 'next-auth/providers/github';
 import Gitlab from 'next-auth/providers/gitlab';
@@ -30,23 +29,25 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         session.user.id = token.sub as string;
       }
 
-      return session;
+      return {
+        ...session,
+        token: token.accessToken,
+        provider: token.provider,
+      };
     },
-    async jwt({ token, user }) {
+    async jwt({ token, user, account }) {
       if (user) {
         token.id = user.id;
+      }
+      if (account) {
+        if (account.access_token) token.accessToken = account.access_token;
+        if (account.provider) token.provider = account.provider;
       }
 
       return token;
     },
   },
   providers: [
-    // Credentials({
-    //   credentials: {
-    //     email: { label: 'Email', type: 'email' },
-    //     password: { label: 'Password', type: 'password' },
-    //   },
-    // }),
     Google({
       clientId: AUTH_GOOGLE_CLIENT_ID!,
       clientSecret: AUTH_GOOGLE_CLIENT_SECRET!,
@@ -54,6 +55,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     Github({
       clientId: AUTH_GITHUB_CLIENT_ID!,
       clientSecret: AUTH_GITHUB_CLIENT_SECRET!,
+      authorization: {
+        params: {
+          scope: 'repo',
+        },
+      },
     }),
     Gitlab({
       clientId: AUTH_GITLAB_CLIENT_ID!,
