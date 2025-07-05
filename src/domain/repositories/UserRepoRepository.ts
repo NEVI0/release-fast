@@ -1,5 +1,5 @@
 import { RepositoryAbstract } from '@domain/entities';
 
 export default interface UserRepoRepositoryAbstract {
-  findAll(token: string): Promise<RepositoryAbstract[]>;
+  findAll(token: string, search?: string): Promise<RepositoryAbstract[]>;
 }

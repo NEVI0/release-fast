@@ -5,8 +5,13 @@ import { UserRepoRepositoryAbstract } from '@domain/repositories';
 export default class UserRepoRepository implements UserRepoRepositoryAbstract {
   constructor(private readonly httpProvider: HttpProviderAbstract) {}
 
-  public async findAll(token: string) {
+  public async findAll(token: string, search?: string) {
     const repositories = await this.httpProvider.get<any[]>('/user/repos', {
+      ...(!!search && {
+        params: {
+          sort: search,
+        },
+      }),
       headers: {
         Authorization: `Bearer ${token}`,
       },
