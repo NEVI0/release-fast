@@ -8,6 +8,7 @@ export type { default as FetchAllReleasesDTO } from './FetchAllReleasesDTO';
 export type { default as FetchProjectByIdDTO } from './FetchProjectByIdDTO';
 export type { default as FetchReleaseByIdDTO } from './FetchReleaseByIdDTO';
 export type { default as FetchUserByIdDTO } from './FetchUserByIdDTO';
+export type { default as FetchUserRepositoriesDTO } from './FetchUserRepositoriesDTO';
 export type { default as GenerateByIaDTO } from './GenerateByIaDTO';
 export type { default as UpdateProjectDTO } from './UpdateProjectDTO';
 export type { default as UpdateReleaseDTO } from './UpdateReleaseDTO';

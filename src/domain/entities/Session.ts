@@ -1,3 +1,5 @@
+import { SessionProvider } from './SessionProvider';
+
 export default interface SessionAbstract {
   user: {
     name: string;
@@ -6,4 +8,6 @@ export default interface SessionAbstract {
     id: string;
   };
   expires: string;
+  token: string;
+  provider: SessionProvider;
 }
