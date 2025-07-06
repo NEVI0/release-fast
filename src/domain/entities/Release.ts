@@ -5,9 +5,9 @@ export interface ReleaseAbstract {
   fullDescription: string;
   version: string;
   projectId: string;
-
-  createdAt: Date;
-  updatedAt: Date;
+  availableAt: Date | string;
+  createdAt: Date | string;
+  updatedAt: Date | string;
 }
 
 interface ReleaseProps {
@@ -17,9 +17,9 @@ interface ReleaseProps {
   fullDescription: string;
   version: string;
   projectId: string;
-
-  createdAt?: Date;
-  updatedAt?: Date;
+  availableAt: Date | string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
 }
 
 export default class Release implements ReleaseAbstract {
@@ -29,6 +29,7 @@ export default class Release implements ReleaseAbstract {
   public fullDescription: ReleaseAbstract['fullDescription'];
   public version: ReleaseAbstract['version'];
   public projectId: ReleaseAbstract['projectId'];
+  public availableAt: ReleaseAbstract['availableAt'];
   public createdAt: ReleaseAbstract['createdAt'];
   public updatedAt: ReleaseAbstract['updatedAt'];
 
@@ -39,6 +40,7 @@ export default class Release implements ReleaseAbstract {
     this.fullDescription = props.fullDescription;
     this.version = props.version;
     this.projectId = props.projectId;
+    this.availableAt = props.availableAt ?? new Date();
     this.createdAt = props.createdAt ?? new Date();
     this.updatedAt = props.updatedAt ?? new Date();
   }

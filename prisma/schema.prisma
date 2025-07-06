@@ -94,6 +94,7 @@ model Release {
   fullDescription      String
   version              String
   projectId            String
+  availableAt          DateTime
   createdAt            DateTime    @default(now())
   updatedAt            DateTime    @updatedAt
 

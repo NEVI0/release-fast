@@ -1,23 +1,10 @@
 'use server';
 
-import { z } from 'zod';
-
+import { CreateReleaseDTO } from '@domain/dtos';
 import makeCreateReleaseUseCase from '@factories/useCases/makeCreateReleaseUseCase';
 
-import { CreateReleaseDTO } from '@domain/dtos';
-import { handleError } from '@app/helpers';
-
-const schema = z.object({
-  title: z.string().min(1, 'Title is required'),
-  shortDescription: z.string().min(1, 'Short description is required'),
-  fullDescription: z.string().min(1, 'Full description is required'),
-  version: z.string().min(1, 'Version is required'),
-  projectId: z.string().min(1, 'Project ID is required'),
-});
-
-export default async function createReleaseAction(params: CreateReleaseDTO) {
+export default async function createReleaseAction(dto: CreateReleaseDTO) {
   try {
-    const dto = schema.parse(params);
     const release = await makeCreateReleaseUseCase().execute(dto);
 
     return {
@@ -29,16 +16,14 @@ export default async function createReleaseAction(params: CreateReleaseDTO) {
         fullDescription: release.fullDescription,
         version: release.version,
         projectId: release.projectId,
+        availableAt: release.availableAt,
         createdAt: release.createdAt,
         updatedAt: release.updatedAt,
       },
     };
   } catch (error) {
-    const { message } = handleError(error, 'createReleaseAction');
-
     return {
-      success: false,
-      message,
+      release: null,
     };
   }
 }

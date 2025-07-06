@@ -4,4 +4,5 @@ export default interface CreateReleaseDTO {
   fullDescription: string;
   version: string;
   projectId: string;
+  availableAt: Date | string;
 }

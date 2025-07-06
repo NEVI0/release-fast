@@ -37,6 +37,7 @@ export default class PrismaReleaseRepository
         fullDescription: release.fullDescription,
         version: release.version,
         projectId: release.projectId,
+        availableAt: release.availableAt,
       },
     });
 
