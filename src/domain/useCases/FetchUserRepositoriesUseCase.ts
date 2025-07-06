@@ -7,6 +7,6 @@ export default class FetchUserRepositoriesUseCase {
   ) {}
 
   public async execute(dto: FetchUserRepositoriesDTO) {
-    return this.userRepoRepository.findAll(dto.token, dto.search);
+    return this.userRepoRepository.findAll(dto.token, dto.user, dto.search);
   }
 }
