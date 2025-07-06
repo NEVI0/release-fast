@@ -13,10 +13,21 @@ export default function useForm<T extends FieldValues>({
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    getValues,
+    setValue,
+    watch,
+    formState: { errors, isValid },
   } = useReactHookForm<T>({
     resolver: zodResolver(schema),
   });
 
-  return { register, handleSubmit, errors };
+  return {
+    register,
+    handleSubmit,
+    getValues,
+    setValue,
+    errors,
+    isValid,
+    watch,
+  };
 }
