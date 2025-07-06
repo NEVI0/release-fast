@@ -28,6 +28,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (session.user) {
         session.user.id = token.sub as string;
       }
+      if (token?.username) {
+        (session.user as any).username = token.username;
+      }
 
       return {
         ...session,
@@ -35,13 +38,17 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         provider: token.provider,
       };
     },
-    async jwt({ token, user, account }) {
+    async jwt({ token, user, account, profile }) {
       if (user) {
         token.id = user.id;
       }
       if (account) {
         if (account.access_token) token.accessToken = account.access_token;
         if (account.provider) token.provider = account.provider;
+        if (profile) {
+          console.log({ login: profile.login });
+          token.username = profile.login;
+        }
       }
 
       return token;
