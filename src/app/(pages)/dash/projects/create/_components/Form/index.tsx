@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Box, Code2Icon, MessageSquare, Plus } from 'lucide-react';
+import { Box, MessageSquare, Plus, Search } from 'lucide-react';
 
 import { SessionAbstract } from '@domain/entities';
 
@@ -12,10 +12,12 @@ import {
   createProjectValidationSchema,
   CreateProjectValidationSchema,
 } from '@app/validation';
-
-import { useForm, useToast } from '@app/hooks';
 import { createProjectAction } from '@app/actions';
-import { Button, Input, Select } from '@app/components/ui';
+import { useForm, useToast } from '@app/hooks';
+import { useFetchRepositories } from './hooks';
+
+import { Button, HorizontalDivider, Input } from '@app/components/ui';
+import { Repository } from './components';
 
 interface FormProps {
   session: SessionAbstract;
@@ -28,18 +30,29 @@ export default function Form({ session }: FormProps) {
     schema: createProjectValidationSchema,
   });
 
+  const selectedRepository = form.watch('repository');
+
+  const [search, setSearch] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+
+  const { repositories } = useFetchRepositories({
+    provider: session.provider,
+    token: session.token,
+    user: session.user.username,
+    search,
+  });
 
   async function handleSubmit(data: CreateProjectValidationSchema) {
     try {
       setIsLoading(true);
 
-      const { success, project, message } = await createProjectAction({
+      const { project } = await createProjectAction({
         ...data,
         userId: session.user.id,
+        provider: session.provider,
       });
 
-      if (!success || !project) throw new Error(message);
+      if (!project) throw new Error();
 
       toast.success('Projeto criado com sucesso');
       router.push('/dash/projects/' + project.id);
@@ -64,6 +77,7 @@ export default function Form({ session }: FormProps) {
           label="Nome do projeto"
           placeholder="Ex.: E-commerce, Blog, etc."
           icon={Box}
+          required
           error={form.errors.name?.message}
           {...form.register('name')}
         />
@@ -74,35 +88,49 @@ export default function Form({ session }: FormProps) {
           label="Descrição do projeto"
           placeholder="Uma breve descrição do projeto"
           icon={MessageSquare}
+          required
           error={form.errors.description?.message}
           {...form.register('description')}
         />
 
-        <div className="flex items-start gap-4 w-full">
-          <Select
-            id="repository-type"
-            label="Tipo de repositório"
-            options={[
-              { label: 'GitHub', value: 'github' },
-              { label: 'GitLab', value: 'gitlab' },
-            ]}
-            className="w-[300px]"
-            // error={form.errors.repositoryType?.message}
-            // {...form.register('repositoryType')}
-          />
+        <Input
+          id="search"
+          type="text"
+          label="Pesquise pelo repositório do seu projeto"
+          icon={Search}
+          required
+          value={search}
+          onChange={(event) => setSearch(event.target.value)}
+        />
 
-          <Input
-            id="url"
-            type="text"
-            label="URL do repositório do projeto"
-            placeholder="Ex.: https://github.com/user/repo"
-            icon={Code2Icon}
-            className="w-full"
-            error={form.errors.url?.message}
-            {...form.register('url')}
-          />
-        </div>
+        <input hidden disabled {...form.register('repository')} />
       </div>
+
+      <HorizontalDivider />
+
+      {!!repositories.length ? (
+        <div className="flex flex-col gap-4">
+          <h3 className="font-semibold text-2xl">Selecione um repository</h3>
+
+          <ul className="flex flex-col gap-2">
+            {repositories.map((repository) => (
+              <li key={repository.id}>
+                <Repository
+                  repository={repository}
+                  selected={selectedRepository === repository.id}
+                  onSelect={() => form.setValue('repository', repository.id)}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : (
+        <div className="flex flex-col gap-4">
+          <h3 className="font-semibold text-2xl">
+            Nenhum repositório encontrado...
+          </h3>
+        </div>
+      )}
 
       <div className="flex items-center justify-end gap-4">
         <Link href="/dash/projects">
@@ -115,7 +143,7 @@ export default function Form({ session }: FormProps) {
           type="submit"
           variant="primary"
           className="w-[184px]"
-          disabled={isLoading}
+          disabled={isLoading || !form.isValid}
         >
           {isLoading ? 'Criando...' : 'Criar projeto'}
           <Plus className="size-5" />
