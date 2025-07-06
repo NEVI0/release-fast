@@ -2,10 +2,8 @@
 
 import { z } from 'zod';
 
-import makeFetchProjectByIdUseCase from '@factories/useCases/makeFetchProjectByIdUseCase';
-
 import { FetchProjectByIdDTO } from '@domain/dtos';
-import { handleError } from '@app/helpers';
+import makeFetchProjectByIdUseCase from '@factories/useCases/makeFetchProjectByIdUseCase';
 
 const schema = z.object({
   id: z.string().min(1, 'O ID do projeto é obrigatório'),
@@ -21,7 +19,6 @@ export default async function fetchProjectByIdAction(
     if (!project) {
       return {
         project: null,
-        message: 'Projeto não encontrado',
       };
     }
 
@@ -31,16 +28,16 @@ export default async function fetchProjectByIdAction(
         name: project.name,
         description: project.description,
         userId: project.userId,
+        repository: project.repository,
+        repositoryUrl: project.repositoryUrl,
+        provider: project.provider,
         createdAt: project.createdAt,
         updatedAt: project.updatedAt,
       },
     };
   } catch (error) {
-    const { message } = handleError(error, 'fetchProjectByIdAction');
-
     return {
       project: null,
-      message,
     };
   }
 }
