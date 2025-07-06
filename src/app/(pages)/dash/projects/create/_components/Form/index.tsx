@@ -104,6 +104,7 @@ export default function Form({ session }: FormProps) {
         />
 
         <input hidden disabled {...form.register('repository')} />
+        <input hidden disabled {...form.register('repositoryUrl')} />
       </div>
 
       <HorizontalDivider />
@@ -117,8 +118,11 @@ export default function Form({ session }: FormProps) {
               <li key={repository.id}>
                 <Repository
                   repository={repository}
-                  selected={selectedRepository === repository.id}
-                  onSelect={() => form.setValue('repository', repository.id)}
+                  selected={selectedRepository === repository.fullname}
+                  onSelect={() => {
+                    form.setValue('repository', repository.fullname);
+                    form.setValue('repositoryUrl', repository.url);
+                  }}
                 />
               </li>
             ))}

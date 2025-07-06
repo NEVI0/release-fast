@@ -3,7 +3,8 @@ export interface ProjectAbstract {
   name: string;
   description: string;
   userId: string;
-  repository: number;
+  repository: string;
+  repositoryUrl: string;
   provider: string;
 
   createdAt: Date | string;
@@ -15,7 +16,8 @@ interface ProjectProps {
   name: string;
   description: string;
   userId: string;
-  repository: number;
+  repository: string;
+  repositoryUrl: string;
   provider: string;
 
   createdAt?: Date | string;
@@ -28,6 +30,7 @@ export default class Project implements ProjectAbstract {
   public description: ProjectAbstract['description'];
   public userId: ProjectAbstract['userId'];
   public repository: ProjectAbstract['repository'];
+  public repositoryUrl: ProjectAbstract['repositoryUrl'];
   public provider: ProjectAbstract['provider'];
   public createdAt: ProjectAbstract['createdAt'];
   public updatedAt: ProjectAbstract['updatedAt'];
@@ -38,6 +41,7 @@ export default class Project implements ProjectAbstract {
     this.description = props.description;
     this.userId = props.userId;
     this.repository = props.repository;
+    this.repositoryUrl = props.repositoryUrl;
     this.provider = props.provider;
     this.createdAt = props.createdAt ?? new Date();
     this.updatedAt = props.updatedAt ?? new Date();

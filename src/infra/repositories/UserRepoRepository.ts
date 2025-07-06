@@ -29,6 +29,7 @@ export default class UserRepoRepository implements UserRepoRepositoryAbstract {
         new Repository({
           id: repo.id,
           name: repo.name,
+          fullname: repo.full_name,
           private: repo.private,
           description: repo.description,
           url: repo.html_url,

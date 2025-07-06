@@ -36,6 +36,7 @@ export default class PrismaProjectRepository
         description: project.description,
         userId: project.userId,
         repository: project.repository,
+        repositoryUrl: project.repositoryUrl,
         provider: project.provider,
       },
     });
