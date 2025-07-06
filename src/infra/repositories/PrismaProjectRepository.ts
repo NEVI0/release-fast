@@ -35,6 +35,8 @@ export default class PrismaProjectRepository
         name: project.name,
         description: project.description,
         userId: project.userId,
+        repository: project.repository,
+        provider: project.provider,
       },
     });
 
@@ -48,6 +50,8 @@ export default class PrismaProjectRepository
         name: project.name,
         description: project.description,
         userId: project.userId,
+        repository: project.repository,
+        provider: project.provider,
       },
     });
 
