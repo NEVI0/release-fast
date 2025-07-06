@@ -19,7 +19,7 @@ import { useForm, useToast } from '@app/hooks';
 import {
   createReleaseValidationSchema,
   CreateReleaseValidationSchema,
-} from '@app/validation';
+} from '@app/validations';
 
 import { Button, Input, Textarea } from '@app/components/ui';
 import { GenerateWithIAButton } from './components';

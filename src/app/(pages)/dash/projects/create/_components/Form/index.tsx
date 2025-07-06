@@ -11,7 +11,7 @@ import { SessionAbstract } from '@domain/entities';
 import {
   createProjectValidationSchema,
   CreateProjectValidationSchema,
-} from '@app/validation';
+} from '@app/validations';
 import { createProjectAction } from '@app/actions';
 import { useForm, useToast } from '@app/hooks';
 import { useFetchRepositories } from './hooks';
