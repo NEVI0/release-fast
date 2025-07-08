@@ -1,4 +1,9 @@
 export {
+  default as compareBranchesValidationSchema,
+  type CompareBranchesValidationSchema,
+} from './compareBranchesValidation';
+
+export {
   default as createProjectValidationSchema,
   type CreateProjectValidationSchema,
 } from './createProjectValidation';
