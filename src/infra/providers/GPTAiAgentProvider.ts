@@ -1,5 +1,3 @@
-import 'server-only';
-
 import { OpenAI } from 'openai';
 
 import { AiAgentProviderAbstract } from '@domain/providers';

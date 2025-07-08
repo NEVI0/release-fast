@@ -1,5 +1,3 @@
-import 'server-only';
-
 import { GoogleGenAI } from '@google/genai';
 
 import { AiAgentProviderAbstract } from '@domain/providers';

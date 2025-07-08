@@ -1,5 +1,3 @@
-import 'server-only';
-
 import { GenerateByIaDTO } from '@domain/dtos';
 import { AiAgentProviderAbstract } from '@domain/providers';
 
