@@ -6,9 +6,11 @@ import type {
 
 export default class FetchHttpProvider implements HttpProviderAbstract {
   private baseUrl: string = '';
+  private headers: HttpProviderOptions['headers'] = {};
 
-  constructor(baseUrl: string) {
+  constructor(baseUrl: string, headers?: HttpProviderOptions['headers']) {
     this.baseUrl = baseUrl;
+    this.headers = headers;
   }
 
   public get: HttpProviderAbstract['get'] = async <T>(
@@ -19,11 +21,15 @@ export default class FetchHttpProvider implements HttpProviderAbstract {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
+        ...(this.headers && { ...this.headers }),
         ...(options?.headers && { ...options?.headers }),
       },
     });
 
-    const response = await request.json();
+    const response = await (options?.responseAsText
+      ? request.text()
+      : request.json());
+
     if (!request.ok) this.handleRequestError(response);
 
     return response as T;
@@ -39,12 +45,16 @@ export default class FetchHttpProvider implements HttpProviderAbstract {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        ...(this.headers && { ...this.headers }),
         ...(options?.headers && { ...options?.headers }),
       },
       body: JSON.stringify(body),
     });
 
-    const response = await request.json();
+    const response = await (options?.responseAsText
+      ? request.text()
+      : request.json());
+
     if (!request.ok) this.handleRequestError(response);
 
     return response as T;
@@ -60,12 +70,16 @@ export default class FetchHttpProvider implements HttpProviderAbstract {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
+        ...(this.headers && { ...this.headers }),
         ...(options?.headers && { ...options?.headers }),
       },
       body: JSON.stringify(body),
     });
 
-    const response = await request.json();
+    const response = await (options?.responseAsText
+      ? request.text()
+      : request.json());
+
     if (!request.ok) this.handleRequestError(response);
 
     return response as T;
@@ -80,11 +94,15 @@ export default class FetchHttpProvider implements HttpProviderAbstract {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
+        ...(this.headers && { ...this.headers }),
         ...(options?.headers && { ...options?.headers }),
       },
     });
 
-    const response = await request.json();
+    const response = await (options?.responseAsText
+      ? request.text()
+      : request.json());
+
     if (!request.ok) this.handleRequestError(response);
 
     return response as T;

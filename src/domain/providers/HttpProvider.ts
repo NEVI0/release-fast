@@ -1,6 +1,8 @@
 export type HttpProviderPayload = FormData | Record<string, any> | object;
 
 export interface HttpProviderOptions {
+  responseAsText?: boolean;
+
   headers?: Record<string, string>;
   params?: Record<string, string>;
 }
