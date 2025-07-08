@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 
 import { DOCUMENT_HEAD } from '@app/constants/document-head';
-import { fetchProjectByIdAction } from '@app/actions';
+import { fetchProjectByIdAction, fetchUserSession } from '@app/actions';
 
 import { Form, Header } from './_components';
 
@@ -22,6 +22,9 @@ interface CreateReleasePageProps {
 export default async function CreateReleasePage({
   params,
 }: CreateReleasePageProps) {
+  const session = await fetchUserSession();
+  if (!session || !session.user) return redirect('/auth');
+
   const { id } = await params;
   const { project } = await fetchProjectByIdAction({ id });
 
@@ -30,7 +33,7 @@ export default async function CreateReleasePage({
   return (
     <>
       <Header project={project} />
-      <Form project={project} />
+      <Form session={session} project={project} />
     </>
   );
 }

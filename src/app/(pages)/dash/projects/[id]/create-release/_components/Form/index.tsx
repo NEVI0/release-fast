@@ -15,35 +15,61 @@ import {
   Plus,
 } from 'lucide-react';
 
-import { ProjectAbstract } from '@domain/entities';
+import { ProjectAbstract, SessionAbstract } from '@domain/entities';
 
 import { useForm, useToast } from '@app/hooks';
+import { createReleaseAction } from '@app/actions';
 import {
+  compareBranchesValidationSchema,
+  CompareBranchesValidationSchema,
   createReleaseValidationSchema,
   CreateReleaseValidationSchema,
 } from '@app/validations';
 
+import { useCompareBranches } from './hooks';
+
 import { Button, HorizontalDivider, Input, Textarea } from '@app/components/ui';
 import { GenerateWithIAButton } from './components';
-import { createReleaseAction } from '@app/actions';
 
 interface FormProps {
+  session: SessionAbstract;
   project: ProjectAbstract;
 }
 
-export default function Form({ project }: FormProps) {
+export default function Form({ session, project }: FormProps) {
   const toast = useToast();
   const router = useRouter();
-  const form = useForm<CreateReleaseValidationSchema>({
+
+  const branchesController = useCompareBranches({
+    provider: session.provider,
+    token: session.token,
+  });
+  const branchesForm = useForm<CompareBranchesValidationSchema>({
+    schema: compareBranchesValidationSchema,
+  });
+
+  const releaseForm = useForm<CreateReleaseValidationSchema>({
     schema: createReleaseValidationSchema,
   });
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isCreating, setIsCreating] = useState(false);
 
-  async function handleSubmit(data: CreateReleaseValidationSchema) {
+  async function handleCompareBranches(data: CompareBranchesValidationSchema) {
+    try {
+      const test = await branchesController.compare({
+        repository: project.repository,
+        baseBranch: data.baseBranch,
+        headBranch: data.headBranch,
+      });
+
+      console.log({ test });
+    } catch (error) {}
+  }
+
+  async function handleCreateRelease(data: CreateReleaseValidationSchema) {
     try {
       console.log({ data });
-      setIsLoading(true);
+      setIsCreating(true);
 
       const { release } = await createReleaseAction({} as any);
 
@@ -56,16 +82,19 @@ export default function Form({ project }: FormProps) {
         error instanceof Error ? error.message : 'Erro ao criar release'
       );
     } finally {
-      setIsLoading(false);
+      setIsCreating(false);
     }
   }
 
   return (
-    <form
+    <div
       className="flex flex-col gap-8"
-      onSubmit={form.handleSubmit(handleSubmit)}
+      // onSubmit={form.handleSubmit(handleSubmit)}
     >
-      <div className="flex flex-col gap-4">
+      <form
+        className="flex flex-col gap-4"
+        onSubmit={branchesForm.handleSubmit(handleCompareBranches)}
+      >
         <h3 className="font-semibold text-2xl">
           Informe as branches para comparação
         </h3>
@@ -79,7 +108,7 @@ export default function Form({ project }: FormProps) {
             className="w-full"
             icon={GitBranch}
             required
-            {...form.register('baseBranch')}
+            {...branchesForm.register('baseBranch')}
           />
 
           <Input
@@ -90,20 +119,20 @@ export default function Form({ project }: FormProps) {
             className="w-full"
             icon={GitBranch}
             required
-            {...form.register('headBranch')}
+            {...branchesForm.register('headBranch')}
           />
 
           <Button
-            type="button"
+            type="submit"
             variant="primary"
             className="w-[184px]"
-            disabled={isLoading}
+            disabled={isCreating}
           >
             Compare
             <GitCompareArrows className="size-5" />
           </Button>
         </div>
-      </div>
+      </form>
 
       <HorizontalDivider />
 
@@ -117,8 +146,8 @@ export default function Form({ project }: FormProps) {
           type="text"
           label="Title"
           icon={Edit3Icon}
-          error={form.errors.title?.message}
-          {...form.register('title')}
+          error={releaseForm.errors.title?.message}
+          {...releaseForm.register('title')}
         />
 
         <Input
@@ -127,8 +156,8 @@ export default function Form({ project }: FormProps) {
           label="Versão"
           placeholder="Ex.: v1.0.0"
           icon={Code2Icon}
-          error={form.errors.version?.message}
-          {...form.register('version')}
+          error={releaseForm.errors.version?.message}
+          {...releaseForm.register('version')}
         />
 
         <Input
@@ -138,8 +167,8 @@ export default function Form({ project }: FormProps) {
           placeholder="Uma breve descrição da release"
           rightButton={<GenerateWithIAButton />}
           icon={MessageSquare}
-          error={form.errors.shortDescription?.message}
-          {...form.register('shortDescription')}
+          error={releaseForm.errors.shortDescription?.message}
+          {...releaseForm.register('shortDescription')}
         />
 
         <Textarea
@@ -148,8 +177,8 @@ export default function Form({ project }: FormProps) {
           placeholder="Uma descrição mais detalhada da release"
           rightButton={<GenerateWithIAButton />}
           icon={FileText}
-          error={form.errors.fullDescription?.message}
-          {...form.register('fullDescription')}
+          error={releaseForm.errors.fullDescription?.message}
+          {...releaseForm.register('fullDescription')}
         />
 
         <Input
@@ -157,8 +186,8 @@ export default function Form({ project }: FormProps) {
           type="date"
           label="Data de liberação da release"
           icon={Calendar}
-          error={form.errors.availableAt?.message}
-          {...form.register('availableAt')}
+          error={releaseForm.errors.availableAt?.message}
+          {...releaseForm.register('availableAt')}
         />
       </div>
 
@@ -173,12 +202,12 @@ export default function Form({ project }: FormProps) {
           type="button"
           variant="primary"
           className="w-[184px]"
-          disabled={isLoading}
+          disabled={isCreating}
         >
-          {isLoading ? 'Creating...' : 'Create release'}
+          {isCreating ? 'Creating...' : 'Create release'}
           <Plus className="size-5" />
         </Button>
       </div>
-    </form>
+    </div>
   );
 }
