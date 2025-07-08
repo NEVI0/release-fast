@@ -26,7 +26,7 @@ import {
   CreateReleaseValidationSchema,
 } from '@app/validations';
 
-import { useCompareBranches } from './hooks';
+import { useCompareBranches, useAiAgent } from './hooks';
 
 import { Button, HorizontalDivider, Input, Textarea } from '@app/components/ui';
 import { GenerateWithIAButton } from './components';
@@ -39,6 +39,7 @@ interface FormProps {
 export default function Form({ session, project }: FormProps) {
   const toast = useToast();
   const router = useRouter();
+  const aiAgentController = useAiAgent();
 
   const branchesController = useCompareBranches({
     provider: session.provider,
@@ -56,14 +57,22 @@ export default function Form({ session, project }: FormProps) {
 
   async function handleCompareBranches(data: CompareBranchesValidationSchema) {
     try {
-      const test = await branchesController.compare({
+      const diff = await branchesController.compare({
         repository: project.repository,
         baseBranch: data.baseBranch,
         headBranch: data.headBranch,
       });
 
-      console.log({ test });
-    } catch (error) {}
+      console.log({ diff });
+
+      const result = await aiAgentController.prompt({
+        prompt: `Analyze this git diff and write a friendly changelog: ${diff}`,
+      });
+
+      console.log({ result });
+    } catch (error) {
+      console.log({ error });
+    }
   }
 
   async function handleCreateRelease(data: CreateReleaseValidationSchema) {
