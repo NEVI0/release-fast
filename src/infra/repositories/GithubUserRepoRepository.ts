@@ -8,17 +8,16 @@ interface GitHubSearchResponde {
   items: any[];
 }
 
-export default class UserRepoRepository implements UserRepoRepositoryAbstract {
+export default class GithubUserRepoRepository
+  implements UserRepoRepositoryAbstract
+{
   constructor(private readonly httpProvider: HttpProviderAbstract) {}
 
-  public async findAll(token: string, user: string, search?: string) {
+  public async findAll(user: string, search?: string) {
     const { items } = await this.httpProvider.get<GitHubSearchResponde>(
       '/search/repositories',
       {
         params: this.buildParams(user, search),
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
       }
     );
 

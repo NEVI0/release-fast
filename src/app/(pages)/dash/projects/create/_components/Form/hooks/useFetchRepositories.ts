@@ -23,8 +23,8 @@ export default function useFetchRepositories({
     queryFn: async () => {
       return await makeFetchUserRepositoriesUseCase({
         provider,
-      }).execute({
         token,
+      }).execute({
         user,
         search,
       });

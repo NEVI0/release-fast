@@ -5,13 +5,17 @@ import makeUserRepoRepository from '@factories/repositories/makeUserRepoReposito
 
 interface Params {
   provider: SessionProvider;
+  token: string;
 }
 
 let instance: FetchUserRepositoriesUseCase | null = null;
 
-export default function makeFetchUserRepositoriesUseCase({ provider }: Params) {
+export default function makeFetchUserRepositoriesUseCase({
+  provider,
+  token,
+}: Params) {
   if (!instance) {
-    const userRepoRepository = makeUserRepoRepository({ provider });
+    const userRepoRepository = makeUserRepoRepository({ provider, token });
     instance = new FetchUserRepositoriesUseCase(userRepoRepository);
   }
 
