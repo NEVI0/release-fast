@@ -9,6 +9,8 @@ import {
   Code2Icon,
   Edit3Icon,
   FileText,
+  GitBranch,
+  GitCompareArrows,
   MessageSquare,
   Plus,
 } from 'lucide-react';
@@ -21,7 +23,7 @@ import {
   CreateReleaseValidationSchema,
 } from '@app/validations';
 
-import { Button, Input, Textarea } from '@app/components/ui';
+import { Button, HorizontalDivider, Input, Textarea } from '@app/components/ui';
 import { GenerateWithIAButton } from './components';
 import { createReleaseAction } from '@app/actions';
 
@@ -43,11 +45,9 @@ export default function Form({ project }: FormProps) {
       console.log({ data });
       setIsLoading(true);
 
-      const { success, release, message } = await createReleaseAction(
-        {} as any
-      );
+      const { release } = await createReleaseAction({} as any);
 
-      if (!success || !release) throw new Error(message);
+      if (!release) throw new Error();
 
       toast.success('Release criada com sucesso');
       router.push('/dash/projects/' + project.id);
@@ -66,6 +66,52 @@ export default function Form({ project }: FormProps) {
       onSubmit={form.handleSubmit(handleSubmit)}
     >
       <div className="flex flex-col gap-4">
+        <h3 className="font-semibold text-2xl">
+          Informe as branches para comparação
+        </h3>
+
+        <div className="flex items-end gap-4">
+          <Input
+            id="baseBranch"
+            type="text"
+            label="Base branch"
+            placeholder="E.g.: master"
+            className="w-full"
+            icon={GitBranch}
+            required
+            {...form.register('baseBranch')}
+          />
+
+          <Input
+            id="headBranch"
+            type="text"
+            label="Head branch"
+            placeholder="E.g.: my-feature"
+            className="w-full"
+            icon={GitBranch}
+            required
+            {...form.register('headBranch')}
+          />
+
+          <Button
+            type="button"
+            variant="primary"
+            className="w-[184px]"
+            disabled={isLoading}
+          >
+            Compare
+            <GitCompareArrows className="size-5" />
+          </Button>
+        </div>
+      </div>
+
+      <HorizontalDivider />
+
+      <div className="flex flex-col gap-4">
+        <h3 className="font-semibold text-2xl">
+          Preencha as informações da sua release
+        </h3>
+
         <Input
           id="title"
           type="text"
@@ -107,12 +153,12 @@ export default function Form({ project }: FormProps) {
         />
 
         <Input
-          id="date"
+          id="availableAt"
           type="date"
           label="Data de liberação da release"
           icon={Calendar}
-          error={form.errors.date?.message}
-          {...form.register('date')}
+          error={form.errors.availableAt?.message}
+          {...form.register('availableAt')}
         />
       </div>
 

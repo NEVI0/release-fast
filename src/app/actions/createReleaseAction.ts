@@ -15,6 +15,8 @@ export default async function createReleaseAction(dto: CreateReleaseDTO) {
         shortDescription: release.shortDescription,
         fullDescription: release.fullDescription,
         version: release.version,
+        baseBranch: release.baseBranch,
+        headBranch: release.headBranch,
         projectId: release.projectId,
         availableAt: release.availableAt,
         createdAt: release.createdAt,

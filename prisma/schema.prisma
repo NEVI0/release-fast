@@ -93,6 +93,8 @@ model Release {
   shortDescription     String
   fullDescription      String
   version              String
+  baseBranch           String
+  headBranch           String
   projectId            String
   availableAt          DateTime
   createdAt            DateTime    @default(now())

@@ -3,6 +3,8 @@ export default interface CreateReleaseDTO {
   shortDescription: string;
   fullDescription: string;
   version: string;
+  baseBranch: string;
+  headBranch: string;
   projectId: string;
   availableAt: Date | string;
 }
