@@ -16,8 +16,6 @@ export default async function fetchReleaseByIdAction(
     const dto = schema.parse(params);
     const release = await makeFetchReleaseByIdUseCase().execute(dto);
 
-    await new Promise((resolve) => setTimeout(resolve, 5000));
-
     if (!release) return { release: null };
 
     return {
