@@ -1,6 +1,7 @@
 import { fetchReleaseByIdAction } from '@app/actions';
 
-import { Content, NotFound } from './_components';
+import { NotFound } from '@app/components/common';
+import { Content } from './_components';
 
 interface Params {
   id: string;
