@@ -1,6 +1,5 @@
 import NextAuth from 'next-auth';
 
-import Google from 'next-auth/providers/google';
 import Github from 'next-auth/providers/github';
 import Gitlab from 'next-auth/providers/gitlab';
 
@@ -9,8 +8,6 @@ import { prisma } from './prisma';
 
 const {
   AUTH_SECRET,
-  AUTH_GOOGLE_CLIENT_ID,
-  AUTH_GOOGLE_CLIENT_SECRET,
   AUTH_GITHUB_CLIENT_ID,
   AUTH_GITHUB_CLIENT_SECRET,
   AUTH_GITLAB_CLIENT_ID,
@@ -55,10 +52,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
   },
   providers: [
-    Google({
-      clientId: AUTH_GOOGLE_CLIENT_ID!,
-      clientSecret: AUTH_GOOGLE_CLIENT_SECRET!,
-    }),
     Github({
       clientId: AUTH_GITHUB_CLIENT_ID!,
       clientSecret: AUTH_GITHUB_CLIENT_SECRET!,
