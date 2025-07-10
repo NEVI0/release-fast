@@ -26,6 +26,7 @@ import {
   CreateReleaseValidationSchema,
 } from '@app/validations';
 
+import { convertAiResult, getAiPrompt } from './helpers';
 import { useCompareBranches, useAiAgent } from './hooks';
 
 import { Button, HorizontalDivider, Input, Textarea } from '@app/components/ui';
@@ -45,44 +46,61 @@ export default function Form({ session, project }: FormProps) {
     provider: session.provider,
     token: session.token,
   });
+
   const branchesForm = useForm<CompareBranchesValidationSchema>({
     schema: compareBranchesValidationSchema,
   });
-
   const releaseForm = useForm<CreateReleaseValidationSchema>({
     schema: createReleaseValidationSchema,
   });
 
   const [isCreating, setIsCreating] = useState(false);
+  const [isComparing, setIsComparing] = useState(false);
+  const [alreadyComparatedBranches, setAlreadyComparatedBranches] =
+    useState(false);
 
   async function handleCompareBranches(data: CompareBranchesValidationSchema) {
     try {
+      setIsComparing(true);
+      setAlreadyComparatedBranches(false);
+
       const diff = await branchesController.compare({
         repository: project.repository,
         baseBranch: data.baseBranch,
         headBranch: data.headBranch,
       });
 
-      console.log({ diff });
-
       const result = await aiAgentController.prompt({
-        prompt: `Analyze this git diff and write a friendly changelog: ${diff}`,
+        prompt: getAiPrompt(diff),
       });
 
-      console.log({ result });
+      const [shortDescription, fullDescription] = await convertAiResult(result);
+
+      releaseForm.setValue('baseBranch', data.baseBranch);
+      releaseForm.setValue('headBranch', data.headBranch);
+      releaseForm.setValue('shortDescription', shortDescription);
+      releaseForm.setValue('fullDescription', fullDescription);
+
+      setAlreadyComparatedBranches(true);
     } catch (error) {
-      console.log({ error });
+      toast.error(
+        error instanceof Error ? error.message : 'Erro ao comparar branches'
+      );
+    } finally {
+      setIsComparing(false);
     }
   }
 
   async function handleCreateRelease(data: CreateReleaseValidationSchema) {
     try {
-      console.log({ data });
       setIsCreating(true);
 
-      const { release } = await createReleaseAction({} as any);
+      const { release } = await createReleaseAction({
+        ...data,
+        projectId: project.id,
+      });
 
-      if (!release) throw new Error();
+      if (!release) throw new Error('Erro ao criar release');
 
       toast.success('Release criada com sucesso');
       router.push('/dash/projects/' + project.id);
@@ -96,10 +114,7 @@ export default function Form({ session, project }: FormProps) {
   }
 
   return (
-    <div
-      className="flex flex-col gap-8"
-      // onSubmit={form.handleSubmit(handleSubmit)}
-    >
+    <div className="flex flex-col gap-8">
       <form
         className="flex flex-col gap-4"
         onSubmit={branchesForm.handleSubmit(handleCompareBranches)}
@@ -116,6 +131,7 @@ export default function Form({ session, project }: FormProps) {
             placeholder="E.g.: master"
             className="w-full"
             icon={GitBranch}
+            disabled={isComparing}
             required
             {...branchesForm.register('baseBranch')}
           />
@@ -127,6 +143,7 @@ export default function Form({ session, project }: FormProps) {
             placeholder="E.g.: my-feature"
             className="w-full"
             icon={GitBranch}
+            disabled={isComparing}
             required
             {...branchesForm.register('headBranch')}
           />
@@ -135,9 +152,9 @@ export default function Form({ session, project }: FormProps) {
             type="submit"
             variant="primary"
             className="w-[184px]"
-            disabled={isCreating}
+            disabled={!branchesForm.isValid || isComparing}
           >
-            Compare
+            {isComparing ? 'Comparing...' : 'Compare'}
             <GitCompareArrows className="size-5" />
           </Button>
         </div>
@@ -145,78 +162,110 @@ export default function Form({ session, project }: FormProps) {
 
       <HorizontalDivider />
 
-      <div className="flex flex-col gap-4">
-        <h3 className="font-semibold text-2xl">
-          Preencha as informações da sua release
-        </h3>
+      <form
+        className="flex flex-col gap-8"
+        onSubmit={releaseForm.handleSubmit(handleCreateRelease)}
+      >
+        <div className="flex flex-col gap-4">
+          <h3 className="font-semibold text-2xl">
+            {alreadyComparatedBranches
+              ? 'Preencha as informações da sua release'
+              : 'Compare as branches para poder completar o formulário'}
+          </h3>
 
-        <Input
-          id="title"
-          type="text"
-          label="Title"
-          icon={Edit3Icon}
-          error={releaseForm.errors.title?.message}
-          {...releaseForm.register('title')}
-        />
+          <input
+            disabled
+            hidden
+            type="text"
+            {...releaseForm.register('baseBranch')}
+          />
+          <input
+            disabled
+            hidden
+            type="text"
+            {...releaseForm.register('headBranch')}
+          />
 
-        <Input
-          id="version"
-          type="text"
-          label="Versão"
-          placeholder="Ex.: v1.0.0"
-          icon={Code2Icon}
-          error={releaseForm.errors.version?.message}
-          {...releaseForm.register('version')}
-        />
+          <Input
+            id="title"
+            type="text"
+            label="Title"
+            icon={Edit3Icon}
+            required
+            disabled={!alreadyComparatedBranches}
+            error={releaseForm.errors.title?.message}
+            {...releaseForm.register('title')}
+          />
 
-        <Input
-          id="short-description"
-          type="text"
-          label="Descrição breve"
-          placeholder="Uma breve descrição da release"
-          rightButton={<GenerateWithIAButton />}
-          icon={MessageSquare}
-          error={releaseForm.errors.shortDescription?.message}
-          {...releaseForm.register('shortDescription')}
-        />
+          <Input
+            id="version"
+            type="text"
+            label="Versão"
+            placeholder="Ex.: v1.0.0"
+            icon={Code2Icon}
+            required
+            disabled={!alreadyComparatedBranches}
+            error={releaseForm.errors.version?.message}
+            {...releaseForm.register('version')}
+          />
 
-        <Textarea
-          id="full-description"
-          label="Descrição detalhada da sua release para o usuário final"
-          placeholder="Uma descrição mais detalhada da release"
-          rightButton={<GenerateWithIAButton />}
-          icon={FileText}
-          error={releaseForm.errors.fullDescription?.message}
-          {...releaseForm.register('fullDescription')}
-        />
+          <Input
+            id="short-description"
+            type="text"
+            label="Descrição breve"
+            placeholder="Uma breve descrição da release"
+            rightButton={<GenerateWithIAButton />}
+            icon={MessageSquare}
+            required
+            disabled={!alreadyComparatedBranches}
+            error={releaseForm.errors.shortDescription?.message}
+            {...releaseForm.register('shortDescription')}
+          />
 
-        <Input
-          id="availableAt"
-          type="date"
-          label="Data de liberação da release"
-          icon={Calendar}
-          error={releaseForm.errors.availableAt?.message}
-          {...releaseForm.register('availableAt')}
-        />
-      </div>
+          <Textarea
+            id="full-description"
+            label="Descrição detalhada da sua release para o usuário final"
+            placeholder="Uma descrição mais detalhada da release"
+            rightButton={<GenerateWithIAButton />}
+            icon={FileText}
+            required
+            disabled={!alreadyComparatedBranches}
+            error={releaseForm.errors.fullDescription?.message}
+            {...releaseForm.register('fullDescription')}
+          />
 
-      <div className="flex items-center justify-end gap-4">
-        <Link href={`/dash/projects/${project.id}`}>
-          <Button type="button" className="w-[184px]">
-            Cancelar
+          <Input
+            id="availableAt"
+            type="date"
+            label="Data de liberação da release"
+            icon={Calendar}
+            required
+            disabled={!alreadyComparatedBranches}
+            error={releaseForm.errors.availableAt?.message}
+            {...releaseForm.register('availableAt')}
+          />
+        </div>
+
+        <div className="flex items-center justify-end gap-4">
+          <Link href={`/dash/projects/${project.id}`}>
+            <Button type="button" className="w-[184px]">
+              Cancelar
+            </Button>
+          </Link>
+
+          <Button
+            type="button"
+            variant="primary"
+            className="w-[184px]"
+            disabled={
+              !releaseForm.isValid || !alreadyComparatedBranches || isCreating
+            }
+          >
+            {isCreating ? 'Creating...' : 'Create release'}
+            <Plus className="size-5" />
           </Button>
-        </Link>
-
-        <Button
-          type="button"
-          variant="primary"
-          className="w-[184px]"
-          disabled={isCreating}
-        >
-          {isCreating ? 'Creating...' : 'Create release'}
-          <Plus className="size-5" />
-        </Button>
-      </div>
+        </div>
+      </form>
     </div>
   );
 }
