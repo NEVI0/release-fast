@@ -12,6 +12,9 @@ export default class PrismaReleaseRepository
 
   public async findAll(projectId: string): Promise<ReleaseAbstract[]> {
     const releases = await this.prisma.release.findMany({
+      orderBy: {
+        createdAt: 'desc',
+      },
       where: {
         projectId,
       },
