@@ -39,7 +39,7 @@ export default function Textarea({
 
       <div
         className={concatClasses(
-          ' px-6 py-4 rounded-xl flex items-start gap-2 disabled:cursor-not-allowed bg-container border border-border hover:not-focus-within:border-border-action focus-within:border-primary transition-colors',
+          ' px-6 py-4 rounded-xl flex items-start gap-2 bg-container border border-border enabled:hover:not-focus-within:border-border-action enabled:focus-within:border-primary transition-colors',
           !!error && 'border-red-600',
           classNameInput
         )}
@@ -48,7 +48,7 @@ export default function Textarea({
           {...props}
           id={id}
           disabled={disabled}
-          className="min-h-[200px] w-full text-text-primary placeholder:text-text-secondary"
+          className="min-h-[200px] w-full text-text-primary placeholder:text-text-secondary disabled:cursor-not-allowed"
         />
 
         {!!Icon && (

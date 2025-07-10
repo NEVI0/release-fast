@@ -28,7 +28,13 @@ export default function Input({
     <div className={concatClasses('flex flex-col gap-2', className)}>
       {label && (
         <div className="flex items-center justify-between">
-          <label htmlFor={id} className="flex items-center gap-2">
+          <label
+            htmlFor={id}
+            className={concatClasses(
+              'flex items-center gap-2',
+              disabled && 'text-text-secondary'
+            )}
+          >
             {label}
             {props.required && <span className="text-red-600">*</span>}
           </label>
@@ -39,7 +45,7 @@ export default function Input({
 
       <div
         className={concatClasses(
-          'h-[48px] px-6 rounded-xl flex items-center gap-2 disabled:cursor-not-allowed bg-container border border-border hover:not-focus-within:border-border-action focus-within:border-primary transition-colors',
+          'h-[48px] px-6 rounded-xl flex items-center gap-2 disabled:cursor-not-allowed bg-container border border-border enabled:hover:not-focus-within:border-border-action enabled:focus-within:border-primary transition-colors',
           !!error && 'border-red-600',
           classNameInput
         )}
@@ -48,7 +54,7 @@ export default function Input({
           {...props}
           id={id}
           disabled={disabled}
-          className="h-full w-full text-text-primary placeholder:text-text-secondary"
+          className="h-full w-full text-text-primary placeholder:text-text-secondary disabled:cursor-not-allowed"
         />
 
         {!!Icon && (
