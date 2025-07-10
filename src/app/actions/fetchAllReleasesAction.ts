@@ -16,8 +16,6 @@ export default async function fetchAllReleasesAction(
     const dto = schema.parse(params);
     const releases = await makeFetchAllReleasesUseCase().execute(dto);
 
-    await new Promise((resolve) => setTimeout(resolve, 5000));
-
     return {
       releases: releases.map((release) => ({
         id: release.id,
