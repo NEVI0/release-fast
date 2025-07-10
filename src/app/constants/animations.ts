@@ -1,11 +1,7 @@
-import loginAnimation from '@app/assets/animations/login.json';
-import page404Animation from '@app/assets/animations/404.json';
-import accountAnimation from '@app/assets/animations/account.json';
+import emptyAnimation from '@app/assets/animations/empty.json';
 import notFoundAnimation from '@app/assets/animations/not-found.json';
 
 export const ANIMATIONS = {
-  LOGIN: loginAnimation,
-  ACCOUNT: accountAnimation,
-  PAGE_404: page404Animation,
+  EMPTY: emptyAnimation,
   NOT_FOUND: notFoundAnimation,
 };
