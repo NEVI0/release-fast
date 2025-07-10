@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Source_Sans_3 } from 'next/font/google';
 
-import { Content, TopLoader } from '@app/components/common';
+import { Content, Toaster, TopLoader } from '@app/components/common';
 import { DOCUMENT_HEAD } from '@app/constants/document-head';
 
 import '@app/css/globals.css';
@@ -39,6 +39,8 @@ export default function PublicLayout({
       <body className={sourceSans3.className} suppressHydrationWarning>
         <TopLoader />
         <Content.Public>{children}</Content.Public>
+
+        <Toaster />
       </body>
     </html>
   );
