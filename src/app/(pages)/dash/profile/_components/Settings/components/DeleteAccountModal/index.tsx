@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 
 import { UserAbstract } from '@domain/entities';
 
+import { wait } from '@app/helpers';
 import { useToast } from '@app/hooks';
 import { deleteUserByIdAction, logoutAccountAction } from '@app/actions';
 
@@ -39,8 +40,7 @@ export default function DeleteAccountModal({
         'Sua conta foi deletada com sucesso! Você será redirecionado dentro de 3 segundos...'
       );
 
-      await new Promise((resolve) => setTimeout(resolve, 3000));
-
+      await wait(3000);
       logoutAccountAction();
       router.replace('/');
     } catch (error) {

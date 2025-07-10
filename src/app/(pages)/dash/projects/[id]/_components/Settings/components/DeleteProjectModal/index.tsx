@@ -6,10 +6,11 @@ import { useRouter } from 'next/navigation';
 import { X } from 'lucide-react';
 
 import { ProjectAbstract } from '@domain/entities';
+import { deleteProjectByIdAction } from '@app/actions';
 import { useToast } from '@app/hooks';
+import { wait } from '@app/helpers';
 
 import { Button, IconButton, Input, Modal } from '@app/components/ui';
-import { deleteProjectByIdAction } from '@app/actions';
 
 interface DeleteProjectModalProps {
   project: ProjectAbstract;
@@ -38,7 +39,7 @@ export default function DeleteProjectModal({
         'Projeto deletado com sucesso! Você será redirecionado dentro de 3 segundos...'
       );
 
-      await new Promise((resolve) => setTimeout(resolve, 3000));
+      await wait(3000);
       router.replace('/dash/projects');
     } catch (error) {
       toast.error(
