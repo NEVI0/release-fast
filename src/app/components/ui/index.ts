@@ -1,3 +1,4 @@
+export { default as Animation } from './Animation';
 export { default as Badge } from './Badge';
 export { default as Breadcrumb } from './Breadcrumb';
 export { default as Button } from './Button';
