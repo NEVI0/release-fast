@@ -11,7 +11,7 @@ const BUTTON_VARIANT: Record<ButtonVariant, string> = {
   default:
     'text-text-primary bg-container border border-border disabled:text-text-secondary enabled:hover:border-border-action enabled:focus:border-border-action',
   primary:
-    'text-white bg-primary enabled:hover:bg-primary-action enabled:focus:bg-primary-action',
+    'text-white bg-primary disabled:bg-primary/25 enabled:hover:bg-primary-action enabled:focus:bg-primary-action',
   secondary:
     'text-textprimary bg-secondary enabled:hover:bg-secondary-action enabled:focus:bg-secondary-action',
   danger:
