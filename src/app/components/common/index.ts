@@ -3,6 +3,7 @@ export { default as Content } from './Content';
 export { default as ErrorStatus } from './ErrorStatus';
 export { default as Footer } from './Footer';
 export { default as Header } from './Header';
+export { default as NotFound } from './NotFound';
 export { default as Setting } from './Setting';
 export { default as ThemeLogo } from './ThemeLogo';
 export { default as ThemeToggle } from './ThemeToggle';
