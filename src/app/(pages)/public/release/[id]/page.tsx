@@ -1,7 +1,6 @@
-import { Suspense } from 'react';
-
 import { fetchReleaseByIdAction } from '@app/actions';
-import { Content, LoadingContent } from './_components';
+
+import { Content } from './_components';
 
 interface Params {
   id: string;
@@ -17,9 +16,6 @@ export default async function PublicReleasePage({
   const { id } = await params;
   const { release } = await fetchReleaseByIdAction({ id });
 
-  return (
-    <Suspense fallback={<LoadingContent />}>
-      <Content release={release} />
-    </Suspense>
-  );
+  if (!release) return <p>nada</p>;
+  return <Content release={release} />;
 }

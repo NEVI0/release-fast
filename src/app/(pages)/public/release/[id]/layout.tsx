@@ -1,9 +1,12 @@
+import { Suspense } from 'react';
+
 import type { Metadata } from 'next';
 import { Source_Sans_3 } from 'next/font/google';
 
 import { Content, Toaster, TopLoader } from '@app/components/common';
 import { DOCUMENT_HEAD } from '@app/constants/document-head';
 
+import { LoadingContent } from './_components';
 import '@app/css/globals.css';
 
 const sourceSans3 = Source_Sans_3({
@@ -12,7 +15,7 @@ const sourceSans3 = Source_Sans_3({
 });
 
 export const metadata: Metadata = {
-  title: DOCUMENT_HEAD.TITLE,
+  title: `${DOCUMENT_HEAD.TITLE} · Versão`,
   description: DOCUMENT_HEAD.DESCRIPTION,
 };
 
@@ -38,7 +41,10 @@ export default function PublicLayout({
 
       <body className={sourceSans3.className} suppressHydrationWarning>
         <TopLoader />
-        <Content.Public>{children}</Content.Public>
+
+        <Content.Public>
+          <Suspense fallback={<LoadingContent />}>{children}</Suspense>
+        </Content.Public>
 
         <Toaster />
       </body>

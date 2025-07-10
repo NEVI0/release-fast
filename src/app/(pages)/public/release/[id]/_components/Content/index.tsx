@@ -12,7 +12,7 @@ import { formatDate } from '@app/helpers';
 import { HorizontalDivider, IconButton } from '@app/components/ui';
 
 interface ContentProps {
-  release: ReleaseAbstract | null;
+  release: ReleaseAbstract;
 }
 
 export default function Content({ release }: ContentProps) {
@@ -26,8 +26,6 @@ export default function Content({ release }: ContentProps) {
       toast.error('Não foi possível copiar o link da página!');
     }
   }
-
-  if (!release) return <p>nada</p>;
 
   return (
     <div className="flex flex-1 flex-col gap-8">
