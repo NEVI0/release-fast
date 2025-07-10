@@ -45,7 +45,12 @@ export default function Content({ release }: ContentProps) {
       <div className="flex-1 flex flex-col gap-8">
         <section className="flex flex-col gap-2">
           <h3 className="font-semibold text-lg">Breve descrição</h3>
-          <p className="w-full">{release.shortDescription}</p>
+
+          {release.shortDescription.split('\n').map((line, index) => (
+            <p key={index} className="w-full">
+              {line}
+            </p>
+          ))}
         </section>
 
         <section className="flex flex-col gap-2">
