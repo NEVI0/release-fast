@@ -2,10 +2,8 @@
 
 import { z } from 'zod';
 
-import makeFetchReleaseByIdUseCase from '@factories/useCases/makeFetchReleaseByIdUseCase';
-
 import { FetchReleaseByIdDTO } from '@domain/dtos';
-import { handleError } from '@app/helpers';
+import makeFetchReleaseByIdUseCase from '@factories/useCases/makeFetchReleaseByIdUseCase';
 
 const schema = z.object({
   id: z.string().min(1, 'Release ID is required'),
@@ -18,15 +16,11 @@ export default async function fetchReleaseByIdAction(
     const dto = schema.parse(params);
     const release = await makeFetchReleaseByIdUseCase().execute(dto);
 
-    if (!release) {
-      return {
-        success: false,
-        message: 'Release not found',
-      };
-    }
+    await new Promise((resolve) => setTimeout(resolve, 5000));
+
+    if (!release) return { release: null };
 
     return {
-      success: true,
       release: {
         id: release.id,
         title: release.title,
@@ -34,16 +28,14 @@ export default async function fetchReleaseByIdAction(
         fullDescription: release.fullDescription,
         version: release.version,
         projectId: release.projectId,
+        baseBranch: release.baseBranch,
+        headBranch: release.headBranch,
+        availableAt: release.availableAt,
         createdAt: release.createdAt,
         updatedAt: release.updatedAt,
       },
     };
   } catch (error) {
-    const { message } = handleError(error, 'fetchReleaseByIdAction');
-
-    return {
-      success: false,
-      message,
-    };
+    return { release: null };
   }
 }

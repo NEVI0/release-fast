@@ -2,10 +2,8 @@
 
 import { z } from 'zod';
 
-import makeFetchAllReleasesUseCase from '@factories/useCases/makeFetchAllReleasesUseCase';
-
 import { FetchAllReleasesDTO } from '@domain/dtos';
-import { handleError } from '@app/helpers';
+import makeFetchAllReleasesUseCase from '@factories/useCases/makeFetchAllReleasesUseCase';
 
 const schema = z.object({
   projectId: z.string().min(1, 'Project ID is required'),
@@ -18,8 +16,9 @@ export default async function fetchAllReleasesAction(
     const dto = schema.parse(params);
     const releases = await makeFetchAllReleasesUseCase().execute(dto);
 
+    await new Promise((resolve) => setTimeout(resolve, 5000));
+
     return {
-      success: true,
       releases: releases.map((release) => ({
         id: release.id,
         title: release.title,
@@ -27,16 +26,16 @@ export default async function fetchAllReleasesAction(
         fullDescription: release.fullDescription,
         version: release.version,
         projectId: release.projectId,
+        baseBranch: release.baseBranch,
+        headBranch: release.headBranch,
+        availableAt: release.availableAt,
         createdAt: release.createdAt,
         updatedAt: release.updatedAt,
       })),
     };
   } catch (error) {
-    const { message } = handleError(error, 'fetchAllReleasesAction');
-
     return {
-      success: false,
-      message,
+      releases: [],
     };
   }
 }
