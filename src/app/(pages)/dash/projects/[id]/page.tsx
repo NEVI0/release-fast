@@ -1,9 +1,11 @@
+import { Suspense } from 'react';
+
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Plus } from 'lucide-react';
 
 import { DOCUMENT_HEAD } from '@app/constants/document-head';
-import { fetchProjectByIdAction } from '@app/actions';
+import { fetchAllReleasesAction, fetchProjectByIdAction } from '@app/actions';
 
 import { ErrorStatus } from '@app/components/common';
 import { Button, HorizontalDivider } from '@app/components/ui';
@@ -43,11 +45,24 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     );
   }
 
+  const { releases } = await fetchAllReleasesAction({ projectId: project.id });
+
+  const columns = [
+    { id: 'title', children: 'Título' },
+    { id: 'version', children: 'Versão' },
+    { id: 'createdAt', children: 'Criação em' },
+    { id: 'updatedAt', children: 'Última atualização em' },
+    { id: 'edit', children: 'Editar', center: true },
+    { id: 'details', children: 'Detalhes', center: true },
+  ];
+
   return (
     <>
       <Header project={project} />
       <Cards project={project} />
-      <List project={project} />
+
+      <List columns={columns} project={project} releases={releases} />
+
       <HorizontalDivider />
       <Settings project={project} />
     </>
