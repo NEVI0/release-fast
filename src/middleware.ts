@@ -7,12 +7,8 @@ export async function middleware(request: NextRequest) {
   const session = await auth();
   const pathname = request.nextUrl.pathname;
 
-  if (pathname.startsWith('/auth') && session) {
-    return NextResponse.redirect(new URL(getAppUrl('/dash')));
-  }
-
   if (pathname.startsWith('/dash') && !session) {
-    return NextResponse.redirect(new URL(getAppUrl('/auth')));
+    return NextResponse.redirect(new URL(getAppUrl('/')));
   }
 
   return NextResponse.next();
