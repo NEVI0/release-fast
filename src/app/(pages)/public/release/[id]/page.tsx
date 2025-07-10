@@ -1,6 +1,6 @@
 import { fetchReleaseByIdAction } from '@app/actions';
 
-import { Content } from './_components';
+import { Content, NotFound } from './_components';
 
 interface Params {
   id: string;
@@ -16,6 +16,6 @@ export default async function PublicReleasePage({
   const { id } = await params;
   const { release } = await fetchReleaseByIdAction({ id });
 
-  if (!release) return <p>nada</p>;
+  if (!release) return <NotFound />;
   return <Content release={release} />;
 }
