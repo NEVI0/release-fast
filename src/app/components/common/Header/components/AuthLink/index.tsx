@@ -1,9 +1,7 @@
 import Link from 'next/link';
 
 import { fetchUserSession } from '@app/actions';
-
-import { VerticalDivider } from '@app/components/ui';
-import { NavLink } from '..';
+import LoginLink from '../LoginLink';
 
 export default async function AuthLink() {
   const session = await fetchUserSession();
@@ -19,18 +17,5 @@ export default async function AuthLink() {
     );
   }
 
-  return (
-    <>
-      <NavLink href="/auth">Login</NavLink>
-
-      <VerticalDivider />
-
-      <Link
-        href="/auth/sign-up"
-        className="h-full flex items-center justify-center font-semibold underline text-primary"
-      >
-        Criar minha conta
-      </Link>
-    </>
-  );
+  return <LoginLink />;
 }
