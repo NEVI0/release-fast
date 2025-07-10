@@ -39,7 +39,7 @@ export default class PrismaReleaseRepository
         baseBranch: release.baseBranch,
         headBranch: release.headBranch,
         projectId: release.projectId,
-        availableAt: release.availableAt,
+        availableAt: new Date(release.availableAt),
       },
     });
 
