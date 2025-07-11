@@ -7,11 +7,11 @@ export default function HowItWorks() {
   return (
     <>
       <section className="flex flex-col items-center gap-8">
-        <h2 className="text-2xl font-bold">
-          Vamos lá! Click no vídeo abaixo para ter uma pequena amostra...
+        <h2 className="text-center text-2xl font-bold">
+          Click no vídeo abaixo para ter uma pequena amostra
         </h2>
 
-        <div className="w-[832px] h-[432px] bg-text-primary rounded-3xl flex items-center justify-center">
+        <div className="w-full h-[224px] md:w-[832px] md:h-[432px] bg-text-primary rounded-3xl flex items-center justify-center">
           <PlayCircle className="text-white size-8" />
         </div>
 
