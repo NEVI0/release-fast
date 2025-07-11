@@ -33,10 +33,10 @@ export default function Footer() {
 
       <ScrollToTopButton />
 
-      <div className="flex items-center justify-center w-full h-[50px] bg-border/25">
-        <div className="flex items-center justify-between h-full w-6xl px-8 mx-auto ">
+      <div className="flex items-center justify-center w-full md:h-[52px] py-4 bg-border/25">
+        <div className="flex flex-col-reverse md:flex-row items-center justify-between h-full w-6xl px-8 gap-4 mx-auto ">
           <small className="text-text-secondary text-sm">
-            &copy; Copyright Company name - {new Date().getFullYear()}
+            &copy; Copyright XCore S.A - {new Date().getFullYear()}
           </small>
 
           <nav className="flex items-center gap-4 h-full">
