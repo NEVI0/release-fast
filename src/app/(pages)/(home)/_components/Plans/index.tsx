@@ -37,7 +37,7 @@ export default function Plans() {
       </div>
 
       <div className="flex flex-col items-center gap-2">
-        <p className="">
+        <p className="text-center">
           Comece agora a usar o release fast, em qualquer um dos planos acima
           você tem{' '}
           <strong className="font-semibold text-primary">

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { LOGO_DIMENSIONS } from '@app/constants/logo-dimensions';
 import { VerticalDivider } from '@app/components/ui';
 
-import { AuthLink, NavLink } from '../components';
+import { AuthLink, MobileMenu, NavLink } from '../components';
 
 export default function HomeHeader() {
   return (
@@ -19,7 +19,7 @@ export default function HomeHeader() {
           />
         </Link>
 
-        <nav className="flex items-center gap-4 h-full">
+        <nav className="hidden md:flex items-center gap-4 h-full">
           <NavLink href="/">Início</NavLink>
           <VerticalDivider />
           <NavLink href="/#how-it-works-section">Como funciona</NavLink>
@@ -30,6 +30,8 @@ export default function HomeHeader() {
           <VerticalDivider />
           <AuthLink />
         </nav>
+
+        <MobileMenu />
       </div>
     </header>
   );

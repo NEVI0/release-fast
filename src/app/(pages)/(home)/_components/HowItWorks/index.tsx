@@ -25,13 +25,13 @@ export default function HowItWorks() {
         </p>
       </section>
 
-      <section className="flex items-start justify-center gap-2">
+      <section className="grid grid-cols-2 md:flex md:flex-row md:items-start md:justify-center gap-2">
         <Flow
           icon={<Code2 className="text-primary size-7" />}
           text="Codifique uma alteração no seu software"
         />
 
-        <div className="pt-[40px]">
+        <div className="hidden md:block pt-[40px]">
           <div className="w-[32px] h-[1px] bg-primary rounded-xl" />
         </div>
 
@@ -40,7 +40,7 @@ export default function HowItWorks() {
           text="Atualize o repositório do seu software"
         />
 
-        <div className="pt-[40px]">
+        <div className="hidden md:block pt-[40px]">
           <div className="w-[32px] h-[1px] bg-primary rounded-xl" />
         </div>
 
@@ -49,7 +49,7 @@ export default function HowItWorks() {
           text="Gere um release note com a I.A"
         />
 
-        <div className="pt-[40px]">
+        <div className="hidden md:block pt-[40px]">
           <div className="w-[32px] h-[1px] bg-primary rounded-xl" />
         </div>
 
