@@ -29,7 +29,7 @@ export default function Info({
   children,
 }: InfoProps) {
   return (
-    <div className="flex flex-col items-center gap-4 w-[200px]">
+    <div className="flex flex-col items-center justify-center gap-4 w-[90%] md:w-[200px]">
       <div
         className={concatClasses(
           'flex items-center justify-center w-[152px] h-[152px] rounded-full',

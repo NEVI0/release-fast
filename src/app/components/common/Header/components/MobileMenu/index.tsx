@@ -28,7 +28,7 @@ export default function MobileMenu() {
         )}
       >
         <div className="flex items-center justify-between w-full h-[80px] border-b border-border px-8">
-          <h3 className="text-2xl font-bold">Menu</h3>
+          <h3 className="text-2xl font-semibold">Menu</h3>
           <IconButton icon={X} onClick={handleToggleMenu} />
         </div>
 

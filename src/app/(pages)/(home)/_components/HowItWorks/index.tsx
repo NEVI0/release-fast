@@ -29,6 +29,7 @@ export default function HowItWorks() {
         <Flow
           icon={<Code2 className="text-primary size-7" />}
           text="Codifique uma alteração no seu software"
+          index={1}
         />
 
         <div className="hidden md:block pt-[40px]">
@@ -38,6 +39,7 @@ export default function HowItWorks() {
         <Flow
           icon={<Github className="text-primary size-7" />}
           text="Atualize o repositório do seu software"
+          index={2}
         />
 
         <div className="hidden md:block pt-[40px]">
@@ -47,6 +49,7 @@ export default function HowItWorks() {
         <Flow
           icon={<BrainCircuit className="text-primary size-7" />}
           text="Gere um release note com a I.A"
+          index={3}
         />
 
         <div className="hidden md:block pt-[40px]">
@@ -56,6 +59,7 @@ export default function HowItWorks() {
         <Flow
           icon={<Smile className="text-primary size-7" />}
           text="Seu usuário final recebe uma notificação da sua alteração"
+          index={4}
         />
       </section>
 

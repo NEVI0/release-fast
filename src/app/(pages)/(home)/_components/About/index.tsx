@@ -6,9 +6,11 @@ import { Info } from './components';
 export default function Research() {
   return (
     <section className="flex flex-col items-center gap-8">
-      <h2 className="text-2xl font-bold">Mas por que dessa solução?? 🧐</h2>
+      <h2 className="text-center text-2xl font-bold">
+        Mas por que dessa solução?? 🧐
+      </h2>
 
-      <div className="flex items-start justify-center gap-8">
+      <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-8">
         <Info variant="secondary" value="53%">
           <p className="w-full text-center">
             Dos usuários de sistemas informaram que uma comunicação de qualidade

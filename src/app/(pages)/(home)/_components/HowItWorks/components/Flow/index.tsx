@@ -1,9 +1,10 @@
 interface FlowProps {
   text: string;
+  index: number;
   icon: React.ReactNode;
 }
 
-export default function Flow({ text, icon }: FlowProps) {
+export default function Flow({ text, index, icon }: FlowProps) {
   return (
     <div className="flex justify-center">
       <div className="flex flex-col items-center gap-4 w-[124px]">
@@ -11,7 +12,10 @@ export default function Flow({ text, icon }: FlowProps) {
           {icon}
         </div>
 
-        <p className="w-full text-primary text-center">{text}</p>
+        <p className="w-full text-primary text-center">
+          <strong>{index}. </strong>
+          {text}
+        </p>
       </div>
     </div>
   );
