@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Box, MessageSquare, Plus, Search } from 'lucide-react';
+import { Box, MessageSquare, Plus, Search, Trash2 } from 'lucide-react';
 
 import { SessionAbstract } from '@domain/entities';
 
@@ -140,6 +140,7 @@ export default function Form({ session }: FormProps) {
         <Link href="/dash/projects">
           <Button type="button" className="w-[184px]" disabled={isLoading}>
             Cancelar
+            <Button.Icon icon={Trash2} />
           </Button>
         </Link>
 
@@ -150,7 +151,7 @@ export default function Form({ session }: FormProps) {
           disabled={isLoading || !form.isValid}
         >
           {isLoading ? 'Criando...' : 'Criar projeto'}
-          <Button.Icon icon={Plus} />
+          <Button.Icon icon={Plus} loading={isLoading} />
         </Button>
       </div>
     </form>

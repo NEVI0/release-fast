@@ -13,6 +13,7 @@ import {
   GitCompareArrows,
   MessageSquare,
   Plus,
+  Trash2,
 } from 'lucide-react';
 
 import { ProjectAbstract, SessionAbstract } from '@domain/entities';
@@ -30,7 +31,6 @@ import { convertAiResult, getAiPrompt } from './helpers';
 import { useCompareBranches, useAiAgent } from './hooks';
 
 import { Button, HorizontalDivider, Input, Textarea } from '@app/components/ui';
-import { GenerateWithIAButton } from './components';
 
 interface FormProps {
   session: SessionAbstract;
@@ -129,7 +129,7 @@ export default function Form({ session, project }: FormProps) {
             type="text"
             label="Base branch"
             placeholder="E.g.: master"
-            className="w-full"
+            className="flex-1"
             icon={GitBranch}
             disabled={isComparing}
             required
@@ -141,7 +141,7 @@ export default function Form({ session, project }: FormProps) {
             type="text"
             label="Head branch"
             placeholder="E.g.: my-feature"
-            className="w-full"
+            className="flex-1"
             icon={GitBranch}
             disabled={isComparing}
             required
@@ -151,11 +151,11 @@ export default function Form({ session, project }: FormProps) {
           <Button
             type="submit"
             variant="primary"
-            className="w-[184px]"
+            className="w-[200px]"
             disabled={!branchesForm.isValid || isComparing}
           >
             {isComparing ? 'Comparing...' : 'Compare'}
-            <Button.Icon icon={GitCompareArrows} />
+            <Button.Icon icon={GitCompareArrows} loading={isComparing} />
           </Button>
         </div>
       </form>
@@ -214,7 +214,6 @@ export default function Form({ session, project }: FormProps) {
             type="text"
             label="Descrição breve"
             placeholder="Uma breve descrição da release"
-            rightButton={<GenerateWithIAButton />}
             icon={MessageSquare}
             required
             disabled={!alreadyComparatedBranches}
@@ -226,7 +225,6 @@ export default function Form({ session, project }: FormProps) {
             id="full-description"
             label="Descrição detalhada da sua release para o usuário final"
             placeholder="Uma descrição mais detalhada da release"
-            rightButton={<GenerateWithIAButton />}
             icon={FileText}
             required
             disabled={!alreadyComparatedBranches}
@@ -250,6 +248,7 @@ export default function Form({ session, project }: FormProps) {
           <Link href={`/dash/projects/${project.id}`}>
             <Button type="button" className="w-[184px]">
               Cancelar
+              <Button.Icon icon={Trash2} />
             </Button>
           </Link>
 
@@ -262,7 +261,7 @@ export default function Form({ session, project }: FormProps) {
             }
           >
             {isCreating ? 'Creating...' : 'Create release'}
-            <Button.Icon icon={Plus} />
+            <Button.Icon icon={Plus} loading={isCreating} />
           </Button>
         </div>
       </form>
