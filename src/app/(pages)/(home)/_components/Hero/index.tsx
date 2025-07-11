@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, CircleHelp } from 'lucide-react';
 
 import { Badge, Button } from '@app/components/ui';
 
@@ -25,7 +25,9 @@ export default function Hero() {
 
       <div className="flex flex-col md:flex-row items-center justify-center gap-4 relative z-10">
         <Link href="#how-it-works-section">
-          <Button className="w-[224px]">Como funciona</Button>
+          <Button className="w-[224px]">
+            Como funciona <Button.Icon icon={CircleHelp} />
+          </Button>
         </Link>
 
         <Link href="/auth/sign-up">
