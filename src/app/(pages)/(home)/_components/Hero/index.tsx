@@ -6,7 +6,7 @@ import { Badge, Button } from '@app/components/ui';
 export default function Hero() {
   return (
     <section className="relative flex flex-col gap-8 items-center justify-center h-[600px]">
-      <div className="flex flex-col gap-2 w-[80%] relative z-10">
+      <div className="flex flex-col gap-2 md:w-[80%] relative z-10">
         <div className="flex items-center justify-center mb-4">
           <Badge>🚀 Beta publico!</Badge>
         </div>
@@ -23,13 +23,13 @@ export default function Hero() {
         </h2>
       </div>
 
-      <div className="flex items-center justify-center gap-4 relative z-10">
+      <div className="flex flex-col md:flex-row items-center justify-center gap-4 relative z-10">
         <Link href="#how-it-works-section">
-          <Button>Como funciona</Button>
+          <Button className="w-[224px]">Como funciona</Button>
         </Link>
 
         <Link href="/auth/sign-up">
-          <Button variant="secondary">
+          <Button variant="secondary" className="w-[224px]">
             Comece de graça <Button.Icon icon={ArrowRight} />
           </Button>
         </Link>
