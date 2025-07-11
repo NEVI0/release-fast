@@ -1,7 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { LOGO_DIMENSIONS } from '@app/constants/logo-dimensions';
 import { VerticalDivider } from '@app/components/ui';
+
 import { AuthLink, NavLink } from '../components';
 
 export default function HomeHeader() {
@@ -12,8 +14,8 @@ export default function HomeHeader() {
           <Image
             src="/images/logo-dark.png"
             alt="Release Fast Logo"
-            width={198}
-            height={36}
+            width={LOGO_DIMENSIONS['normal'].width}
+            height={LOGO_DIMENSIONS['normal'].height}
           />
         </Link>
 

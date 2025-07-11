@@ -2,6 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { concatClasses } from '@app/helpers';
+import { LOGO_DIMENSIONS } from '@app/constants/logo-dimensions';
+
 import { HorizontalDivider, Skeleton } from '@app/components/ui';
 
 const SHORT_DESCRIPTION_LENGTH = 3;
@@ -83,13 +85,13 @@ export default function LoadingContent() {
           rel="noopener noreferrer"
           className="h-full flex flex-col md:items-end"
         >
-          <small className="text-text-secondary">Powed by</small>
+          <small className="text-text-secondary">Powered by</small>
 
           <Image
             src="/images/logo-dark.png"
             alt="Release Fast Logo"
-            width={120}
-            height={24}
+            width={LOGO_DIMENSIONS['small'].width}
+            height={LOGO_DIMENSIONS['small'].height}
           />
         </Link>
       </footer>

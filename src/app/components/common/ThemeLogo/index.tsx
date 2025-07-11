@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { LOGO_DIMENSIONS } from '@app/constants/logo-dimensions';
 import { useTheme } from '@app/contexts';
 
 interface ThemeLogoProps {
@@ -15,8 +16,8 @@ interface ThemeLogoProps {
 }
 
 export default function ThemeLogo({
-  width = 198,
-  height = 36,
+  width = LOGO_DIMENSIONS['small'].width,
+  height = LOGO_DIMENSIONS['small'].height,
   alt = 'Release Fast Logo',
   href,
   className = '',

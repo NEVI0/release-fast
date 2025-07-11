@@ -8,6 +8,7 @@ import { Share2Icon } from 'lucide-react';
 import { ReleaseAbstract } from '@domain/entities';
 import { useToast } from '@app/hooks';
 import { formatDate } from '@app/helpers';
+import { LOGO_DIMENSIONS } from '@app/constants/logo-dimensions';
 
 import { HorizontalDivider, IconButton } from '@app/components/ui';
 
@@ -97,8 +98,8 @@ export default function Content({ release }: ContentProps) {
           <Image
             src="/images/logo-dark.png"
             alt="Release Fast Logo"
-            width={120}
-            height={24}
+            width={LOGO_DIMENSIONS['small'].width}
+            height={LOGO_DIMENSIONS['small'].height}
           />
         </Link>
       </footer>
