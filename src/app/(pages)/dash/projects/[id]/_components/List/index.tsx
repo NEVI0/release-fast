@@ -23,7 +23,7 @@ export default function List({ columns, project, releases }: ListProps) {
         <Link href={`/dash/projects/${project.id}/create-release`}>
           <Button variant="primary">
             Adicionar nova release
-            <Plus className="size-5" />
+            <Button.Icon icon={Plus} />
           </Button>
         </Link>
       </ErrorStatus>
@@ -41,7 +41,7 @@ export default function List({ columns, project, releases }: ListProps) {
         <Link href={`/dash/projects/${project.id}/create-release`}>
           <Button>
             Adicionar nova release
-            <Plus className="size-5" />
+            <Button.Icon icon={Plus} />
           </Button>
         </Link>
       </div>

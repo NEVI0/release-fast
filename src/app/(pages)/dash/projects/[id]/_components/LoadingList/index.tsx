@@ -27,7 +27,7 @@ export default function LoadingList({ columns, project }: LoadingListProps) {
         <Link href={`/dash/projects/${project.id}/create-release`}>
           <Button>
             Adicionar nova release
-            <Plus className="size-5" />
+            <Button.Icon icon={Plus} />
           </Button>
         </Link>
       </div>

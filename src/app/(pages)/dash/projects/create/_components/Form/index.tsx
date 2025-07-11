@@ -150,7 +150,7 @@ export default function Form({ session }: FormProps) {
           disabled={isLoading || !form.isValid}
         >
           {isLoading ? 'Criando...' : 'Criar projeto'}
-          <Plus className="size-5" />
+          <Button.Icon icon={Plus} />
         </Button>
       </div>
     </form>

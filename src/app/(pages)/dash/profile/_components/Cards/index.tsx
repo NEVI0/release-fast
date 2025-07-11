@@ -30,7 +30,7 @@ export default function Cards({ user }: CardsProps) {
       <Card title="E-mail da conta" value={user.email} icon={Mail}>
         {true ? (
           <Button variant="primary">
-            Verificar e-mail <MailCheck className="size-5" />
+            Verificar e-mail <Button.Icon icon={MailCheck} />
           </Button>
         ) : (
           <Badge variant="success">E-mail verificado ✔</Badge>

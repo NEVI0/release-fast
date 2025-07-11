@@ -31,7 +31,7 @@ export default function Settings({ project }: SettingsProps) {
               description="Edite os dados do projeto"
             >
               <Button>
-                Editar projeto <Edit3 className="size-5" />
+                Editar projeto <Button.Icon icon={Edit3} />
               </Button>
             </Setting>
           </li>
@@ -45,7 +45,7 @@ export default function Settings({ project }: SettingsProps) {
                 variant="danger"
                 onClick={() => setIsDeleteProjectModalOpen(true)}
               >
-                Excluir projeto <Trash2 className="size-5" />
+                Excluir projeto <Button.Icon icon={Trash2} />
               </Button>
             </Setting>
           </li>

@@ -39,7 +39,7 @@ export default function Settings({ user }: SettingsProps) {
               description="Edite os dados da sua conta (nome, e-mail, etc.)"
             >
               <Button>
-                Editar conta <Edit3 className="size-5" />
+                Editar conta <Button.Icon icon={Edit3} />
               </Button>
             </Setting>
           </li>
@@ -50,7 +50,7 @@ export default function Settings({ user }: SettingsProps) {
               description="Gerencie seus planos e assinaturas"
             >
               <Button>
-                Gerenciar planos <ExternalLink className="size-5" />
+                Gerenciar planos <Button.Icon icon={ExternalLink} />
               </Button>
             </Setting>
           </li>
@@ -64,7 +64,7 @@ export default function Settings({ user }: SettingsProps) {
                 variant="danger"
                 onClick={() => setIsDeleteAccountModalOpen(true)}
               >
-                Excluir conta <Trash2 className="size-5" />
+                Excluir conta <Button.Icon icon={Trash2} />
               </Button>
             </Setting>
           </li>

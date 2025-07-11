@@ -38,7 +38,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <Link href="/dash/projects/create">
           <Button variant="primary">
             Adicionar novo projeto
-            <Plus className="size-5" />
+            <Button.Icon icon={Plus} />
           </Button>
         </Link>
       </ErrorStatus>

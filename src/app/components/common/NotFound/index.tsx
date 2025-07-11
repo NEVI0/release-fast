@@ -24,7 +24,7 @@ export default function NotFound({
 
       <Link href="/">
         <Button>
-          Ir para o ínicio <Home className="size-5" />
+          Ir para o ínicio <Button.Icon icon={Home} />
         </Button>
       </Link>
     </div>

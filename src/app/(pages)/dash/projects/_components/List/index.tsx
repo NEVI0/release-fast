@@ -28,7 +28,7 @@ export default async function List({ session, columns }: ListProps) {
         <Link href="/dash/projects/create">
           <Button variant="primary">
             Adicionar novo projeto
-            <Plus className="size-5" />
+            <Button.Icon icon={Plus} />
           </Button>
         </Link>
       </ErrorStatus>
@@ -49,7 +49,7 @@ export default async function List({ session, columns }: ListProps) {
         <Link href="/dash/projects/create">
           <Button>
             Adicionar novo projeto
-            <Plus className="size-5" />
+            <Button.Icon icon={Plus} />
           </Button>
         </Link>
       </div>

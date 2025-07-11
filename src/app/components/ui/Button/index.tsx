@@ -1,11 +1,16 @@
 import { concatClasses } from '@app/helpers';
+import { Icon } from './components';
 
 export type ButtonVariant = 'default' | 'primary' | 'secondary' | 'danger';
 
-interface ButtonProps {
-  children: React.ReactNode;
-  variant?: ButtonVariant;
-}
+type ButtonProps = React.FC<
+  {
+    children: React.ReactNode;
+    variant?: ButtonVariant;
+  } & React.ButtonHTMLAttributes<HTMLButtonElement>
+> & {
+  Icon: typeof Icon;
+};
 
 const BUTTON_VARIANT: Record<ButtonVariant, string> = {
   default:
@@ -18,12 +23,12 @@ const BUTTON_VARIANT: Record<ButtonVariant, string> = {
     'text-text-primary bg-container border border-border disabled:text-text-secondary enabled:hover:text-red-600 enabled:hover:border-red-600 enabled:focus:text-red-600 enabled:focus:border-red-600',
 };
 
-export default function Button({
+const Button: ButtonProps = ({
   children,
   type = 'button',
   variant = 'default',
   ...props
-}: ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>) {
+}) => {
   return (
     <button
       {...props}
@@ -36,4 +41,11 @@ export default function Button({
       {children}
     </button>
   );
-}
+};
+
+Button.displayName = 'Button';
+
+Button.Icon = Icon;
+Button.Icon.displayName = 'Button.Icon';
+
+export default Button;

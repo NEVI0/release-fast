@@ -30,7 +30,7 @@ export default function Hero() {
 
         <Link href="/auth/sign-up">
           <Button variant="secondary">
-            Comece de graça <ArrowRight className="size-5" />
+            Comece de graça <Button.Icon icon={ArrowRight} />
           </Button>
         </Link>
       </div>

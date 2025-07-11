@@ -155,7 +155,7 @@ export default function Form({ session, project }: FormProps) {
             disabled={!branchesForm.isValid || isComparing}
           >
             {isComparing ? 'Comparing...' : 'Compare'}
-            <GitCompareArrows className="size-5" />
+            <Button.Icon icon={GitCompareArrows} />
           </Button>
         </div>
       </form>
@@ -262,7 +262,7 @@ export default function Form({ session, project }: FormProps) {
             }
           >
             {isCreating ? 'Creating...' : 'Create release'}
-            <Plus className="size-5" />
+            <Button.Icon icon={Plus} />
           </Button>
         </div>
       </form>
