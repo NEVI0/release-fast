@@ -1,12 +1,5 @@
 import { HorizontalDivider } from '@app/components/ui';
-import {
-  Hero,
-  HowItWorks,
-  Mention,
-  About,
-  Plans,
-  TrianglesShapes,
-} from './_components';
+import { Hero, HowItWorks, About, Plans, TrianglesShapes } from './_components';
 
 export default function HomePage() {
   return (
@@ -19,8 +12,6 @@ export default function HomePage() {
       <About />
       <HorizontalDivider id="plans-section" />
       <Plans />
-      <HorizontalDivider />
-      <Mention />
     </>
   );
 }
