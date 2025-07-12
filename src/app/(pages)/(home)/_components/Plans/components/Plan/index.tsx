@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Check } from 'lucide-react';
 
 import { Badge, Button } from '@app/components/ui';
@@ -59,9 +60,14 @@ export default function Plan({
         </ul>
       </div>
 
-      <Button variant={variant === 'main' ? 'primary' : 'default'}>
-        Start now for free
-      </Button>
+      <Link href="/access">
+        <Button
+          variant={variant === 'main' ? 'primary' : 'default'}
+          className="w-full"
+        >
+          Start now for free
+        </Button>
+      </Link>
     </div>
   );
 }
