@@ -3,6 +3,7 @@ import NextAuth from 'next-auth';
 import Github from 'next-auth/providers/github';
 import Gitlab from 'next-auth/providers/gitlab';
 
+import { PlanType } from '@domain/entities';
 import { FREE_TRIAL_DAYS } from '@domain/constants/plan';
 
 import { PrismaAdapter } from '@auth/prisma-adapter';
@@ -34,7 +35,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         const { sub, plan, createdAt, username } = token;
 
         session.user.id = sub as string;
-        session.user.plan = plan as string;
+        session.user.plan = plan as PlanType;
         session.user.createdAt = createdAt as string;
         (session.user as any).username = username;
         session.user.isFreeTrial = createdAt
