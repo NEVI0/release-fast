@@ -7,6 +7,13 @@ export default class FetchUserRepositoriesUseCase {
   ) {}
 
   public async execute(dto: FetchUserRepositoriesDTO) {
+    this.validateDto(dto);
     return this.userRepoRepository.findAll(dto.user, dto.search);
+  }
+
+  private validateDto(dto: FetchUserRepositoriesDTO) {
+    if (!dto.user) {
+      throw new Error('The user is required');
+    }
   }
 }
