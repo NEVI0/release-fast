@@ -1,4 +1,5 @@
 import { PlanAbstract } from '@domain/entities';
+import { PRICES_BY_PLAN } from '@domain/constants/plan';
 
 export default class FetchPlansUseCase {
   constructor() {}
@@ -7,7 +8,7 @@ export default class FetchPlansUseCase {
     const starter: PlanAbstract = {
       id: this.generateId(),
       type: 'starter',
-      price: 5,
+      price: PRICES_BY_PLAN['starter'].value,
       freeTrialDays: 7,
       features: [
         'Up to 3 projects',
@@ -19,7 +20,7 @@ export default class FetchPlansUseCase {
     const pro: PlanAbstract = {
       id: this.generateId(),
       type: 'pro',
-      price: 15,
+      price: PRICES_BY_PLAN['pro'].value,
       freeTrialDays: 7,
       features: [
         'Up to 15 projects',
@@ -33,7 +34,7 @@ export default class FetchPlansUseCase {
     const enterprise: PlanAbstract = {
       id: this.generateId(),
       type: 'enterprise',
-      price: 50,
+      price: PRICES_BY_PLAN['enterprise'].value,
       freeTrialDays: 7,
       features: [
         'Unlimited projects',

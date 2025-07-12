@@ -3,7 +3,7 @@ import NextAuth from 'next-auth';
 import Github from 'next-auth/providers/github';
 import Gitlab from 'next-auth/providers/gitlab';
 
-import { FREE_TRIAL_DAYS } from '@domain/constants/trial';
+import { FREE_TRIAL_DAYS } from '@domain/constants/plan';
 
 import { PrismaAdapter } from '@auth/prisma-adapter';
 import { prisma } from './prisma';

@@ -4,6 +4,7 @@ import { fetchUserSession } from '@app/actions';
 
 import { VerticalDivider } from '@app/components/ui';
 import { ThemeLogo } from '@app/components/common';
+
 import { LogoutLink, NavLink } from '../components';
 
 export default async function DashHeader() {
@@ -20,7 +21,10 @@ export default async function DashHeader() {
               <strong className="font-semibold">free</strong> plan
             </p>
 
-            <Link href="/dash/profile" className="font-semibold underline">
+            <Link
+              href="/dash/profile#plans-and-subscriptions"
+              className="font-semibold underline"
+            >
               Click here to upgrade your plan! 🚀
             </Link>
           </div>

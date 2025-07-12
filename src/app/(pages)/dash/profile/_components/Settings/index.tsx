@@ -44,7 +44,7 @@ export default function Settings({ user }: SettingsProps) {
             </Setting>
           </li>
 
-          <li>
+          <li id="plans-and-subscriptions">
             <Setting
               title="Plans and subscriptions"
               description="Manage your plans and subscriptions"
