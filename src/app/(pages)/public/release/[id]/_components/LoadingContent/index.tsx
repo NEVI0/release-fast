@@ -23,7 +23,7 @@ export default function LoadingContent() {
 
       <div className="flex-1 flex flex-col gap-8">
         <section className="flex flex-col gap-2">
-          <h3 className="font-semibold text-lg">Breve descrição</h3>
+          <h3 className="font-semibold text-lg">Short description</h3>
 
           {new Array(SHORT_DESCRIPTION_LENGTH).fill(0).map((_, index) => {
             const isLast = index + 1 === SHORT_DESCRIPTION_LENGTH;
@@ -41,7 +41,7 @@ export default function LoadingContent() {
         </section>
 
         <section className="flex flex-col gap-2">
-          <h3 className="font-semibold text-lg">Descrição completa</h3>
+          <h3 className="font-semibold text-lg">Full description</h3>
 
           {new Array(FULL_DESCRIPTION_LENGTH).fill(0).map((_, index) => {
             const isLast = index + 1 === FULL_DESCRIPTION_LENGTH;
@@ -59,7 +59,7 @@ export default function LoadingContent() {
         </section>
 
         <section className="flex flex-col gap-2">
-          <h3 className="font-semibold text-lg">Disponibilizado em</h3>
+          <h3 className="font-semibold text-lg">Released on</h3>
           <Skeleton className="w-[224px] h-[24px]" />
         </section>
       </div>
@@ -69,12 +69,12 @@ export default function LoadingContent() {
       <footer className="flex flex-col gap-4 items-start md:flex-row md:items-center md:justify-between">
         <div className="flex flex-col">
           <small className="text-sm text-text-secondary flex items-center gap-2">
-            <strong className="font-semibold">Criado em:</strong>{' '}
+            <strong className="font-semibold">Created on:</strong>{' '}
             <Skeleton className="w-[124px] h-[16px] rounded-sm" />
           </small>
 
           <small className="text-sm text-text-secondary flex items-center gap-2">
-            <strong className="font-semibold">Última atualização em:</strong>{' '}
+            <strong className="font-semibold">Last updated on:</strong>{' '}
             <Skeleton className="w-[124px] h-[16px] rounded-sm" />
           </small>
         </div>

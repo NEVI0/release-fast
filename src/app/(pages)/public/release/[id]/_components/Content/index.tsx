@@ -45,7 +45,7 @@ export default function Content({ release }: ContentProps) {
 
       <div className="flex-1 flex flex-col gap-8">
         <section className="flex flex-col gap-2">
-          <h3 className="font-semibold text-lg">Breve descrição</h3>
+          <h3 className="font-semibold text-lg">Short description</h3>
 
           {release.shortDescription.split('\n').map((line, index) => (
             <p key={index} className="w-full">
@@ -55,7 +55,7 @@ export default function Content({ release }: ContentProps) {
         </section>
 
         <section className="flex flex-col gap-2">
-          <h3 className="font-semibold text-lg">Descrição completa</h3>
+          <h3 className="font-semibold text-lg">Full description</h3>
 
           {release.fullDescription.split('\n').map((line, index) => (
             <p key={index} className="w-full">
@@ -65,7 +65,7 @@ export default function Content({ release }: ContentProps) {
         </section>
 
         <section className="flex flex-col gap-2">
-          <h3 className="font-semibold text-lg">Disponibilizado em</h3>
+          <h3 className="font-semibold text-lg">Released on</h3>
           <p className="w-full">
             {formatDate(release.availableAt, 'DD of MMMM of YYYY')}
           </p>
@@ -77,13 +77,13 @@ export default function Content({ release }: ContentProps) {
       <footer className="flex flex-col gap-4 items-start md:flex-row md:items-center md:justify-between">
         <div className="flex flex-col">
           <small className="text-sm text-text-secondary">
-            <strong className="font-semibold">Criado em:</strong>{' '}
-            {formatDate(release.createdAt, 'DD of MMMM of YYYY')}
+            <strong className="font-semibold">Created on:</strong>{' '}
+            {formatDate(release.createdAt, 'MMMM DD, YYYY')}
           </small>
 
           <small className="text-sm text-text-secondary">
-            <strong className="font-semibold">Última atualização em:</strong>{' '}
-            {formatDate(release.updatedAt, 'DD of MMMM of YYYY')}
+            <strong className="font-semibold">Last updated on:</strong>{' '}
+            {formatDate(release.updatedAt, 'MMMM DD, YYYY')}
           </small>
         </div>
 
@@ -93,7 +93,7 @@ export default function Content({ release }: ContentProps) {
           rel="noopener noreferrer"
           className="h-full flex flex-col md:items-end"
         >
-          <small className="text-text-secondary">Powed by</small>
+          <small className="text-text-secondary">Powered by</small>
 
           <Image
             src="/images/logo-dark.png"
