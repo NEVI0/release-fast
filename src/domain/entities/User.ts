@@ -6,7 +6,7 @@ export interface UserAbstract {
   email: string;
   emailVerified?: Date;
   image?: string;
-  plan?: PlanType;
+  plan: PlanType;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -27,8 +27,8 @@ export default class User implements UserAbstract {
   public name: UserAbstract['name'];
   public email: UserAbstract['email'];
   public emailVerified?: UserAbstract['emailVerified'];
-  public image?: UserAbstract['image'];
-  public plan?: UserAbstract['plan'];
+  public image: UserAbstract['image'];
+  public plan: UserAbstract['plan'];
   public createdAt: UserAbstract['createdAt'];
   public updatedAt: UserAbstract['updatedAt'];
 
