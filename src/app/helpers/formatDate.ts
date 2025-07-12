@@ -1,6 +1,6 @@
-type Display = 'DD of MMMM of YYYY' | 'DD/MM/YY HHhmm';
+type Display = 'DD/MM/YY HHhmm' | 'DD of MMMM of YYYY' | 'MMMM DD, YYYY';
 
-const MONTHS = [
+const SHORT_MONTHS = [
   'Jan.',
   'Fev.',
   'Mar.',
@@ -13,6 +13,21 @@ const MONTHS = [
   'Out.',
   'Nov.',
   'Dez.',
+];
+
+const FULL_MONTHS = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
 ];
 
 export default function formatDate(
@@ -35,8 +50,13 @@ export default function formatDate(
     const minutes = dateObj.getMinutes().toString().padStart(2, '0');
 
     if (display === 'DD of MMMM of YYYY') {
-      const monthName = MONTHS[dateObj.getMonth()];
+      const monthName = SHORT_MONTHS[dateObj.getMonth()];
       return `${day} de ${monthName} de ${year}`;
+    }
+
+    if (display === 'MMMM DD, YYYY') {
+      const monthName = FULL_MONTHS[dateObj.getMonth()];
+      return `${monthName} ${day}, ${year}`;
     }
 
     return `${day}/${month}/${shortYear} ${hours}h${minutes}`;
