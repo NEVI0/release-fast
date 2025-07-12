@@ -44,7 +44,7 @@ export default function Select({
 
       <BaseSelect required={required}>
         <BaseSelectTrigger className="flex items-center justify-between">
-          <BaseSelectValue placeholder={placeholder || 'Selecionar'} />
+          <BaseSelectValue placeholder={placeholder || 'Select'} />
         </BaseSelectTrigger>
 
         <BaseSelectContent>
