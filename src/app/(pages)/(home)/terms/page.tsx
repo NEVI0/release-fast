@@ -1,6 +1,8 @@
 import { ChevronRight } from 'lucide-react';
 
+import { formatDate } from '@app/helpers';
 import { LINKS } from '@app/constants/links';
+
 import { Breadcrumb } from '@app/components/ui';
 
 export default function TermsPage() {
@@ -8,32 +10,31 @@ export default function TermsPage() {
     <>
       <Breadcrumb
         items={[
-          { label: 'Início', href: '/' },
-          { label: 'Termos e Condições de Uso', href: '/terms' },
+          { label: 'Home', href: '/' },
+          { label: 'Terms and Conditions of Use', href: '/terms' },
         ]}
       />
 
       <div className="flex flex-col gap-8">
-        <h1 className="text-2xl font-bold">Termos e Condições de Uso</h1>
+        <h1 className="text-2xl font-bold">Terms and Conditions of Use</h1>
 
         <section className="flex flex-col gap-4">
-          <h3 className="text-lg font-bold">1. Aceitação dos Termos</h3>
+          <h3 className="text-lg font-semibold">1. Acceptance of Terms</h3>
 
           <p>
-            Ao acessar e utilizar o Release Fast, você concorda em cumprir e
-            ficar vinculado aos seguintes termos e condições de uso. Se você não
-            concordar com qualquer parte destes termos, não deverá utilizar
-            nossa plataforma.
+            By accessing and using Release Fast, you agree to comply with and be
+            bound by these Terms and Conditions of Use. If you do not agree with
+            any part of these terms, you should not use our platform.
           </p>
         </section>
 
         <section className="flex flex-col gap-4">
-          <h3 className="text-lg font-bold">2. Uso do Serviço</h3>
+          <h3 className="text-lg font-semibold">2. Use of the Service</h3>
 
           <p>
-            O Release Fast é uma plataforma para compartilhamento de conteúdo e
-            interação entre usuários. Ao utilizar nossos serviços, você concorda
-            em:
+            Release Fast is a platform designed to help teams manage, document,
+            and share software releases efficiently. By using our services, you
+            agree to:
           </p>
 
           <ul className="flex flex-col gap-1">
@@ -41,198 +42,177 @@ export default function TermsPage() {
               <div>
                 <ChevronRight className="text-primary size-4" />
               </div>
-              Fornecer informações verdadeiras e precisas durante o cadastro;
+              Provide accurate and truthful information during registration;
             </li>
-
             <li className="flex items-center gap-4">
               <div>
                 <ChevronRight className="text-primary size-4" />
               </div>
-              Manter suas credenciais de acesso em segurança;
+              Keep your login credentials secure and confidential;
             </li>
-
             <li className="flex items-center gap-4">
               <div>
                 <ChevronRight className="text-primary size-4" />
               </div>
-              Não compartilhar sua conta com terceiros;
+              Not share your account with third parties;
             </li>
-
             <li className="flex items-center gap-4">
               <div>
                 <ChevronRight className="text-primary size-4" />
               </div>
-              Respeitar outros usuários e suas opiniões;
+              Respect other users and their contributions;
             </li>
-
             <li className="flex items-center gap-4">
               <div>
                 <ChevronRight className="text-primary size-4" />
               </div>
-              Não publicar conteúdo ilegal, ofensivo ou inadequado;
+              Not publish illegal, offensive, or inappropriate content;
             </li>
           </ul>
         </section>
 
         <section className="flex flex-col gap-4">
-          <h3 className="text-lg font-bold">3. Conteúdo do Usuário</h3>
+          <h3 className="text-lg font-semibold">3. User Content</h3>
 
-          <p>Ao publicar conteúdo em nossa plataforma, você:</p>
+          <p>By publishing content on Release Fast, you:</p>
 
           <ul className="flex flex-col gap-1">
             <li className="flex items-center gap-4">
               <div>
                 <ChevronRight className="text-primary size-4" />
               </div>
-              Mantém seus direitos autorais sobre o conteúdo;
+              Retain copyright over your content;
             </li>
-
             <li className="flex items-center gap-4">
               <div>
                 <ChevronRight className="text-primary size-4" />
               </div>
-              Concede ao Release Fast uma licença não exclusiva para usar,
-              modificar e distribuir seu conteúdo;
+              Grant Release Fast a non-exclusive license to use, modify, and
+              distribute your content for the purpose of providing and improving
+              the service;
             </li>
-
             <li className="flex items-center gap-4">
               <div>
                 <ChevronRight className="text-primary size-4" />
               </div>
-              É responsável por todo o conteúdo que publica;
+              Are responsible for all content you publish;
             </li>
-
             <li className="flex items-center gap-4">
               <div>
                 <ChevronRight className="text-primary size-4" />
               </div>
-              Garante que possui todos os direitos necessários para compartilhar
-              o conteúdo;
+              Ensure you have all necessary rights to share the content;
             </li>
           </ul>
         </section>
 
         <section className="flex flex-col gap-4">
-          <h3 className="text-lg font-bold">4. Conduta do Usuário</h3>
+          <h3 className="text-lg font-semibold">4. User Conduct</h3>
 
-          <p>É proibido:</p>
+          <p>It is prohibited to:</p>
 
           <ul className="flex flex-col gap-1">
             <li className="flex items-center gap-4">
               <div>
                 <ChevronRight className="text-primary size-4" />
               </div>
-              Publicar conteúdo ilegal, difamatório, obsceno ou ofensivo;
+              Publish illegal, defamatory, obscene, or offensive content;
             </li>
-
             <li className="flex items-center gap-4">
               <div>
                 <ChevronRight className="text-primary size-4" />
               </div>
-              Utilizar a plataforma para spam ou propaganda não autorizada;
+              Use the platform for spam or unauthorized advertising;
             </li>
-
             <li className="flex items-center gap-4">
               <div>
                 <ChevronRight className="text-primary size-4" />
               </div>
-              Violar direitos de propriedade intelectual de terceiros;
+              Violate third-party intellectual property rights;
             </li>
-
             <li className="flex items-center gap-4">
               <div>
                 <ChevronRight className="text-primary size-4" />
               </div>
-              Realizar atividades que possam danificar ou sobrecarregar nossos
-              sistemas;
+              Engage in activities that may damage or overload our systems;
             </li>
-
             <li className="flex items-center gap-4">
               <div>
                 <ChevronRight className="text-primary size-4" />
               </div>
-              Coletar dados de outros usuários sem autorização;
+              Collect data from other users without authorization;
             </li>
           </ul>
         </section>
 
         <section className="flex flex-col gap-4">
-          <h3 className="text-lg font-bold">5. Privacidade e Dados</h3>
+          <h3 className="text-lg font-semibold">5. Privacy and Data</h3>
 
           <p>
-            Nossa política de privacidade descreve como coletamos, usamos e
-            protegemos suas informações pessoais. Ao utilizar nossa plataforma,
-            você concorda com nossas práticas de privacidade conforme descrito
-            em nossa Política de Privacidade.
+            Our Privacy Policy describes how we collect, use, and protect your
+            personal information. By using our platform, you agree to our
+            privacy practices as described in our Privacy Policy.
           </p>
         </section>
 
         <section className="flex flex-col gap-4">
-          <h3 className="text-lg font-bold">6. Modificações dos Termos</h3>
+          <h3 className="text-lg font-semibold">6. Changes to the Terms</h3>
 
           <p>
-            Reservamo-nos o direito de modificar estes termos a qualquer
-            momento. As alterações entrarão em vigor imediatamente após sua
-            publicação. O uso continuado da plataforma após as modificações
-            constitui aceitação dos novos termos.
+            We reserve the right to modify these terms at any time. Changes will
+            take effect immediately upon publication. Continued use of the
+            platform after changes constitutes acceptance of the new terms.
           </p>
         </section>
 
         <section className="flex flex-col gap-4">
-          <h3 className="text-lg font-bold">
-            7. Limitação de Responsabilidade
-          </h3>
+          <h3 className="text-lg font-semibold">7. Limitation of Liability</h3>
 
-          <p>O Release Fast não se responsabiliza por:</p>
+          <p>Release Fast is not responsible for:</p>
 
           <ul className="flex flex-col gap-1">
             <li className="flex items-center gap-4">
               <div>
                 <ChevronRight className="text-primary size-4" />
               </div>
-              Conteúdo gerado por usuários;
+              Content generated by users;
             </li>
-
             <li className="flex items-center gap-4">
               <div>
                 <ChevronRight className="text-primary size-4" />
               </div>
-              Danos causados por uso inadequado da plataforma;
+              Damages caused by improper use of the platform;
             </li>
-
             <li className="flex items-center gap-4">
               <div>
                 <ChevronRight className="text-primary size-4" />
               </div>
-              Interrupções temporárias do serviço;
+              Temporary service interruptions;
             </li>
-
             <li className="flex items-center gap-4">
               <div>
                 <ChevronRight className="text-primary size-4" />
               </div>
-              Perda de dados ou conteúdo;
+              Loss of data or content;
             </li>
           </ul>
         </section>
 
         <section className="flex flex-col gap-4">
-          <h3 className="text-lg font-bold">8. Encerramento da Conta</h3>
+          <h3 className="text-lg font-semibold">8. Account Termination</h3>
 
           <p>
-            Reservamo-nos o direito de suspender ou encerrar contas que violem
-            estes termos ou que pratiquem condutas inadequadas. Você também pode
-            encerrar sua conta a qualquer momento através das configurações da
-            plataforma.
+            We reserve the right to suspend or terminate accounts that violate
+            these terms or engage in inappropriate conduct. You may also
+            terminate your account at any time through the platform settings.
           </p>
         </section>
 
         <section className="flex flex-col gap-4">
-          <h3 className="text-lg font-bold">9. Contato</h3>
+          <h3 className="text-lg font-semibold">9. Contact</h3>
 
           <p>
-            Para questões relacionadas a estes termos, entre em contato através
-            do email de{' '}
+            For questions regarding these terms, please contact us at{' '}
             <a href={`mailto:${LINKS.SUPPORT_EMAIL}`} className="text-primary">
               {LINKS.SUPPORT_EMAIL}
             </a>
@@ -241,8 +221,8 @@ export default function TermsPage() {
         </section>
       </div>
 
-      <small className="text-sm text-gray-600">
-        Última atualização: 18/06/2025
+      <small className="text-sm text-text-secondary">
+        Last updated: {formatDate(new Date('07-12-2025'), 'MMMM DD, YYYY')}
       </small>
     </>
   );
