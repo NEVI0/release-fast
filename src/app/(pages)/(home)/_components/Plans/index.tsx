@@ -17,8 +17,11 @@ export default function Plans() {
   return (
     <section className="flex flex-col items-center gap-8">
       <div className="flex flex-col items-center gap-2">
-        <h2 className="text-2xl font-bold">Preços simples e transparentes</h2>
-        <h3 className="text-xl font-semibold text-text-secondary ">
+        <h2 className="text-center text-2xl font-bold">
+          Preços simples e transparentes
+        </h2>
+
+        <h3 className="text-center text-xl font-semibold text-text-secondary ">
           Escolha o plano perfeito para o tamanho e as necessidades da sua
           equipe
         </h3>
