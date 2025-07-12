@@ -3,6 +3,7 @@ import 'server-only';
 import { Project } from '@domain/entities';
 import { UpdateProjectDTO } from '@domain/dtos';
 import { ProjectRepositoryAbstract } from '@domain/repositories';
+import { MAX_DESCRIPTION_LENGTH } from '@domain/constants/project';
 
 export default class UpdateProjectUseCase {
   constructor(private readonly projectRepository: ProjectRepositoryAbstract) {}
@@ -31,6 +32,12 @@ export default class UpdateProjectUseCase {
 
     if (!dto.description) {
       throw new Error('You must provide the project description');
+    }
+
+    if (dto.description.length > MAX_DESCRIPTION_LENGTH) {
+      throw new Error(
+        `The description should have less than ${MAX_DESCRIPTION_LENGTH} characters`
+      );
     }
 
     if (!dto.repository) {

@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import { Box, MessageSquare, Plus, Search, Trash2 } from 'lucide-react';
 
 import { SessionAbstract } from '@domain/entities';
+import { MAX_DESCRIPTION_LENGTH } from '@domain/constants/project';
 
 import {
   createProjectValidationSchema,
@@ -88,6 +89,12 @@ export default function Form({ session }: FormProps) {
           label="Project description"
           placeholder="A brief description of the project"
           icon={MessageSquare}
+          max={MAX_DESCRIPTION_LENGTH}
+          rightContent={
+            <small className="text-text-secondary text-sm">
+              {MAX_DESCRIPTION_LENGTH} characters max.
+            </small>
+          }
           required
           error={form.errors.description?.message}
           {...form.register('description')}

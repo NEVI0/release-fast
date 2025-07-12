@@ -1,8 +1,15 @@
+import { MAX_DESCRIPTION_LENGTH } from '@domain/constants/project';
 import { z } from 'zod';
 
 const createProjectValidationSchema = z.object({
   name: z.string().min(1, 'Name is required'),
-  description: z.string().min(1, 'Description is required'),
+  description: z
+    .string()
+    .min(1, 'Description is required')
+    .max(
+      MAX_DESCRIPTION_LENGTH,
+      `The description should have less than ${MAX_DESCRIPTION_LENGTH} characters`
+    ),
   repository: z.string().min(1, 'Repository is required'),
   repositoryUrl: z.string().min(1, 'Repository URL is required'),
 });
