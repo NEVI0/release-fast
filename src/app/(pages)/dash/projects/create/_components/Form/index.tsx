@@ -89,7 +89,7 @@ export default function Form({ session }: FormProps) {
           label="Project description"
           placeholder="A brief description of the project"
           icon={MessageSquare}
-          max={MAX_DESCRIPTION_LENGTH}
+          maxLength={MAX_DESCRIPTION_LENGTH}
           rightContent={
             <small className="text-text-secondary text-sm">
               {MAX_DESCRIPTION_LENGTH} characters max.
