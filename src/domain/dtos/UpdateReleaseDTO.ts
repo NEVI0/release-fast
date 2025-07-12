@@ -4,4 +4,7 @@ export default interface UpdateReleaseDTO {
   shortDescription: string;
   fullDescription: string;
   version: string;
+  baseBranch: string;
+  headBranch: string;
+  availableAt: Date | string;
 }
