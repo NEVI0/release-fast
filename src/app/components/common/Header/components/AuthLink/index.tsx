@@ -1,11 +1,13 @@
 import Link from 'next/link';
 
-import { fetchUserSession } from '@app/actions';
+import { SessionAbstract } from '@domain/entities';
 import LoginLink from '../LoginLink';
 
-export default async function AuthLink() {
-  const session = await fetchUserSession();
+interface AuthLinkProps {
+  session: SessionAbstract | null;
+}
 
+export default function AuthLink({ session }: AuthLinkProps) {
   if (session) {
     return (
       <Link

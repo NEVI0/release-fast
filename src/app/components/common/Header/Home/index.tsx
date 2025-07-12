@@ -5,8 +5,11 @@ import { LOGO_DIMENSIONS } from '@app/constants/logo-dimensions';
 import { VerticalDivider } from '@app/components/ui';
 
 import { AuthLink, MobileMenu, NavLink } from '../components';
+import { fetchUserSession } from '@app/actions';
 
-export default function HomeHeader() {
+export default async function HomeHeader() {
+  const session = await fetchUserSession();
+
   return (
     <header className="flex items-center justify-center w-full h-[80px] border-b border-border bg-container">
       <div className="flex items-center justify-between h-full w-6xl mx-auto px-6 md:px-8 ">
@@ -28,10 +31,10 @@ export default function HomeHeader() {
           <VerticalDivider />
           <NavLink href="/#plans-section">Planos</NavLink>
           <VerticalDivider />
-          <AuthLink />
+          <AuthLink session={session} />
         </nav>
 
-        <MobileMenu />
+        <MobileMenu session={session} />
       </div>
     </header>
   );

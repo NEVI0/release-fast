@@ -3,12 +3,19 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 
+import { SessionAbstract } from '@domain/entities';
+
 import { concatClasses } from '@app/helpers';
 import { IconButton } from '@app/components/ui';
 
+import AuthLink from '../AuthLink';
 import NavLink from '../NavLink';
 
-export default function MobileMenu() {
+interface MobileMenuProps {
+  session: SessionAbstract | null;
+}
+
+export default function MobileMenu({ session }: MobileMenuProps) {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   function handleToggleMenu() {
@@ -48,7 +55,8 @@ export default function MobileMenu() {
           <NavLink href="/#plans-section" onClick={handleToggleMenu}>
             Planos
           </NavLink>
-          {/* <AuthLink /> */}
+
+          <AuthLink session={session} />
         </nav>
       </aside>
     </>
