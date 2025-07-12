@@ -126,6 +126,6 @@ export default class FetchHttpProvider implements HttpProviderAbstract {
       throw new Error(error.message);
     }
 
-    throw new Error('Não foi possível realizar a requisição!');
+    throw new Error('Could not complete the request!');
   }
 }
