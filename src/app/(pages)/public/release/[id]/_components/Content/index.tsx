@@ -22,9 +22,9 @@ export default function Content({ release }: ContentProps) {
   async function handleCopyLink() {
     try {
       await navigator.clipboard.writeText(window.location.href);
-      toast.success('Link da página copiado!');
+      toast.success('Page link copied!');
     } catch (error) {
-      toast.error('Não foi possível copiar o link da página!');
+      toast.error('Could not copy the page link!');
     }
   }
 
