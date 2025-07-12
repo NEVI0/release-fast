@@ -23,13 +23,13 @@ export default async function HomeHeader() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-4 h-full">
-          <NavLink href="/">Início</NavLink>
+          <NavLink href="/">Home</NavLink>
           <VerticalDivider />
-          <NavLink href="/#how-it-works-section">Como funciona</NavLink>
+          <NavLink href="/#how-it-works-section">How it works</NavLink>
           <VerticalDivider />
-          <NavLink href="/#about-section">Sobre</NavLink>
+          <NavLink href="/#about-section">About</NavLink>
           <VerticalDivider />
-          <NavLink href="/#plans-section">Planos</NavLink>
+          <NavLink href="/#plans-section">Plans</NavLink>
           <VerticalDivider />
           <AuthLink session={session} />
         </nav>

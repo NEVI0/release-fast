@@ -1,5 +1,4 @@
 export const DOCUMENT_HEAD = {
   TITLE: 'Release Fast',
-  DESCRIPTION:
-    'Ferramenta para notificação e documentação de releases de software',
+  DESCRIPTION: 'Tool for notification and documentation of software releases',
 };

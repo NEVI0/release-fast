@@ -41,19 +41,19 @@ export default function MobileMenu({ session }: MobileMenuProps) {
 
         <nav className="flex flex-col items-start gap-8 p-8">
           <NavLink href="/" onClick={handleToggleMenu}>
-            Início
+            Home
           </NavLink>
 
           <NavLink href="/#how-it-works-section" onClick={handleToggleMenu}>
-            Como funciona
+            How it works
           </NavLink>
 
           <NavLink href="/#about-section" onClick={handleToggleMenu}>
-            Sobre
+            About
           </NavLink>
 
           <NavLink href="/#plans-section" onClick={handleToggleMenu}>
-            Planos
+            Plans
           </NavLink>
 
           <AuthLink session={session} />

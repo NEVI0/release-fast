@@ -6,9 +6,9 @@ import { Plan } from './components';
 import { PlanType } from '@domain/entities';
 
 const PLAN_NAME_BY_TYPE: Record<PlanType, string> = {
-  starter: 'Iniciante',
-  pro: 'Profissional',
-  enterprise: 'Empresarial',
+  starter: 'Starter',
+  pro: 'Professional',
+  enterprise: 'Enterprise',
 };
 
 export default function Plans() {
@@ -18,12 +18,11 @@ export default function Plans() {
     <section className="flex flex-col items-center gap-8">
       <div className="flex flex-col items-center gap-2">
         <h2 className="text-center text-2xl font-bold">
-          Preços simples e transparentes
+          Simple and transparent pricing
         </h2>
 
         <h3 className="text-center text-xl font-semibold text-text-secondary ">
-          Escolha o plano perfeito para o tamanho e as necessidades da sua
-          equipe
+          Choose the perfect plan for your team's size and needs
         </h3>
       </div>
 
@@ -41,19 +40,15 @@ export default function Plans() {
 
       <div className="flex flex-col items-center gap-2">
         <p className="text-center">
-          Comece agora a usar o release fast, em qualquer um dos planos acima
-          você tem{' '}
+          Start using release fast now, with any of the plans above you get{' '}
           <strong className="font-semibold text-primary">
-            7 dias de teste grátis
+            7 days free trial
           </strong>
           .
         </p>
 
         <span className="text-center font-semibold text-sm text-text-secondary">
-          Não gostou?{' '}
-          <Link href="/" className="underline">
-            Cancele a qualquer momento
-          </Link>
+          Not satisfied? <span className="underline">Cancel at any time</span>
         </span>
       </div>
     </section>

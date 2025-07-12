@@ -13,11 +13,11 @@ export default function DeveloperCard() {
 
       <div className="flex flex-col">
         <p className="text-center md:text-left">
-          Criado por Névio Costa Magagnin
+          Created by Névio Costa Magagnin
         </p>
 
         <small className="text-center text-sm md:text-left text-text-secondary">
-          Engenheiro de Software & UI/UX Designer
+          Software Engineer & UI/UX Designer
         </small>
       </div>
     </div>

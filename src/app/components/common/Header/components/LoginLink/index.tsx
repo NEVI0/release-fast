@@ -8,7 +8,7 @@ export default function LoginLink() {
       className="cursor-pointer h-full flex items-center justify-center font-semibold underline text-primary"
       onClick={() => accessAccountAction('github')}
     >
-      Acessar com GitHub
+      Sign in with GitHub
     </button>
   );
 }

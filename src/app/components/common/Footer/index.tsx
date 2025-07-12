@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Instagram, Linkedin, Github } from 'lucide-react';
+import { Instagram, Linkedin, Github, Twitter } from 'lucide-react';
 
 import { VerticalDivider } from '@app/components/ui';
 import { DeveloperCard, SocialLink, ScrollToTopButton } from './components';
@@ -26,6 +26,10 @@ export default function Footer() {
 
             <VerticalDivider />
 
+            <SocialLink href="https://x.com/nevio_cm" icon={Twitter} />
+
+            <VerticalDivider />
+
             <SocialLink href="https://github.com/NEVI0" icon={Github} />
           </nav>
         </div>
@@ -44,7 +48,7 @@ export default function Footer() {
               href="/privacy"
               className="text-text-secondary text-sm focus:underline hover:underline"
             >
-              Política de Privacidade
+              Privacy Policy
             </Link>
 
             <VerticalDivider />
@@ -53,7 +57,7 @@ export default function Footer() {
               href="/terms"
               className="text-text-secondary text-sm focus:underline hover:underline"
             >
-              Termos de Uso
+              Terms of Use
             </Link>
           </nav>
         </div>

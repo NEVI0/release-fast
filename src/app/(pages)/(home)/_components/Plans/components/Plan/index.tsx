@@ -27,7 +27,7 @@ export default function Plan({
     >
       {variant === 'main' && (
         <div className="absolute top-[-12px] right-[50%] translate-x-[50%]">
-          <Badge variant="primary">Mais popular</Badge>
+          <Badge variant="primary">Most popular</Badge>
         </div>
       )}
 
@@ -44,7 +44,9 @@ export default function Plan({
             >
               {formatToCurrency(price)}
             </p>
-            <small className="text-sm text-text-secondary mb-[4px]">/mês</small>
+            <small className="text-sm text-text-secondary mb-[4px]">
+              /month
+            </small>
           </div>
         </div>
 
@@ -58,7 +60,7 @@ export default function Plan({
       </div>
 
       <Button variant={variant === 'main' ? 'primary' : 'default'}>
-        Comece agora de graça
+        Start now for free
       </Button>
     </div>
   );

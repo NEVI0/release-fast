@@ -8,7 +8,7 @@ export default function LogoutLink() {
       onClick={logoutAccountAction}
       className="cursor-pointer h-full flex items-center justify-center focus:underline focus:text-primary hover:underline hover:text-primary"
     >
-      Sair
+      Logout
     </button>
   );
 }

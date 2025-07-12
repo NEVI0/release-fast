@@ -8,7 +8,7 @@ export default function HowItWorks() {
     <>
       <section className="flex flex-col items-center gap-8">
         <h2 className="text-center text-2xl font-bold">
-          Click no vídeo abaixo para ter uma pequena amostra
+          Click in the video below for a quick preview
         </h2>
 
         <div className="w-full h-[224px] md:w-[832px] md:h-[432px] bg-text-primary rounded-3xl flex items-center justify-center">
@@ -16,19 +16,19 @@ export default function HowItWorks() {
         </div>
 
         <p className="text-text-secondary text-center w-[90%]">
-          Nosso serviço permite que você gerencie versões do seu software e
-          comunique as alterações aos seus usuários automaticamente com{' '}
-          <strong>I.A</strong>. Conecte seu repositório <strong>GitHub</strong>{' '}
-          ou <strong>GitLab</strong>, selecione duas versões, e nossa I.A gera
-          um changelog claro e amigável. Publique com um clique via widget,
-          e-mail ou página pública personalizada para o seu usuário final!
+          Our service allows you to manage your software versions and
+          automatically notify your users of changes with <strong>A.I.</strong>.
+          Connect your <strong>GitHub</strong> repository, select two branches
+          versions, and our A.I. generates a clear and friendly changelog.
+          Publish with one click and send the release description to everyone
+          you want to.
         </p>
       </section>
 
       <section className="grid grid-cols-2 md:flex md:flex-row md:items-start md:justify-center gap-2">
         <Flow
           icon={<Code2 className="text-primary size-7" />}
-          text="Codifique uma alteração no seu software"
+          text="Code a change in your software"
           index={1}
         />
 
@@ -38,7 +38,7 @@ export default function HowItWorks() {
 
         <Flow
           icon={<Github className="text-primary size-7" />}
-          text="Atualize o repositório do seu software"
+          text="Update your software repository"
           index={2}
         />
 
@@ -48,7 +48,7 @@ export default function HowItWorks() {
 
         <Flow
           icon={<BrainCircuit className="text-primary size-7" />}
-          text="Gere um release note com a I.A"
+          text="Generate a release note with A.I."
           index={3}
         />
 
@@ -58,7 +58,7 @@ export default function HowItWorks() {
 
         <Flow
           icon={<Smile className="text-primary size-7" />}
-          text="Seu usuário final recebe uma notificação da sua alteração"
+          text="Send it to our end user"
           index={4}
         />
       </section>
@@ -68,7 +68,7 @@ export default function HowItWorks() {
           href="/#about-section"
           className="font-semibold underline text-primary"
         >
-          Gostou? Continue lendo um pouco mais...
+          Liked it? Keep reading to learn more...
         </Link>
       </section>
     </>
