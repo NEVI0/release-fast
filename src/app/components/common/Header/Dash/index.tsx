@@ -1,24 +1,31 @@
 import Link from 'next/link';
 
+import { fetchUserSession } from '@app/actions';
+
 import { VerticalDivider } from '@app/components/ui';
 import { ThemeLogo } from '@app/components/common';
 import { LogoutLink, NavLink } from '../components';
 
-export default function DashHeader() {
+export default async function DashHeader() {
+  const session = await fetchUserSession();
+  if (!session) return null;
+
   return (
     <>
-      <div className="flex items-center justify-center w-full py-1 bg-primary text-white">
-        <div className="flex items-center justify-between h-full w-6xl mx-auto px-6 md:px-8 ">
-          <p>
-            You are currently on the{' '}
-            <strong className="font-semibold">free</strong> plan
-          </p>
+      {session.user.isFreeTrial && (
+        <div className="flex items-center justify-center w-full py-1 bg-primary text-white">
+          <div className="flex items-center justify-between h-full w-6xl mx-auto px-6 md:px-8 ">
+            <p>
+              You are currently on the{' '}
+              <strong className="font-semibold">free</strong> plan
+            </p>
 
-          <Link href="/dash/profile" className="font-semibold underline">
-            Click here to upgrade your plan! 🚀
-          </Link>
+            <Link href="/dash/profile" className="font-semibold underline">
+              Click here to upgrade your plan! 🚀
+            </Link>
+          </div>
         </div>
-      </div>
+      )}
 
       <header className="flex items-center justify-center w-full h-[80px] border-b border-border bg-container dark:bg-body">
         <div className="flex items-center justify-between h-full w-6xl mx-auto px-6 md:px-8">
