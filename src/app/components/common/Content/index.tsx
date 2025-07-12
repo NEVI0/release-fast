@@ -1,12 +1,10 @@
-import HomeContent from './Home';
 import DashContent from './Dash';
-import AuthContent from './Auth';
+import HomeContent from './Home';
 import PublicContent from './Public';
 
 const Content = {
-  Home: HomeContent,
-  Auth: AuthContent,
   Dash: DashContent,
+  Home: HomeContent,
   Public: PublicContent,
 };
 
