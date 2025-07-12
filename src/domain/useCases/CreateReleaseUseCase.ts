@@ -3,6 +3,7 @@ import 'server-only';
 import { Release } from '@domain/entities';
 import { CreateReleaseDTO } from '@domain/dtos';
 import { ReleaseRepositoryAbstract } from '@domain/repositories';
+import { MAX_SHORT_DESCRIPTION_LENGTH } from '@domain/constants/release';
 
 export default class CreateReleaseUseCase {
   constructor(private readonly releaseRepository: ReleaseRepositoryAbstract) {}
@@ -35,9 +36,9 @@ export default class CreateReleaseUseCase {
       throw new Error('You must provide a short description');
     }
 
-    if (dto.shortDescription.length > 250) {
+    if (dto.shortDescription.length > MAX_SHORT_DESCRIPTION_LENGTH) {
       throw new Error(
-        `The short description should have less than ${250} characters`
+        `The short description should have less than ${MAX_SHORT_DESCRIPTION_LENGTH} characters`
       );
     }
 
