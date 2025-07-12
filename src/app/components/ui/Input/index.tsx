@@ -7,7 +7,7 @@ interface InputProps {
   disabled?: boolean;
   className?: string;
   classNameInput?: string;
-  rightButton?: React.ReactNode;
+  rightContent?: React.ReactNode;
   icon?: React.ElementType;
   onClickIcon?: () => void;
 }
@@ -21,7 +21,7 @@ export default function Input({
   classNameInput,
   icon: Icon,
   onClickIcon,
-  rightButton,
+  rightContent,
   ...props
 }: InputProps & React.InputHTMLAttributes<HTMLInputElement>) {
   return (
@@ -39,7 +39,7 @@ export default function Input({
             {props.required && <span className="text-red-600">*</span>}
           </label>
 
-          <div className="flex items-center gap-2">{rightButton}</div>
+          <div className="flex items-center gap-2">{rightContent}</div>
         </div>
       )}
 

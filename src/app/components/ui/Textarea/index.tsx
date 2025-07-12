@@ -10,7 +10,7 @@ interface TextareaProps
   classNameInput?: string;
   icon?: React.ElementType;
 
-  rightButton?: React.ReactNode;
+  rightContent?: React.ReactNode;
 }
 
 export default function Textarea({
@@ -21,7 +21,7 @@ export default function Textarea({
   className,
   classNameInput,
   icon: Icon,
-  rightButton,
+  rightContent,
   ...props
 }: TextareaProps) {
   return (
@@ -33,7 +33,7 @@ export default function Textarea({
             {props.required && <span className="text-red-600">*</span>}
           </label>
 
-          <div className="flex items-center gap-2">{rightButton}</div>
+          <div className="flex items-center gap-2">{rightContent}</div>
         </div>
       )}
 
