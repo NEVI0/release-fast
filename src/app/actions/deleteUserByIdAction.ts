@@ -2,21 +2,20 @@
 
 import { z } from 'zod';
 
+import { DeleteUserByIdDTO } from '@domain/dtos';
 import makeDeleteUserByIdUseCase from '@factories/useCases/makeDeleteUserByIdUseCase';
 
-import { DeleteUserByIdDTO } from '@domain/dtos';
-import { handleError } from '@app/helpers';
-
 const schema = z.object({
-  id: z.string().min(1, 'O ID do usuário é obrigatório!'),
+  id: z.string().min(1, 'User ID is required'),
 });
 
 export default async function deleteUserByIdAction(params: DeleteUserByIdDTO) {
   try {
     const dto = schema.parse(params);
     await makeDeleteUserByIdUseCase().execute(dto);
+
+    return { success: true };
   } catch (error) {
-    const { message } = handleError(error, 'deleteUserByIdAction');
-    return { message };
+    return { success: false };
   }
 }

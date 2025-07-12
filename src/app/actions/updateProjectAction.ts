@@ -2,10 +2,8 @@
 
 import { z } from 'zod';
 
-import makeUpdateProjectUseCase from '@factories/useCases/makeUpdateProjectUseCase';
-
 import { UpdateProjectDTO } from '@domain/dtos';
-import { handleError } from '@app/helpers';
+import makeUpdateProjectUseCase from '@factories/useCases/makeUpdateProjectUseCase';
 
 const schema = z.object({
   id: z.string().min(1, 'Project ID is required'),
@@ -18,15 +16,9 @@ export default async function updateProjectAction(params: UpdateProjectDTO) {
     const dto = schema.parse(params);
     const project = await makeUpdateProjectUseCase().execute(dto);
 
-    if (!project) {
-      return {
-        success: false,
-        message: 'Project not found',
-      };
-    }
+    if (!project) throw new Error();
 
     return {
-      success: true,
       project: {
         id: project.id,
         name: project.name,
@@ -37,11 +29,6 @@ export default async function updateProjectAction(params: UpdateProjectDTO) {
       },
     };
   } catch (error) {
-    const { message } = handleError(error, 'updateProjectAction');
-
-    return {
-      success: false,
-      message,
-    };
+    return { project: null };
   }
 }

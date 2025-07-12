@@ -5,10 +5,9 @@ import { z } from 'zod';
 import makeFetchUserByIdUseCase from '@factories/useCases/makeFetchUserByIdUseCase';
 
 import { FetchUserByIdDTO } from '@domain/dtos';
-import { handleError } from '@app/helpers';
 
 const schema = z.object({
-  id: z.string().min(1, 'O ID do usuário é obrigatório'),
+  id: z.string().min(1, 'User ID is required'),
 });
 
 export default async function fetchUserByIdAction(params: FetchUserByIdDTO) {
@@ -16,7 +15,7 @@ export default async function fetchUserByIdAction(params: FetchUserByIdDTO) {
     const dto = schema.parse(params);
     const user = await makeFetchUserByIdUseCase().execute(dto);
 
-    if (!user) throw new Error('Usuário não encontrado');
+    if (!user) throw new Error();
 
     return {
       user: {
@@ -30,11 +29,6 @@ export default async function fetchUserByIdAction(params: FetchUserByIdDTO) {
       },
     };
   } catch (error) {
-    const { message } = handleError(error, 'fetchReleaseByIdAction');
-
-    return {
-      user: null,
-      message,
-    };
+    return { user: null };
   }
 }

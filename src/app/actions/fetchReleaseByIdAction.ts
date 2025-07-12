@@ -16,7 +16,7 @@ export default async function fetchReleaseByIdAction(
     const dto = schema.parse(params);
     const release = await makeFetchReleaseByIdUseCase().execute(dto);
 
-    if (!release) return { release: null };
+    if (!release) throw new Error();
 
     return {
       release: {

@@ -32,8 +32,6 @@ export default async function fetchAllReleasesAction(
       })),
     };
   } catch (error) {
-    return {
-      releases: [],
-    };
+    return { releases: [] };
   }
 }

@@ -6,7 +6,7 @@ import { FetchProjectByIdDTO } from '@domain/dtos';
 import makeFetchProjectByIdUseCase from '@factories/useCases/makeFetchProjectByIdUseCase';
 
 const schema = z.object({
-  id: z.string().min(1, 'O ID do projeto é obrigatório'),
+  id: z.string().min(1, 'Project ID is required'),
 });
 
 export default async function fetchProjectByIdAction(
@@ -16,11 +16,7 @@ export default async function fetchProjectByIdAction(
     const dto = schema.parse(params);
     const project = await makeFetchProjectByIdUseCase().execute(dto);
 
-    if (!project) {
-      return {
-        project: null,
-      };
-    }
+    if (!project) throw new Error();
 
     return {
       project: {
@@ -36,8 +32,6 @@ export default async function fetchProjectByIdAction(
       },
     };
   } catch (error) {
-    return {
-      project: null,
-    };
+    return { project: null };
   }
 }

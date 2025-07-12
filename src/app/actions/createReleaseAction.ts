@@ -8,7 +8,6 @@ export default async function createReleaseAction(dto: CreateReleaseDTO) {
     const release = await makeCreateReleaseUseCase().execute(dto);
 
     return {
-      success: true,
       release: {
         id: release.id,
         title: release.title,

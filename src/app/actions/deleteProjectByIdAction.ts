@@ -2,10 +2,8 @@
 
 import { z } from 'zod';
 
-import makeDeleteProjectByIdUseCase from '@factories/useCases/makeDeleteProjectByIdUseCase';
-
 import { DeleteProjectByIdDTO } from '@domain/dtos';
-import { handleError } from '@app/helpers';
+import makeDeleteProjectByIdUseCase from '@factories/useCases/makeDeleteProjectByIdUseCase';
 
 const schema = z.object({
   id: z.string().min(1, 'Project ID is required'),
@@ -18,16 +16,8 @@ export default async function deleteProjectByIdAction(
     const dto = schema.parse(params);
     await makeDeleteProjectByIdUseCase().execute(dto);
 
-    return {
-      success: true,
-      message: 'Project deleted successfully',
-    };
+    return { success: true };
   } catch (error) {
-    const { message } = handleError(error, 'deleteProjectByIdAction');
-
-    return {
-      success: false,
-      message,
-    };
+    return { success: true };
   }
 }

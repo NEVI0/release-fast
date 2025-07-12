@@ -2,13 +2,11 @@
 
 import { z } from 'zod';
 
+import { FetchAllProjectsDTO } from '@domain/dtos';
 import makeFetchAllProjectsUseCase from '@factories/useCases/makeFetchAllProjectsUseCase';
 
-import { FetchAllProjectsDTO } from '@domain/dtos';
-import { handleError } from '@app/helpers';
-
 const schema = z.object({
-  userId: z.string().min(1, 'O ID do usuário é obrigatório!'),
+  userId: z.string().min(1, 'User ID is required'),
 });
 
 export default async function fetchAllProjectsAction(
@@ -29,11 +27,6 @@ export default async function fetchAllProjectsAction(
       })),
     };
   } catch (error) {
-    const { message } = handleError(error, 'fetchAllProjectsAction');
-
-    return {
-      projects: [],
-      message,
-    };
+    return { projects: [] };
   }
 }

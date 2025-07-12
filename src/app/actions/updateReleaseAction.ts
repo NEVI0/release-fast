@@ -2,10 +2,8 @@
 
 import { z } from 'zod';
 
-import makeUpdateReleaseUseCase from '@factories/useCases/makeUpdateReleaseUseCase';
-
 import { UpdateReleaseDTO } from '@domain/dtos';
-import { handleError } from '@app/helpers';
+import makeUpdateReleaseUseCase from '@factories/useCases/makeUpdateReleaseUseCase';
 
 const schema = z.object({
   id: z.string().min(1, 'Release ID is required'),
@@ -20,15 +18,9 @@ export default async function updateReleaseAction(params: UpdateReleaseDTO) {
     const dto = schema.parse(params);
     const release = await makeUpdateReleaseUseCase().execute(dto);
 
-    if (!release) {
-      return {
-        success: false,
-        message: 'Release not found',
-      };
-    }
+    if (!release) throw new Error();
 
     return {
-      success: true,
       release: {
         id: release.id,
         title: release.title,
@@ -41,11 +33,6 @@ export default async function updateReleaseAction(params: UpdateReleaseDTO) {
       },
     };
   } catch (error) {
-    const { message } = handleError(error, 'updateReleaseAction');
-
-    return {
-      success: false,
-      message,
-    };
+    return { release: null };
   }
 }

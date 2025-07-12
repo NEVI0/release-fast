@@ -2,10 +2,8 @@
 
 import { z } from 'zod';
 
-import makeDeleteReleaseByIdUseCase from '@factories/useCases/makeDeleteReleaseByIdUseCase';
-
 import { DeleteReleaseByIdDTO } from '@domain/dtos';
-import { handleError } from '@app/helpers';
+import makeDeleteReleaseByIdUseCase from '@factories/useCases/makeDeleteReleaseByIdUseCase';
 
 const schema = z.object({
   id: z.string().min(1, 'Release ID is required'),
@@ -18,16 +16,8 @@ export default async function deleteReleaseByIdAction(
     const dto = schema.parse(params);
     await makeDeleteReleaseByIdUseCase().execute(dto);
 
-    return {
-      success: true,
-      message: 'Release deleted successfully',
-    };
+    return { success: true };
   } catch (error) {
-    const { message } = handleError(error, 'deleteReleaseByIdAction');
-
-    return {
-      success: false,
-      message,
-    };
+    return { success: true };
   }
 }
