@@ -17,12 +17,12 @@ export default function List({ columns, project, releases }: ListProps) {
   if (!releases.length) {
     return (
       <ErrorStatus
-        title="Ops... nada encontrado!"
-        message="Não foi encontrado nenhuma release. Tente cadastrar uma nova clicando no botão abaixo."
+        title="Oops... nothing found!"
+        message="No releases were found. Try registering a new one by clicking the button below."
       >
         <Link href={`/dash/projects/${project.id}/create-release`}>
           <Button variant="primary">
-            Adicionar nova release
+            Add new release
             <Button.Icon icon={Plus} />
           </Button>
         </Link>
@@ -34,13 +34,15 @@ export default function List({ columns, project, releases }: ListProps) {
     <section className="flex flex-col gap-4">
       <div className="flex items-center justify-between">
         <div>
-          <h3 className="text-lg font-semibold">Listagem de versões</h3>
-          <h4 className="text-text-secondary">Total de versões: 5</h4>
+          <h3 className="text-lg font-semibold">Release list</h3>
+          <h4 className="text-text-secondary">
+            Total releases: {releases.length}
+          </h4>
         </div>
 
         <Link href={`/dash/projects/${project.id}/create-release`}>
           <Button>
-            Adicionar nova release
+            Add new release
             <Button.Icon icon={Plus} />
           </Button>
         </Link>
@@ -58,10 +60,10 @@ export default function List({ columns, project, releases }: ListProps) {
                 <Table.Data>{release.title}</Table.Data>
                 <Table.Data>{release.version}</Table.Data>
                 <Table.Data>
-                  {formatDate(release.createdAt, 'DD of MMMM of YYYY')}
+                  {formatDate(release.createdAt, 'MMMM DD, YYYY')}
                 </Table.Data>
                 <Table.Data>
-                  {formatDate(release.updatedAt, 'DD of MMMM of YYYY')}
+                  {formatDate(release.updatedAt, 'MMMM DD, YYYY')}
                 </Table.Data>
 
                 <Table.Data>

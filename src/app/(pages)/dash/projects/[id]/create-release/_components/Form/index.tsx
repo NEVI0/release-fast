@@ -84,7 +84,7 @@ export default function Form({ session, project }: FormProps) {
       setAlreadyComparatedBranches(true);
     } catch (error) {
       toast.error(
-        error instanceof Error ? error.message : 'Erro ao comparar branches'
+        error instanceof Error ? error.message : 'Error comparing branches'
       );
     } finally {
       setIsComparing(false);
@@ -100,13 +100,13 @@ export default function Form({ session, project }: FormProps) {
         projectId: project.id,
       });
 
-      if (!release) throw new Error('Erro ao criar release');
+      if (!release) throw new Error('Error creating release');
 
-      toast.success('Release criada com sucesso');
+      toast.success('Release created successfully');
       router.push('/dash/projects/' + project.id);
     } catch (error) {
       toast.error(
-        error instanceof Error ? error.message : 'Erro ao criar release'
+        error instanceof Error ? error.message : 'Error creating release'
       );
     } finally {
       setIsCreating(false);
@@ -120,7 +120,7 @@ export default function Form({ session, project }: FormProps) {
         onSubmit={branchesForm.handleSubmit(handleCompareBranches)}
       >
         <h3 className="font-semibold text-2xl">
-          Informe as branches para comparação
+          Enter the branches to compare
         </h3>
 
         <div className="flex items-end gap-4">
@@ -169,8 +169,8 @@ export default function Form({ session, project }: FormProps) {
         <div className="flex flex-col gap-4">
           <h3 className="font-semibold text-2xl">
             {alreadyComparatedBranches
-              ? 'Preencha as informações da sua release'
-              : 'Compare as branches para poder completar o formulário'}
+              ? 'Fill in your release information'
+              : 'Compare the branches to complete the form'}
           </h3>
 
           <input
@@ -200,8 +200,8 @@ export default function Form({ session, project }: FormProps) {
           <Input
             id="version"
             type="text"
-            label="Versão"
-            placeholder="Ex.: v1.0.0"
+            label="Version"
+            placeholder="E.g.: v1.0.0"
             icon={Code2Icon}
             required
             disabled={!alreadyComparatedBranches}
@@ -212,8 +212,8 @@ export default function Form({ session, project }: FormProps) {
           <Input
             id="short-description"
             type="text"
-            label="Descrição breve"
-            placeholder="Uma breve descrição da release"
+            label="Short description"
+            placeholder="A brief description of the release"
             icon={MessageSquare}
             required
             disabled={!alreadyComparatedBranches}
@@ -223,8 +223,8 @@ export default function Form({ session, project }: FormProps) {
 
           <Textarea
             id="full-description"
-            label="Descrição detalhada da sua release para o usuário final"
-            placeholder="Uma descrição mais detalhada da release"
+            label="Detailed description of your release for the end user"
+            placeholder="A more detailed description of the release"
             icon={FileText}
             required
             disabled={!alreadyComparatedBranches}
@@ -235,7 +235,7 @@ export default function Form({ session, project }: FormProps) {
           <Input
             id="availableAt"
             type="date"
-            label="Data de liberação da release"
+            label="Release date"
             icon={Calendar}
             required
             disabled={!alreadyComparatedBranches}
@@ -247,13 +247,13 @@ export default function Form({ session, project }: FormProps) {
         <div className="flex items-center justify-end gap-4">
           <Link href={`/dash/projects/${project.id}`}>
             <Button type="button" className="w-[184px]">
-              Cancelar
+              Cancel
               <Button.Icon icon={Trash2} />
             </Button>
           </Link>
 
           <Button
-            type="button"
+            type="submit"
             variant="primary"
             className="w-[184px]"
             disabled={

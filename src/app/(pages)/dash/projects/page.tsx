@@ -18,11 +18,11 @@ export default async function ProjectsPage() {
   if (!session || !session.user) return redirect('/auth');
 
   const columns = [
-    { id: 'name', children: 'Nome' },
-    { id: 'description', children: 'Descrição' },
-    { id: 'createdAt', children: 'Criação em' },
-    { id: 'updatedAt', children: 'Última atualização em' },
-    { id: 'details', children: 'Detalhes', center: true },
+    { id: 'name', children: 'Name' },
+    { id: 'description', children: 'Description' },
+    { id: 'createdAt', children: 'Created at' },
+    { id: 'updatedAt', children: 'Last updated at' },
+    { id: 'details', children: 'Details', center: true },
   ];
 
   return (

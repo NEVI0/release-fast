@@ -11,17 +11,17 @@ export default function Header({ user }: HeaderProps) {
       <Breadcrumb
         items={[
           { label: 'Dashboard', href: '/dash' },
-          { label: 'Minha conta', href: '/profile' },
+          { label: 'My account', href: '/profile' },
         ]}
       />
 
       <div className="flex flex-col gap-2">
         <h1 className="font-bold text-4xl">
-          <strong className="text-primary">Olá</strong>, {user.name}
+          <strong className="text-primary">Hello</strong>, {user.name}
         </h1>
 
         <h2 className="font-semibold text-2xl text-text-secondary">
-          Gerencie suas informações e preferências
+          Manage your information and preferences
         </h2>
       </div>
     </section>

@@ -22,30 +22,30 @@ export default function Settings({ project }: SettingsProps) {
   return (
     <>
       <section className="flex flex-col gap-8">
-        <h3 className="font-bold text-2xl">Configurações</h3>
+        <h3 className="font-bold text-2xl">Settings</h3>
 
         <ul className="flex flex-col gap-4">
           <li>
             <Setting
-              title="Editar dados do projeto"
-              description="Edite os dados do projeto"
+              title="Edit project data"
+              description="Edit the project data"
             >
               <Button>
-                Editar projeto <Button.Icon icon={Edit3} />
+                Edit project <Button.Icon icon={Edit3} />
               </Button>
             </Setting>
           </li>
 
           <li>
             <Setting
-              title="Excluir projeto"
-              description="Exclua o projeto e todos os seus dados (esta ação é irreversível)"
+              title="Delete project"
+              description="Delete the project and all its data (this action is irreversible)"
             >
               <Button
                 variant="danger"
                 onClick={() => setIsDeleteProjectModalOpen(true)}
               >
-                Excluir projeto <Button.Icon icon={Trash2} />
+                Delete project <Button.Icon icon={Trash2} />
               </Button>
             </Setting>
           </li>

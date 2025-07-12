@@ -6,18 +6,18 @@ export default function Header() {
       <Breadcrumb
         items={[
           { label: 'Dashboard', href: '/dash' },
-          { label: 'Projetos', href: '/dash/projects' },
-          { label: 'Criar projeto', href: '/dash/projects/create' },
+          { label: 'Projects', href: '/dash/projects' },
+          { label: 'Create project', href: '/dash/projects/create' },
         ]}
       />
 
       <div className="flex flex-col gap-2">
         <h1 className="font-bold text-4xl">
-          Criar <strong className="text-primary">projeto</strong>
+          Create <strong className="text-primary">project</strong>
         </h1>
 
         <h2 className="font-semibold text-2xl text-text-secondary">
-          Crie um novo projeto para gerenciar suas releases
+          Create a new project to manage your releases
         </h2>
       </div>
     </section>

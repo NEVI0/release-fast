@@ -21,13 +21,13 @@ export default function Settings({ user }: SettingsProps) {
   return (
     <>
       <section className="flex flex-col gap-8">
-        <h3 className="font-bold text-2xl">Configurações</h3>
+        <h3 className="font-bold text-2xl">Settings</h3>
 
         <ul className="flex flex-col gap-4">
           <li>
             <Setting
-              title="Mudar tema"
-              description="Alternar entre tema claro e escuro"
+              title="Change theme"
+              description="Switch between light and dark theme"
             >
               <ThemeToggle />
             </Setting>
@@ -35,36 +35,36 @@ export default function Settings({ user }: SettingsProps) {
 
           <li>
             <Setting
-              title="Editar minha conta"
-              description="Edite os dados da sua conta (nome, e-mail, etc.)"
+              title="Edit my account"
+              description="Edit your account details (name, email, etc.)"
             >
               <Button>
-                Editar conta <Button.Icon icon={Edit3} />
+                Edit account <Button.Icon icon={Edit3} />
               </Button>
             </Setting>
           </li>
 
           <li>
             <Setting
-              title="Planos e assinaturas"
-              description="Gerencie seus planos e assinaturas"
+              title="Plans and subscriptions"
+              description="Manage your plans and subscriptions"
             >
               <Button>
-                Gerenciar planos <Button.Icon icon={ExternalLink} />
+                Manage plans <Button.Icon icon={ExternalLink} />
               </Button>
             </Setting>
           </li>
 
           <li>
             <Setting
-              title="Excluir conta"
-              description="Exclua sua conta e todos os seus dados (esta ação é irreversível)"
+              title="Delete account"
+              description="Delete your account and all your data (this action is irreversible)"
             >
               <Button
                 variant="danger"
                 onClick={() => setIsDeleteAccountModalOpen(true)}
               >
-                Excluir conta <Button.Icon icon={Trash2} />
+                Delete account <Button.Icon icon={Trash2} />
               </Button>
             </Setting>
           </li>

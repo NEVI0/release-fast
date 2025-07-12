@@ -16,17 +16,17 @@ export default function LoadingList({ columns, project }: LoadingListProps) {
     <section className="flex flex-col gap-4">
       <div className="flex items-center justify-between">
         <div>
-          <h3 className="text-lg font-semibold">Listagem de versões</h3>
+          <h3 className="text-lg font-semibold">Release list</h3>
 
           <h4 className="text-text-secondary">
-            Total de versões:{' '}
-            <strong className="font-semibold">carregando...</strong>
+            Total releases:{' '}
+            <strong className="font-semibold">loading...</strong>
           </h4>
         </div>
 
         <Link href={`/dash/projects/${project.id}/create-release`}>
           <Button>
-            Adicionar nova release
+            Add new release
             <Button.Icon icon={Plus} />
           </Button>
         </Link>

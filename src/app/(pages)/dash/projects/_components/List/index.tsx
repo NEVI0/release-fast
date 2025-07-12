@@ -22,12 +22,12 @@ export default async function List({ session, columns }: ListProps) {
   if (!projects.length) {
     return (
       <ErrorStatus
-        title="Ops... nada encontrado!"
-        message="Não foi encontrado nenhum projeto cadastrado. Tente cadastrar um novo clicando no botão abaixo."
+        title="Oops... nothing found!"
+        message="No projects were found. Try registering a new one by clicking the button below."
       >
         <Link href="/dash/projects/create">
           <Button variant="primary">
-            Adicionar novo projeto
+            Add new project
             <Button.Icon icon={Plus} />
           </Button>
         </Link>
@@ -39,16 +39,16 @@ export default async function List({ session, columns }: ListProps) {
     <section className="flex flex-col gap-4">
       <div className="flex items-center justify-between">
         <div>
-          <h3 className="text-lg font-semibold">Listagem de projetos</h3>
+          <h3 className="text-lg font-semibold">Project list</h3>
 
           <h4 className="text-text-secondary">
-            Total de projetos: {projects.length}
+            Total projects: {projects.length}
           </h4>
         </div>
 
         <Link href="/dash/projects/create">
           <Button>
-            Adicionar novo projeto
+            Add new project
             <Button.Icon icon={Plus} />
           </Button>
         </Link>
@@ -66,10 +66,10 @@ export default async function List({ session, columns }: ListProps) {
                 <Table.Data>{project.name}</Table.Data>
                 <Table.Data>{project.description}</Table.Data>
                 <Table.Data>
-                  {formatDate(project.createdAt, 'DD of MMMM of YYYY')}
+                  {formatDate(project.createdAt, 'MMMM DD, YYYY')}
                 </Table.Data>
                 <Table.Data>
-                  {formatDate(project.updatedAt, 'DD of MMMM of YYYY')}
+                  {formatDate(project.updatedAt, 'MMMM DD, YYYY')}
                 </Table.Data>
 
                 <Table.Data>

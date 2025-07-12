@@ -6,7 +6,7 @@ export default function Header() {
       <Breadcrumb
         items={[
           { label: 'Dashboard', href: '/dash' },
-          { label: 'Início', href: '/dash' },
+          { label: 'Home', href: '/dash' },
         ]}
       />
 
@@ -14,7 +14,7 @@ export default function Header() {
         <h1 className="font-bold text-4xl">Dashboard</h1>
 
         <h2 className="font-semibold text-2xl text-text-secondary">
-          Visão geral do seu dashboard
+          Overview of your dashboard
         </h2>
       </div>
     </section>

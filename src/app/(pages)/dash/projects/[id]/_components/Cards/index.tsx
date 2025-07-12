@@ -13,21 +13,21 @@ export default function Cards({ project }: CardsProps) {
   return (
     <section className="flex items-center justify-between gap-4">
       <Card
-        title="Repositório"
-        value="Acessar repositório"
+        title="Repository"
+        value="Access repository"
         valueLink={project.repositoryUrl}
         icon={Code2}
       />
 
       <Card
-        title="Criado em"
-        value={formatDate(project.createdAt, 'DD of MMMM of YYYY')}
+        title="Created at"
+        value={formatDate(project.createdAt, 'MMMM DD, YYYY')}
         icon={Calendar}
       />
 
       <Card
-        title="Última atualização em"
-        value={formatDate(project.updatedAt, 'DD of MMMM of YYYY')}
+        title="Last updated at"
+        value={formatDate(project.updatedAt, 'MMMM DD, YYYY')}
         icon={Calendar}
       />
     </section>

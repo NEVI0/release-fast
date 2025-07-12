@@ -1,10 +1,10 @@
 import { Calendar, BadgeCheck, Mail, MailCheck } from 'lucide-react';
 
 import { UserAbstract } from '@domain/entities';
+import { formatDate } from '@app/helpers';
 
 import { Card } from '@app/components/common';
 import { Badge, Button } from '@app/components/ui';
-import { formatDate } from '@app/helpers';
 
 interface CardsProps {
   user: UserAbstract;
@@ -14,26 +14,22 @@ export default function Cards({ user }: CardsProps) {
   return (
     <section className="flex flex-col gap-4">
       <div className="flex items-center justify-between gap-4">
-        <Card title="Plano atual" value="R$ 19,90/mês" icon={BadgeCheck} />
+        <Card title="Current plan" value="R$ 19.90/month" icon={BadgeCheck} />
+        <Card title="Next due date" value="June 20, 2025" icon={Calendar} />
         <Card
-          title="Próximo vencimento"
-          value="20 de junho de 2025"
-          icon={Calendar}
-        />
-        <Card
-          title="Criado em"
-          value={formatDate(user.createdAt, 'DD of MMMM of YYYY')}
+          title="Created at"
+          value={formatDate(user.createdAt, 'MMMM DD, YYYY')}
           icon={Calendar}
         />
       </div>
 
-      <Card title="E-mail da conta" value={user.email} icon={Mail}>
+      <Card title="Account email" value={user.email} icon={Mail}>
         {true ? (
           <Button variant="primary">
-            Verificar e-mail <Button.Icon icon={MailCheck} />
+            Verify email <Button.Icon icon={MailCheck} />
           </Button>
         ) : (
-          <Badge variant="success">E-mail verificado ✔</Badge>
+          <Badge variant="success">Email verified</Badge>
         )}
       </Card>
     </section>

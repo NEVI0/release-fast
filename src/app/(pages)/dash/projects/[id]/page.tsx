@@ -32,12 +32,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   if (!project) {
     return (
       <ErrorStatus
-        title="Ops... nada encontrado!"
-        message="Não foi encontrado o projeto cadastrado. Tente cadastrar um novo clicando no botão abaixo."
+        title="Oops... nothing found!"
+        message="No registered project was found. Try registering a new one by clicking the button below."
       >
         <Link href="/dash/projects/create">
           <Button variant="primary">
-            Adicionar novo projeto
+            Add new project
             <Button.Icon icon={Plus} />
           </Button>
         </Link>
@@ -48,12 +48,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const { releases } = await fetchAllReleasesAction({ projectId: project.id });
 
   const columns = [
-    { id: 'title', children: 'Título' },
-    { id: 'version', children: 'Versão' },
-    { id: 'createdAt', children: 'Criação em' },
-    { id: 'updatedAt', children: 'Última atualização em' },
-    { id: 'edit', children: 'Editar', center: true },
-    { id: 'details', children: 'Detalhes', center: true },
+    { id: 'title', children: 'Title' },
+    { id: 'version', children: 'Version' },
+    { id: 'createdAt', children: 'Created at' },
+    { id: 'updatedAt', children: 'Last updated at' },
+    { id: 'edit', children: 'Edit', center: true },
+    { id: 'details', children: 'Details', center: true },
   ];
 
   return (

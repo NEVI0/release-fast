@@ -14,17 +14,17 @@ export default function LoadingList({ columns }: LoadingListProps) {
     <section className="flex flex-col gap-4">
       <div className="flex items-center justify-between">
         <div>
-          <h3 className="text-lg font-semibold">Listagem de projetos</h3>
+          <h3 className="text-lg font-semibold">Project list</h3>
 
           <h4 className="text-text-secondary">
-            Total de projetos:{' '}
-            <strong className="font-semibold">carregando...</strong>
+            Total projects:{' '}
+            <strong className="font-semibold">loading...</strong>
           </h4>
         </div>
 
         <Link href="/dash/projects/create">
           <Button>
-            Adicionar novo projeto
+            Add new project
             <Button.Icon icon={Plus} />
           </Button>
         </Link>

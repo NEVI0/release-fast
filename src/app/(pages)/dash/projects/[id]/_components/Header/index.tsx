@@ -11,7 +11,7 @@ export default function Header({ project }: HeaderProps) {
       <Breadcrumb
         items={[
           { label: 'Dashboard', href: '/dash' },
-          { label: 'Projetos', href: '/dash/projects' },
+          { label: 'Projects', href: '/dash/projects' },
           { label: project.name, href: `/dash/projects/${project.id}` },
         ]}
       />

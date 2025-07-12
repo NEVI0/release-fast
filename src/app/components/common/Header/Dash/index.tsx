@@ -10,12 +10,12 @@ export default function DashHeader() {
       <div className="flex items-center justify-center w-full py-1 bg-primary text-white">
         <div className="flex items-center justify-between h-full w-6xl mx-auto px-6 md:px-8 ">
           <p>
-            Você está atualmente dentro do plano{' '}
-            <strong className="font-semibold">gratuito</strong>
+            You are currently on the{' '}
+            <strong className="font-semibold">free</strong> plan
           </p>
 
           <Link href="/dash/profile" className="font-semibold underline">
-            Clique aqui para atualizar seu plano! 🚀
+            Click here to upgrade your plan! 🚀
           </Link>
         </div>
       </div>
@@ -25,9 +25,9 @@ export default function DashHeader() {
           <ThemeLogo href="/" />
 
           <nav className="flex items-center gap-4 h-full">
-            <NavLink href="/dash">Início</NavLink>
+            <NavLink href="/dash">Home</NavLink>
             <VerticalDivider />
-            <NavLink href="/dash/projects">Projetos</NavLink>
+            <NavLink href="/dash/projects">Projects</NavLink>
             <VerticalDivider />
             <LogoutLink />
             <VerticalDivider />
@@ -36,7 +36,7 @@ export default function DashHeader() {
               href="/dash/profile"
               className="h-full flex items-center justify-center font-semibold underline text-primary"
             >
-              Minha conta
+              My account
             </Link>
           </nav>
         </div>

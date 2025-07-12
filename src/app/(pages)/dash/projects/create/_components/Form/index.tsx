@@ -54,11 +54,11 @@ export default function Form({ session }: FormProps) {
 
       if (!project) throw new Error();
 
-      toast.success('Projeto criado com sucesso');
+      toast.success('Project created successfully');
       router.push('/dash/projects/' + project.id);
     } catch (error) {
       toast.error(
-        error instanceof Error ? error.message : 'Erro ao criar projeto'
+        error instanceof Error ? error.message : 'Error creating project'
       );
     } finally {
       setIsLoading(false);
@@ -74,8 +74,8 @@ export default function Form({ session }: FormProps) {
         <Input
           id="name"
           type="text"
-          label="Nome do projeto"
-          placeholder="Ex.: E-commerce, Blog, etc."
+          label="Project name"
+          placeholder="E.g.: E-commerce, Blog, etc."
           icon={Box}
           required
           error={form.errors.name?.message}
@@ -85,8 +85,8 @@ export default function Form({ session }: FormProps) {
         <Input
           id="description"
           type="text"
-          label="Descrição do projeto"
-          placeholder="Uma breve descrição do projeto"
+          label="Project description"
+          placeholder="A brief description of the project"
           icon={MessageSquare}
           required
           error={form.errors.description?.message}
@@ -96,7 +96,7 @@ export default function Form({ session }: FormProps) {
         <Input
           id="search"
           type="text"
-          label="Pesquise pelo repositório do seu projeto"
+          label="Search for your project's repository"
           icon={Search}
           required
           value={search}
@@ -111,7 +111,7 @@ export default function Form({ session }: FormProps) {
 
       {!!repositories.length ? (
         <div className="flex flex-col gap-4">
-          <h3 className="font-semibold text-2xl">Selecione um repository</h3>
+          <h3 className="font-semibold text-2xl">Select a repository</h3>
 
           <ul className="flex flex-col gap-2">
             {repositories.map((repository) => (
@@ -130,16 +130,14 @@ export default function Form({ session }: FormProps) {
         </div>
       ) : (
         <div className="flex flex-col gap-4">
-          <h3 className="font-semibold text-2xl">
-            Nenhum repositório encontrado...
-          </h3>
+          <h3 className="font-semibold text-2xl">No repositories found...</h3>
         </div>
       )}
 
       <div className="flex items-center justify-end gap-4">
         <Link href="/dash/projects">
           <Button type="button" className="w-[184px]" disabled={isLoading}>
-            Cancelar
+            Cancel
             <Button.Icon icon={Trash2} />
           </Button>
         </Link>
@@ -150,7 +148,7 @@ export default function Form({ session }: FormProps) {
           className="w-[184px]"
           disabled={isLoading || !form.isValid}
         >
-          {isLoading ? 'Criando...' : 'Criar projeto'}
+          {isLoading ? 'Creating...' : 'Create project'}
           <Button.Icon icon={Plus} loading={isLoading} />
         </Button>
       </div>
