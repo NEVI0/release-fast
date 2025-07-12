@@ -2,7 +2,7 @@ import 'server-only';
 
 import { prisma } from '@configs/prisma';
 
-import { User, UserAbstract } from '@domain/entities';
+import { PlanType, User, UserAbstract } from '@domain/entities';
 import { UserRepositoryAbstract } from '@domain/repositories';
 
 export default class PrismaUserRepository implements UserRepositoryAbstract {
@@ -21,6 +21,7 @@ export default class PrismaUserRepository implements UserRepositoryAbstract {
       email: user.email ?? '',
       emailVerified: user.emailVerified ?? undefined,
       image: user.image ?? undefined,
+      plan: user.plan as PlanType,
       createdAt: user.createdAt,
       updatedAt: user.updatedAt,
     });
