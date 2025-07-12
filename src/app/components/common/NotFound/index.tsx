@@ -10,8 +10,8 @@ interface NotFoundProps {
 }
 
 export default function NotFound({
-  title = 'Ops... nada encontrado aqui 😕',
-  message = 'Está página não existe... tem certeza que está acessando a página certa?',
+  title = 'Oops... nothing found here 😕',
+  message = "This page doesn't exist... are you sure you're accessing the right page?",
 }: NotFoundProps) {
   return (
     <div className="flex flex-1 flex-col items-center justify-center gap-8">
@@ -24,7 +24,7 @@ export default function NotFound({
 
       <Link href="/">
         <Button>
-          Ir para o ínicio <Button.Icon icon={Home} />
+          Go to Home <Button.Icon icon={Home} />
         </Button>
       </Link>
     </div>
