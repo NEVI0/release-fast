@@ -16,8 +16,8 @@ interface ThemeLogoProps {
 }
 
 export default function ThemeLogo({
-  width = LOGO_DIMENSIONS['small'].width,
-  height = LOGO_DIMENSIONS['small'].height,
+  width = LOGO_DIMENSIONS['normal'].width,
+  height = LOGO_DIMENSIONS['normal'].height,
   alt = 'Release Fast Logo',
   href,
   className = '',
