@@ -18,7 +18,6 @@ export default class GoogleGeminiAiAgentProvider
 
       return response.text as T;
     } catch (error) {
-      console.log({ error });
       return 'Could not understand what was said!' as T;
     }
   }
