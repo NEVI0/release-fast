@@ -3,6 +3,8 @@ import NextAuth from 'next-auth';
 import Github from 'next-auth/providers/github';
 import Gitlab from 'next-auth/providers/gitlab';
 
+import { FREE_TRIAL_DAYS } from '@domain/constants/trial';
+
 import { PrismaAdapter } from '@auth/prisma-adapter';
 import { prisma } from './prisma';
 
@@ -14,6 +16,12 @@ const {
   AUTH_GITLAB_CLIENT_SECRET,
 } = process.env;
 
+const DAYS = 1000 * 60 * 60 * 24 * FREE_TRIAL_DAYS;
+
+const isUserInFreeTrial = (date: Date | string) => {
+  return new Date(date).getTime() > new Date().getTime() - DAYS;
+};
+
 export const { handlers, signIn, signOut, auth } = NextAuth({
   adapter: PrismaAdapter(prisma),
   secret: AUTH_SECRET,
@@ -23,10 +31,15 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   callbacks: {
     async session({ session, token }) {
       if (session.user) {
-        session.user.id = token.sub as string;
-      }
-      if (token?.username) {
-        (session.user as any).username = token.username;
+        const { sub, plan, createdAt, username } = token;
+
+        session.user.id = sub as string;
+        session.user.plan = plan as string;
+        session.user.createdAt = createdAt as string;
+        (session.user as any).username = username;
+        session.user.isFreeTrial = createdAt
+          ? isUserInFreeTrial(createdAt as string)
+          : false;
       }
 
       return {
@@ -38,6 +51,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async jwt({ token, user, account, profile }) {
       if (user) {
         token.id = user.id;
+        token.plan = user.plan;
+        token.createdAt = user.createdAt;
       }
       if (account) {
         if (account.access_token) token.accessToken = account.access_token;
