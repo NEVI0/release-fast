@@ -27,7 +27,7 @@ export default function PublicLayout({
   children,
 }: Readonly<PublicLayoutProps>) {
   return (
-    <html lang="pt-BR" suppressHydrationWarning>
+    <html lang="en-US" suppressHydrationWarning>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
