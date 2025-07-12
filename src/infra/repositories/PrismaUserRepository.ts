@@ -18,7 +18,7 @@ export default class PrismaUserRepository implements UserRepositoryAbstract {
     return new User({
       id: user.id,
       name: user.name,
-      email: user.email,
+      email: user.email ?? '',
       emailVerified: user.emailVerified ?? undefined,
       image: user.image ?? undefined,
       createdAt: user.createdAt,
