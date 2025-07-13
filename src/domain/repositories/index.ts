@@ -1,3 +1,4 @@
+export type { default as PaymentRepositoryAbstract } from './PaymentRepository';
 export type { default as ProjectRepositoryAbstract } from './ProjectRepository';
 export type { default as ReleaseRepositoryAbstract } from './ReleaseRepository';
 export type { default as RepoBranchRepositoryAbstract } from './RepoBranchRepository';

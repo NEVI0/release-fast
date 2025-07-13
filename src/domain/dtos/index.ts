@@ -1,4 +1,5 @@
 export type { default as CompareAndFetchDiffFromBranchesDTO } from './CompareAndFetchDiffFromBranchesDTO';
+export type { default as CreatePaymentCheckoutForClientDTO } from './CreatePaymentCheckoutForClientDTO';
 export type { default as CreateProjectDTO } from './CreateProjectDTO';
 export type { default as CreateReleaseDTO } from './CreateReleaseDTO';
 export type { default as DeleteProjectByIdDTO } from './DeleteProjectByIdDTO';
