@@ -4,7 +4,7 @@ import { AiAgentProviderAbstract } from '@domain/providers';
 
 export default class GPTAiAgentProvider implements AiAgentProviderAbstract {
   private openai: OpenAI = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY!,
+    apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY!,
   });
 
   constructor() {}

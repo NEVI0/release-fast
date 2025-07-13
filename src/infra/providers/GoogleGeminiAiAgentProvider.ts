@@ -6,7 +6,7 @@ export default class GoogleGeminiAiAgentProvider
   implements AiAgentProviderAbstract
 {
   private gemini: GoogleGenAI = new GoogleGenAI({
-    apiKey: process.env.GOOGLE_GEMINI_API_KEY!,
+    apiKey: process.env.NEXT_PUBLIC_GOOGLE_GEMINI_API_KEY!,
   });
 
   public async prompt<T>(prompt: string): Promise<T> {
