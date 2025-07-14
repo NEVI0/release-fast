@@ -1,15 +1,7 @@
-import Link from 'next/link';
-
+import { PLAN_DETAILS_BY_TYPE } from '@domain/constants/plan';
 import makeFetchPlansUseCase from '@factories/useCases/makeFetchPlansUseCase';
 
 import { Plan } from './components';
-import { PlanType } from '@domain/entities';
-
-const PLAN_NAME_BY_TYPE: Record<PlanType, string> = {
-  starter: 'Starter',
-  pro: 'Professional',
-  enterprise: 'Enterprise',
-};
 
 export default function Plans() {
   const plans = makeFetchPlansUseCase().execute();
@@ -30,7 +22,7 @@ export default function Plans() {
         {plans.map((plan) => (
           <Plan
             key={plan.id}
-            title={PLAN_NAME_BY_TYPE[plan.type]}
+            title={PLAN_DETAILS_BY_TYPE[plan.type].name}
             price={plan.price}
             features={plan.features}
             variant={plan.type === 'pro' ? 'main' : 'normal'}

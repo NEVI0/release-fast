@@ -1,0 +1,83 @@
+import { Check, ExternalLink } from 'lucide-react';
+
+import { Badge, Button } from '@app/components/ui';
+import { concatClasses, formatToCurrency } from '@app/helpers';
+
+type PlanVariant = 'normal' | 'main';
+
+interface PlanProps {
+  title: string;
+  price: number;
+  features: string[];
+  variant?: PlanVariant;
+  disableSelectButton: boolean;
+  onSelect(): void;
+}
+
+export default function Plan({
+  title,
+  price,
+  features,
+  variant = 'normal',
+  disableSelectButton,
+  onSelect,
+}: PlanProps) {
+  return (
+    <div
+      className={concatClasses(
+        'relative flex flex-col justify-between bg-container border border-border p-8 rounded-3xl w-full h-[500px]',
+        variant === 'main' && 'border-2 border-primary shadow-lg'
+      )}
+    >
+      {variant === 'main' && (
+        <div className="absolute top-[-12px] right-[50%] translate-x-[50%]">
+          <Badge variant="primary">Most popular</Badge>
+        </div>
+      )}
+
+      <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-2">
+          <h3 className="text-2xl font-semibold text-center">{title}</h3>
+
+          <div className="flex items-end justify-center gap-2">
+            <p
+              className={concatClasses(
+                'text-4xl font-bold',
+                variant === 'main' && 'text-primary'
+              )}
+            >
+              {formatToCurrency(price)}
+            </p>
+            <small className="text-sm text-text-secondary mb-[4px]">
+              /month
+            </small>
+          </div>
+        </div>
+
+        <ul className="flex flex-col gap-2">
+          {features.map((feature, index) => (
+            <li key={`${feature}-${index}`} className="flex items-center gap-2">
+              <Check className="text-green-500 size-4" /> {feature}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="flex flex-col gap-2 w-full">
+        {disableSelectButton && (
+          <small className="text-text-secondary text-center text-sm">
+            This is your current plan!
+          </small>
+        )}
+
+        <Button
+          variant={variant === 'main' ? 'primary' : 'default'}
+          disabled={disableSelectButton}
+          onClick={onSelect}
+        >
+          Upgrade now <Button.Icon icon={ExternalLink} />
+        </Button>
+      </div>
+    </div>
+  );
+}

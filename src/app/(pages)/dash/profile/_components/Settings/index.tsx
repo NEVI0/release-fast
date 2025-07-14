@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Edit3, ExternalLink, Lock, Trash2 } from 'lucide-react';
+import { DollarSign, Edit3, Trash2 } from 'lucide-react';
 
 import { UserAbstract } from '@domain/entities';
 
@@ -9,6 +9,7 @@ import { Setting, ThemeToggle } from '@app/components/common';
 import { Button } from '@app/components/ui';
 
 import { DeleteAccountModal } from './components';
+import Link from 'next/link';
 
 interface SettingsProps {
   user: UserAbstract;
@@ -44,14 +45,16 @@ export default function Settings({ user }: SettingsProps) {
             </Setting>
           </li>
 
-          <li id="plans-and-subscriptions">
+          <li>
             <Setting
               title="Plans and subscriptions"
               description="Manage your plans and subscriptions"
             >
-              <Button>
-                Manage plans <Button.Icon icon={ExternalLink} />
-              </Button>
+              <Link href="/dash/profile/plans">
+                <Button>
+                  Manage plans <Button.Icon icon={DollarSign} />
+                </Button>
+              </Link>
             </Setting>
           </li>
 

@@ -1,7 +1,7 @@
 import { Calendar, BadgeCheck, Mail, MailCheck } from 'lucide-react';
 
 import { UserAbstract } from '@domain/entities';
-import { PRICES_BY_PLAN } from '@domain/constants/plan';
+import { PLAN_DETAILS_BY_TYPE } from '@domain/constants/plan';
 import { formatDate, formatToCurrency } from '@app/helpers';
 
 import { Card } from '@app/components/common';
@@ -12,18 +12,17 @@ interface CardsProps {
 }
 
 export default function Cards({ user }: CardsProps) {
+  const currentPlan =
+    user.plan === 'free'
+      ? 'Free'
+      : `${PLAN_DETAILS_BY_TYPE[user.plan].name}, ${formatToCurrency(
+          PLAN_DETAILS_BY_TYPE[user.plan].value
+        )}/m`;
+
   return (
     <section className="flex flex-col gap-4">
       <div className="flex items-center justify-between gap-4">
-        <Card
-          title="Current plan"
-          value={
-            user.plan === 'free'
-              ? 'Free'
-              : `${formatToCurrency(PRICES_BY_PLAN[user.plan].value)}/month`
-          }
-          icon={BadgeCheck}
-        />
+        <Card title="Current plan" value={currentPlan} icon={BadgeCheck} />
 
         <Card title="Next due date" value="June 20, 2025" icon={Calendar} />
 
