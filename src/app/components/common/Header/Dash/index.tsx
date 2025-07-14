@@ -13,7 +13,7 @@ export default async function DashHeader() {
   if (!session) return null;
 
   const { plan, isFreeTrial } = session.user;
-  const shouldShowBanner = isFreeTrial || plan === 'free';
+  const shouldShowBanner = isFreeTrial && plan === 'free';
 
   return (
     <>
@@ -35,7 +35,7 @@ export default async function DashHeader() {
             )}
 
             <Link
-              href="/dash/profile#plans-and-subscriptions"
+              href="/dash/profile/plans"
               className="font-semibold underline"
             >
               Click here to upgrade your plan! 🚀
