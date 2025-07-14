@@ -10,7 +10,7 @@ interface PlanProps {
   price: number;
   features: string[];
   variant?: PlanVariant;
-  disableSelectButton: boolean;
+  isCurrentPlan: boolean;
   onSelect(): void;
 }
 
@@ -19,7 +19,7 @@ export default function Plan({
   price,
   features,
   variant = 'normal',
-  disableSelectButton,
+  isCurrentPlan,
   onSelect,
 }: PlanProps) {
   return (
@@ -63,21 +63,20 @@ export default function Plan({
         </ul>
       </div>
 
-      <div className="flex flex-col gap-2 w-full">
-        {disableSelectButton && (
+      {isCurrentPlan ? (
+        <div className="h-[48px] flex items-center justify-center">
           <small className="text-text-secondary text-center text-sm">
             This is your current plan!
           </small>
-        )}
-
+        </div>
+      ) : (
         <Button
           variant={variant === 'main' ? 'primary' : 'default'}
-          disabled={disableSelectButton}
           onClick={onSelect}
         >
           Upgrade now <Button.Icon icon={ExternalLink} />
         </Button>
-      </div>
+      )}
     </div>
   );
 }

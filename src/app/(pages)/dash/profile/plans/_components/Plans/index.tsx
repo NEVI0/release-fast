@@ -26,7 +26,7 @@ export default function Plans({ user }: PlansProps) {
           price={plan.price}
           features={plan.features}
           variant={plan.type === 'pro' ? 'main' : 'normal'}
-          disableSelectButton={plan.type === user.plan}
+          isCurrentPlan={plan.type === user.plan}
           onSelect={() => {
             createCheckout({
               plan: plan.type,
