@@ -1,14 +1,15 @@
 import { NextResponse } from 'next/server';
 
-export const POST = async (request: Request) => {
-  try {
-    // ...
+import makeCreatePaymentPortalUseCase from '@factories/useCases/makeCreatePaymentPortalUseCase';
 
-    return NextResponse.json({ url: '' }, { status: 200 });
+export const POST = async () => {
+  try {
+    const { url } = await makeCreatePaymentPortalUseCase().execute();
+    return NextResponse.json({ url }, { status: 200 });
   } catch (error) {
-    return NextResponse.json(
-      { message: 'Internal server error', error },
-      { status: 500 }
-    );
+    const message =
+      error instanceof Error ? error.message : 'Internal server error';
+
+    return NextResponse.json({ message, error }, { status: 500 });
   }
 };
