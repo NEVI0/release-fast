@@ -11,7 +11,10 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL(getAppUrl('/dash')));
   }
 
-  if (pathname.startsWith('/dash') && !session) {
+  const isAvailableAfterLogged =
+    pathname.startsWith('/dash') || pathname.startsWith('/checkout');
+
+  if (isAvailableAfterLogged && !session) {
     return NextResponse.redirect(new URL(getAppUrl('/')));
   }
 
