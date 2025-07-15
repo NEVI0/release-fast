@@ -14,22 +14,44 @@ export default class PrismaUserRepository implements UserRepositoryAbstract {
     });
 
     if (!user) return null;
+    return this.userToDomain(user);
+  }
 
-    return new User({
-      id: user.id,
-      name: user.name,
-      email: user.email ?? '',
-      emailVerified: user.emailVerified ?? undefined,
-      image: user.image ?? undefined,
-      plan: user.plan as PlanType,
-      createdAt: user.createdAt,
-      updatedAt: user.updatedAt,
+  public async update(user: UserAbstract): Promise<UserAbstract> {
+    const updatedUser = await this.prisma.user.update({
+      where: { id: user.id },
+      data: {
+        name: user.name,
+        email: user.email || undefined,
+        emailVerified: user.emailVerified || undefined,
+        image: user.image || undefined,
+        plan: user.plan,
+        paymentId: user.paymentId || undefined,
+        updatedAt: new Date(),
+      },
     });
+
+    if (!updatedUser) throw new Error('Could not update the user data...');
+    return this.userToDomain(updatedUser);
   }
 
   public async deleteById(id: string): Promise<void> {
     await this.prisma.user.delete({
       where: { id },
+    });
+  }
+
+  private userToDomain(modelUser: any) {
+    return new User({
+      id: modelUser.id,
+      name: modelUser.name,
+      email: modelUser.email ?? '',
+      emailVerified: modelUser.emailVerified ?? '',
+      image: modelUser.image ?? '',
+      plan: modelUser.plan as PlanType,
+      paymentId: modelUser.paymentId ?? '',
+      createdAt: modelUser.createdAt,
+      updatedAt: modelUser.updatedAt,
     });
   }
 }
