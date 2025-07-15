@@ -28,6 +28,7 @@ model User {
   emailVerified   DateTime?
   image           String?
   plan            PlanEnum?       @default(free)
+  paymentId       String?
 
   createdAt       DateTime        @default(now())
   updatedAt       DateTime        @updatedAt

@@ -25,6 +25,7 @@ export default async function fetchUserByIdAction(params: FetchUserByIdDTO) {
         emailVerified: user.emailVerified,
         image: user.image,
         plan: user.plan,
+        paymentId: user.paymentId,
         createdAt: user.createdAt,
         updatedAt: user.updatedAt,
       },
