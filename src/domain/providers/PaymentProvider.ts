@@ -13,7 +13,17 @@ export interface CreateCheckoutParams {
   metadata: any;
 }
 
+export interface CreatePortalParams {
+  user: {
+    paymentId: string;
+  };
+  return: {
+    url: string;
+  };
+}
+
 export default interface PaymentProviderAbstract {
   createCheckout(params: CreateCheckoutParams): Promise<{ id: string } | null>;
   createUser(user: PaymentUserAbstract): Promise<PaymentUserAbstract | null>;
+  createPortal(params: CreatePortalParams): Promise<{ url: string } | null>;
 }

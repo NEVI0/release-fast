@@ -9,4 +9,5 @@ export type { default as AiAgentProviderAbstract } from './AiAgentProvider';
 export {
   type default as PaymentProviderAbstract,
   type CreateCheckoutParams,
+  type CreatePortalParams,
 } from './PaymentProvider';

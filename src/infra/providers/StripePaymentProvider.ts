@@ -3,6 +3,7 @@ import 'server-only';
 import { PaymentUser, PaymentUserAbstract, PlanType } from '@domain/entities';
 import {
   CreateCheckoutParams,
+  CreatePortalParams,
   PaymentProviderAbstract,
 } from '@domain/providers';
 
@@ -24,9 +25,7 @@ const PRICE_ID_BY_PLAN: Record<PlanType, string> = {
 export default class StripePaymentProvider implements PaymentProviderAbstract {
   private readonly stripe = stripe;
 
-  public async createUser(
-    user: PaymentUserAbstract
-  ): Promise<PaymentUserAbstract | null> {
+  public async createUser(user: PaymentUserAbstract) {
     try {
       const customer = await this.stripe.customers.create({
         name: user.name,
@@ -46,9 +45,7 @@ export default class StripePaymentProvider implements PaymentProviderAbstract {
     }
   }
 
-  public async createCheckout(
-    params: CreateCheckoutParams
-  ): Promise<{ id: string } | null> {
+  public async createCheckout(params: CreateCheckoutParams) {
     try {
       if (params.plan === 'free') throw new Error();
 
@@ -69,6 +66,19 @@ export default class StripePaymentProvider implements PaymentProviderAbstract {
       });
 
       return { id: session.id };
+    } catch (error) {
+      return null;
+    }
+  }
+
+  public async createPortal(params: CreatePortalParams) {
+    try {
+      const portal = await this.stripe.billingPortal.sessions.create({
+        customer: params.user.paymentId,
+        return_url: params.return.url,
+      });
+
+      return { url: portal.url };
     } catch (error) {
       return null;
     }
