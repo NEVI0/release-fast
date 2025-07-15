@@ -17,11 +17,11 @@ export const PLAN_DETAILS_BY_TYPE: Record<PlanType, Details> = {
     value: 5,
   },
   pro: {
-    name: 'Starter',
+    name: 'Professional',
     value: 15,
   },
   enterprise: {
-    name: 'Enterprise',
+    name: '',
     value: 50,
   },
 };
