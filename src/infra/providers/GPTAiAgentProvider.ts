@@ -7,8 +7,6 @@ export default class GPTAiAgentProvider implements AiAgentProviderAbstract {
     apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY!,
   });
 
-  constructor() {}
-
   public async prompt<T>(prompt: string): Promise<T> {
     try {
       const completion = await this.openai.chat.completions.create({
