@@ -1,4 +1,4 @@
-import { Calendar, BadgeCheck, Mail, MailCheck } from 'lucide-react';
+import { Calendar, BadgeCheck, Mail, MailCheck, Plus } from 'lucide-react';
 
 import { UserAbstract } from '@domain/entities';
 import { PLAN_DETAILS_BY_TYPE } from '@domain/constants/plan';
@@ -33,13 +33,21 @@ export default function Cards({ user }: CardsProps) {
         />
       </div>
 
-      <Card title="Account email" value={user.email} icon={Mail}>
-        {true ? (
+      <Card
+        title="Account e-mail"
+        value={user.email || 'E-mail not provided'}
+        icon={Mail}
+      >
+        {!user.email ? (
           <Button variant="primary">
-            Verify email <Button.Icon icon={MailCheck} />
+            Provide e-mail <Button.Icon icon={Plus} />
+          </Button>
+        ) : !user.emailVerified ? (
+          <Button variant="primary">
+            Verify e-mail <Button.Icon icon={MailCheck} />
           </Button>
         ) : (
-          <Badge variant="success">Email verified</Badge>
+          <Badge variant="success">E-mail verified</Badge>
         )}
       </Card>
     </section>
