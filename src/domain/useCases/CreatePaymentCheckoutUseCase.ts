@@ -1,7 +1,7 @@
 import 'server-only';
 
 import { SessionAbstract, UserAbstract } from '@domain/entities';
-import { CreatePaymentCheckoutUseCaseDTO } from '@domain/dtos';
+import { CreatePaymentCheckoutDTO } from '@domain/dtos';
 import { UserRepositoryAbstract } from '@domain/repositories';
 import { PaymentProviderAbstract } from '@domain/providers';
 
@@ -13,7 +13,7 @@ export default class CreatePaymentCheckoutUseCase {
     private readonly userRepository: UserRepositoryAbstract
   ) {}
 
-  public async execute(dto: CreatePaymentCheckoutUseCaseDTO) {
+  public async execute(dto: CreatePaymentCheckoutDTO) {
     const session = await this.fetchSession();
     const user = await this.fetchUserData(session.user.id);
 
