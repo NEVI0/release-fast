@@ -1,15 +1,25 @@
 import 'server-only';
 
-import { Project } from '@domain/entities';
+import { Project, UserAbstract } from '@domain/entities';
 import { CreateProjectDTO } from '@domain/dtos';
-import { ProjectRepositoryAbstract } from '@domain/repositories';
+import {
+  ProjectRepositoryAbstract,
+  UserRepositoryAbstract,
+} from '@domain/repositories';
 import { MAX_DESCRIPTION_LENGTH } from '@domain/constants/project';
+import { PLAN_DETAILS_BY_TYPE } from '@domain/constants/plan';
 
 export default class CreateProjectUseCase {
-  constructor(private readonly projectRepository: ProjectRepositoryAbstract) {}
+  constructor(
+    private readonly projectRepository: ProjectRepositoryAbstract,
+    private readonly userRepository: UserRepositoryAbstract
+  ) {}
 
   public async execute(dto: CreateProjectDTO) {
     this.validateDto(dto);
+
+    const user = await this.fetchUserData(dto.userId);
+    await this.validateProjectsAmount(user);
 
     const project = new Project(dto);
     return await this.projectRepository.create(project);
@@ -44,6 +54,28 @@ export default class CreateProjectUseCase {
 
     if (!dto.userId) {
       throw new Error('The user ID is required');
+    }
+  }
+
+  private async fetchUserData(id: string) {
+    const user = await this.userRepository.findById(id);
+    if (!user) throw new Error('Unauthorized');
+
+    return user as UserAbstract;
+  }
+
+  private async validateProjectsAmount(user: UserAbstract) {
+    const projects = await this.projectRepository.findAll(user.id);
+
+    const projectsAmountTotal = projects.length + 1;
+    const { projectsAmount } = PLAN_DETAILS_BY_TYPE[user.plan];
+
+    if (projectsAmount !== 'unlimited') {
+      if (projectsAmountTotal >= projectsAmount) {
+        throw new Error(
+          'You can not create new projects unless you upgrade your plan'
+        );
+      }
     }
   }
 }
