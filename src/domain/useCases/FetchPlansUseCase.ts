@@ -11,7 +11,7 @@ export default class FetchPlansUseCase {
       price: PLAN_DETAILS_BY_TYPE['starter'].value,
       freeTrialDays: 7,
       features: [
-        'Up to 3 projects',
+        `Up to ${PLAN_DETAILS_BY_TYPE['starter'].projectsAmount} projects`,
         'AI-powered release notes generation',
         'Basic notifications',
       ],
@@ -23,7 +23,7 @@ export default class FetchPlansUseCase {
       price: PLAN_DETAILS_BY_TYPE['pro'].value,
       freeTrialDays: 7,
       features: [
-        'Up to 15 projects',
+        `Up to ${PLAN_DETAILS_BY_TYPE['pro'].projectsAmount} projects`,
         'AI-powered release notes generation',
         'Advanced AI suggestions',
         'Basic notifications',
