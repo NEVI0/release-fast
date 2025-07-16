@@ -14,6 +14,8 @@ export default class CreatePaymentCheckoutUseCase {
   ) {}
 
   public async execute(dto: CreatePaymentCheckoutDTO) {
+    this.validateDto(dto);
+
     const session = await this.fetchSession();
     const user = await this.fetchUserData(session.user.id);
 
@@ -30,11 +32,21 @@ export default class CreatePaymentCheckoutUseCase {
         cancel: `${process.env.NEXT_PUBLIC_APP_URL!}/checkout/cancel`,
       },
       plan: dto.plan,
-      metadata: dto.metadata,
+      metadata: {
+        ...dto.metadata,
+        userId: user.id,
+        plan: dto.plan,
+      },
     });
     if (!checkout) throw new Error('Could not create the checkout...');
 
     return checkout;
+  }
+
+  private validateDto(dto: CreatePaymentCheckoutDTO) {
+    if (!dto.plan) {
+      throw new Error('The selected plan is required');
+    }
   }
 
   private async fetchSession() {
