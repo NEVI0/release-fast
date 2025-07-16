@@ -10,4 +10,5 @@ export {
   type default as PaymentProviderAbstract,
   type CreateCheckoutParams,
   type CreatePortalParams,
+  type CreateEventParams,
 } from './PaymentProvider';

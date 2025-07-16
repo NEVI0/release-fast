@@ -1,3 +1,5 @@
+import Stripe from 'stripe';
+
 import { PaymentUserAbstract, PlanType } from '@domain/entities';
 
 export interface CreateCheckoutParams {
@@ -22,8 +24,16 @@ export interface CreatePortalParams {
   };
 }
 
+export interface CreateEventParams {
+  body: string;
+  signature: string;
+  secret: string;
+}
+
 export default interface PaymentProviderAbstract {
   createCheckout(params: CreateCheckoutParams): Promise<{ id: string } | null>;
   createUser(user: PaymentUserAbstract): Promise<PaymentUserAbstract | null>;
   createPortal(params: CreatePortalParams): Promise<{ url: string } | null>;
+
+  createEvent(params: CreateEventParams): Stripe.Event | null;
 }

@@ -3,6 +3,7 @@ import 'server-only';
 import { PaymentUser, PaymentUserAbstract, PlanType } from '@domain/entities';
 import {
   CreateCheckoutParams,
+  CreateEventParams,
   CreatePortalParams,
   PaymentProviderAbstract,
 } from '@domain/providers';
@@ -79,6 +80,20 @@ export default class StripePaymentProvider implements PaymentProviderAbstract {
       });
 
       return { url: portal.url };
+    } catch (error) {
+      return null;
+    }
+  }
+
+  public createEvent(params: CreateEventParams) {
+    try {
+      const event = this.stripe.webhooks.constructEvent(
+        params.body,
+        params.signature,
+        params.secret
+      );
+
+      return event;
     } catch (error) {
       return null;
     }

@@ -1,6 +1,7 @@
 export type { default as CompareAndFetchDiffFromBranchesDTO } from './CompareAndFetchDiffFromBranchesDTO';
 export type { default as CreatePaymentCheckoutForClientDTO } from './CreatePaymentCheckoutForClientDTO';
-export type { default as CreatePaymentCheckoutUseCaseDTO } from './CreatePaymentCheckoutUseCaseDTO';
+export type { default as CreatePaymentCheckoutDTO } from './CreatePaymentCheckoutDTO';
+export type { default as CreatePaymentWebhookEventDTO } from './CreatePaymentWebhookEventDTO';
 export type { default as CreateProjectDTO } from './CreateProjectDTO';
 export type { default as CreateReleaseDTO } from './CreateReleaseDTO';
 export type { default as DeleteProjectByIdDTO } from './DeleteProjectByIdDTO';
@@ -15,3 +16,4 @@ export type { default as FetchUserRepositoriesDTO } from './FetchUserRepositorie
 export type { default as GenerateByIaDTO } from './GenerateByIaDTO';
 export type { default as UpdateProjectDTO } from './UpdateProjectDTO';
 export type { default as UpdateReleaseDTO } from './UpdateReleaseDTO';
+export type { default as UpdateUserPlanDTO } from './UpdateUserPlanDTO';
