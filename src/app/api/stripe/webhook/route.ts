@@ -1,11 +1,11 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 import { PlanType } from '@domain/entities';
 
 import makeCreatePaymentWebhookEventUseCase from '@factories/useCases/makeCreatePaymentWebhookEventUseCase';
 import makeUpdateUserPlanUseCase from '@factories/useCases/makeUpdateUserPlanUseCase';
 
-export const POST = async (request: Request) => {
+export const POST = async (request: NextRequest) => {
   try {
     const body = await request.text();
     const signature = request.headers.get('stripe-signature');
@@ -27,7 +27,6 @@ export const POST = async (request: Request) => {
 
       if (event.data.object.payment_status === 'paid') {
         // Realizou o pagamento
-        console.log({ receivedMetadata: event.data.object.metadata });
         const { userId, plan } = event.data.object.metadata!;
 
         await makeUpdateUserPlanUseCase().execute({
@@ -35,13 +34,15 @@ export const POST = async (request: Request) => {
           plan: plan as PlanType,
         });
       }
-    } else if (event.type === 'customer.subscription.deleted') {
+    } else if (
+      event.type === 'customer.subscription.deleted' ||
+      event.type === 'customer.subscription.updated'
+    ) {
       // Usuário cancelou a assinatura
-      console.log({ receivedMetadata: event.data.object.metadata });
-      const { userId } = event.data.object.metadata!;
+      const userPaymentId = event.data.object.customer;
 
       await makeUpdateUserPlanUseCase().execute({
-        userId,
+        userId: userPaymentId as string,
         plan: 'free' as PlanType,
       });
     }
