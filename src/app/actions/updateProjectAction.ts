@@ -11,12 +11,7 @@ export default async function updateProjectAction(dto: UpdateProjectDTO) {
 
     return {
       project: {
-        id: project.id,
-        name: project.name,
-        description: project.description,
-        userId: project.userId,
-        createdAt: project.createdAt,
-        updatedAt: project.updatedAt,
+        ...project,
       },
     };
   } catch (error) {

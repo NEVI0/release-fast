@@ -9,14 +9,7 @@ export default async function createProjectAction(dto: CreateProjectDTO) {
 
     return {
       project: {
-        id: project.id,
-        name: project.name,
-        description: project.description,
-        userId: project.userId,
-        repository: project.repository,
-        provider: project.provider,
-        createdAt: project.createdAt,
-        updatedAt: project.updatedAt,
+        ...project,
       },
     };
   } catch (error) {

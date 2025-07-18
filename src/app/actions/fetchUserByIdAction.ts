@@ -19,15 +19,7 @@ export default async function fetchUserByIdAction(params: FetchUserByIdDTO) {
 
     return {
       user: {
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        emailVerified: user.emailVerified,
-        image: user.image,
-        plan: user.plan,
-        paymentId: user.paymentId,
-        createdAt: user.createdAt,
-        updatedAt: user.updatedAt,
+        ...user,
       },
     };
   } catch (error) {

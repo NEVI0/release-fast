@@ -9,17 +9,7 @@ export default async function createReleaseAction(dto: CreateReleaseDTO) {
 
     return {
       release: {
-        id: release.id,
-        title: release.title,
-        shortDescription: release.shortDescription,
-        fullDescription: release.fullDescription,
-        version: release.version,
-        baseBranch: release.baseBranch,
-        headBranch: release.headBranch,
-        projectId: release.projectId,
-        availableAt: release.availableAt,
-        createdAt: release.createdAt,
-        updatedAt: release.updatedAt,
+        ...release,
       },
     };
   } catch (error) {

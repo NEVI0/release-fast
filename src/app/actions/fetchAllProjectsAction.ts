@@ -18,12 +18,7 @@ export default async function fetchAllProjectsAction(
 
     return {
       projects: projects.map((project) => ({
-        id: project.id,
-        name: project.name,
-        description: project.description,
-        userId: project.userId,
-        createdAt: project.createdAt,
-        updatedAt: project.updatedAt,
+        ...project,
       })),
     };
   } catch (error) {

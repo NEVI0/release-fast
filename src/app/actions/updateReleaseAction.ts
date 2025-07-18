@@ -11,14 +11,7 @@ export default async function updateReleaseAction(dto: UpdateReleaseDTO) {
 
     return {
       release: {
-        id: release.id,
-        title: release.title,
-        shortDescription: release.shortDescription,
-        fullDescription: release.fullDescription,
-        version: release.version,
-        projectId: release.projectId,
-        createdAt: release.createdAt,
-        updatedAt: release.updatedAt,
+        ...release,
       },
     };
   } catch (error) {

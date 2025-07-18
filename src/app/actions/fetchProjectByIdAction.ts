@@ -20,15 +20,7 @@ export default async function fetchProjectByIdAction(
 
     return {
       project: {
-        id: project.id,
-        name: project.name,
-        description: project.description,
-        userId: project.userId,
-        repository: project.repository,
-        repositoryUrl: project.repositoryUrl,
-        provider: project.provider,
-        createdAt: project.createdAt,
-        updatedAt: project.updatedAt,
+        ...project,
       },
     };
   } catch (error) {

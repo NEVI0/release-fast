@@ -20,17 +20,7 @@ export default async function fetchReleaseByIdAction(
 
     return {
       release: {
-        id: release.id,
-        title: release.title,
-        shortDescription: release.shortDescription,
-        fullDescription: release.fullDescription,
-        version: release.version,
-        projectId: release.projectId,
-        baseBranch: release.baseBranch,
-        headBranch: release.headBranch,
-        availableAt: release.availableAt,
-        createdAt: release.createdAt,
-        updatedAt: release.updatedAt,
+        ...release,
       },
     };
   } catch (error) {
