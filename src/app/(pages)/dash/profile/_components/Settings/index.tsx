@@ -39,9 +39,11 @@ export default function Settings({ user }: SettingsProps) {
               title="Edit my account"
               description="Edit your account details (name, email, etc.)"
             >
-              <Button>
-                Edit account <Button.Icon icon={Edit3} />
-              </Button>
+              <Link href="/dash/profile/edit">
+                <Button>
+                  Edit account <Button.Icon icon={Edit3} />
+                </Button>
+              </Link>
             </Setting>
           </li>
 
