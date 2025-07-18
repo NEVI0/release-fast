@@ -6,7 +6,6 @@ import makeUpdateProjectUseCase from '@factories/useCases/makeUpdateProjectUseCa
 export default async function updateProjectAction(dto: UpdateProjectDTO) {
   try {
     const project = await makeUpdateProjectUseCase().execute(dto);
-
     if (!project) throw new Error();
 
     return {

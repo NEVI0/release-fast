@@ -16,13 +16,13 @@ export default class UpdateProjectUseCase {
 
     this.validateDto(dto);
 
-    const updatedProject = new Project({
-      ...project,
-      ...dto,
-      updatedAt: new Date(),
-    });
-
-    return await this.projectRepository.update(updatedProject);
+    return await this.projectRepository.update(
+      new Project({
+        ...project,
+        ...dto,
+        updatedAt: new Date(),
+      })
+    );
   }
 
   private validateDto(dto: UpdateProjectDTO) {
@@ -38,14 +38,6 @@ export default class UpdateProjectUseCase {
       throw new Error(
         `The description should have less than ${MAX_DESCRIPTION_LENGTH} characters`
       );
-    }
-
-    if (!dto.repository) {
-      throw new Error('You must provide the project repository');
-    }
-
-    if (!dto.repositoryUrl) {
-      throw new Error('You must provide the project repository URL');
     }
   }
 }
