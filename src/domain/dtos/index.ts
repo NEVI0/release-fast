@@ -16,5 +16,6 @@ export type { default as FetchUserRepositoriesDTO } from './FetchUserRepositorie
 export type { default as GenerateByIaDTO } from './GenerateByIaDTO';
 export type { default as UpdateProjectDTO } from './UpdateProjectDTO';
 export type { default as UpdateReleaseDTO } from './UpdateReleaseDTO';
+export type { default as UpdateUserDataDTO } from './UpdateUserDataDTO';
 export type { default as UpdateUserPlanByPaymentIdDTO } from './UpdateUserPlanByPaymentIdDTO';
 export type { default as UpdateUserPlanDTO } from './UpdateUserPlanDTO';
