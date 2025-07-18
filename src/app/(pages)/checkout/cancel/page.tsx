@@ -17,7 +17,7 @@ export default function AccessPage() {
   useEffect(() => {
     const init = async () => {
       await wait(REDIRECT_SECONDS * 1000);
-      redirect('/dash');
+      redirect('/dash/profile');
     };
 
     init();
@@ -34,11 +34,11 @@ export default function AccessPage() {
 
       <div className="flex flex-col items-center justify-center gap-2">
         <h1 className="text-2xl text-center font-bold">
-          Subscribed canceled! Try again next time
+          Subscription canceled! Try again next time
         </h1>
 
         <p className="text-center text-text-secondary">
-          You will be redirected to the dashboard in {REDIRECT_SECONDS}{' '}
+          You will be redirected to your profile page in {REDIRECT_SECONDS}{' '}
           seconds...
         </p>
       </div>

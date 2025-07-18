@@ -17,7 +17,7 @@ export default function AccessPage() {
   useEffect(() => {
     const init = async () => {
       await wait(REDIRECT_SECONDS * 1000);
-      redirect('/dash');
+      redirect('/dash/profile');
     };
 
     init();
@@ -40,7 +40,7 @@ export default function AccessPage() {
         </h1>
 
         <p className="text-center text-text-secondary">
-          You will be redirected to the dashboard in {REDIRECT_SECONDS}{' '}
+          You will be redirected to your profile page in {REDIRECT_SECONDS}{' '}
           seconds...
         </p>
       </div>
