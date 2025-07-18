@@ -14,7 +14,12 @@ export default function ErrorStatus({
 }: ErrorStatusProps) {
   return (
     <section className="flex-1 flex flex-col gap-8 items-center justify-center">
-      <Animation animation={ANIMATIONS.EMPTY} width={200} height={200} />
+      <Animation
+        animation={ANIMATIONS.EMPTY}
+        width={200}
+        height={200}
+        loop={false}
+      />
 
       <div className="flex flex-col items-center">
         <h2 className="text-center text-2xl font-semibold">{title}</h2>
