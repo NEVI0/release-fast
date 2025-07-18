@@ -4,7 +4,6 @@ import Github from 'next-auth/providers/github';
 import Gitlab from 'next-auth/providers/gitlab';
 
 import { PlanType } from '@domain/entities';
-import { FREE_TRIAL_DAYS } from '@domain/constants/plan';
 
 import { PrismaAdapter } from '@auth/prisma-adapter';
 import { prisma } from './prisma';
@@ -16,12 +15,6 @@ const {
   AUTH_GITLAB_CLIENT_ID,
   AUTH_GITLAB_CLIENT_SECRET,
 } = process.env;
-
-const DAYS = 1000 * 60 * 60 * 24 * FREE_TRIAL_DAYS;
-
-const isUserInFreeTrial = (date: Date | string) => {
-  return new Date(date).getTime() > new Date().getTime() - DAYS;
-};
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   adapter: PrismaAdapter(prisma),
@@ -38,9 +31,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         session.user.plan = plan as PlanType;
         session.user.createdAt = createdAt as string;
         (session.user as any).username = username;
-        session.user.isFreeTrial = createdAt
-          ? isUserInFreeTrial(createdAt as string)
-          : false;
       }
 
       return {

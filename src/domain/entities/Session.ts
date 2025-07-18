@@ -8,7 +8,6 @@ export default interface SessionAbstract {
     email: string;
     image: string;
     plan?: string;
-    isFreeTrial: boolean;
     createdAt: Date | string;
   };
   expires: string;
