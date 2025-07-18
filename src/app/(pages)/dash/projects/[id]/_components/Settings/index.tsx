@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 
+import Link from 'next/link';
 import { Edit3, Trash2 } from 'lucide-react';
 
 import { ProjectAbstract } from '@domain/entities';
@@ -30,9 +31,11 @@ export default function Settings({ project }: SettingsProps) {
               title="Edit project data"
               description="Edit the project data"
             >
-              <Button>
-                Edit project <Button.Icon icon={Edit3} />
-              </Button>
+              <Link href={`/dash/projects/${project.id}/edit`}>
+                <Button>
+                  Edit project <Button.Icon icon={Edit3} />
+                </Button>
+              </Link>
             </Setting>
           </li>
 
