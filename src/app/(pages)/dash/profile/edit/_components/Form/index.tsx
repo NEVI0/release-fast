@@ -9,10 +9,13 @@ import { Mail, RefreshCw, Trash2, User } from 'lucide-react';
 
 import { UserAbstract } from '@domain/entities';
 import { useForm, useToast } from '@app/hooks';
-import { UpdateUserValidationSchema } from '@app/validations';
+import {
+  UpdateUserValidationSchema,
+  updateUserValidationSchema,
+} from '@app/validations';
 
-import updateUserValidationSchema from '@app/validations/updateUserValidation';
 import { Button, Input } from '@app/components/ui';
+import { updateUserDataAction } from '@app/actions';
 
 interface FormProps {
   user: UserAbstract;
@@ -34,6 +37,12 @@ export default function Form({ user }: FormProps) {
   async function handleSubmit(data: UpdateUserValidationSchema) {
     try {
       setIsLoading(true);
+
+      const updated = await updateUserDataAction({ ...data, id: user.id });
+      if (!updated.user) throw new Error();
+
+      toast.success('Data updated successfully');
+      router.push('/dash/profile');
     } catch (error) {
       toast.error(
         error instanceof Error ? error.message : 'Error updating data'
@@ -71,7 +80,7 @@ export default function Form({ user }: FormProps) {
       </div>
 
       <div className="flex items-center justify-end gap-4">
-        <Link href="/dash/projects">
+        <Link href="/dash/profile">
           <Button type="button" className="w-[184px]" disabled={isLoading}>
             Cancel
             <Button.Icon icon={Trash2} />

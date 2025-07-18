@@ -13,3 +13,4 @@ export { default as fetchUserByIdAction } from './fetchUserByIdAction';
 export { default as logoutAccountAction } from './logoutAccountAction';
 export { default as updateProjectAction } from './updateProjectAction';
 export { default as updateReleaseAction } from './updateReleaseAction';
+export { default as updateUserDataAction } from './updateUserDataAction';
