@@ -54,6 +54,7 @@ export default function DeleteAccountModal({
     }
   }
 
+  const hasActivePlan = user.plan !== 'free';
   const isDeleteButtonDisabled = password !== 'Delete';
 
   return (
@@ -68,14 +69,30 @@ export default function DeleteAccountModal({
             <IconButton icon={X} onClick={onClose} />
           </div>
 
-          <p className="text-text-secondary">
-            Are you sure you want to delete your account? All data will be
-            deleted and this action cannot be undone.
-          </p>
+          {hasActivePlan ? (
+            <>
+              <p className="text-text-secondary">
+                Before deleting your account and it's data, first you need to
+                cancel your subscription. To do that, go to:{' '}
+              </p>
 
-          <p className="text-text-secondary">
-            If so, type "Delete" in the field below.
-          </p>
+              <strong className="text-text-secondary font-semibold">
+                My account &gt; Settings &gt; Manage Plans &gt; "Cancel at any
+                time" button;
+              </strong>
+            </>
+          ) : (
+            <>
+              <p className="text-text-secondary">
+                Are you sure you want to delete your account? All data will be
+                deleted and this action cannot be undone.
+              </p>
+
+              <p className="text-text-secondary">
+                If so, type "Delete" in the field below.
+              </p>
+            </>
+          )}
         </div>
 
         <form
@@ -88,13 +105,14 @@ export default function DeleteAccountModal({
             className="w-full"
             required
             value={password}
+            disabled={hasActivePlan}
             onChange={(event) => setPassword(event.target.value)}
           />
 
           <Button
             type="submit"
             variant="danger"
-            disabled={isDeleteButtonDisabled || isLoading}
+            disabled={hasActivePlan || isDeleteButtonDisabled || isLoading}
           >
             {isLoading ? 'Deleting...' : 'Delete account'}
           </Button>
