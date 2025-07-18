@@ -1,7 +1,9 @@
 import { Check, ExternalLink } from 'lucide-react';
 
-import { Badge, Button } from '@app/components/ui';
+import { PlanType } from '@domain/entities';
+
 import { concatClasses, formatToCurrency } from '@app/helpers';
+import { Badge, Button } from '@app/components/ui';
 
 type PlanVariant = 'normal' | 'main';
 
@@ -10,18 +12,25 @@ interface PlanProps {
   price: number;
   features: string[];
   variant?: PlanVariant;
-  isCurrentPlan: boolean;
-  onSelect(): void;
+  plan: PlanType;
+  currentPlan: PlanType;
+  onBuy(): void;
+  onUpgrade(): void;
 }
 
 export default function Plan({
   title,
   price,
   features,
+  plan,
+  currentPlan,
   variant = 'normal',
-  isCurrentPlan,
-  onSelect,
+  onBuy,
+  onUpgrade,
 }: PlanProps) {
+  const isCurrentPlan = currentPlan === plan;
+  const shouldUpgrade = currentPlan !== 'free';
+
   return (
     <div
       className={concatClasses(
@@ -72,9 +81,10 @@ export default function Plan({
       ) : (
         <Button
           variant={variant === 'main' ? 'primary' : 'default'}
-          onClick={onSelect}
+          onClick={shouldUpgrade ? onUpgrade : onBuy}
         >
-          Upgrade now <Button.Icon icon={ExternalLink} />
+          {shouldUpgrade ? 'Upgrade now' : 'Buy now'}{' '}
+          <Button.Icon icon={ExternalLink} />
         </Button>
       )}
     </div>

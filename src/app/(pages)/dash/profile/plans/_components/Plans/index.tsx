@@ -15,7 +15,7 @@ interface PlansProps {
 export default function Plans({ user }: PlansProps) {
   const plans = makeFetchPlansUseCase().execute();
 
-  const { createCheckout } = useStripe();
+  const { createCheckout, createPortal } = useStripe();
 
   return (
     <section className="flex items-center gap-4">
@@ -25,9 +25,11 @@ export default function Plans({ user }: PlansProps) {
           title={PLAN_DETAILS_BY_TYPE[plan.type].name}
           price={plan.price}
           features={plan.features}
+          plan={plan.type}
+          currentPlan={user.plan}
           variant={plan.type === 'pro' ? 'main' : 'normal'}
-          isCurrentPlan={plan.type === user.plan}
-          onSelect={() => {
+          onUpgrade={createPortal}
+          onBuy={() => {
             createCheckout({
               plan: plan.type,
             });
