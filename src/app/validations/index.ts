@@ -14,6 +14,11 @@ export {
 } from './createReleaseValidation';
 
 export {
+  default as updateProjectValidationSchema,
+  type UpdateProjectValidationSchema,
+} from './updateProjectValidation';
+
+export {
   default as updateUserValidationSchema,
   type UpdateUserValidationSchema,
 } from './updateUserValidation';
