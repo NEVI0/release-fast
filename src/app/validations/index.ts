@@ -14,6 +14,6 @@ export {
 } from './createReleaseValidation';
 
 export {
-  default as updateUserValidation,
+  default as updateUserValidationSchema,
   type UpdateUserValidationSchema,
 } from './updateUserValidation';
