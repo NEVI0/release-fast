@@ -141,14 +141,7 @@ export default function Form({ session }: FormProps) {
         </div>
       )}
 
-      <div className="flex items-center justify-end gap-4">
-        <Link href="/dash/projects">
-          <Button type="button" className="w-[184px]" disabled={isLoading}>
-            Cancel
-            <Button.Icon icon={Trash2} />
-          </Button>
-        </Link>
-
+      <div className="flex flex-row-reverse items-center gap-4">
         <Button
           type="submit"
           variant="primary"
@@ -158,6 +151,13 @@ export default function Form({ session }: FormProps) {
           {isLoading ? 'Creating...' : 'Create project'}
           <Button.Icon icon={Plus} loading={isLoading} />
         </Button>
+
+        <Link href="/dash/projects">
+          <Button type="button" className="w-[184px]" disabled={isLoading}>
+            Cancel
+            <Button.Icon icon={Trash2} />
+          </Button>
+        </Link>
       </div>
     </form>
   );

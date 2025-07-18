@@ -92,14 +92,7 @@ export default function Form({ project }: FormProps) {
         />
       </div>
 
-      <div className="flex items-center justify-end gap-4">
-        <Link href={`/dash/projects/${project.id}`}>
-          <Button type="button" className="w-[184px]" disabled={isLoading}>
-            Cancel
-            <Button.Icon icon={Trash2} />
-          </Button>
-        </Link>
-
+      <div className="flex flex-row-reverse items-center gap-4">
         <Button
           type="submit"
           variant="primary"
@@ -109,6 +102,13 @@ export default function Form({ project }: FormProps) {
           {isLoading ? 'Updating...' : 'Update project'}
           <Button.Icon icon={RefreshCw} loading={isLoading} />
         </Button>
+
+        <Link href={`/dash/projects/${project.id}`}>
+          <Button type="button" className="w-[184px]" disabled={isLoading}>
+            Cancel
+            <Button.Icon icon={Trash2} />
+          </Button>
+        </Link>
       </div>
     </form>
   );
