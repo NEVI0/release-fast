@@ -25,7 +25,7 @@ export const PLAN_DETAILS_BY_TYPE: Record<PlanType, Details> = {
     projectsAmount: 15,
   },
   enterprise: {
-    name: '',
+    name: 'Enterprise',
     value: 50,
     projectsAmount: 'unlimited',
   },
