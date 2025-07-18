@@ -67,7 +67,7 @@ export default class CreateProjectUseCase {
   private async validateProjectsAmount(user: UserAbstract) {
     const projects = await this.projectRepository.findAll(user.id);
 
-    const projectsAmountTotal = projects.length + 1;
+    const projectsAmountTotal = projects.length;
     const { projectsAmount } = PLAN_DETAILS_BY_TYPE[user.plan];
 
     if (projectsAmount !== 'unlimited') {
