@@ -6,12 +6,25 @@ import makeCreatePaymentWebhookEventUseCase from '@factories/useCases/makeCreate
 import makeUpdateUserPlanByPaymentIdUseCase from '@factories/useCases/makeUpdateUserPlanByPaymentIdUseCase';
 import makeUpdateUserPlanUseCase from '@factories/useCases/makeUpdateUserPlanUseCase';
 
+const {
+  STRIPE_WEBHOOK_SECRET,
+  STRIPE_STARTER_PLAN_PRICE_ID,
+  STRIPE_PRO_PLAN_PRICE_ID,
+  STRIPE_ENTERPRISE_PLAN_PRICE_ID,
+} = process.env!;
+
+const PLAN_BY_PRICE_ID: Record<string, PlanType> = {
+  '': 'free',
+  [STRIPE_STARTER_PLAN_PRICE_ID!]: 'starter',
+  [STRIPE_PRO_PLAN_PRICE_ID!]: 'pro',
+  [STRIPE_ENTERPRISE_PLAN_PRICE_ID!]: 'enterprise',
+};
+
 export const POST = async (request: NextRequest) => {
   try {
     const body = await request.text();
     const signature = request.headers.get('stripe-signature');
 
-    const { STRIPE_WEBHOOK_SECRET } = process.env!;
     if (!signature || !STRIPE_WEBHOOK_SECRET) {
       throw new Error('Stripe webhook secret is not set');
     }
@@ -39,12 +52,17 @@ export const POST = async (request: NextRequest) => {
       event.type === 'customer.subscription.deleted' ||
       event.type === 'customer.subscription.updated'
     ) {
-      // Usuário cancelou a assinatura
+      // Usuário cancelou ou atualizou a assinatura
+      const isCancellation = event.data.object.status === 'canceled';
+
       const paymentId = event.data.object.customer;
+      const priceId = (event.data.object as any).plan.id || '';
+
+      const plan = PLAN_BY_PRICE_ID[isCancellation ? '' : priceId];
 
       await makeUpdateUserPlanByPaymentIdUseCase().execute({
         paymentId: paymentId as string,
-        plan: 'free' as PlanType,
+        plan,
       });
     }
 
