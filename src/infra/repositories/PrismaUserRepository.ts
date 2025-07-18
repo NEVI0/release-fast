@@ -17,9 +17,38 @@ export default class PrismaUserRepository implements UserRepositoryAbstract {
     return this.userToDomain(user);
   }
 
+  public async findByPaymentId(id: string): Promise<UserAbstract | null> {
+    const user = await this.prisma.user.findUnique({
+      where: { paymentId: id },
+    });
+
+    if (!user) return null;
+    return this.userToDomain(user);
+  }
+
   public async update(user: UserAbstract): Promise<UserAbstract> {
     const updatedUser = await this.prisma.user.update({
       where: { id: user.id },
+      data: {
+        name: user.name,
+        email: user.email || undefined,
+        emailVerified: user.emailVerified || undefined,
+        image: user.image || undefined,
+        plan: user.plan,
+        paymentId: user.paymentId || undefined,
+        updatedAt: new Date(),
+      },
+    });
+
+    if (!updatedUser) throw new Error('Could not update the user data...');
+    return this.userToDomain(updatedUser);
+  }
+
+  public async updateByPaymentId(user: UserAbstract): Promise<UserAbstract> {
+    const updatedUser = await this.prisma.user.update({
+      where: {
+        paymentId: user.paymentId,
+      },
       data: {
         name: user.name,
         email: user.email || undefined,

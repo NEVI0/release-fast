@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { PlanType } from '@domain/entities';
 
 import makeCreatePaymentWebhookEventUseCase from '@factories/useCases/makeCreatePaymentWebhookEventUseCase';
+import makeUpdateUserPlanByPaymentIdUseCase from '@factories/useCases/makeUpdateUserPlanByPaymentIdUseCase';
 import makeUpdateUserPlanUseCase from '@factories/useCases/makeUpdateUserPlanUseCase';
 
 export const POST = async (request: NextRequest) => {
@@ -39,10 +40,10 @@ export const POST = async (request: NextRequest) => {
       event.type === 'customer.subscription.updated'
     ) {
       // Usuário cancelou a assinatura
-      const userPaymentId = event.data.object.customer;
+      const paymentId = event.data.object.customer;
 
-      await makeUpdateUserPlanUseCase().execute({
-        userId: userPaymentId as string,
+      await makeUpdateUserPlanByPaymentIdUseCase().execute({
+        paymentId: paymentId as string,
         plan: 'free' as PlanType,
       });
     }
