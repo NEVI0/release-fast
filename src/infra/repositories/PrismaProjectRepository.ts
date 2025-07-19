@@ -10,6 +10,14 @@ export default class PrismaProjectRepository
 {
   private prisma = prisma;
 
+  public async count(userId: string): Promise<{ projects: number }> {
+    const projects = await this.prisma.project.count({
+      where: { id: userId },
+    });
+
+    return { projects };
+  }
+
   public async findAll(userId: string): Promise<ProjectAbstract[]> {
     const projects = await this.prisma.project.findMany({
       where: {

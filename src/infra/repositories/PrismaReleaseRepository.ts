@@ -10,6 +10,14 @@ export default class PrismaReleaseRepository
 {
   private prisma = prisma;
 
+  public async count(projectId: string): Promise<{ releases: number }> {
+    const releases = await this.prisma.release.count({
+      where: { projectId },
+    });
+
+    return { releases };
+  }
+
   public async findAll(projectId: string): Promise<ReleaseAbstract[]> {
     const releases = await this.prisma.release.findMany({
       orderBy: {

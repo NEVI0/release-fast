@@ -1,6 +1,8 @@
 import { type ProjectAbstract } from '@domain/entities';
 
 export default interface ProjectRepositoryAbstract {
+  count(userId: string): Promise<{ projects: number }>;
+
   findAll(userId: string): Promise<ProjectAbstract[]>;
   findById(id: string): Promise<ProjectAbstract | null>;
 
