@@ -21,6 +21,7 @@ import { MAX_SHORT_DESCRIPTION_LENGTH } from '@domain/constants/release';
 
 import { useForm, useToast } from '@app/hooks';
 import { createReleaseAction } from '@app/actions';
+import { handleError } from '@app/helpers';
 import {
   compareBranchesValidationSchema,
   CompareBranchesValidationSchema,
@@ -84,9 +85,8 @@ export default function Form({ session, project }: FormProps) {
 
       setAlreadyComparatedBranches(true);
     } catch (error) {
-      toast.error(
-        error instanceof Error ? error.message : 'Error comparing branches'
-      );
+      const { message } = handleError(error);
+      toast.error(message);
     } finally {
       setIsComparing(false);
     }
@@ -101,14 +101,13 @@ export default function Form({ session, project }: FormProps) {
         projectId: project.id,
       });
 
-      if (!release) throw new Error('Error creating release');
+      if (!release) throw new Error('Could not create the new release');
 
       toast.success('Release created successfully');
       router.push('/dash/projects/' + project.id);
     } catch (error) {
-      toast.error(
-        error instanceof Error ? error.message : 'Error creating release'
-      );
+      const { message } = handleError(error);
+      toast.error(message);
     } finally {
       setIsCreating(false);
     }

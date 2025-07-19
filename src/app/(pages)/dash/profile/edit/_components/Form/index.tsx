@@ -8,14 +8,16 @@ import Link from 'next/link';
 import { Mail, RefreshCw, Trash2, User } from 'lucide-react';
 
 import { UserAbstract } from '@domain/entities';
-import { useForm, useToast } from '@app/hooks';
+
 import {
   UpdateUserValidationSchema,
   updateUserValidationSchema,
 } from '@app/validations';
+import { updateUserDataAction } from '@app/actions';
+import { handleError } from '@app/helpers';
+import { useForm, useToast } from '@app/hooks';
 
 import { Button, Input } from '@app/components/ui';
-import { updateUserDataAction } from '@app/actions';
 
 interface FormProps {
   user: UserAbstract;
@@ -39,14 +41,13 @@ export default function Form({ user }: FormProps) {
       setIsLoading(true);
 
       const updated = await updateUserDataAction({ ...data, id: user.id });
-      if (!updated.user) throw new Error();
+      if (!updated.user) throw new Error('Could not update your account data');
 
       toast.success('Data updated successfully');
       router.push('/dash/profile');
     } catch (error) {
-      toast.error(
-        error instanceof Error ? error.message : 'Error updating data'
-      );
+      const { message } = handleError(error);
+      toast.error(message);
     } finally {
       setIsLoading(false);
     }

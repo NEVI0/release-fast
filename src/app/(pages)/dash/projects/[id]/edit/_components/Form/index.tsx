@@ -13,6 +13,7 @@ import {
   updateProjectValidationSchema,
   UpdateProjectValidationSchema,
 } from '@app/validations';
+import { handleError } from '@app/helpers';
 import { updateProjectAction } from '@app/actions';
 import { useForm, useToast } from '@app/hooks';
 
@@ -44,14 +45,13 @@ export default function Form({ project }: FormProps) {
         id: project.id,
       });
 
-      if (!updated.project) throw new Error();
+      if (!updated.project) throw new Error('Could not update the project');
 
       toast.success('Project updated successfully');
       router.push('/dash/projects/' + project.id);
     } catch (error) {
-      toast.error(
-        error instanceof Error ? error.message : 'Error updating project'
-      );
+      const { message } = handleError(error);
+      toast.error(message);
     } finally {
       setIsLoading(false);
     }

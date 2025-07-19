@@ -13,6 +13,7 @@ import {
   createProjectValidationSchema,
   CreateProjectValidationSchema,
 } from '@app/validations';
+import { handleError } from '@app/helpers';
 import { createProjectAction } from '@app/actions';
 import { useForm, useToast } from '@app/hooks';
 import { useFetchRepositories } from './hooks';
@@ -53,14 +54,13 @@ export default function Form({ session }: FormProps) {
         provider: session.provider,
       });
 
-      if (!project) throw new Error();
+      if (!project) throw new Error('Could not create the project');
 
       toast.success('Project created successfully');
       router.push('/dash/projects/' + project.id);
     } catch (error) {
-      toast.error(
-        error instanceof Error ? error.message : 'Error creating project'
-      );
+      const { message } = handleError(error);
+      toast.error(message);
     } finally {
       setIsLoading(false);
     }
