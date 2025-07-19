@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
-import { Edit3, MessageSquare, SendHorizonal, Trash2 } from 'lucide-react';
+import { Edit3, MessageSquare, Plus, Trash2 } from 'lucide-react';
 
 import { SessionAbstract } from '@domain/entities';
 
@@ -88,7 +88,7 @@ export default function Form({ session }: FormProps) {
           disabled={isLoading || !form.isValid}
         >
           {isLoading ? 'Creating...' : 'Create ticket'}
-          <Button.Icon icon={SendHorizonal} loading={isLoading} />
+          <Button.Icon icon={Plus} loading={isLoading} />
         </Button>
 
         <Link href="/dash/profile">
