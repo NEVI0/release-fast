@@ -1,3 +1,4 @@
+export { default as Feedback, type FeedbackAbstract } from './Feedback';
 export {
   default as PaymentUser,
   type PaymentUserAbstract,
@@ -7,6 +8,10 @@ export { default as Project, type ProjectAbstract } from './Project';
 export { default as Release, type ReleaseAbstract } from './Release';
 export { default as Repository, type RepositoryAbstract } from './Repository';
 export { default as User, type UserAbstract } from './User';
+export {
+  default as SupportTicket,
+  type SupportTicketAbstract,
+} from './SupportTicket';
 
 export type { default as SessionAbstract } from './Session';
 export type { SessionProvider } from './SessionProvider';
