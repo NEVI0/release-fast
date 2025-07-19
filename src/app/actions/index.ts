@@ -1,6 +1,8 @@
 export { default as accessAccountAction } from './accessAccountAction';
+export { default as createFeedbackAction } from './createFeedbackAction';
 export { default as createProjectAction } from './createProjectAction';
 export { default as createReleaseAction } from './createReleaseAction';
+export { default as createSupportTicketAction } from './createSupportTicketAction';
 export { default as deleteProjectByIdAction } from './deleteProjectByIdAction';
 export { default as deleteReleaseByIdAction } from './deleteReleaseByIdAction';
 export { default as deleteUserByIdAction } from './deleteUserByIdAction';
