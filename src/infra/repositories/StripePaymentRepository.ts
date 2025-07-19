@@ -8,31 +8,23 @@ export default class StripePaymentRepository
   constructor(private readonly httpProvider: HttpProviderAbstract) {}
 
   public async createCheckout(plan: PlanType, metadata?: any) {
-    try {
-      const { sessionId } = await this.httpProvider.post<{ sessionId: string }>(
-        '/api/stripe/create-checkout',
-        {
-          plan,
-          metadata,
-        }
-      );
+    const { sessionId } = await this.httpProvider.post<{ sessionId: string }>(
+      '/api/stripe/create-checkout',
+      {
+        plan,
+        metadata,
+      }
+    );
 
-      return { sessionId };
-    } catch (error) {
-      return { sessionId: '' };
-    }
+    return { sessionId };
   }
 
   public async createPortal() {
-    try {
-      const response = await this.httpProvider.post<{ url: string }>(
-        '/api/stripe/create-portal',
-        {}
-      );
+    const response = await this.httpProvider.post<{ url: string }>(
+      '/api/stripe/create-portal',
+      {}
+    );
 
-      return response;
-    } catch (error) {
-      return { url: '' };
-    }
+    return response;
   }
 }
