@@ -1,5 +1,4 @@
 import type { SessionProvider } from '@domain/entities';
-import type { HttpProviderAbstract } from '@domain/providers';
 
 import FetchHttpProvider from '@infra/providers/FetchHttpProvider';
 
@@ -10,8 +9,6 @@ interface Params {
   token?: string;
 }
 
-let instance: HttpProviderAbstract | null = null;
-
 const BASE_URL_BY_PROVIDER: Record<Provider, string> = {
   app: '',
   github: 'https://api.github.com',
@@ -19,18 +16,14 @@ const BASE_URL_BY_PROVIDER: Record<Provider, string> = {
 };
 
 export default function makeHttpProvider(params?: Params) {
-  if (!instance) {
-    const baseUrl = BASE_URL_BY_PROVIDER[params?.provider || 'app'];
+  const baseUrl = BASE_URL_BY_PROVIDER[params?.provider || 'app'];
 
-    let headers = {};
-    if (params?.token) {
-      headers = {
-        Authorization: `Bearer ${params.token}`,
-      };
-    }
-
-    instance = new FetchHttpProvider(baseUrl, headers);
+  let headers = {};
+  if (params?.token) {
+    headers = {
+      Authorization: `Bearer ${params.token}`,
+    };
   }
 
-  return instance;
+  return new FetchHttpProvider(baseUrl, headers);
 }
