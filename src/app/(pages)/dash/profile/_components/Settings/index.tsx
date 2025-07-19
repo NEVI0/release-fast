@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { DollarSign, Edit3, Trash2 } from 'lucide-react';
+import { DollarSign, Edit3, Trash2, TriangleAlert } from 'lucide-react';
 
 import { UserAbstract } from '@domain/entities';
 
@@ -55,6 +55,19 @@ export default function Settings({ user }: SettingsProps) {
               <Link href="/dash/profile/plans">
                 <Button>
                   Manage plans <Button.Icon icon={DollarSign} />
+                </Button>
+              </Link>
+            </Setting>
+          </li>
+
+          <li>
+            <Setting
+              title="Report problem"
+              description="Create a support ticket of problems or bugs"
+            >
+              <Link href="/dash/profile/support">
+                <Button>
+                  Report problem <Button.Icon icon={TriangleAlert} />
                 </Button>
               </Link>
             </Setting>
