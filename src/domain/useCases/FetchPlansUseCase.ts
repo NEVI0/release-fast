@@ -13,7 +13,7 @@ export default class FetchPlansUseCase {
       features: [
         `Up to ${PLAN_DETAILS_BY_TYPE['starter'].projectsAmount} projects`,
         'AI-powered release notes generation',
-        'Basic notifications',
+        'Basic support',
       ],
     };
 
@@ -26,7 +26,6 @@ export default class FetchPlansUseCase {
         `Up to ${PLAN_DETAILS_BY_TYPE['pro'].projectsAmount} projects`,
         'AI-powered release notes generation',
         'Advanced AI suggestions',
-        'Basic notifications',
         'Priority support',
       ],
     };
@@ -40,9 +39,8 @@ export default class FetchPlansUseCase {
         'Unlimited projects',
         'Advanced AI-powered release notes generation',
         'Advanced AI suggestions',
-        'Email notifications',
         'Priority support',
-        'Access to all features',
+        'Access to future features in advance',
       ],
     };
 
