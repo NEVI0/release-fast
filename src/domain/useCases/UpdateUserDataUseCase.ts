@@ -36,7 +36,7 @@ export default class UpdateUserDataUseCase {
 
   private async fetchUserData(id: string) {
     const user = await this.userRepository.findById(id);
-    if (!user || !user.paymentId) throw new Error('Unauthorized');
+    if (!user) throw new Error('Unauthorized');
 
     return user as UserAbstract;
   }
