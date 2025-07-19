@@ -73,6 +73,7 @@ export default function Form({ user }: FormProps) {
           id="email"
           type="email"
           label="Your e-mail"
+          placeholder="E.g.: example@gmail.com"
           icon={Mail}
           required
           error={form.errors.email?.message}
