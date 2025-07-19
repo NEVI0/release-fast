@@ -15,7 +15,7 @@ export default function DashHeader() {
           <ThemeLogo href="/" />
 
           <nav className="flex items-center gap-4 h-full">
-            <NavLink href="/dash">Home</NavLink>
+            <NavLink href="/dash">Dashboard</NavLink>
             <VerticalDivider />
             <NavLink href="/dash/projects">Projects</NavLink>
             <VerticalDivider />
