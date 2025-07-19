@@ -11,6 +11,7 @@ export type { default as DeleteReleaseByIdDTO } from './DeleteReleaseByIdDTO';
 export type { default as DeleteUserByIdDTO } from './DeleteUserByIdDTO';
 export type { default as FetchAllProjectsDTO } from './FetchAllProjectsDTO';
 export type { default as FetchAllReleasesDTO } from './FetchAllReleasesDTO';
+export type { default as FetchDashboardKPIsDTO } from './FetchDashboardKPIsDTO';
 export type { default as FetchProjectByIdDTO } from './FetchProjectByIdDTO';
 export type { default as FetchReleaseByIdDTO } from './FetchReleaseByIdDTO';
 export type { default as FetchUserByIdDTO } from './FetchUserByIdDTO';

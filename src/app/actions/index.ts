@@ -8,6 +8,7 @@ export { default as deleteReleaseByIdAction } from './deleteReleaseByIdAction';
 export { default as deleteUserByIdAction } from './deleteUserByIdAction';
 export { default as fetchAllProjectsAction } from './fetchAllProjectsAction';
 export { default as fetchAllReleasesAction } from './fetchAllReleasesAction';
+export { default as fetchDashboardKPIsAction } from './fetchDashboardKPIsAction';
 export { default as fetchProjectByIdAction } from './fetchProjectByIdAction';
 export { default as fetchReleaseByIdAction } from './fetchReleaseByIdAction';
 export { default as fetchUserSession } from './fetchUserSession';
