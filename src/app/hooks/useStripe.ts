@@ -6,6 +6,8 @@ import { CreatePaymentCheckoutForClientDTO } from '@domain/dtos';
 import makeCreatePaymentPortalForClientUseCase from '@factories/useCases/makeCreatePaymentPortalForClientUseCase';
 import makeCreatePaymentCheckoutForClientUseCase from '@factories/useCases/makeCreatePaymentCheckoutForClientUseCase';
 
+import { handleError } from '@app/helpers';
+
 import useToast from './useToast';
 
 export default function useStripe() {
@@ -13,22 +15,32 @@ export default function useStripe() {
   const [stripe, setStripe] = useState<Stripe | null>(null);
 
   async function createCheckout(dto: CreatePaymentCheckoutForClientDTO) {
-    if (!stripe) return toast.error('Unable to proceed to checkout...');
+    try {
+      if (!stripe) return toast.error('Unable to proceed to checkout...');
 
-    const { sessionId } =
-      await makeCreatePaymentCheckoutForClientUseCase().execute(dto);
-    if (!sessionId) return toast.error('Unable to proceed to checkout...');
+      const { sessionId } =
+        await makeCreatePaymentCheckoutForClientUseCase().execute(dto);
+      if (!sessionId) throw new Error('Unable to proceed to checkout...');
 
-    await stripe.redirectToCheckout({
-      sessionId,
-    });
+      await stripe.redirectToCheckout({
+        sessionId,
+      });
+    } catch (error) {
+      const { message } = handleError(error);
+      toast.error(message);
+    }
   }
 
   async function createPortal() {
-    const { url } = await makeCreatePaymentPortalForClientUseCase().execute();
-    if (!url) return toast.error('Unable to access your portal...');
+    try {
+      const { url } = await makeCreatePaymentPortalForClientUseCase().execute();
+      if (!url) throw new Error('Unable to access your portal...');
 
-    window.location.href = url;
+      window.location.href = url;
+    } catch (error) {
+      const { message } = handleError(error);
+      toast.error(message);
+    }
   }
 
   useEffect(() => {
