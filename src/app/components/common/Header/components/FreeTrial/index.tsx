@@ -32,20 +32,23 @@ export default async function FreeTrial({ session }: FreeTrialProps) {
     <div className="flex items-center justify-center w-full py-1 bg-primary text-white">
       <div className="flex items-center justify-between h-full w-6xl mx-auto px-6 md:px-8 ">
         {isFreeTrial ? (
-          <p>
+          <p className="text-left">
             You are currently on the{' '}
             <strong className="font-semibold">
               free trial of {FREE_TRIAL_DAYS} days
             </strong>
           </p>
         ) : (
-          <p>
+          <p className="text-left">
             You are currently on the{' '}
             <strong className="font-semibold">free</strong> plan
           </p>
         )}
 
-        <Link href="/dash/profile/plans" className="font-semibold underline">
+        <Link
+          href="/dash/profile/plans"
+          className="text-right font-semibold underline"
+        >
           Click here to upgrade your plan! 🚀
         </Link>
       </div>
