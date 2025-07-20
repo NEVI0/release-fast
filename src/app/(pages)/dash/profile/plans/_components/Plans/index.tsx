@@ -22,7 +22,7 @@ export default function Plans({ user }: PlansProps) {
 
   return (
     <>
-      <section className="flex items-center gap-4">
+      <section className="flex flex-col md:flex-row items-center gap-4">
         {plans.map((plan) => (
           <Plan
             key={plan.id}
@@ -45,7 +45,6 @@ export default function Plans({ user }: PlansProps) {
       </section>
 
       <ProvideEmailModal
-        user={user}
         isOpen={isProvideEmailModalOpen}
         onClose={() => setIsProvideEmailModalOpen(false)}
       />
