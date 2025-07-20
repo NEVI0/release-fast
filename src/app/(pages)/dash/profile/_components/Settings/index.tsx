@@ -39,8 +39,8 @@ export default function Settings({ user }: SettingsProps) {
               title="Edit my account"
               description="Edit your account details (name, email, etc.)"
             >
-              <Link href="/dash/profile/edit">
-                <Button>
+              <Link href="/dash/profile/edit" className="w-full">
+                <Button className="w-full">
                   Edit account <Button.Icon icon={Edit3} />
                 </Button>
               </Link>
@@ -52,8 +52,8 @@ export default function Settings({ user }: SettingsProps) {
               title="Plans and subscriptions"
               description="Manage your plans and subscriptions"
             >
-              <Link href="/dash/profile/plans">
-                <Button>
+              <Link href="/dash/profile/plans" className="w-full">
+                <Button className="w-full">
                   Manage plans <Button.Icon icon={DollarSign} />
                 </Button>
               </Link>
@@ -65,8 +65,8 @@ export default function Settings({ user }: SettingsProps) {
               title="Report problem"
               description="Create a support ticket of problems or bugs"
             >
-              <Link href="/dash/profile/support">
-                <Button>
+              <Link href="/dash/profile/support" className="w-full">
+                <Button className="w-full">
                   Report problem <Button.Icon icon={TriangleAlert} />
                 </Button>
               </Link>
@@ -80,6 +80,7 @@ export default function Settings({ user }: SettingsProps) {
             >
               <Button
                 variant="danger"
+                className="w-full"
                 onClick={() => setIsDeleteAccountModalOpen(true)}
               >
                 Delete account <Button.Icon icon={Trash2} />

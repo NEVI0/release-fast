@@ -20,7 +20,7 @@ export default function Cards({ user }: CardsProps) {
         )}/m`;
 
   return (
-    <section className="flex items-center gap-4">
+    <section className="flex flex-col md:flex-row items-center gap-4">
       <Card title="Current plan" value={currentPlan} icon={BadgeCheck} />
 
       <Card
