@@ -55,8 +55,12 @@ export default function DeleteProjectModal({
   const isDeleteButtonDisabled = password !== 'Delete';
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
-      <div className="flex flex-col items-center gap-8 bg-container border border-border p-8 rounded-4xl w-[85%] md:w-[500px]">
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
+      className="items-end md:items-center md:justify-center"
+    >
+      <div className="flex flex-col items-center gap-8 bg-container border border-border p-8 rounded-t-4xl md:rounded-b-4xl w-full md:w-[500px]">
         <div className="flex flex-col gap-4">
           <div className="flex items-center justify-between w-full">
             <h3 className="text-2xl text-text-primary font-bold">
@@ -77,7 +81,7 @@ export default function DeleteProjectModal({
         </div>
 
         <form
-          className="flex items-end gap-4 w-full"
+          className="flex flex-col md:flex-row items-end gap-4 w-full"
           onSubmit={handleDeleteProject}
         >
           <Input
@@ -92,6 +96,7 @@ export default function DeleteProjectModal({
           <Button
             type="submit"
             variant="danger"
+            className="w-full"
             disabled={isDeleteButtonDisabled || isLoading}
           >
             {isLoading ? 'Deleting project...' : 'Delete project'}
