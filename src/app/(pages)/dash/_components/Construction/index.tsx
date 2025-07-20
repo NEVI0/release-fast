@@ -1,11 +1,12 @@
-import { Animation } from '@app/components/ui';
-import { ANIMATIONS } from '@app/constants/animations';
 import Link from 'next/link';
+
+import { ANIMATIONS } from '@app/constants/animations';
+import { Animation } from '@app/components/ui';
 
 export default function Construction() {
   return (
-    <section className="flex items-center gap-8">
-      <div>
+    <section className="flex flex-col md:flex-row items-center gap-8">
+      <div className="flex items-center justify-center mr-[-64px]">
         <Animation
           animation={ANIMATIONS.CONSTRUCTION}
           width={300}
@@ -13,8 +14,8 @@ export default function Construction() {
         />
       </div>
 
-      <div className="flex flex-col justify-between">
-        <div className="flex flex-col gap-2 h-[152px]">
+      <div className="flex flex-col gap-8 justify-between">
+        <div className="flex flex-col gap-2 h-auto md:h-[152px]">
           <h2 className="text-2xl font-semibold">
             Platform under construction...
           </h2>
@@ -36,8 +37,6 @@ export default function Construction() {
           </strong>
         </Link>
       </div>
-
-      {/* {!!children && <div>{children}</div>} */}
     </section>
   );
 }

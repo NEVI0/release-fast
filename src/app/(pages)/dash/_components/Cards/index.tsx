@@ -10,7 +10,7 @@ export default async function Cards() {
   const results = await fetchDashboardKPIsAction({ userId: session.user.id });
 
   return (
-    <section className="flex items-center justify-between gap-4">
+    <section className="flex flex-col md:flex-row items-center justify-between gap-4">
       <Card
         title="Projects created"
         value={String(results.projects)}
