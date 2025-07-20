@@ -96,10 +96,10 @@ export default function DeleteProjectModal({
           <Button
             type="submit"
             variant="danger"
-            className="w-full"
+            className="w-full md:w-[188px]"
             disabled={isDeleteButtonDisabled || isLoading}
           >
-            {isLoading ? 'Deleting project...' : 'Delete project'}
+            {isLoading ? 'Deleting...' : 'Delete project'}
           </Button>
         </form>
       </div>
