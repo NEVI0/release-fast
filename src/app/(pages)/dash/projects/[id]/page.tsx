@@ -50,7 +50,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     { id: 'version', children: 'Version' },
     { id: 'createdAt', children: 'Created at' },
     { id: 'updatedAt', children: 'Last updated at' },
-    { id: 'edit', children: 'Edit', center: true },
     { id: 'details', children: 'Details', center: true },
   ];
 

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Edit3, ExternalLink, Plus } from 'lucide-react';
+import { ExternalLink, Plus } from 'lucide-react';
 
 import { ProjectAbstract } from '@domain/entities';
 
@@ -70,14 +70,6 @@ export default async function List({ columns, project }: ListProps) {
                   </Table.Data>
                   <Table.Data>
                     {formatDate(release.updatedAt, 'MMMM DD, YYYY')}
-                  </Table.Data>
-
-                  <Table.Data>
-                    <div className="flex items-center justify-center">
-                      <Link href="">
-                        <IconButton icon={Edit3} />
-                      </Link>
-                    </div>
                   </Table.Data>
 
                   <Table.Data>
