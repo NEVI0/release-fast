@@ -123,7 +123,7 @@ export default function Form({ session, project }: FormProps) {
           Enter the branches to compare
         </h3>
 
-        <div className="flex items-end gap-4">
+        <div className="flex flex-col md:flex-row md:items-end gap-4">
           <Input
             id="baseBranch"
             type="text"
@@ -151,7 +151,7 @@ export default function Form({ session, project }: FormProps) {
           <Button
             type="submit"
             variant="primary"
-            className="w-[200px]"
+            className="w-full md:w-[200px]"
             disabled={!branchesForm.isValid || isComparing}
           >
             {isComparing ? 'Comparing...' : 'Compare'}
