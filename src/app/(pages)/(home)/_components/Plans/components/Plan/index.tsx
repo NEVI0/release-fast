@@ -22,7 +22,7 @@ export default function Plan({
   return (
     <div
       className={concatClasses(
-        'relative flex flex-col justify-between bg-container border border-border p-8 rounded-3xl w-[364px] h-[464px]',
+        'relative flex flex-col justify-between bg-container border border-border p-8 rounded-3xl w-full lg:w-[364px] h-[500px] lg:h-[464px]',
         variant === 'main' && 'border-2 border-primary h-[500px] shadow-lg'
       )}
     >
