@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { Instagram, Linkedin, Github, Twitter } from 'lucide-react';
+import { FaXTwitter } from 'react-icons/fa6';
+import { Instagram, Linkedin, Github } from 'lucide-react';
 
 import { VerticalDivider } from '@app/components/ui';
 import { DeveloperCard, SocialLink, ScrollToTopButton } from './components';
@@ -26,7 +27,7 @@ export default function Footer() {
 
             <VerticalDivider />
 
-            <SocialLink href="https://x.com/nevio_cm" icon={Twitter} />
+            <SocialLink href="https://x.com/nevio_cm" icon={FaXTwitter} />
 
             <VerticalDivider />
 
@@ -40,7 +41,7 @@ export default function Footer() {
       <div className="flex items-center justify-center w-full md:h-[52px] py-4 bg-border/25">
         <div className="flex flex-col-reverse md:flex-row items-center justify-between h-full w-6xl px-8 gap-4 mx-auto ">
           <small className="text-text-secondary text-sm">
-            &copy; Copyright XCore S.A - {new Date().getFullYear()}
+            &copy; Copyright Névio Costa Magagnin - {new Date().getFullYear()}
           </small>
 
           <nav className="flex items-center gap-4 h-full">
