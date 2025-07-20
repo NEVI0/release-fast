@@ -1,7 +1,9 @@
 import Link from 'next/link';
 
 import { FREE_TRIAL_DAYS } from '@domain/constants/plan';
-import { fetchUserByIdAction, fetchUserSession } from '@app/actions';
+import { SessionAbstract } from '@domain/entities';
+
+import { fetchUserByIdAction } from '@app/actions';
 
 const DAYS = 1000 * 60 * 60 * 24 * FREE_TRIAL_DAYS;
 
@@ -9,8 +11,11 @@ const isUserInFreeTrial = (date: Date | string) => {
   return new Date(date).getTime() > new Date().getTime() - DAYS;
 };
 
-export default async function FreeTrial() {
-  const session = await fetchUserSession();
+interface FreeTrialProps {
+  session: SessionAbstract | null;
+}
+
+export default async function FreeTrial({ session }: FreeTrialProps) {
   if (!session) return null;
 
   const { user } = await fetchUserByIdAction({ id: session.user.id });
