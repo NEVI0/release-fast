@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { LOGO_DIMENSIONS } from '@app/constants/logo-dimensions';
 import { VerticalDivider } from '@app/components/ui';
 
-import { AuthLink, MobileMenu, NavLink } from '../components';
+import { AuthLink, HomeMobileMenu, NavLink } from '../components';
 import { fetchUserSession } from '@app/actions';
 
 export default async function HomeHeader() {
@@ -34,7 +34,7 @@ export default async function HomeHeader() {
           <AuthLink session={session} />
         </nav>
 
-        <MobileMenu session={session} />
+        <HomeMobileMenu session={session} />
       </div>
     </header>
   );
