@@ -11,11 +11,11 @@ import { IconButton } from '@app/components/ui';
 import AuthLink from '../AuthLink';
 import NavLink from '../NavLink';
 
-interface MobileMenuProps {
+interface HomeMobileMenuProps {
   session: SessionAbstract | null;
 }
 
-export default function MobileMenu({ session }: MobileMenuProps) {
+export default function HomeMobileMenu({ session }: HomeMobileMenuProps) {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   function handleToggleMenu() {
