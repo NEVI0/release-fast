@@ -24,7 +24,7 @@ export default function ProvideEmailModal({
         </div>
 
         <div className="flex flex-col items-center justify-center gap-2">
-          <h2 className="text-center font-semibold text-2xl">
+          <h2 className="text-center text-text-primary font-semibold text-2xl">
             E-mail not provided!
           </h2>
 
