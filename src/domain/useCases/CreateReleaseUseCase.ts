@@ -1,15 +1,25 @@
 import 'server-only';
 
-import { Release } from '@domain/entities';
+import { Release, UserAbstract } from '@domain/entities';
 import { CreateReleaseDTO } from '@domain/dtos';
-import { ReleaseRepositoryAbstract } from '@domain/repositories';
+import {
+  ReleaseRepositoryAbstract,
+  UserRepositoryAbstract,
+} from '@domain/repositories';
 import { MAX_SHORT_DESCRIPTION_LENGTH } from '@domain/constants/release';
+import { isUserInFreeTrial } from '@domain/helpers';
 
 export default class CreateReleaseUseCase {
-  constructor(private readonly releaseRepository: ReleaseRepositoryAbstract) {}
+  constructor(
+    private readonly releaseRepository: ReleaseRepositoryAbstract,
+    private readonly userRepository: UserRepositoryAbstract
+  ) {}
 
   public async execute(dto: CreateReleaseDTO) {
     this.validateDto(dto);
+
+    const user = await this.fetchUserData(dto.userId);
+    this.validateFreeTrial(user);
 
     const release = new Release(dto);
     return await this.releaseRepository.create(release);
@@ -52,6 +62,29 @@ export default class CreateReleaseUseCase {
 
     if (!dto.projectId) {
       throw new Error('The project ID is required');
+    }
+
+    if (!dto.userId) {
+      throw new Error('The user ID is required');
+    }
+  }
+
+  private async fetchUserData(id: string) {
+    const user = await this.userRepository.findById(id);
+    if (!user) throw new Error('Unauthorized');
+
+    return user as UserAbstract;
+  }
+
+  private validateFreeTrial(user: UserAbstract) {
+    if (user.plan === 'free') {
+      const isFreeTrial = isUserInFreeTrial(user.createdAt);
+
+      if (!isFreeTrial) {
+        throw new Error(
+          'You can not create new releases unless you upgrade your plan'
+        );
+      }
     }
   }
 }
