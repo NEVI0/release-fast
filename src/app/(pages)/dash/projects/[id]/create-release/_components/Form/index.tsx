@@ -250,11 +250,11 @@ export default function Form({ session, project }: FormProps) {
           />
         </div>
 
-        <div className="flex flex-row-reverse items-center gap-4">
+        <div className="flex flex-col-reverse md:flex-row-reverse items-center gap-4">
           <Button
             type="submit"
             variant="primary"
-            className="w-[184px]"
+            className="w-full md:w-[184px]"
             disabled={
               !releaseForm.isValid || !alreadyComparatedBranches || isCreating
             }
@@ -263,8 +263,11 @@ export default function Form({ session, project }: FormProps) {
             <Button.Icon icon={Plus} loading={isCreating} />
           </Button>
 
-          <Link href={`/dash/projects/${project.id}`}>
-            <Button type="button" className="w-[184px]">
+          <Link
+            href={`/dash/projects/${project.id}`}
+            className="w-full md:w-[184px]"
+          >
+            <Button type="button" className="w-full">
               Cancel
               <Button.Icon icon={Trash2} />
             </Button>

@@ -92,19 +92,22 @@ export default function Form({ project }: FormProps) {
         />
       </div>
 
-      <div className="flex flex-row-reverse items-center gap-4">
+      <div className="flex flex-col-reverse md:flex-row-reverse items-center gap-4">
         <Button
           type="submit"
           variant="primary"
-          className="w-[184px]"
+          className="w-full md:w-[184px]"
           disabled={isLoading || !form.isValid}
         >
           {isLoading ? 'Updating...' : 'Update project'}
           <Button.Icon icon={RefreshCw} loading={isLoading} />
         </Button>
 
-        <Link href={`/dash/projects/${project.id}`}>
-          <Button type="button" className="w-[184px]" disabled={isLoading}>
+        <Link
+          href={`/dash/projects/${project.id}`}
+          className="w-full md:w-[184px]"
+        >
+          <Button type="button" className="w-full" disabled={isLoading}>
             Cancel
             <Button.Icon icon={Trash2} />
           </Button>

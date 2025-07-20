@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+
 import { Box, MessageSquare, Plus, Search, Trash2 } from 'lucide-react';
 
 import { SessionAbstract } from '@domain/entities';
@@ -141,19 +142,19 @@ export default function Form({ session }: FormProps) {
         </div>
       )}
 
-      <div className="flex flex-row-reverse items-center gap-4">
+      <div className="flex flex-col-reverse md:flex-row-reverse items-center gap-4">
         <Button
           type="submit"
           variant="primary"
-          className="w-[184px]"
+          className="w-full md:w-[184px]"
           disabled={isLoading || !form.isValid}
         >
           {isLoading ? 'Creating...' : 'Create project'}
           <Button.Icon icon={Plus} loading={isLoading} />
         </Button>
 
-        <Link href="/dash/projects">
-          <Button type="button" className="w-[184px]" disabled={isLoading}>
+        <Link href="/dash/projects" className="w-full md:w-[184px]">
+          <Button type="button" className="w-full" disabled={isLoading}>
             Cancel
             <Button.Icon icon={Trash2} />
           </Button>
