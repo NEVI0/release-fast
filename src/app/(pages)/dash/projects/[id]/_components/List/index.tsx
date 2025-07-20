@@ -1,19 +1,24 @@
 import Link from 'next/link';
 import { Edit3, ExternalLink, Plus } from 'lucide-react';
 
-import { ProjectAbstract, ReleaseAbstract } from '@domain/entities';
+import { ProjectAbstract } from '@domain/entities';
+
+import { fetchAllReleasesAction } from '@app/actions';
 import { formatDate } from '@app/helpers';
 
 import { ErrorStatus } from '@app/components/common';
 import { Button, IconButton, Table } from '@app/components/ui';
 
+import { MobileRelease } from './components';
+
 interface ListProps {
   columns: any;
   project: ProjectAbstract;
-  releases: ReleaseAbstract[];
 }
 
-export default function List({ columns, project, releases }: ListProps) {
+export default async function List({ columns, project }: ListProps) {
+  const { releases } = await fetchAllReleasesAction({ projectId: project.id });
+
   if (!releases.length) {
     return (
       <ErrorStatus
@@ -48,48 +53,60 @@ export default function List({ columns, project, releases }: ListProps) {
         </Link>
       </div>
 
-      <Table>
-        <Table.Head columns={columns} />
+      <div className="hidden md:block">
+        <Table>
+          <Table.Head columns={columns} />
 
-        <Table.Body>
-          {releases.map((release, index) => {
-            const isLast = index === releases.length - 1;
+          <Table.Body>
+            {releases.map((release, index) => {
+              const isLast = index === releases.length - 1;
 
-            return (
-              <Table.Row key={release.id} isLast={isLast}>
-                <Table.Data>{release.title}</Table.Data>
-                <Table.Data>{release.version}</Table.Data>
-                <Table.Data>
-                  {formatDate(release.createdAt, 'MMMM DD, YYYY')}
-                </Table.Data>
-                <Table.Data>
-                  {formatDate(release.updatedAt, 'MMMM DD, YYYY')}
-                </Table.Data>
+              return (
+                <Table.Row key={release.id} isLast={isLast}>
+                  <Table.Data>{release.title}</Table.Data>
+                  <Table.Data>{release.version}</Table.Data>
+                  <Table.Data>
+                    {formatDate(release.createdAt, 'MMMM DD, YYYY')}
+                  </Table.Data>
+                  <Table.Data>
+                    {formatDate(release.updatedAt, 'MMMM DD, YYYY')}
+                  </Table.Data>
 
-                <Table.Data>
-                  <div className="flex items-center justify-center">
-                    <Link href="">
-                      <IconButton icon={Edit3} />
-                    </Link>
-                  </div>
-                </Table.Data>
+                  <Table.Data>
+                    <div className="flex items-center justify-center">
+                      <Link href="">
+                        <IconButton icon={Edit3} />
+                      </Link>
+                    </div>
+                  </Table.Data>
 
-                <Table.Data>
-                  <div className="flex items-center justify-center">
-                    <Link
-                      href={`/public/release/${release.id}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <IconButton icon={ExternalLink} />
-                    </Link>
-                  </div>
-                </Table.Data>
-              </Table.Row>
-            );
-          })}
-        </Table.Body>
-      </Table>
+                  <Table.Data>
+                    <div className="flex items-center justify-center">
+                      <Link
+                        href={`/public/release/${release.id}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <IconButton icon={ExternalLink} />
+                      </Link>
+                    </div>
+                  </Table.Data>
+                </Table.Row>
+              );
+            })}
+          </Table.Body>
+        </Table>
+      </div>
+
+      <div className="block md:hidden">
+        <ul className="flex flex-col gap-4">
+          {releases.map((release) => (
+            <li key={release.id}>
+              <MobileRelease release={release} />
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   );
 }

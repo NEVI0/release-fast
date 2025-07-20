@@ -45,8 +45,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     );
   }
 
-  const { releases } = await fetchAllReleasesAction({ projectId: project.id });
-
   const columns = [
     { id: 'title', children: 'Title' },
     { id: 'version', children: 'Version' },
@@ -61,7 +59,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       <Header project={project} />
       <Cards project={project} />
 
-      <List columns={columns} project={project} releases={releases} />
+      <Suspense fallback={<p>Carregando...</p>}>
+        <List columns={columns} project={project} />
+      </Suspense>
 
       <HorizontalDivider />
       <Settings project={project} />
