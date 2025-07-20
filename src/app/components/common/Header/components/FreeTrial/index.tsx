@@ -20,7 +20,7 @@ export default async function FreeTrial({ session }: FreeTrialProps) {
     ? isUserInFreeTrial(user.createdAt)
     : false;
 
-  const shouldShowBanner = isFreeTrial && user.plan === 'free';
+  const shouldShowBanner = isFreeTrial || user.plan === 'free';
   if (!shouldShowBanner) return null;
 
   return (
