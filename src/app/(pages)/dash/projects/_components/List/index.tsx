@@ -9,6 +9,8 @@ import { fetchAllProjectsAction } from '@app/actions';
 import { Button, IconButton, Table } from '@app/components/ui';
 import { ErrorStatus } from '@app/components/common';
 
+import { MobileProject } from './components';
+
 interface ListProps {
   session: SessionAbstract;
   columns: any;
@@ -54,36 +56,48 @@ export default async function List({ session, columns }: ListProps) {
         </Link>
       </div>
 
-      <Table>
-        <Table.Head columns={columns} />
+      <div className="hidden md:block">
+        <Table>
+          <Table.Head columns={columns} />
 
-        <Table.Body>
-          {projects.map((project, index) => {
-            const isLast = index === projects.length - 1;
+          <Table.Body>
+            {projects.map((project, index) => {
+              const isLast = index === projects.length - 1;
 
-            return (
-              <Table.Row key={project.id} isLast={isLast}>
-                <Table.Data>{project.name}</Table.Data>
-                <Table.Data>{project.description}</Table.Data>
-                <Table.Data>
-                  {formatDate(project.createdAt, 'MMMM DD, YYYY')}
-                </Table.Data>
-                <Table.Data>
-                  {formatDate(project.updatedAt, 'MMMM DD, YYYY')}
-                </Table.Data>
+              return (
+                <Table.Row key={project.id} isLast={isLast}>
+                  <Table.Data>{project.name}</Table.Data>
+                  <Table.Data>{project.description}</Table.Data>
+                  <Table.Data>
+                    {formatDate(project.createdAt, 'MMMM DD, YYYY')}
+                  </Table.Data>
+                  <Table.Data>
+                    {formatDate(project.updatedAt, 'MMMM DD, YYYY')}
+                  </Table.Data>
 
-                <Table.Data>
-                  <div className="flex items-center justify-center">
-                    <Link href={`/dash/projects/${project.id}`}>
-                      <IconButton icon={ChevronRight} />
-                    </Link>
-                  </div>
-                </Table.Data>
-              </Table.Row>
-            );
-          })}
-        </Table.Body>
-      </Table>
+                  <Table.Data>
+                    <div className="flex items-center justify-center">
+                      <Link href={`/dash/projects/${project.id}`}>
+                        <IconButton icon={ChevronRight} />
+                      </Link>
+                    </div>
+                  </Table.Data>
+                </Table.Row>
+              );
+            })}
+          </Table.Body>
+        </Table>
+      </div>
+
+      <div className="block md:hidden">
+        <ul className="flex flex-col gap-4">
+          {projects.map((project) => (
+            <li key={project.id}>
+              <MobileProject project={project} />
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   );
 }
