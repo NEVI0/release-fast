@@ -2,14 +2,9 @@ import Link from 'next/link';
 
 import { FREE_TRIAL_DAYS } from '@domain/constants/plan';
 import { SessionAbstract } from '@domain/entities';
+import { isUserInFreeTrial } from '@domain/helpers';
 
 import { fetchUserByIdAction } from '@app/actions';
-
-const DAYS = 1000 * 60 * 60 * 24 * FREE_TRIAL_DAYS;
-
-const isUserInFreeTrial = (date: Date | string) => {
-  return new Date(date).getTime() > new Date().getTime() - DAYS;
-};
 
 interface FreeTrialProps {
   session: SessionAbstract | null;

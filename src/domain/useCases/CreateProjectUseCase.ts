@@ -8,6 +8,7 @@ import {
 } from '@domain/repositories';
 import { MAX_DESCRIPTION_LENGTH } from '@domain/constants/project';
 import { PLAN_DETAILS_BY_TYPE } from '@domain/constants/plan';
+import { isUserInFreeTrial } from '@domain/helpers';
 
 export default class CreateProjectUseCase {
   constructor(
@@ -66,9 +67,14 @@ export default class CreateProjectUseCase {
 
   private async validateProjectsAmount(user: UserAbstract) {
     const projects = await this.projectRepository.findAll(user.id);
+    const isFreeTrial = this.checkFreeTrial(user);
+
+    const canCreateThreeProjects = isFreeTrial && user.plan === 'free';
 
     const projectsAmountTotal = projects.length;
-    const { projectsAmount } = PLAN_DETAILS_BY_TYPE[user.plan];
+    const { projectsAmount } = canCreateThreeProjects
+      ? { projectsAmount: 3 }
+      : PLAN_DETAILS_BY_TYPE[user.plan];
 
     if (projectsAmount !== 'unlimited') {
       if (projectsAmountTotal >= projectsAmount) {
@@ -77,5 +83,9 @@ export default class CreateProjectUseCase {
         );
       }
     }
+  }
+
+  private checkFreeTrial(user: UserAbstract) {
+    return isUserInFreeTrial(user.createdAt);
   }
 }
