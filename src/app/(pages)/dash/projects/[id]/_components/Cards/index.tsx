@@ -11,7 +11,7 @@ interface CardsProps {
 
 export default function Cards({ project }: CardsProps) {
   return (
-    <section className="flex items-center justify-between gap-4">
+    <section className="flex flex-col md:flex-row items-center justify-between gap-4">
       <Card
         title="Repository"
         value="Access repository"

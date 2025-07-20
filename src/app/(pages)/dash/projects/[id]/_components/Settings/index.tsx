@@ -31,8 +31,11 @@ export default function Settings({ project }: SettingsProps) {
               title="Edit project data"
               description="Edit the project data"
             >
-              <Link href={`/dash/projects/${project.id}/edit`}>
-                <Button>
+              <Link
+                href={`/dash/projects/${project.id}/edit`}
+                className="w-full"
+              >
+                <Button className="w-full">
                   Edit project <Button.Icon icon={Edit3} />
                 </Button>
               </Link>
@@ -46,6 +49,7 @@ export default function Settings({ project }: SettingsProps) {
             >
               <Button
                 variant="danger"
+                className="w-full"
                 onClick={() => setIsDeleteProjectModalOpen(true)}
               >
                 Delete project <Button.Icon icon={Trash2} />
