@@ -58,8 +58,12 @@ export default function DeleteAccountModal({
   const isDeleteButtonDisabled = password !== 'Delete';
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
-      <div className="flex flex-col items-center gap-8 bg-container border border-border p-8 rounded-4xl w-[85%] md:w-[500px]">
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
+      className="items-end md:items-center md:justify-center"
+    >
+      <div className="flex flex-col items-center gap-8 bg-container border border-border p-8 rounded-t-4xl md:rounded-b-4xl w-full md:w-[500px]">
         <div className="flex flex-col gap-4">
           <div className="flex items-center justify-between w-full">
             <h3 className="text-2xl font-bold text-text-primary">
@@ -96,7 +100,7 @@ export default function DeleteAccountModal({
         </div>
 
         <form
-          className="flex items-end gap-4 w-full"
+          className="flex flex-col md:flex-row items-end gap-4 w-full"
           onSubmit={handleDeleteAccount}
         >
           <Input
@@ -112,6 +116,7 @@ export default function DeleteAccountModal({
           <Button
             type="submit"
             variant="danger"
+            className="w-full"
             disabled={hasActivePlan || isDeleteButtonDisabled || isLoading}
           >
             {isLoading ? 'Deleting...' : 'Delete account'}
