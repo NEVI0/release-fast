@@ -21,7 +21,7 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
         const isLast = index === items.length - 1;
 
         const classes = concatClasses(
-          'text-sm hover:underline focus:underline',
+          'text-sm hover:underline focus:underline text-nowrap',
           isLast ? 'text-text-primary' : 'text-text-secondary'
         );
 
