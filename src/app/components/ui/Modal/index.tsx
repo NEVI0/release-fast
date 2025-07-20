@@ -3,15 +3,23 @@
 import { useEffect, useRef } from 'react';
 
 import { useOnClickOutside } from './hooks';
+import { concatClasses } from '@app/helpers';
 
 interface ModalProps {
   children: React.ReactNode;
 
   isOpen: boolean;
   onClose: () => void;
+
+  className?: string;
 }
 
-export default function Modal({ isOpen, onClose, children }: ModalProps) {
+export default function Modal({
+  isOpen,
+  onClose,
+  children,
+  className,
+}: ModalProps) {
   const modalBoxRef = useRef<HTMLDivElement>(null);
 
   useOnClickOutside({
@@ -31,7 +39,12 @@ export default function Modal({ isOpen, onClose, children }: ModalProps) {
   if (!isOpen) return null;
 
   return (
-    <dialog className="fixed top-0 left-0 w-full h-full bg-white/15 dark:bg-black/15 backdrop-blur-sm z-50 flex items-center justify-center">
+    <dialog
+      className={concatClasses(
+        'fixed top-0 left-0 w-full h-full bg-white/15 dark:bg-black/15 backdrop-blur-sm z-50 flex items-center justify-center',
+        className
+      )}
+    >
       <div ref={modalBoxRef} className="flex items-center justify-center">
         {children}
       </div>
