@@ -32,14 +32,6 @@ export default function Research() {
           </p>
         </Info>
       </div>
-
-      <Link
-        href="/"
-        className="flex items-center justify-center gap-4 font-semibold underline text-primary"
-      >
-        Check out the full research conducted.{' '}
-        <ExternalLink className="size-4" />
-      </Link>
     </section>
   );
 }
