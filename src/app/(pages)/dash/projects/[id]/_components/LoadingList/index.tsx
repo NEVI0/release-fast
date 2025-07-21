@@ -42,30 +42,24 @@ export default function LoadingList({ columns, project }: LoadingListProps) {
             return (
               <Table.Row key={index} isLast={isLast}>
                 <Table.Data>
+                  <Skeleton className="h-[24px] w-[88px] rounded-lg" />
+                </Table.Data>
+
+                <Table.Data>
+                  <Skeleton className="h-[24px] w-[88px] rounded-lg" />
+                </Table.Data>
+
+                <Table.Data>
                   <Skeleton className="h-[24px] w-[100px] rounded-lg" />
                 </Table.Data>
 
                 <Table.Data>
-                  <Skeleton className="h-[24px] w-[300px] rounded-lg" />
-                </Table.Data>
-
-                <Table.Data>
-                  <Skeleton className="h-[24px] w-[124px] rounded-lg" />
-                </Table.Data>
-
-                <Table.Data>
-                  <Skeleton className="h-[24px] w-[124px] rounded-lg" />
+                  <Skeleton className="h-[24px] w-[100px] rounded-lg" />
                 </Table.Data>
 
                 <Table.Data>
                   <div className="flex items-center justify-center">
-                    <Skeleton className="h-[24px] w-[48px] rounded-lg" />
-                  </div>
-                </Table.Data>
-
-                <Table.Data>
-                  <div className="flex items-center justify-center">
-                    <Skeleton className="h-[24px] w-[48px] rounded-lg" />
+                    <Skeleton className="h-[24px] w-[100px] rounded-lg" />
                   </div>
                 </Table.Data>
               </Table.Row>
