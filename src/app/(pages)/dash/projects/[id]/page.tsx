@@ -5,12 +5,12 @@ import Link from 'next/link';
 import { Plus } from 'lucide-react';
 
 import { DOCUMENT_HEAD } from '@app/constants/document-head';
-import { fetchAllReleasesAction, fetchProjectByIdAction } from '@app/actions';
+import { fetchProjectByIdAction } from '@app/actions';
 
 import { ErrorStatus } from '@app/components/common';
 import { Button, HorizontalDivider } from '@app/components/ui';
 
-import { Cards, Header, List, Settings } from './_components';
+import { Cards, Header, List, LoadingList, Settings } from './_components';
 
 export const metadata: Metadata = {
   title: `${DOCUMENT_HEAD.TITLE} · Project Details`,
@@ -58,7 +58,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       <Header project={project} />
       <Cards project={project} />
 
-      <Suspense fallback={<p>Carregando...</p>}>
+      <Suspense fallback={<LoadingList columns={columns} project={project} />}>
         <List columns={columns} project={project} />
       </Suspense>
 

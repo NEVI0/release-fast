@@ -6,8 +6,8 @@ export default function DeveloperCard() {
       <Image
         src="/images/nevio.png"
         alt="Névio Costa Magagnin"
-        width={52}
-        height={52}
+        width={64}
+        height={64}
         className="rounded-full"
       />
 

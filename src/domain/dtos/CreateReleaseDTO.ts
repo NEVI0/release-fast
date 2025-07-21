@@ -7,4 +7,5 @@ export default interface CreateReleaseDTO {
   headBranch: string;
   projectId: string;
   availableAt: Date | string;
+  userId: string;
 }

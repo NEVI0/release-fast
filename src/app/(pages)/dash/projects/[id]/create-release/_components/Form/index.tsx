@@ -99,6 +99,7 @@ export default function Form({ session, project }: FormProps) {
       const { release } = await createReleaseAction({
         ...data,
         projectId: project.id,
+        userId: session.user.id,
       });
 
       if (!release) throw new Error('Could not create the new release');

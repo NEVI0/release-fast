@@ -116,7 +116,7 @@ export default function DeleteAccountModal({
           <Button
             type="submit"
             variant="danger"
-            className="w-full"
+            className="w-full md:w-[188px]"
             disabled={hasActivePlan || isDeleteButtonDisabled || isLoading}
           >
             {isLoading ? 'Deleting...' : 'Delete account'}
