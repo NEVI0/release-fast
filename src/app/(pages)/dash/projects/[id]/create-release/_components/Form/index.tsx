@@ -17,7 +17,6 @@ import {
 } from 'lucide-react';
 
 import { ProjectAbstract, SessionAbstract } from '@domain/entities';
-import { MAX_SHORT_DESCRIPTION_LENGTH } from '@domain/constants/release';
 
 import { useForm, useToast } from '@app/hooks';
 import { createReleaseAction } from '@app/actions';
@@ -217,12 +216,6 @@ export default function Form({ session, project }: FormProps) {
             placeholder="A brief description of the release"
             icon={MessageSquare}
             required
-            maxLength={MAX_SHORT_DESCRIPTION_LENGTH}
-            rightContent={
-              <small className="text-text-secondary text-sm">
-                {MAX_SHORT_DESCRIPTION_LENGTH} characters max.
-              </small>
-            }
             disabled={!alreadyComparatedBranches}
             error={releaseForm.errors.shortDescription?.message}
             {...releaseForm.register('shortDescription')}
