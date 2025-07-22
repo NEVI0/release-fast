@@ -6,7 +6,7 @@ import { redirect } from 'next/navigation';
 import { isUserInFreeTrial } from '@domain/helpers';
 
 import { DOCUMENT_HEAD } from '@app/constants/document-head';
-import { fetchUserSession } from '@app/actions';
+import { fetchUserByIdAction, fetchUserSession } from '@app/actions';
 
 import { Warning } from '@app/components/common';
 import { Header, List, LoadingList } from './_components';
@@ -20,7 +20,10 @@ export default async function ProjectsPage() {
   const session = await fetchUserSession();
   if (!session || !session.user) return redirect('/auth');
 
-  const { plan, createdAt } = session.user;
+  const { user } = await fetchUserByIdAction({ id: session.user.id });
+  if (!user) return redirect('/auth');
+
+  const { plan, createdAt } = user;
 
   const isFreeTrial = isUserInFreeTrial(createdAt);
   const canSeeProjectDetails = plan === 'free' ? isFreeTrial : true;
