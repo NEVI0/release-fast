@@ -67,7 +67,7 @@ export default class CreateProjectUseCase {
 
   private async validateProjectsAmount(user: UserAbstract) {
     const projects = await this.projectRepository.findAll(user.id);
-    const isFreeTrial = this.checkFreeTrial(user);
+    const isFreeTrial = isUserInFreeTrial(user.createdAt);
 
     const canCreateThreeProjects = isFreeTrial && user.plan === 'free';
 
@@ -83,9 +83,5 @@ export default class CreateProjectUseCase {
         );
       }
     }
-  }
-
-  private checkFreeTrial(user: UserAbstract) {
-    return isUserInFreeTrial(user.createdAt);
   }
 }
