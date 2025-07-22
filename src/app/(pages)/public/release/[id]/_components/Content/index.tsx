@@ -11,6 +11,7 @@ import { formatDate } from '@app/helpers';
 import { LOGO_DIMENSIONS } from '@app/constants/logo-dimensions';
 
 import { HorizontalDivider, IconButton } from '@app/components/ui';
+import { Markdown } from './components';
 
 interface ContentProps {
   release: ReleaseAbstract;
@@ -48,7 +49,7 @@ export default function Content({ release }: ContentProps) {
           <h3 className="font-semibold text-lg">Short description</h3>
 
           {release.shortDescription.split('\n').map((line, index) => (
-            <p key={index} className="w-full">
+            <p key={index} className="w-full text-text-secondary">
               {line}
             </p>
           ))}
@@ -56,12 +57,7 @@ export default function Content({ release }: ContentProps) {
 
         <section className="flex flex-col gap-2">
           <h3 className="font-semibold text-lg">Full description</h3>
-
-          {release.fullDescription.split('\n').map((line, index) => (
-            <p key={index} className="w-full">
-              {line}
-            </p>
-          ))}
+          <Markdown text={release.fullDescription} />
         </section>
 
         <section className="flex flex-col gap-2">
