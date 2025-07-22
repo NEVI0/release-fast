@@ -21,7 +21,7 @@ import { MAX_SHORT_DESCRIPTION_LENGTH } from '@domain/constants/release';
 
 import { useForm, useToast } from '@app/hooks';
 import { createReleaseAction } from '@app/actions';
-import { handleError } from '@app/helpers';
+import { formatDate, handleError } from '@app/helpers';
 import {
   compareBranchesValidationSchema,
   CompareBranchesValidationSchema,
@@ -245,6 +245,7 @@ export default function Form({ session, project }: FormProps) {
             label="Release date"
             icon={Calendar}
             required
+            min={formatDate(new Date(), 'YYYY-MM-DD')}
             disabled={!alreadyComparatedBranches}
             error={releaseForm.errors.availableAt?.message}
             {...releaseForm.register('availableAt')}
