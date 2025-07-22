@@ -1,4 +1,8 @@
-type Display = 'DD/MM/YY HHhmm' | 'DD of MMMM of YYYY' | 'MMMM DD, YYYY';
+type Display =
+  | 'DD/MM/YY HHhmm'
+  | 'DD of MMMM of YYYY'
+  | 'MMMM DD, YYYY'
+  | 'YYYY-MM-DD';
 
 const SHORT_MONTHS = [
   'Jan.',
@@ -57,6 +61,10 @@ export default function formatDate(
     if (display === 'MMMM DD, YYYY') {
       const monthName = FULL_MONTHS[dateObj.getMonth()];
       return `${monthName} ${day}, ${year}`;
+    }
+
+    if (display === 'YYYY-MM-DD') {
+      return `${year}-${month}-${day}`;
     }
 
     return `${day}/${month}/${shortYear} ${hours}h${minutes}`;
