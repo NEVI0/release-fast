@@ -8,11 +8,7 @@ import { Plus } from 'lucide-react';
 import { isUserInFreeTrial } from '@domain/helpers';
 
 import { DOCUMENT_HEAD } from '@app/constants/document-head';
-import {
-  fetchProjectByIdAction,
-  fetchUserByIdAction,
-  fetchUserSession,
-} from '@app/actions';
+import { fetchProjectByIdAction, fetchUserByIdAction } from '@app/actions';
 
 import { ErrorStatus } from '@app/components/common';
 import { Button, HorizontalDivider } from '@app/components/ui';
@@ -35,10 +31,7 @@ interface ProjectPageProps {
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { id } = await params;
 
-  const session = await fetchUserSession();
-  if (!session || !session.user) return redirect('/auth');
-
-  const { user } = await fetchUserByIdAction({ id: session.user.id });
+  const { user } = await fetchUserByIdAction();
   if (!user) return redirect('/auth');
 
   const { plan, createdAt } = user;

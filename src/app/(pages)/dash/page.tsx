@@ -2,17 +2,14 @@ import { Suspense } from 'react';
 import { redirect } from 'next/navigation';
 
 import { isUserInFreeTrial } from '@domain/helpers';
-import { fetchUserByIdAction, fetchUserSession } from '@app/actions';
+import { fetchUserByIdAction } from '@app/actions';
 
 import { HorizontalDivider } from '@app/components/ui';
 import { Cards, Construction, Header, LoadingCards } from './_components';
 import { Warning } from '@app/components/common';
 
 export default async function DashboardPage() {
-  const session = await fetchUserSession();
-  if (!session || !session.user) return redirect('/auth');
-
-  const { user } = await fetchUserByIdAction({ id: session.user.id });
+  const { user } = await fetchUserByIdAction();
   if (!user) return redirect('/auth');
 
   const { plan, createdAt } = user;

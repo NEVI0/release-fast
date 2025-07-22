@@ -17,10 +17,7 @@ export const metadata: Metadata = {
 };
 
 export default async function ProjectsPage() {
-  const session = await fetchUserSession();
-  if (!session || !session.user) return redirect('/auth');
-
-  const { user } = await fetchUserByIdAction({ id: session.user.id });
+  const { user } = await fetchUserByIdAction();
   if (!user) return redirect('/auth');
 
   const { plan, createdAt } = user;
@@ -45,7 +42,7 @@ export default async function ProjectsPage() {
       )}
 
       <Suspense fallback={<LoadingList columns={columns} />}>
-        <List session={session} columns={columns} />
+        <List user={user} columns={columns} />
       </Suspense>
     </>
   );

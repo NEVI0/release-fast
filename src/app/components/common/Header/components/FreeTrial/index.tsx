@@ -1,19 +1,12 @@
 import Link from 'next/link';
 
 import { FREE_TRIAL_DAYS } from '@domain/constants/plan';
-import { SessionAbstract } from '@domain/entities';
 import { isUserInFreeTrial } from '@domain/helpers';
 
 import { fetchUserByIdAction } from '@app/actions';
 
-interface FreeTrialProps {
-  session: SessionAbstract | null;
-}
-
-export default async function FreeTrial({ session }: FreeTrialProps) {
-  if (!session) return null;
-
-  const { user } = await fetchUserByIdAction({ id: session.user.id });
+export default async function FreeTrial() {
+  const { user } = await fetchUserByIdAction();
   if (!user) return null;
 
   const isFreeTrial = user.createdAt

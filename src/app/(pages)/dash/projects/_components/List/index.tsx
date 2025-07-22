@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ChevronRight, Plus } from 'lucide-react';
 
-import { SessionAbstract } from '@domain/entities';
+import { UserAbstract } from '@domain/entities';
 
 import { formatDate } from '@app/helpers';
 import { fetchAllProjectsAction } from '@app/actions';
@@ -12,13 +12,13 @@ import { ErrorStatus } from '@app/components/common';
 import { MobileProject } from './components';
 
 interface ListProps {
-  session: SessionAbstract;
+  user: UserAbstract;
   columns: any;
 }
 
-export default async function List({ session, columns }: ListProps) {
+export default async function List({ user, columns }: ListProps) {
   const { projects } = await fetchAllProjectsAction({
-    userId: session.user.id,
+    userId: user.id,
   });
 
   if (!projects.length) {
