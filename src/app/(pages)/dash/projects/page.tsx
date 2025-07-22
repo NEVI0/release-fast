@@ -3,9 +3,12 @@ import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 
+import { isUserInFreeTrial } from '@domain/helpers';
+
 import { DOCUMENT_HEAD } from '@app/constants/document-head';
 import { fetchUserSession } from '@app/actions';
 
+import { Warning } from '@app/components/common';
 import { Header, List, LoadingList } from './_components';
 
 export const metadata: Metadata = {
@@ -16,6 +19,11 @@ export const metadata: Metadata = {
 export default async function ProjectsPage() {
   const session = await fetchUserSession();
   if (!session || !session.user) return redirect('/auth');
+
+  const { plan, createdAt } = session.user;
+
+  const isFreeTrial = isUserInFreeTrial(createdAt);
+  const canSeeProjectDetails = plan === 'free' ? isFreeTrial : true;
 
   const columns = [
     { id: 'name', children: 'Name' },
@@ -28,6 +36,10 @@ export default async function ProjectsPage() {
   return (
     <>
       <Header />
+
+      {!canSeeProjectDetails && (
+        <Warning message="You can not access your projects unless you upgrade your current plan!" />
+      )}
 
       <Suspense fallback={<LoadingList columns={columns} />}>
         <List session={session} columns={columns} />
