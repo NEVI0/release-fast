@@ -9,12 +9,10 @@ export default async function FreeTrial() {
   const { user } = await fetchUserByIdAction();
   if (!user) return null;
 
-  const isFreeTrial = user.createdAt
-    ? isUserInFreeTrial(user.createdAt)
-    : false;
-
-  const shouldShowBanner = isFreeTrial || user.plan === 'free';
+  const shouldShowBanner = user.plan === 'free';
   if (!shouldShowBanner) return null;
+
+  const isFreeTrial = isUserInFreeTrial(user.createdAt);
 
   return (
     <div className="flex items-center justify-center w-full py-1 bg-primary text-white">
