@@ -5,6 +5,10 @@ interface MarkdownProps {
 }
 
 export default function Markdown({ text }: MarkdownProps) {
+  function handleCleanLine(line: string) {
+    return line.replaceAll('*', '').replaceAll('`', '');
+  }
+
   return text.split('\n').map((line, index) => {
     // **
     // *   **
@@ -15,15 +19,15 @@ export default function Markdown({ text }: MarkdownProps) {
     if (line.startsWith('**')) {
       return (
         <h4 key={index} className="w-full font-medium text-lg">
-          {line.replaceAll('**', '')}
+          {handleCleanLine(line)}
         </h4>
       );
     }
 
     if (line.startsWith('*   **')) {
       return (
-        <p key={index} className="w-full font-medium">
-          {line.replaceAll('*', '')}
+        <p key={index} className="w-full font-medium mt-2">
+          {handleCleanLine(line)}
         </p>
       );
     }
@@ -36,19 +40,17 @@ export default function Markdown({ text }: MarkdownProps) {
       return (
         <div key={index} className="flex items-center gap-2 w-full">
           <div>
-            <ChevronRight className="size-5 text-primary" />
+            <ChevronRight className="size-4 text-primary" />
           </div>
 
-          <p className="w-full text-text-secondary">
-            {line.replaceAll('*', '').replaceAll('`', '')}
-          </p>
+          <p className="w-full text-text-secondary">{handleCleanLine(line)}</p>
         </div>
       );
     }
 
     return (
       <p key={index} className="w-full text-text-secondary">
-        {line}
+        {handleCleanLine(line)}
       </p>
     );
   });
