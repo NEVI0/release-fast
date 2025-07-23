@@ -17,11 +17,12 @@ export default function HowItWorks() {
 
         <p className="text-text-secondary text-center w-[90%]">
           Our service allows you to manage your software versions and
-          automatically notify your users of changes with <strong>A.I.</strong>.
-          Connect your <strong>GitHub</strong> repository, select two branches
-          versions, and our A.I. generates a clear and friendly changelog.
-          Publish with one click and send the release description to everyone
-          you want to.
+          automatically generate releases with{' '}
+          <strong className="font-semibold">A.I.</strong>. Connect your{' '}
+          <strong className="font-semibold">GitHub</strong> repository, select
+          two branches versions, and our A.I. generates a clear and friendly
+          changelog description. Publish with one click and send it to your user
+          or keep it as a documentation
         </p>
       </section>
 
@@ -38,7 +39,7 @@ export default function HowItWorks() {
 
         <Flow
           icon={<Github className="text-primary size-7" />}
-          text="Update your software repository"
+          text="Update your project repository"
           index={2}
         />
 
@@ -48,7 +49,7 @@ export default function HowItWorks() {
 
         <Flow
           icon={<BrainCircuit className="text-primary size-7" />}
-          text="Generate a release note with A.I."
+          text="Generate a release with A.I."
           index={3}
         />
 
