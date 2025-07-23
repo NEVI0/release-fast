@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -43,6 +43,8 @@ export default function Form({ session, project }: FormProps) {
   const router = useRouter();
   const aiAgentController = useAiAgent();
 
+  const currentDate = useMemo(() => formatDate(new Date(), 'YYYY-MM-DD'), []);
+
   const branchesController = useCompareBranches({
     provider: session.provider,
     token: session.token,
@@ -53,6 +55,9 @@ export default function Form({ session, project }: FormProps) {
   });
   const releaseForm = useForm<CreateReleaseValidationSchema>({
     schema: createReleaseValidationSchema,
+    defaultValues: {
+      availableAt: currentDate,
+    },
   });
 
   const [isCreating, setIsCreating] = useState(false);
@@ -235,10 +240,10 @@ export default function Form({ session, project }: FormProps) {
           <Input
             id="availableAt"
             type="date"
-            label="Release date"
+            label="Available on date"
             icon={Calendar}
             required
-            min={formatDate(new Date(), 'YYYY-MM-DD')}
+            min={currentDate}
             disabled={!alreadyComparatedBranches}
             error={releaseForm.errors.availableAt?.message}
             {...releaseForm.register('availableAt')}
