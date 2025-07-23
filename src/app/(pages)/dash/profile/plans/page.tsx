@@ -12,10 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default async function PlansPage() {
-  const session = await fetchUserSession();
-  if (!session || !session.user) return redirect('/auth');
-
-  const { user } = await fetchUserByIdAction({ id: session.user.id });
+  const { user } = await fetchUserByIdAction();
   if (!user) return redirect('/auth');
 
   return (

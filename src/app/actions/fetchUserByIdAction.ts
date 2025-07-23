@@ -1,20 +1,17 @@
 'use server';
 
-import { z } from 'zod';
+import { auth } from '@configs/auth';
 
 import makeFetchUserByIdUseCase from '@factories/useCases/makeFetchUserByIdUseCase';
 
-import { FetchUserByIdDTO } from '@domain/dtos';
-
-const schema = z.object({
-  id: z.string().min(1, 'User ID is required'),
-});
-
-export default async function fetchUserByIdAction(params: FetchUserByIdDTO) {
+export default async function fetchUserByIdAction() {
   try {
-    const dto = schema.parse(params);
-    const user = await makeFetchUserByIdUseCase().execute(dto);
+    const session = await auth();
+    if (!session || !session.user) throw new Error();
 
+    const user = await makeFetchUserByIdUseCase().execute({
+      id: session.user.id!,
+    });
     if (!user) throw new Error();
 
     return {

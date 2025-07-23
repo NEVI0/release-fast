@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -17,11 +17,10 @@ import {
 } from 'lucide-react';
 
 import { ProjectAbstract, SessionAbstract } from '@domain/entities';
-import { MAX_SHORT_DESCRIPTION_LENGTH } from '@domain/constants/release';
 
 import { useForm, useToast } from '@app/hooks';
 import { createReleaseAction } from '@app/actions';
-import { handleError } from '@app/helpers';
+import { formatDate, handleError } from '@app/helpers';
 import {
   compareBranchesValidationSchema,
   CompareBranchesValidationSchema,
@@ -44,6 +43,8 @@ export default function Form({ session, project }: FormProps) {
   const router = useRouter();
   const aiAgentController = useAiAgent();
 
+  const currentDate = useMemo(() => formatDate(new Date(), 'YYYY-MM-DD'), []);
+
   const branchesController = useCompareBranches({
     provider: session.provider,
     token: session.token,
@@ -54,6 +55,9 @@ export default function Form({ session, project }: FormProps) {
   });
   const releaseForm = useForm<CreateReleaseValidationSchema>({
     schema: createReleaseValidationSchema,
+    defaultValues: {
+      availableAt: currentDate,
+    },
   });
 
   const [isCreating, setIsCreating] = useState(false);
@@ -217,12 +221,6 @@ export default function Form({ session, project }: FormProps) {
             placeholder="A brief description of the release"
             icon={MessageSquare}
             required
-            maxLength={MAX_SHORT_DESCRIPTION_LENGTH}
-            rightContent={
-              <small className="text-text-secondary text-sm">
-                {MAX_SHORT_DESCRIPTION_LENGTH} characters max.
-              </small>
-            }
             disabled={!alreadyComparatedBranches}
             error={releaseForm.errors.shortDescription?.message}
             {...releaseForm.register('shortDescription')}
@@ -242,9 +240,10 @@ export default function Form({ session, project }: FormProps) {
           <Input
             id="availableAt"
             type="date"
-            label="Release date"
+            label="Available on date"
             icon={Calendar}
             required
+            min={currentDate}
             disabled={!alreadyComparatedBranches}
             error={releaseForm.errors.availableAt?.message}
             {...releaseForm.register('availableAt')}

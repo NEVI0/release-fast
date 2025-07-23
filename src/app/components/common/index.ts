@@ -9,3 +9,4 @@ export { default as ThemeLogo } from './ThemeLogo';
 export { default as ThemeToggle } from './ThemeToggle';
 export { default as Toaster } from './Toaster';
 export { default as TopLoader } from './TopLoader';
+export { default as Warning } from './Warning';

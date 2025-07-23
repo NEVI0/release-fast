@@ -12,12 +12,12 @@ export default function Hero() {
         </div>
 
         <h1 className="text-center font-bold text-4xl">
-          Notify your users in a <strong className="text-primary">clear</strong>{' '}
+          Generate releases in a <strong className="text-primary">clear</strong>{' '}
           and <strong className="text-primary">efficient</strong> way!
         </h1>
 
         <h2 className="text-center font-semibold text-2xl text-text-secondary">
-          Automatically generate your system's releases with A.I. and notify
+          Automatically generate your software's releases with A.I. and notify
           your users of every change. 😎
         </h2>
       </div>

@@ -1,27 +1,18 @@
 import Link from 'next/link';
 
 import { FREE_TRIAL_DAYS } from '@domain/constants/plan';
-import { SessionAbstract } from '@domain/entities';
 import { isUserInFreeTrial } from '@domain/helpers';
 
 import { fetchUserByIdAction } from '@app/actions';
 
-interface FreeTrialProps {
-  session: SessionAbstract | null;
-}
-
-export default async function FreeTrial({ session }: FreeTrialProps) {
-  if (!session) return null;
-
-  const { user } = await fetchUserByIdAction({ id: session.user.id });
+export default async function FreeTrial() {
+  const { user } = await fetchUserByIdAction();
   if (!user) return null;
 
-  const isFreeTrial = user.createdAt
-    ? isUserInFreeTrial(user.createdAt)
-    : false;
-
-  const shouldShowBanner = isFreeTrial || user.plan === 'free';
+  const shouldShowBanner = user.plan === 'free';
   if (!shouldShowBanner) return null;
+
+  const isFreeTrial = isUserInFreeTrial(user.createdAt);
 
   return (
     <div className="flex items-center justify-center w-full py-1 bg-primary text-white">

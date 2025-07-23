@@ -14,7 +14,7 @@ export default function Plans() {
         </h2>
 
         <h3 className="text-center text-xl font-semibold text-text-secondary ">
-          Choose the perfect plan for your team's size and needs
+          Choose the perfect plan for your needs
         </h3>
       </div>
 
