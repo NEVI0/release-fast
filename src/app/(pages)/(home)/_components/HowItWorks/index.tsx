@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import { PlayCircle, Code2, Github, Smile, BrainCircuit } from 'lucide-react';
+import { Code2, Github, Smile, BrainCircuit } from 'lucide-react';
 
-import { Flow } from './components';
+import { Flow, Video } from './components';
 
 export default function HowItWorks() {
   return (
@@ -11,9 +11,7 @@ export default function HowItWorks() {
           Click in the video below for a quick preview
         </h2>
 
-        <div className="w-full h-[224px] md:w-[832px] md:h-[432px] bg-text-primary rounded-3xl flex items-center justify-center">
-          <PlayCircle className="text-white size-8" />
-        </div>
+        <Video />
 
         <p className="text-text-secondary text-center w-[90%]">
           Our service allows you to manage your software versions and
