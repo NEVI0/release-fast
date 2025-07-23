@@ -1,6 +1,6 @@
 {
   "name": "release-fast",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "private": true,
   "repository": "https://github.com/NEVI0/release-fast.git",
   "author": "Nevio <nevio.dev@gmail.com>",
@@ -8,16 +8,14 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:vercel": "prisma generate && prisma migrate deploy && next build",
     "start": "next start",
     "lint": "next lint",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
-    "db:migrate": "prisma migrate dev",
-    "db:studio": "prisma studio",
     "db:reset": "prisma migrate reset",
     "docker:up": "docker-compose up -d",
     "docker:down": "docker-compose down",
-    "docker:logs": "docker-compose logs -f",
     "stripe:webhook": "stripe listen --forward-to localhost:3000/api/stripe/webhook"
   },
   "dependencies": {
