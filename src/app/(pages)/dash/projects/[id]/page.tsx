@@ -32,7 +32,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const { id } = await params;
 
   const { user } = await fetchUserByIdAction();
-  if (!user) return redirect('/auth');
+  if (!user) return redirect('/');
 
   const { plan, createdAt } = user;
 

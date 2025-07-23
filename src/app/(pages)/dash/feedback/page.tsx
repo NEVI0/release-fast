@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default async function FeedbackPage() {
   const session = await fetchUserSession();
-  if (!session || !session.user) return redirect('/auth');
+  if (!session || !session.user) return redirect('/');
 
   return (
     <>

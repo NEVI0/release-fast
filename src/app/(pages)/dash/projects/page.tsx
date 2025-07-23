@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 export default async function ProjectsPage() {
   const { user } = await fetchUserByIdAction();
-  if (!user) return redirect('/auth');
+  if (!user) return redirect('/');
 
   const { plan, createdAt } = user;
 

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default async function EditPage() {
   const { user } = await fetchUserByIdAction();
-  if (!user) return redirect('/auth');
+  if (!user) return redirect('/');
 
   return (
     <>

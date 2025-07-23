@@ -23,7 +23,7 @@ export default async function CreateReleasePage({
   params,
 }: CreateReleasePageProps) {
   const session = await fetchUserSession();
-  if (!session || !session.user) return redirect('/auth');
+  if (!session || !session.user) return redirect('/');
 
   const { id } = await params;
   const { project } = await fetchProjectByIdAction({ id });
