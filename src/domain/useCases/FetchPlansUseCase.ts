@@ -12,7 +12,7 @@ export default class FetchPlansUseCase {
       freeTrialDays: 7,
       features: [
         `Up to ${PLAN_DETAILS_BY_TYPE['starter'].projectsAmount} projects`,
-        'AI-powered release notes generation',
+        'AI-powered releases generation',
         'Basic support',
       ],
     };
@@ -24,7 +24,7 @@ export default class FetchPlansUseCase {
       freeTrialDays: 7,
       features: [
         `Up to ${PLAN_DETAILS_BY_TYPE['pro'].projectsAmount} projects`,
-        'AI-powered release notes generation',
+        'AI-powered releases generation',
         'Advanced AI suggestions',
         'Priority support',
       ],
@@ -37,7 +37,7 @@ export default class FetchPlansUseCase {
       freeTrialDays: 7,
       features: [
         'Unlimited projects',
-        'Advanced AI-powered release notes generation',
+        'Advanced AI-powered releases generation',
         'Advanced AI suggestions',
         'Priority support',
         'Access to future features in advance',
