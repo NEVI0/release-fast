@@ -61,9 +61,9 @@ export default function Content({ release }: ContentProps) {
         </section>
 
         <section className="flex flex-col gap-2">
-          <h3 className="font-semibold text-lg">Released on</h3>
-          <p className="w-full">
-            {formatDate(release.availableAt, 'DD of MMMM of YYYY')}
+          <h3 className="font-semibold text-lg">Available on</h3>
+          <p className="w-full text-text-secondary">
+            {formatDate(release.availableAt, 'MMMM DD, YYYY')}
           </p>
         </section>
       </div>
