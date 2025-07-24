@@ -1,3 +1,3 @@
 export const GOOGLE_ANALYTICS = {
-  ID: '',
+  ID: 'G-N20X6KT1LF',
 };
