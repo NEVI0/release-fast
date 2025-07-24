@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Source_Sans_3 } from 'next/font/google';
 
+import { GoogleAnalytics } from '@next/third-parties/google';
+
 import { ThemeProvider } from '@app/contexts';
 import {
   Header,
@@ -10,6 +12,7 @@ import {
   Toaster,
 } from '@app/components/common';
 
+import { GOOGLE_ANALYTICS } from '@app/constants/google-analytics';
 import { DOCUMENT_HEAD } from '@app/constants/document-head';
 
 import QueryProvider from './query-provider';
@@ -58,6 +61,8 @@ export default function DashboardLayout({
           </ThemeProvider>
         </QueryProvider>
       </body>
+
+      <GoogleAnalytics gaId={GOOGLE_ANALYTICS.ID} />
     </html>
   );
 }

@@ -1,7 +1,10 @@
 import type { Metadata } from 'next';
 import { Source_Sans_3 } from 'next/font/google';
 
+import { GoogleAnalytics } from '@next/third-parties/google';
+
 import { Content } from '@app/components/common';
+import { GOOGLE_ANALYTICS } from '@app/constants/google-analytics';
 import { DOCUMENT_HEAD } from '@app/constants/document-head';
 
 import '@app/css/globals.css';
@@ -39,6 +42,8 @@ export default function PublicLayout({
       <body className={sourceSans3.className} suppressHydrationWarning>
         <Content.Public>{children}</Content.Public>
       </body>
+
+      <GoogleAnalytics gaId={GOOGLE_ANALYTICS.ID} />
     </html>
   );
 }

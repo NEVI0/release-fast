@@ -1,7 +1,10 @@
 import type { Metadata } from 'next';
 import { Source_Sans_3 } from 'next/font/google';
 
+import { GoogleAnalytics } from '@next/third-parties/google';
+
 import { Header, Content, Footer, TopLoader } from '@app/components/common';
+import { GOOGLE_ANALYTICS } from '@app/constants/google-analytics';
 import { DOCUMENT_HEAD } from '@app/constants/document-head';
 
 import '@app/css/globals.css';
@@ -41,6 +44,8 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
         <Content.Home>{children}</Content.Home>
         <Footer />
       </body>
+
+      <GoogleAnalytics gaId={GOOGLE_ANALYTICS.ID} />
     </html>
   );
 }
