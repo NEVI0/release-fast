@@ -1,4 +1,3 @@
-import type { Metadata } from 'next';
 import { Source_Sans_3 } from 'next/font/google';
 
 import { GoogleAnalytics } from '@next/third-parties/google';
@@ -6,6 +5,7 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import { Content } from '@app/components/common';
 import { GOOGLE_ANALYTICS } from '@app/constants/google-analytics';
 import { DOCUMENT_HEAD } from '@app/constants/document-head';
+import { getSEOTags } from '@app/helpers';
 
 import '@app/css/globals.css';
 
@@ -14,10 +14,14 @@ const sourceSans3 = Source_Sans_3({
   weight: ['300', '400', '600', '700'],
 });
 
-export const metadata: Metadata = {
-  title: `${DOCUMENT_HEAD.TITLE} · Checkout`,
+export const metadata = getSEOTags({
+  name: `${DOCUMENT_HEAD.TITLE} · Checkout`,
   description: `${DOCUMENT_HEAD.TITLE} · Checkout status`,
-};
+  keywords: DOCUMENT_HEAD.KEYWORDS,
+  domain: DOCUMENT_HEAD.DOMAIN,
+  locale: DOCUMENT_HEAD.LOCALE,
+  canonicalUrlRelative: DOCUMENT_HEAD.CANONICAL_URL,
+});
 
 interface CheckoutLayoutProps {
   children: React.ReactNode;

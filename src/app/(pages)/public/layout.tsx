@@ -1,7 +1,8 @@
-import type { Metadata } from 'next';
 import { Source_Sans_3 } from 'next/font/google';
 
 import { GoogleAnalytics } from '@next/third-parties/google';
+
+import { getSEOTags } from '@app/helpers';
 
 import { Content } from '@app/components/common';
 import { GOOGLE_ANALYTICS } from '@app/constants/google-analytics';
@@ -14,10 +15,14 @@ const sourceSans3 = Source_Sans_3({
   weight: ['300', '400', '600', '700'],
 });
 
-export const metadata: Metadata = {
-  title: `${DOCUMENT_HEAD.TITLE} · Public`,
+export const metadata = getSEOTags({
+  name: `${DOCUMENT_HEAD.TITLE} · Public`,
   description: `${DOCUMENT_HEAD.TITLE} · Public`,
-};
+  keywords: DOCUMENT_HEAD.KEYWORDS,
+  domain: DOCUMENT_HEAD.DOMAIN,
+  locale: DOCUMENT_HEAD.LOCALE,
+  canonicalUrlRelative: DOCUMENT_HEAD.CANONICAL_URL,
+});
 
 interface PublicLayoutProps {
   children: React.ReactNode;
