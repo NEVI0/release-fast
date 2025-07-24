@@ -8,7 +8,7 @@ import { Header, Form } from './_components';
 
 export const metadata: Metadata = {
   title: `${DOCUMENT_HEAD.TITLE} · Edit account`,
-  description: DOCUMENT_HEAD.DESCRIPTION,
+  description: `${DOCUMENT_HEAD.TITLE} · Edit your account`,
 };
 
 export default async function EditPage() {

@@ -8,7 +8,7 @@ import { Form, Header } from './_components';
 
 export const metadata: Metadata = {
   title: `${DOCUMENT_HEAD.TITLE} · Feedback`,
-  description: DOCUMENT_HEAD.DESCRIPTION,
+  description: `${DOCUMENT_HEAD.TITLE} · Give us your feedback`,
 };
 
 export default async function FeedbackPage() {

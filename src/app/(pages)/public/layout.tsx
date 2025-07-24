@@ -16,7 +16,7 @@ const sourceSans3 = Source_Sans_3({
 
 export const metadata: Metadata = {
   title: `${DOCUMENT_HEAD.TITLE} · Public`,
-  description: DOCUMENT_HEAD.DESCRIPTION,
+  description: `${DOCUMENT_HEAD.TITLE} · Public`,
 };
 
 interface PublicLayoutProps {

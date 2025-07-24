@@ -16,16 +16,16 @@ const sourceSans3 = Source_Sans_3({
 
 export const metadata: Metadata = {
   title: `${DOCUMENT_HEAD.TITLE} · Checkout`,
-  description: DOCUMENT_HEAD.DESCRIPTION,
+  description: `${DOCUMENT_HEAD.TITLE} · Checkout status`,
 };
 
-interface AccessLayoutProps {
+interface CheckoutLayoutProps {
   children: React.ReactNode;
 }
 
-export default function AccessLayout({
+export default function CheckoutLayout({
   children,
-}: Readonly<AccessLayoutProps>) {
+}: Readonly<CheckoutLayoutProps>) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>

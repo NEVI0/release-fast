@@ -16,7 +16,7 @@ const sourceSans3 = Source_Sans_3({
 
 export const metadata: Metadata = {
   title: `${DOCUMENT_HEAD.TITLE} · Access`,
-  description: DOCUMENT_HEAD.DESCRIPTION,
+  description: `${DOCUMENT_HEAD.TITLE} · Access your GitHub account`,
 };
 
 interface AccessLayoutProps {

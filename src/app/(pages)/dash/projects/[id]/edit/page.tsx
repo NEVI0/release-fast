@@ -8,7 +8,7 @@ import { Form, Header } from './_components';
 
 export const metadata: Metadata = {
   title: `${DOCUMENT_HEAD.TITLE} · Edit Project`,
-  description: DOCUMENT_HEAD.DESCRIPTION,
+  description: `${DOCUMENT_HEAD.TITLE} · Edit your project`,
 };
 
 interface Params {

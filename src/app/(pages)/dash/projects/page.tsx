@@ -13,7 +13,7 @@ import { Header, List, LoadingList } from './_components';
 
 export const metadata: Metadata = {
   title: `${DOCUMENT_HEAD.TITLE} · Projects`,
-  description: DOCUMENT_HEAD.DESCRIPTION,
+  description: `${DOCUMENT_HEAD.TITLE} · Your projects`,
 };
 
 export default async function ProjectsPage() {

@@ -9,7 +9,7 @@ import { Cards, Header, Settings } from './_components';
 
 export const metadata: Metadata = {
   title: `${DOCUMENT_HEAD.TITLE} · Profile`,
-  description: DOCUMENT_HEAD.DESCRIPTION,
+  description: `${DOCUMENT_HEAD.TITLE} · Your profile`,
 };
 
 export default async function ProfilePage() {

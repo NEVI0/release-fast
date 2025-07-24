@@ -8,7 +8,7 @@ import { Header, Info, Plans } from './_components';
 
 export const metadata: Metadata = {
   title: `${DOCUMENT_HEAD.TITLE} · Plans`,
-  description: DOCUMENT_HEAD.DESCRIPTION,
+  description: `${DOCUMENT_HEAD.TITLE} · Plans`,
 };
 
 export default async function PlansPage() {

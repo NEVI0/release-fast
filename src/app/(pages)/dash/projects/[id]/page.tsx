@@ -17,7 +17,7 @@ import { Cards, Header, List, LoadingList, Settings } from './_components';
 
 export const metadata: Metadata = {
   title: `${DOCUMENT_HEAD.TITLE} · Project Details`,
-  description: DOCUMENT_HEAD.DESCRIPTION,
+  description: `${DOCUMENT_HEAD.TITLE} · Project details`,
 };
 
 interface Params {
