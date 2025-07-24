@@ -1,24 +1,28 @@
 import { Suspense } from 'react';
 
-import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 
 import { isUserInFreeTrial } from '@domain/helpers';
 
 import { DOCUMENT_HEAD } from '@app/constants/document-head';
 import { fetchUserByIdAction, fetchUserSession } from '@app/actions';
+import { getSEOTags } from '@app/helpers';
 
 import { Warning } from '@app/components/common';
 import { Header, List, LoadingList } from './_components';
 
-export const metadata: Metadata = {
-  title: `${DOCUMENT_HEAD.TITLE} · Projects`,
-  description: DOCUMENT_HEAD.DESCRIPTION,
-};
+export const metadata = getSEOTags({
+  name: `${DOCUMENT_HEAD.TITLE} · Projects`,
+  description: `${DOCUMENT_HEAD.TITLE} · Your projects`,
+  keywords: DOCUMENT_HEAD.KEYWORDS,
+  domain: DOCUMENT_HEAD.DOMAIN,
+  locale: DOCUMENT_HEAD.LOCALE,
+  canonicalUrlRelative: DOCUMENT_HEAD.CANONICAL_URL,
+});
 
 export default async function ProjectsPage() {
   const { user } = await fetchUserByIdAction();
-  if (!user) return redirect('/auth');
+  if (!user) return redirect('/');
 
   const { plan, createdAt } = user;
 

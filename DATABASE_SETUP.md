@@ -11,26 +11,27 @@ This project uses Prisma with PostgreSQL and Docker for database management.
 
 1. **Start the PostgreSQL database:**
 
-   ```bash
-   npm run docker:up
-   ```
+```bash
+npm run docker:up
+```
 
 2. **Generate Prisma client:**
 
-   ```bash
-   npm run db:generate
-   ```
+```bash
+npm run db:generate
+```
 
 3. **Push the schema to the database:**
 
-   ```bash
-   npm run db:push
-   ```
+```bash
+npm run db:push
+```
 
 4. **Start the development server:**
-   ```bash
-   npm run dev
-   ```
+
+```bash
+npm run dev
+```
 
 ## Database Management Commands
 
@@ -48,32 +49,7 @@ This project uses Prisma with PostgreSQL and Docker for database management.
 Make sure your `.env` file contains:
 
 ```env
-DATABASE_URL="postgresql://postgres:postgres@localhost:5432/release_fast?schema=public"
-```
-
-## Database Schema
-
-The database includes the following models:
-
-- **User**: Authentication and user management
-- **Project**: User projects
-- **Release**: Project releases
-
-## Using the Database in Your Code
-
-Import the database utilities:
-
-```typescript
-import { prisma } from '@/lib/prisma';
-import { getProjects, createProject } from '@/lib/db';
-
-// Example usage
-const projects = await getProjects(userId);
-const newProject = await createProject({
-  name: 'My Project',
-  description: 'Project description',
-  userId: 'user-id',
-});
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/release_fast?schema=public
 ```
 
 ## Prisma Studio

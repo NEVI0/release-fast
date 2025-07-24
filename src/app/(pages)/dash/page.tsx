@@ -10,7 +10,7 @@ import { Warning } from '@app/components/common';
 
 export default async function DashboardPage() {
   const { user } = await fetchUserByIdAction();
-  if (!user) return redirect('/auth');
+  if (!user) return redirect('/');
 
   const { plan, createdAt } = user;
 
