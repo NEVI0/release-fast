@@ -1,0 +1,27 @@
+{
+  "name": "Release Fast",
+  "short_name": "Release Fast",
+  "description": "Release Fast helps you to generate releases of your software's versions and share for your user",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0a0a23",
+  "icons": [
+    {
+      "src": "/icons/top-logo.png",
+      "sizes": "24x24",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/top-logo-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/top-logo-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "lang": "en"
+}
