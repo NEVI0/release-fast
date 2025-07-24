@@ -24,7 +24,7 @@ export default function AccessLayout({
   children,
 }: Readonly<AccessLayoutProps>) {
   return (
-    <html lang="en-US" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 

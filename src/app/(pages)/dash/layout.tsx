@@ -33,7 +33,7 @@ export default function DashboardLayout({
   children,
 }: Readonly<RootLayoutProps>) {
   return (
-    <html lang="en-US" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
