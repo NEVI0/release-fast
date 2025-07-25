@@ -16,17 +16,17 @@ export const PLAN_DETAILS_BY_TYPE: Record<PlanType, Details> = {
   },
   starter: {
     name: 'Starter',
-    value: 5,
+    value: 4.9,
     projectsAmount: 3,
   },
   pro: {
     name: 'Professional',
-    value: 15,
+    value: 14.9,
     projectsAmount: 15,
   },
   enterprise: {
     name: 'Enterprise',
-    value: 50,
+    value: 49.9,
     projectsAmount: 'unlimited',
   },
 };
