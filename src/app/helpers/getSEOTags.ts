@@ -32,7 +32,8 @@ export default function getSEOTags(params: Params): Metadata {
     twitter: {
       title: params.name,
       description: params.description,
-      card: 'summary_large_image',
+      site: '@nevio_cm',
+      card: 'summary',
       creator: '@nevio_cm',
     },
 
