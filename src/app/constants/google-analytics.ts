@@ -1,3 +1,3 @@
 export const GOOGLE_ANALYTICS = {
-  ID: 'G-N20X6KT1LF',
+  ID: process.env.NODE_ENV === 'development' ? '' : 'G-N20X6KT1LF',
 };
