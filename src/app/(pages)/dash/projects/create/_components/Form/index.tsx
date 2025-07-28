@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 
 import { Box, MessageSquare, Plus, Search, Trash2 } from 'lucide-react';
 
-import { SessionAbstract } from '@domain/entities';
+import { RepositoryAbstract, SessionAbstract } from '@domain/entities';
 import { MAX_DESCRIPTION_LENGTH } from '@domain/constants/project';
 
 import {
@@ -44,6 +44,12 @@ export default function Form({ session }: FormProps) {
     user: session.user.username,
     search,
   });
+
+  function handleSelectRepository(repository: RepositoryAbstract) {
+    form.setValue('repository', repository.fullname);
+    form.setValue('repositoryUrl', repository.url);
+    form.trigger();
+  }
 
   async function handleSubmit(data: CreateProjectValidationSchema) {
     try {
@@ -127,10 +133,7 @@ export default function Form({ session }: FormProps) {
                 <Repository
                   repository={repository}
                   selected={selectedRepository === repository.fullname}
-                  onSelect={() => {
-                    form.setValue('repository', repository.fullname);
-                    form.setValue('repositoryUrl', repository.url);
-                  }}
+                  onSelect={() => handleSelectRepository(repository)}
                 />
               </li>
             ))}
