@@ -18,6 +18,7 @@ export default function useForm<T extends FieldValues>({
     getValues,
     setValue,
     watch,
+    trigger,
     formState: { errors, isValid },
   } = useReactHookForm<T>({
     resolver: zodResolver(schema),
@@ -32,5 +33,6 @@ export default function useForm<T extends FieldValues>({
     errors,
     isValid,
     watch,
+    trigger,
   };
 }
