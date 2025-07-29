@@ -15,7 +15,7 @@ export default function Markdown({ text }: MarkdownProps) {
       return (
         <h3
           key={index}
-          className="w-full font-semibold text-xl mt-4 mb-2"
+          className="w-full font-semibold text-xl mt-4"
           dangerouslySetInnerHTML={{ __html: parseMarkdown(trimmed) }}
         />
       );
@@ -26,7 +26,7 @@ export default function Markdown({ text }: MarkdownProps) {
       return (
         <h2
           key={index}
-          className="w-full font-bold text-2xl mt-6 mb-3"
+          className="w-full font-bold text-2xl mt-4"
           dangerouslySetInnerHTML={{ __html: parseMarkdown(trimmed) }}
         />
       );
