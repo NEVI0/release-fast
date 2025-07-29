@@ -5,6 +5,7 @@ import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import {
+  AlertTriangle,
   Calendar,
   Code2Icon,
   Edit3Icon,
@@ -162,6 +163,13 @@ export default function Form({ session, project }: FormProps) {
             {isComparing ? 'Comparing...' : 'Compare'}
             <Button.Icon icon={GitCompareArrows} loading={isComparing} />
           </Button>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <AlertTriangle className="size-4 text-text-secondary" />{' '}
+          <small className="text-sm text-text-secondary">
+            Too many changes in the code can take a while to be processed.
+          </small>
         </div>
       </form>
 

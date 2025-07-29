@@ -55,8 +55,9 @@ export default function Content({ release }: ContentProps) {
           ))}
         </section>
 
+        <HorizontalDivider />
+
         <section className="flex flex-col gap-2">
-          <h3 className="font-semibold text-lg">Full description</h3>
           <Markdown text={release.fullDescription} />
         </section>
 
