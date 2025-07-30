@@ -21,6 +21,7 @@ export const metadata = getSEOTags({
   domain: DOCUMENT_HEAD.DOMAIN,
   locale: DOCUMENT_HEAD.LOCALE,
   canonicalUrlRelative: DOCUMENT_HEAD.CANONICAL_URL,
+  other: DOCUMENT_HEAD.SCHEMA_MARKUP,
 });
 
 interface RootLayoutProps {

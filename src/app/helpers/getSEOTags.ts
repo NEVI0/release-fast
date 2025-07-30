@@ -9,6 +9,7 @@ interface Params {
   locale: string;
 
   canonicalUrlRelative: string;
+  other?: object;
 }
 
 export default function getSEOTags(params: Params): Metadata {
@@ -43,5 +44,11 @@ export default function getSEOTags(params: Params): Metadata {
         en: params.canonicalUrlRelative,
       },
     },
+
+    ...(!!params.other && {
+      other: {
+        'application/ld+json': JSON.stringify(params.other),
+      },
+    }),
   };
 }

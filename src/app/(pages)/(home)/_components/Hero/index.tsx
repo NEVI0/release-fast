@@ -17,7 +17,7 @@ export default function Hero() {
         </h1>
 
         <h2 className="text-center font-semibold text-2xl text-text-secondary">
-          Automatically generate your software's releases with A.I. and notify
+          Automatically generate your software's releases with AI and notify
           your users of every change. 😎
         </h2>
       </div>
