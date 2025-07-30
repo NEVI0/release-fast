@@ -31,12 +31,13 @@ export default function Plans() {
       </div>
 
       <div className="flex flex-col items-center gap-2">
-        <p className="text-center">
-          Start using release fast now, with any of the plans above you get{' '}
+        <p className="text-center w-full md:w-[80%]">
+          Start using Release Fast now, with any of the plans above you get{' '}
           <strong className="font-semibold text-primary">
             7 days free trial
-          </strong>
-          .
+          </strong>{' '}
+          with no need to inform your payment data, just connect your GitHub
+          account and use it!
         </p>
 
         <span className="text-center font-semibold text-sm text-text-secondary">
