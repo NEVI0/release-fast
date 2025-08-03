@@ -1,48 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://releasefast.io/</loc>
     <priority>1.0</priority>
     <changefreq>daily</changefreq>
+    <lastmod>2025-08-03</lastmod>
+    <video:video>
+      <video:title>Release Fast</video:title>
+      <video:description>See how Release Fast works in 1 minute</video:description>
+      <video:thumbnail_loc>https://releasefast.io/images/video-thumbnail.png</video:thumbnail_loc>
+      <video:content_loc>https://releasefast.io/videos/how-it-works.mp4</video:content_loc>
+    </video:video>
   </url>
   <url>
     <loc>https://releasefast.io/privacy</loc>
     <priority>0.5</priority>
     <changefreq>yearly</changefreq>
+    <lastmod>2025-08-03</lastmod>
   </url>
   <url>
     <loc>https://releasefast.io/terms</loc>
     <priority>0.5</priority>
     <changefreq>yearly</changefreq>
+    <lastmod>2025-08-03</lastmod>
   </url>
   <url>
     <loc>https://releasefast.io/access</loc>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://releasefast.io/checkout</loc>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://releasefast.io/dash</loc>
-    <priority>0.8</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://releasefast.io/dash/profile</loc>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://releasefast.io/dash/projects</loc>
-    <priority>0.8</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://releasefast.io/public/release</loc>
-    <priority>0.7</priority>
-    <changefreq>weekly</changefreq>
+    <lastmod>2025-08-03</lastmod>
   </url>
 </urlset>

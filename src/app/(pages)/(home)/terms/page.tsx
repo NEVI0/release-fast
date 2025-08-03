@@ -222,7 +222,7 @@ export default function TermsPage() {
       </div>
 
       <small className="text-sm text-text-secondary">
-        Last updated: {formatDate(new Date('07-12-2025'), 'MMMM DD, YYYY')}
+        Last updated: {formatDate(new Date('08-03-2025'), 'MMMM DD, YYYY')}
       </small>
     </>
   );
