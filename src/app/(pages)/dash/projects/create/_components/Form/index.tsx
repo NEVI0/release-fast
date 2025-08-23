@@ -41,7 +41,8 @@ export default function Form({ session }: FormProps) {
   const { repositories } = useFetchRepositories({
     provider: session.provider,
     token: session.token,
-    user: session.user.username,
+    user:
+      session.provider === 'gitlab' ? session.user.name : session.user.username,
     search,
   });
 
