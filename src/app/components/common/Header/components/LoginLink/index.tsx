@@ -6,7 +6,7 @@ export default function LoginLink() {
       href="/access"
       className="cursor-pointer h-full flex items-center justify-center font-semibold underline text-primary"
     >
-      Access Dashboard
+      Access my account
     </Link>
   );
 }
