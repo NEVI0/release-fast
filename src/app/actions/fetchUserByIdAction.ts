@@ -2,6 +2,7 @@
 
 import { auth } from '@configs/auth';
 
+import { SessionProvider } from '@domain/entities';
 import makeFetchUserByIdUseCase from '@factories/useCases/makeFetchUserByIdUseCase';
 
 export default async function fetchUserByIdAction() {
@@ -17,6 +18,7 @@ export default async function fetchUserByIdAction() {
     return {
       user: {
         ...user,
+        provider: (session as any).provider! as SessionProvider,
       },
     };
   } catch (error) {
