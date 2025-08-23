@@ -33,7 +33,7 @@ export default class GitlabUserRepoRepository
     return items.map(
       (repo) =>
         new Repository({
-          id: repo.id,
+          id: String(repo.id),
           name: repo.name,
           fullname: repo.path_with_namespace,
           private: repo.visibility === 'private',
