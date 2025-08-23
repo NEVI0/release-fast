@@ -12,7 +12,7 @@ interface Params {
 const BASE_URL_BY_PROVIDER: Record<Provider, string> = {
   app: '',
   github: 'https://api.github.com',
-  gitlab: '',
+  gitlab: 'https://gitlab.com/api/v4',
 };
 
 export default function makeHttpProvider(params?: Params) {
