@@ -4,9 +4,9 @@ import { signIn, auth } from '@configs/auth';
 
 type Provider = 'github' | 'gitlab';
 
-export default async function accessAccountAction(provider?: Provider) {
+export default async function accessAccountAction(provider: Provider) {
   const session = await auth();
   if (session) return;
 
-  return await signIn(provider || 'github', { redirectTo: '/dash' });
+  return await signIn(provider, { redirectTo: '/dash' });
 }
