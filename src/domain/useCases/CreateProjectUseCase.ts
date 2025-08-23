@@ -41,15 +41,19 @@ export default class CreateProjectUseCase {
       );
     }
 
-    if (!dto.provider) {
+    if (!dto.repository.id) {
+      throw new Error('The repository ID is required');
+    }
+
+    if (!dto.repository.provider) {
       throw new Error('The repository provider is required');
     }
 
-    if (!dto.repository) {
+    if (!dto.repository.name) {
       throw new Error('You must provide the project repository');
     }
 
-    if (!dto.repositoryUrl) {
+    if (!dto.repository.url) {
       throw new Error('You must provide the project repository URL');
     }
 
