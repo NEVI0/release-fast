@@ -15,7 +15,7 @@ export default function Cards({ project }: CardsProps) {
       <Card
         title="Repository"
         value="Access repository"
-        valueLink={project.repositoryUrl}
+        valueLink={project.repository.url}
         icon={Code2}
       />
 

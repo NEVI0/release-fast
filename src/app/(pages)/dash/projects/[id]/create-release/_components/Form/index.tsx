@@ -72,7 +72,8 @@ export default function Form({ session, project }: FormProps) {
       setAlreadyComparatedBranches(false);
 
       const diff = await branchesController.compare({
-        repository: project.repository,
+        repository:
+          project.repository[session.provider === 'gitlab' ? 'id' : 'name'],
         baseBranch: data.baseBranch,
         headBranch: data.headBranch,
       });

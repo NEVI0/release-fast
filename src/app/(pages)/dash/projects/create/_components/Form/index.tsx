@@ -33,7 +33,7 @@ export default function Form({ session }: FormProps) {
     schema: createProjectValidationSchema,
   });
 
-  const selectedRepository = form.watch('repository');
+  const selectedRepositoryId = form.watch('repositoryId');
 
   const [search, setSearch] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -47,8 +47,10 @@ export default function Form({ session }: FormProps) {
   });
 
   function handleSelectRepository(repository: RepositoryAbstract) {
-    form.setValue('repository', repository.fullname);
+    form.setValue('repositoryId', repository.id);
+    form.setValue('repositoryName', repository.fullname);
     form.setValue('repositoryUrl', repository.url);
+
     form.trigger();
   }
 
@@ -57,9 +59,15 @@ export default function Form({ session }: FormProps) {
       setIsLoading(true);
 
       const { project } = await createProjectAction({
-        ...data,
+        name: data.name,
+        description: data.description,
         userId: session.user.id,
-        provider: session.provider,
+        repository: {
+          id: data.repositoryId,
+          name: data.repositoryName,
+          url: data.repositoryUrl,
+          provider: session.provider,
+        },
       });
 
       if (!project) throw new Error('Could not create the project');
@@ -113,12 +121,12 @@ export default function Form({ session }: FormProps) {
           type="text"
           label="Search for your project's repository"
           icon={Search}
-          required
           value={search}
           onChange={(event) => setSearch(event.target.value)}
         />
 
-        <input hidden disabled {...form.register('repository')} />
+        <input hidden disabled {...form.register('repositoryId')} />
+        <input hidden disabled {...form.register('repositoryName')} />
         <input hidden disabled {...form.register('repositoryUrl')} />
       </div>
 
@@ -133,7 +141,7 @@ export default function Form({ session }: FormProps) {
               <li key={repository.id}>
                 <Repository
                   repository={repository}
-                  selected={selectedRepository === repository.fullname}
+                  selected={selectedRepositoryId === repository.id}
                   onSelect={() => handleSelectRepository(repository)}
                 />
               </li>
