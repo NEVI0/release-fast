@@ -22,7 +22,7 @@ export default async function DashboardPage() {
       <Header />
 
       <Suspense fallback={<LoadingCards />}>
-        <Cards />
+        <Cards user={user} />
       </Suspense>
 
       {!hasFullAccess && (

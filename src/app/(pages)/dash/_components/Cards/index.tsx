@@ -1,13 +1,21 @@
 import { Boxes, BrainCircuit, Cable } from 'lucide-react';
 
+import { SessionProvider, UserAbstract } from '@domain/entities';
+
 import { Card } from '@app/components/common';
-import { fetchDashboardKPIsAction, fetchUserSession } from '@app/actions';
+import { fetchDashboardKPIsAction } from '@app/actions';
 
-export default async function Cards() {
-  const session = await fetchUserSession();
-  if (!session || !session.user) return;
+interface CardsProps {
+  user: UserAbstract & { provider: SessionProvider };
+}
 
-  const results = await fetchDashboardKPIsAction({ userId: session.user.id });
+const PROVIDER_NAME: Record<SessionProvider, string> = {
+  github: 'GitHub',
+  gitlab: 'GitLab',
+};
+
+export default async function Cards({ user }: CardsProps) {
+  const results = await fetchDashboardKPIsAction({ userId: user.id });
 
   return (
     <section className="flex flex-col md:flex-row items-center justify-between gap-4">
@@ -23,7 +31,11 @@ export default async function Cards() {
         icon={BrainCircuit}
       />
 
-      <Card title="Account provider" value="GitHub" icon={Cable} />
+      <Card
+        title="Account provider"
+        value={PROVIDER_NAME[user.provider]}
+        icon={Cable}
+      />
     </section>
   );
 }
