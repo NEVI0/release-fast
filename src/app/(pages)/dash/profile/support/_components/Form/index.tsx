@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 import { Edit3, MessageSquare, Plus, Trash2 } from 'lucide-react';
 
@@ -24,6 +25,8 @@ interface FormProps {
 }
 
 export default function Form({ session }: FormProps) {
+  const t = useTranslations('page.support');
+
   const toast = useToast();
   const router = useRouter();
   const form = useForm<CreateSupportTicketValidationSchema>({
@@ -40,10 +43,9 @@ export default function Form({ session }: FormProps) {
         ...data,
         userId: session.user.id,
       });
+      if (!supportTicket) throw new Error(t('toast.error'));
 
-      if (!supportTicket) throw new Error('Could create the support ticket');
-
-      toast.success('Support ticket created successfully');
+      toast.success(t('toast.success'));
       router.push('/dash/profile');
     } catch (error) {
       const { message } = handleError(error);
@@ -62,7 +64,7 @@ export default function Form({ session }: FormProps) {
         <Input
           id="title"
           type="text"
-          label="Title"
+          label={t('input.title.label')}
           icon={Edit3}
           required
           error={form.errors.title?.message}
@@ -71,8 +73,8 @@ export default function Form({ session }: FormProps) {
 
         <Textarea
           id="description"
-          label="Type a description of the problem"
-          placeholder="Tell us here"
+          label={t('input.description.label')}
+          placeholder={t('input.description.placeholder')}
           icon={MessageSquare}
           required
           error={form.errors.description?.message}
@@ -87,13 +89,13 @@ export default function Form({ session }: FormProps) {
           className="w-full md:w-[184px]"
           disabled={isLoading || !form.isValid}
         >
-          {isLoading ? 'Creating...' : 'Create ticket'}
+          {t(isLoading ? 'action.submitting' : 'action.submit')}
           <Button.Icon icon={Plus} loading={isLoading} />
         </Button>
 
         <Link href="/dash/profile" className="w-full md:w-[184px]">
           <Button type="button" className="w-full" disabled={isLoading}>
-            Cancel
+            {t('action.cancel')}
             <Button.Icon icon={Trash2} />
           </Button>
         </Link>

@@ -572,7 +572,12 @@
       },
       "action": {
         "cancel": "Cancel",
-        "submit": "Create ticket"
+        "submit": "Create ticket",
+        "submitting": "Creating..."
+      },
+      "toast": {
+        "error": "Could create the support ticket!",
+        "success": "Support ticket created successfully!"
       }
     }
   },
