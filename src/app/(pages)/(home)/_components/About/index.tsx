@@ -1,38 +1,38 @@
+import { useTranslations } from 'next-intl';
+
 import { Info } from './components';
 
 export default function Research() {
+  const t = useTranslations('page.home.about');
+
   return (
     <section className="flex flex-col items-center gap-8">
-      <h2 className="text-center text-2xl font-bold">
-        But... why this solution? 🧐
-      </h2>
+      <h2 className="text-center text-2xl font-bold">{t('title')}</h2>
 
       <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-8">
-        <Info variant="secondary" value="25%">
+        <Info variant="secondary" value={t('info.one.value')}>
           <p className="w-full text-center text-text-secondary">
-            Of software developers spend their time writing documentation of
-            their code or released software versions.
+            {t('info.one.description')}
           </p>
         </Info>
 
-        <Info value="90%">
+        <Info variant="primary" value={t('info.two.value')}>
           <p className="w-full text-center text-text-secondary">
-            Of developers feel frustrated having to write documentation of
-            changes that were added to softwares.
+            {t('info.two.description')}
           </p>
         </Info>
 
-        <Info variant="secondary" value="72%">
+        <Info variant="secondary" value={t('info.three.value')}>
           <p className="w-full text-center text-text-secondary">
-            Of system users feel frustrated when they are not aware of changes
-            in the system.
+            {t('info.three.description')}
           </p>
         </Info>
       </div>
 
       <p className="text-center w-full md:w-[50%]">
-        But <strong className="font-semibold">Release Fast</strong> came to make
-        developer's lives easier when it comes to this requirement!
+        {t.rich('description', {
+          strong: (chunk) => <strong className="font-semibold">{chunk}</strong>,
+        })}
       </p>
     </section>
   );

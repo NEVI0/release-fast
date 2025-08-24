@@ -1,4 +1,6 @@
 import Link from 'next/link';
+
+import { useTranslations } from 'next-intl';
 import { Check } from 'lucide-react';
 
 import { Badge, Button } from '@app/components/ui';
@@ -19,6 +21,8 @@ export default function Plan({
   features,
   variant = 'normal',
 }: PlanProps) {
+  const t = useTranslations('component.plan');
+
   return (
     <div
       className={concatClasses(
@@ -28,7 +32,7 @@ export default function Plan({
     >
       {variant === 'main' && (
         <div className="absolute top-[-12px] right-[50%] translate-x-[50%]">
-          <Badge variant="primary">Most popular</Badge>
+          <Badge variant="primary">{t('popular')}</Badge>
         </div>
       )}
 
@@ -46,7 +50,7 @@ export default function Plan({
               {formatToCurrency(price)}
             </p>
             <small className="text-sm text-text-secondary mb-[4px]">
-              /month
+              /{t('period')}
             </small>
           </div>
         </div>
@@ -68,7 +72,7 @@ export default function Plan({
           variant={variant === 'main' ? 'primary' : 'default'}
           className="w-full"
         >
-          Start now for free
+          {t('button.start')}
         </Button>
       </Link>
     </div>

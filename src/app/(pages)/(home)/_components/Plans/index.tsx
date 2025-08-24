@@ -1,20 +1,21 @@
+import { useTranslations } from 'next-intl';
+
 import { PLAN_DETAILS_BY_TYPE } from '@domain/constants/plan';
 import makeFetchPlansUseCase from '@factories/useCases/makeFetchPlansUseCase';
 
 import { Plan } from './components';
 
 export default function Plans() {
+  const t = useTranslations('page.home.plans');
   const plans = makeFetchPlansUseCase().execute();
 
   return (
     <section className="flex flex-col items-center gap-8">
       <div className="flex flex-col items-center gap-2">
-        <h2 className="text-center text-2xl font-bold">
-          Simple and transparent pricing
-        </h2>
+        <h2 className="text-center text-2xl font-bold">{t('title')}</h2>
 
         <h3 className="text-center text-xl font-semibold text-text-secondary ">
-          Choose the perfect plan for your needs
+          {t('subtitle')}
         </h3>
       </div>
 
@@ -32,16 +33,17 @@ export default function Plans() {
 
       <div className="flex flex-col items-center gap-2">
         <p className="text-center w-full md:w-[80%]">
-          Start using Release Fast now, with any of the plans above you get{' '}
-          <strong className="font-semibold text-primary">
-            7 days free trial
-          </strong>{' '}
-          with no need to inform your payment data, just connect your GitHub
-          account and use it!
+          {t.rich('description', {
+            strong: (chunk) => (
+              <strong className="font-semibold text-primary">{chunk}</strong>
+            ),
+          })}
         </p>
 
         <span className="text-center font-semibold text-sm text-text-secondary">
-          Not satisfied? <span className="underline">Cancel at any time</span>
+          {t.rich('link', {
+            underline: (chunk) => <span className="underline">{chunk}</span>,
+          })}
         </span>
       </div>
     </section>
