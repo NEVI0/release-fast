@@ -375,7 +375,19 @@
     },
     "createRelease": {
       "title": "Create <strong>release</strong>",
-      "subtitle": "Create a new release for your project: {project}",
+      "subtitle": "Create a new release for your project: {name}",
+      "section": {
+        "one": {
+          "title": "Enter the branches to compare",
+          "warning": "Too many changes in the code can take a while to be processed."
+        },
+        "two": {
+          "title": "Fill in your release information"
+        },
+        "three": {
+          "title": "Compare the branches to complete the form"
+        }
+      },
       "input": {
         "branch": {
           "base": {
@@ -419,8 +431,14 @@
       },
       "action": {
         "compare": "Compare",
+        "comparing": "Comparing...",
         "cancel": "Cancel",
-        "submit": "Create release"
+        "submit": "Create release",
+        "submitting": "Creating..."
+      },
+      "toast": {
+        "error": "Could not create the new release!",
+        "success": "Release created successfully!"
       }
     },
     "release": {
