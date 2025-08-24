@@ -274,7 +274,12 @@
       },
       "action": {
         "cancel": "Cancel",
-        "submit": "Create project"
+        "submit": "Create project",
+        "submitting": "Creating..."
+      },
+      "toast": {
+        "error": "Could not create the project!",
+        "success": "Project created successfully!"
       }
     },
     "project": {

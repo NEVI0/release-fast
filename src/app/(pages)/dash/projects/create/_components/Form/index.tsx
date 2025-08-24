@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 import { Box, MessageSquare, Plus, Search, Trash2 } from 'lucide-react';
 
@@ -27,6 +28,8 @@ interface FormProps {
 }
 
 export default function Form({ session }: FormProps) {
+  const t = useTranslations('page.createProject');
+
   const toast = useToast();
   const router = useRouter();
   const form = useForm<CreateProjectValidationSchema>({
@@ -70,9 +73,9 @@ export default function Form({ session }: FormProps) {
         },
       });
 
-      if (!project) throw new Error('Could not create the project');
+      if (!project) throw new Error(t('toast.error'));
 
-      toast.success('Project created successfully');
+      toast.success(t('toast.success'));
       router.push('/dash/projects/' + project.id);
     } catch (error) {
       const { message } = handleError(error);
@@ -91,8 +94,8 @@ export default function Form({ session }: FormProps) {
         <Input
           id="name"
           type="text"
-          label="Project name"
-          placeholder="E.g.: E-commerce, Blog, etc."
+          label={t('input.name.label')}
+          placeholder={t('input.name.placeholder')}
           icon={Box}
           required
           error={form.errors.name?.message}
@@ -102,13 +105,13 @@ export default function Form({ session }: FormProps) {
         <Input
           id="description"
           type="text"
-          label="Project description"
-          placeholder="A brief description of the project"
+          label={t('input.description.label')}
+          placeholder={t('input.description.placeholder')}
           icon={MessageSquare}
           maxLength={MAX_DESCRIPTION_LENGTH}
           rightContent={
             <small className="text-text-secondary text-sm">
-              {MAX_DESCRIPTION_LENGTH} characters max.
+              {t('input.description.max', { max: MAX_DESCRIPTION_LENGTH })}
             </small>
           }
           required
@@ -119,7 +122,7 @@ export default function Form({ session }: FormProps) {
         <Input
           id="search"
           type="text"
-          label="Search for your project's repository"
+          label={t('input.search.label')}
           icon={Search}
           value={search}
           onChange={(event) => setSearch(event.target.value)}
@@ -134,7 +137,9 @@ export default function Form({ session }: FormProps) {
 
       {!!repositories.length ? (
         <div className="flex flex-col gap-4">
-          <h3 className="font-semibold text-2xl">Select a repository</h3>
+          <h3 className="font-semibold text-2xl">
+            {t('repository.title.select')}
+          </h3>
 
           <ul className="flex flex-col gap-2">
             {repositories.map((repository) => (
@@ -150,7 +155,9 @@ export default function Form({ session }: FormProps) {
         </div>
       ) : (
         <div className="flex flex-col gap-4">
-          <h3 className="font-semibold text-2xl">No repositories found...</h3>
+          <h3 className="font-semibold text-2xl">
+            {t('repository.title.notFound')}
+          </h3>
         </div>
       )}
 
@@ -161,13 +168,13 @@ export default function Form({ session }: FormProps) {
           className="w-full md:w-[184px]"
           disabled={isLoading || !form.isValid}
         >
-          {isLoading ? 'Creating...' : 'Create project'}
+          {t(isLoading ? 'action.submitting' : 'action.submit')}
           <Button.Icon icon={Plus} loading={isLoading} />
         </Button>
 
         <Link href="/dash/projects" className="w-full md:w-[184px]">
           <Button type="button" className="w-full" disabled={isLoading}>
-            Cancel
+            {t('action.cancel')}
             <Button.Icon icon={Trash2} />
           </Button>
         </Link>
