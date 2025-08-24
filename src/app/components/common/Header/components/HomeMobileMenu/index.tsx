@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 import { SessionAbstract } from '@domain/entities';
 
@@ -16,6 +17,8 @@ interface HomeMobileMenuProps {
 }
 
 export default function HomeMobileMenu({ session }: HomeMobileMenuProps) {
+  const t = useTranslations('component.header.home');
+
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   function handleToggleMenu() {
@@ -41,19 +44,19 @@ export default function HomeMobileMenu({ session }: HomeMobileMenuProps) {
 
         <nav className="flex flex-col items-start gap-8 p-8">
           <NavLink href="/" onClick={handleToggleMenu}>
-            Home
+            {t('nav.home')}
           </NavLink>
 
           <NavLink href="/#how-it-works-section" onClick={handleToggleMenu}>
-            How it works
+            {t('nav.howItWorks')}
           </NavLink>
 
           <NavLink href="/#about-section" onClick={handleToggleMenu}>
-            About
+            {t('nav.about')}
           </NavLink>
 
           <NavLink href="/#plans-section" onClick={handleToggleMenu}>
-            Plans
+            {t('nav.about')}
           </NavLink>
 
           <AuthLink session={session} />

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 
 import { Menu, X } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 import { concatClasses } from '@app/helpers';
 import { IconButton } from '@app/components/ui';
@@ -12,6 +13,8 @@ import LogoutLink from '../LogoutLink';
 import NavLink from '../NavLink';
 
 export default function DashMobileMenu() {
+  const t = useTranslations('component.header.dash');
+
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   function handleToggleMenu() {
@@ -37,11 +40,11 @@ export default function DashMobileMenu() {
 
         <nav className="flex flex-col items-start gap-8 p-8">
           <NavLink href="/dash" onClick={handleToggleMenu}>
-            Dashboard
+            {t('nav.dashboard')}
           </NavLink>
 
           <NavLink href="/dash/projects" onClick={handleToggleMenu}>
-            Projects
+            {t('nav.projects')}
           </NavLink>
 
           <LogoutLink />
@@ -51,7 +54,7 @@ export default function DashMobileMenu() {
             className="h-full flex items-center justify-center font-semibold underline text-primary"
             onClick={handleToggleMenu}
           >
-            My account
+            {t('nav.account')}
           </Link>
         </nav>
       </aside>
