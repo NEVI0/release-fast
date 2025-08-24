@@ -1,4 +1,5 @@
 import { Boxes, BrainCircuit, Cable } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 import { SessionProvider, UserAbstract } from '@domain/entities';
 
@@ -15,24 +16,25 @@ const PROVIDER_NAME: Record<SessionProvider, string> = {
 };
 
 export default async function Cards({ user }: CardsProps) {
+  const t = useTranslations('page.dash');
   const results = await fetchDashboardKPIsAction({ userId: user.id });
 
   return (
     <section className="flex flex-col md:flex-row items-center justify-between gap-4">
       <Card
-        title="Projects created"
+        title={t('card.one.title')}
         value={String(results.projects)}
         icon={Boxes}
       />
 
       <Card
-        title="Releases generated"
+        title={t('card.two.title')}
         value={String(results.releases)}
         icon={BrainCircuit}
       />
 
       <Card
-        title="Account provider"
+        title={t('card.three.title')}
         value={PROVIDER_NAME[user.provider]}
         icon={Cable}
       />
