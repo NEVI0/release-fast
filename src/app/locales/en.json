@@ -607,6 +607,11 @@
       "plans": "Select plan",
       "support": "Support",
       "feedback": "Give a feedback"
+    },
+    "notFound": {
+      "title": "Oops... nothing found here 😕",
+      "description": "This page doesn't exist... are you sure you're accessing the right page?",
+      "action": "Go to home"
     }
   }
 }
