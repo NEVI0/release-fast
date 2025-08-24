@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ExternalLink, Plus } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 import { ProjectAbstract } from '@domain/entities';
 
@@ -12,22 +13,23 @@ import { Button, IconButton, Table } from '@app/components/ui';
 import { MobileRelease } from './components';
 
 interface ListProps {
-  columns: any;
   project: ProjectAbstract;
 }
 
-export default async function List({ columns, project }: ListProps) {
+export default async function List({ project }: ListProps) {
+  const t = useTranslations('page.project');
+
   const { releases } = await fetchAllReleasesAction({ projectId: project.id });
 
   if (!releases.length) {
     return (
       <ErrorStatus
-        title="Oops... nothing found!"
-        message="No releases were found. Try registering a new one by clicking the button below."
+        title={t('notFound.title')}
+        message={t('notFound.description')}
       >
         <Link href={`/dash/projects/${project.id}/create-release`}>
           <Button variant="primary">
-            Add new release
+            {t('action.create')}
             <Button.Icon icon={Plus} />
           </Button>
         </Link>
@@ -35,19 +37,33 @@ export default async function List({ columns, project }: ListProps) {
     );
   }
 
+  const columns = [
+    { id: 'title', children: t('list.column.one') },
+    { id: 'version', children: t('list.column.two') },
+    { id: 'createdAt', children: t('list.column.three') },
+    { id: 'updatedAt', children: t('list.column.four') },
+    { id: 'details', children: t('list.column.five'), center: true },
+  ];
+
   return (
     <section className="flex flex-col gap-4">
       <div className="flex items-center justify-between">
         <div>
-          <h3 className="text-lg font-semibold">Release list</h3>
+          <h3 className="text-lg font-semibold">{t('list.title')}</h3>
+
           <h4 className="text-text-secondary">
-            Total releases: {releases.length}
+            {t.rich('list.subtitle', {
+              total: releases.length,
+              strong: (chunk) => (
+                <strong className="font-semibold">{chunk}</strong>
+              ),
+            })}
           </h4>
         </div>
 
         <Link href={`/dash/projects/${project.id}/create-release`}>
           <Button>
-            Add new release
+            {t('action.create')}
             <Button.Icon icon={Plus} />
           </Button>
         </Link>

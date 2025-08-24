@@ -300,7 +300,7 @@
       },
       "list": {
         "title": "Release list",
-        "subtitle": "Total releases: {total}",
+        "subtitle": "Total releases: <strong>{total}</strong>",
         "column": {
           "one": "Title",
           "two": "Version",
@@ -338,7 +338,12 @@
           }
         },
         "action": {
-          "submit": "Delete project"
+          "submit": "Delete project",
+          "submitting": "Deletting..."
+        },
+        "toast": {
+          "error": "It was not possible to delete your project. Please try again.",
+          "success": "Project deleted successfully! You will be redirected in 3 seconds..."
         }
       }
     },

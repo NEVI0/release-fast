@@ -3,6 +3,7 @@
 import { useState } from 'react';
 
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import { Edit3, Trash2 } from 'lucide-react';
 
 import { ProjectAbstract } from '@domain/entities';
@@ -17,42 +18,38 @@ interface SettingsProps {
 }
 
 export default function Settings({ project }: SettingsProps) {
+  const t = useTranslations('page.project.setting');
+
   const [isDeleteProjectModalOpen, setIsDeleteProjectModalOpen] =
     useState(false);
 
   return (
     <>
       <section className="flex flex-col gap-8">
-        <h3 className="font-bold text-2xl">Settings</h3>
+        <h3 className="font-bold text-2xl">{t('title')}</h3>
 
         <ul className="flex flex-col gap-4">
           <li>
-            <Setting
-              title="Edit project data"
-              description="Edit the project data"
-            >
+            <Setting title={t('one.title')} description={t('one.description')}>
               <Link
                 href={`/dash/projects/${project.id}/edit`}
                 className="w-full"
               >
                 <Button className="w-full">
-                  Edit project <Button.Icon icon={Edit3} />
+                  {t('one.action')} <Button.Icon icon={Edit3} />
                 </Button>
               </Link>
             </Setting>
           </li>
 
           <li>
-            <Setting
-              title="Delete project"
-              description="Delete the project and all its data (this action is irreversible)"
-            >
+            <Setting title={t('two.title')} description={t('two.description')}>
               <Button
                 variant="danger"
                 className="w-full"
                 onClick={() => setIsDeleteProjectModalOpen(true)}
               >
-                Delete project <Button.Icon icon={Trash2} />
+                {t('two.action')} <Button.Icon icon={Trash2} />
               </Button>
             </Setting>
           </li>
