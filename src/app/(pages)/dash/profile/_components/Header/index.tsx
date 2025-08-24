@@ -1,3 +1,5 @@
+import { useTranslations } from 'next-intl';
+
 import { UserAbstract } from '@domain/entities';
 import { Breadcrumb } from '@app/components/ui';
 
@@ -6,22 +8,30 @@ interface HeaderProps {
 }
 
 export default function Header({ user }: HeaderProps) {
+  const t = useTranslations('page.account');
+  const compT = useTranslations('component.breadcrumb');
+
   return (
     <section className="flex flex-col gap-8">
       <Breadcrumb
         items={[
-          { label: 'Dashboard', href: '/dash' },
-          { label: 'My account', href: '/profile' },
+          { label: compT('dash'), href: '/dash' },
+          { label: compT('account'), href: '/profile' },
         ]}
       />
 
       <div className="flex flex-col gap-2">
         <h1 className="font-bold text-4xl">
-          <strong className="text-primary">Hello</strong>, {user.name}
+          {t.rich('title', {
+            name: user.name,
+            strong: (chunk) => (
+              <strong className="text-primary">{chunk}</strong>
+            ),
+          })}
         </h1>
 
         <h2 className="font-semibold text-2xl text-text-secondary">
-          Manage your information and preferences
+          {t('subtitle')}
         </h2>
       </div>
     </section>

@@ -422,7 +422,7 @@
       }
     },
     "account": {
-      "title": "<strong>Hellow</strong>, {name}",
+      "title": "<strong>Hello</strong>, {name}",
       "subtitle": "Manage your information and preferences",
       "card": {
         "one": {
@@ -474,8 +474,8 @@
         "description": {
           "one": "Are you sure you want to delete your account? All data will be deleted and this action cannot be undone.",
           "two": "If so, type 'Delete' in the field below.",
-          "three": "",
-          "four": ""
+          "three": "Before deleting your account and it's data, first you need to cancel your subscription. To do that, go to:",
+          "four": "My account > Settings > Manage Plans > 'Cancel at any time' button;"
         },
         "input": {
           "password": {
@@ -483,7 +483,12 @@
           }
         },
         "action": {
-          "submit": "Delete account"
+          "submit": "Delete account",
+          "submitting": "Deleting..."
+        },
+        "toast": {
+          "error": "It was not possible to delete your account. Please try again.",
+          "success": "Your account has been successfully deleted! You will be redirected in 3 seconds..."
         }
       }
     },
