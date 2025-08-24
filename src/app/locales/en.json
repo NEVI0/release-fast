@@ -365,7 +365,12 @@
       },
       "action": {
         "cancel": "Cancel",
-        "submit": "Update project"
+        "submit": "Update project",
+        "submitting": "Updating..."
+      },
+      "toast": {
+        "error": "Could not update the project!",
+        "success": "Project updated successfully!"
       }
     },
     "createRelease": {
