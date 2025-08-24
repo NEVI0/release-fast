@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 import { FREE_TRIAL_DAYS } from '@domain/constants/plan';
 import { isUserInFreeTrial } from '@domain/helpers';
@@ -6,6 +7,8 @@ import { isUserInFreeTrial } from '@domain/helpers';
 import { fetchUserByIdAction } from '@app/actions';
 
 export default async function FreeTrial() {
+  const t = useTranslations('component.header.dash.trial');
+
   const { user } = await fetchUserByIdAction();
   if (!user) return null;
 
@@ -19,15 +22,20 @@ export default async function FreeTrial() {
       <div className="flex items-center justify-between h-full w-6xl mx-auto px-6 md:px-8 ">
         {isFreeTrial ? (
           <p className="text-left">
-            You are currently on the{' '}
-            <strong className="font-semibold">
-              free trial of {FREE_TRIAL_DAYS} days
-            </strong>
+            {t.rich('message.onTrial', {
+              days: FREE_TRIAL_DAYS,
+              strong: (chunk) => (
+                <strong className="font-semibold">{chunk}</strong>
+              ),
+            })}
           </p>
         ) : (
           <p className="text-left">
-            You are currently on the{' '}
-            <strong className="font-semibold">free</strong> plan
+            {t.rich('message.freePlan', {
+              strong: (chunk) => (
+                <strong className="font-semibold">{chunk}</strong>
+              ),
+            })}
           </p>
         )}
 
@@ -35,7 +43,7 @@ export default async function FreeTrial() {
           href="/dash/profile/plans"
           className="text-right font-semibold underline"
         >
-          Click here to upgrade your plan! 🚀
+          {t('upgrade')}
         </Link>
       </div>
     </div>
