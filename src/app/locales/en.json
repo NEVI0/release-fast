@@ -12,7 +12,7 @@
       },
       "howItWorks": {
         "title": "Click in the video below for a quick preview",
-        "description": "Our service allows you to manage your software versions and automatically generate releases with <strong>AI</strong>. Connect your <strong>GitHub</strong> repository, select two branches versions, and our AI. generates a clear and friendly changelog description based on your commit's history. Publish with one click and send it to your user or keep it as a documentation",
+        "description": "Our service allows you to manage your software versions and automatically generate releases with <strong>AI</strong>. Connect your <strong>GitHub</strong> or <strong>GitLab</strong> account, select two branches versions of a repository, and our AI. generates a clear and friendly changelog description based on your commit's history. Publish with one click and send it to your user or keep it as a documentation",
         "flow": {
           "step1": "Code a change in your software",
           "step2": "Update your project repository",
@@ -42,7 +42,7 @@
       "plans": {
         "title": "Simple and transparent pricing",
         "subtitle": "Choose the perfect plan for your needs",
-        "description": "Start using Release Fast now, with any of the plans above you get <strong>7 days free trial</strong> with no need to inform your payment data, just connect your GitHub account and use it!",
+        "description": "Start using Release Fast now, with any of the plans above you get <strong>7 days free trial</strong> with no need to inform your payment data, just connect your GitHub ou GitLab account and use it!",
         "link": "Not satisfied? <underline>Cancel at any time</underline>"
       }
     },
@@ -534,7 +534,7 @@
           "howItWorks": "How it works",
           "about": "About",
           "plans": "Plans",
-          "access": "Access",
+          "access": "Sign In",
           "dashboard": "Dashboard"
         }
       },
