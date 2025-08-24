@@ -12,7 +12,7 @@
       },
       "howItWorks": {
         "title": "Click in the video below for a quick preview",
-        "description": "Our service allows you to manage your software versions and automatically generate releases with <strong>AI.</strong>. Connect your <strong>GitHub</strong> repository, select two branches versions, and our AI. generates a clear and friendly changelog description based on your commit's history. Publish with one click and send it to your user or keep it as a documentation",
+        "description": "Our service allows you to manage your software versions and automatically generate releases with <strong>AI</strong>. Connect your <strong>GitHub</strong> repository, select two branches versions, and our AI. generates a clear and friendly changelog description based on your commit's history. Publish with one click and send it to your user or keep it as a documentation",
         "flow": {
           "step1": "Code a change in your software",
           "step2": "Update your project repository",
