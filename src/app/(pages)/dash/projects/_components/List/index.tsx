@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ChevronRight, Plus } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 import { UserAbstract } from '@domain/entities';
 
@@ -13,10 +14,11 @@ import { MobileProject } from './components';
 
 interface ListProps {
   user: UserAbstract;
-  columns: any;
 }
 
-export default async function List({ user, columns }: ListProps) {
+export default async function List({ user }: ListProps) {
+  const t = useTranslations('page.projects');
+
   const { projects } = await fetchAllProjectsAction({
     userId: user.id,
   });
@@ -24,12 +26,12 @@ export default async function List({ user, columns }: ListProps) {
   if (!projects.length) {
     return (
       <ErrorStatus
-        title="Oops... nothing found!"
-        message="No projects were found. Try registering a new one by clicking the button below."
+        title={t('notFound.title')}
+        message={t('notFound.description')}
       >
         <Link href="/dash/projects/create">
           <Button variant="primary">
-            Add new project
+            {t('action.create')}
             <Button.Icon icon={Plus} />
           </Button>
         </Link>
@@ -37,20 +39,33 @@ export default async function List({ user, columns }: ListProps) {
     );
   }
 
+  const columns = [
+    { id: 'name', children: t('list.column.one') },
+    { id: 'description', children: t('list.column.two') },
+    { id: 'createdAt', children: t('list.column.three') },
+    { id: 'updatedAt', children: t('list.column.four') },
+    { id: 'details', children: t('list.column.five'), center: true },
+  ];
+
   return (
     <section className="flex flex-col gap-4">
       <div className="flex items-center justify-between">
         <div>
-          <h3 className="text-lg font-semibold">Project list</h3>
+          <h3 className="text-lg font-semibold">{t('list.title')}</h3>
 
           <h4 className="text-text-secondary">
-            Total projects: {projects.length}
+            {t.rich('list.subtitle', {
+              total: projects.length,
+              strong: (chunk) => (
+                <strong className="font-semibold">{chunk}</strong>
+              ),
+            })}
           </h4>
         </div>
 
         <Link href="/dash/projects/create">
           <Button>
-            Add new project
+            {t('action.create')}
             <Button.Icon icon={Plus} />
           </Button>
         </Link>

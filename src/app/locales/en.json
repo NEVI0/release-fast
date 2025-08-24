@@ -232,7 +232,7 @@
       },
       "list": {
         "title": "Project list",
-        "subtitle": "Total projects: {total}",
+        "subtitle": "Total projects: <strong>{total}</strong>",
         "column": {
           "one": "Name",
           "two": "Description",
@@ -244,7 +244,8 @@
       "notFound": {
         "title": "Oops... nothing found!",
         "description": "No projects were found. Try registering a new one by clicking the button below."
-      }
+      },
+      "warning": "You can not access your projects unless you upgrade your current plan!"
     },
     "createProject": {
       "title": "Create <strong>project</strong>",
