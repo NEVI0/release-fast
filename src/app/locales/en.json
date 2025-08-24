@@ -216,7 +216,12 @@
       },
       "action": {
         "cancel": "Cancel",
-        "submit": "Send feedback"
+        "submit": "Send feedback",
+        "submitting": "Sending..."
+      },
+      "toast": {
+        "error": "Could not send the feedback!",
+        "success": "Feedback sent successfully!"
       }
     },
     "projects": {
