@@ -182,6 +182,7 @@
     "dash": {
       "title": "Dashboard",
       "subtitle": "Overview of your dashboard",
+      "warning": "Your free trial has ended! Some features are now limited. Upgrade your plan to keep using it with all the features.",
       "card": {
         "one": {
           "title": "Projects created"
@@ -597,7 +598,7 @@
       "terms": "Terms and conditions of use",
       "privacy": "Privacy policy",
       "howItWorks": "How it works",
-      "dash": "Dash",
+      "dash": "Dashboard",
       "projects": "Projects",
       "createProject": "Create project",
       "editProject": "Edit project",
