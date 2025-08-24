@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { Github, Gitlab } from 'lucide-react';
 
 import { SessionProvider } from '@domain/entities';
@@ -22,6 +23,8 @@ const TITLE_BY_PROVIDER: Record<SessionProvider, string> = {
 };
 
 export default function ProviderCard({ provider }: ProviderCardProps) {
+  const t = useTranslations('page.access.card');
+
   const Icon = ICON_BY_PROVIDER[provider];
 
   return (
@@ -38,12 +41,15 @@ export default function ProviderCard({ provider }: ProviderCardProps) {
 
       <div className="flex flex-col gap-1">
         <h3 className="font-semibold text-2xl">
-          Continue with {TITLE_BY_PROVIDER[provider]}
+          {t('title', {
+            provider: TITLE_BY_PROVIDER[provider],
+          })}
         </h3>
 
         <p className="text-text-secondary">
-          Sign in with your {TITLE_BY_PROVIDER[provider]} account to get
-          started.
+          {t('description', {
+            provider: TITLE_BY_PROVIDER[provider],
+          })}
         </p>
       </div>
     </button>

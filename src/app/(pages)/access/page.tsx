@@ -1,22 +1,26 @@
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 import { ProviderCard } from './_components';
 
 export default function AccessPage() {
+  const t = useTranslations('page.access');
+
   return (
     <div className="flex flex-1 flex-col items-center justify-center gap-16">
       <section className="flex flex-col items-center justify-center gap-4">
         <h1 className="font-bold text-4xl text-center">
-          <strong className="text-primary">Sign in</strong> to Release Fast
+          {t.rich('title', {
+            strong: (chunk) => (
+              <strong className="text-primary">{chunk}</strong>
+            ),
+          })}
         </h1>
 
         <p className="text-center text-text-secondary">
-          Release Fast uses the <strong>GitHub</strong> and{' '}
-          <strong>GitLab</strong> providers for authentication and (read-only)
-          access to the repositories of your linked account. By linking your
-          account, you <strong>pay nothing</strong> and get free access to{' '}
-          <strong>7 days</strong> to use as you wish. Select a provider to
-          continue.
+          {t.rich('description', {
+            strong: (chunk) => <strong>{chunk}</strong>,
+          })}
         </p>
       </section>
 
@@ -29,7 +33,7 @@ export default function AccessPage() {
         href="/"
         className="text-center font-semibold text-sm text-text-secondary underline"
       >
-        Click here to return home
+        {t('link')}
       </Link>
     </div>
   );
