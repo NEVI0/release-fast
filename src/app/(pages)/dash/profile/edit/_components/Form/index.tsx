@@ -3,6 +3,7 @@
 import { useState } from 'react';
 
 import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 
 import { Mail, RefreshCw, Trash2, User } from 'lucide-react';
@@ -24,6 +25,8 @@ interface FormProps {
 }
 
 export default function Form({ user }: FormProps) {
+  const t = useTranslations('page.editAccount');
+
   const toast = useToast();
   const router = useRouter();
   const form = useForm<UpdateUserValidationSchema>({
@@ -41,9 +44,9 @@ export default function Form({ user }: FormProps) {
       setIsLoading(true);
 
       const updated = await updateUserDataAction({ ...data, id: user.id });
-      if (!updated.user) throw new Error('Could not update your account data');
+      if (!updated.user) throw new Error(t('toast.error'));
 
-      toast.success('Data updated successfully');
+      toast.success(t('toast.success'));
       router.push('/dash/profile');
     } catch (error) {
       const { message } = handleError(error);
@@ -62,7 +65,7 @@ export default function Form({ user }: FormProps) {
         <Input
           id="name"
           type="text"
-          label="Your name"
+          label={t('input.name.label')}
           icon={User}
           required
           error={form.errors.name?.message}
@@ -72,8 +75,8 @@ export default function Form({ user }: FormProps) {
         <Input
           id="email"
           type="email"
-          label="Your e-mail"
-          placeholder="E.g.: example@gmail.com"
+          label={t('input.email.label')}
+          placeholder={t('input.email.placeholder')}
           icon={Mail}
           required
           error={form.errors.email?.message}
@@ -88,13 +91,13 @@ export default function Form({ user }: FormProps) {
           className="w-full md:w-[184px]"
           disabled={isLoading || !form.isValid}
         >
-          {isLoading ? 'Updating...' : 'Update data'}
+          {t(isLoading ? 'action.submitting' : 'action.submit')}
           <Button.Icon icon={RefreshCw} loading={isLoading} />
         </Button>
 
         <Link href="/dash/profile" className="w-full md:w-[184px]">
           <Button type="button" className="w-full" disabled={isLoading}>
-            Cancel
+            {t('action.cancel')}
             <Button.Icon icon={Trash2} />
           </Button>
         </Link>

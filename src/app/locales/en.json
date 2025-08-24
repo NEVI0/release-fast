@@ -542,7 +542,12 @@
       },
       "action": {
         "cancel": "Cancel",
-        "submit": "Update account"
+        "submit": "Update account",
+        "submitting": "Updating..."
+      },
+      "toast": {
+        "error": "Could not update your account data!",
+        "success": "Data updated successfully!"
       }
     },
     "plans": {
