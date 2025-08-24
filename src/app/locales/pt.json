@@ -1,0 +1,13 @@
+{
+  "home": {
+    "hero": {
+      "badget": "🚀 Beta publico!",
+      "title": "Gere releases de forma <strong>clara</strong> e <strong>eficiente</strong>!",
+      "subtitle": "Gere automaticamente os releases do seu software com IA e notifique seus usuários sobre cada mudança. 😎",
+      "links": {
+        "howItWorks": "Como funciona",
+        "access": "Comece de graça"
+      }
+    }
+  }
+}
