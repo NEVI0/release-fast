@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { useTranslations } from 'next-intl';
+
 import { LOGO_DIMENSIONS } from '@app/constants/logo-dimensions';
 import { VerticalDivider } from '@app/components/ui';
 
@@ -8,6 +10,7 @@ import { AuthLink, HomeMobileMenu, NavLink } from '../components';
 import { fetchUserSession } from '@app/actions';
 
 export default async function HomeHeader() {
+  const t = useTranslations('component.header.home');
   const session = await fetchUserSession();
 
   return (
@@ -23,13 +26,13 @@ export default async function HomeHeader() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-4 h-full">
-          <NavLink href="/">Home</NavLink>
+          <NavLink href="/">{t('nav.home')}</NavLink>
           <VerticalDivider />
-          <NavLink href="/#how-it-works-section">How it works</NavLink>
+          <NavLink href="/#how-it-works-section">{t('nav.howItWorks')}</NavLink>
           <VerticalDivider />
-          <NavLink href="/#about-section">About</NavLink>
+          <NavLink href="/#about-section">{t('nav.about')}</NavLink>
           <VerticalDivider />
-          <NavLink href="/#plans-section">Plans</NavLink>
+          <NavLink href="/#plans-section">{t('nav.plans')}</NavLink>
           <VerticalDivider />
           <AuthLink session={session} />
         </nav>
