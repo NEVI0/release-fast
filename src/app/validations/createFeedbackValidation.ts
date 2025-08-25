@@ -1,8 +1,8 @@
 import { z } from 'zod';
 
 const createFeedbackValidationSchema = z.object({
-  title: z.string().min(1, 'Title is required'),
-  description: z.string().min(1, 'Description is required'),
+  title: z.string().min(1, 'input.title.error'),
+  description: z.string().min(1, 'input.description.error'),
 });
 
 export type CreateFeedbackValidationSchema = z.infer<

@@ -1,8 +1,8 @@
 import { z } from 'zod';
 
 const compareBranchesValidationSchema = z.object({
-  baseBranch: z.string().min(1, 'Base branch is required'),
-  headBranch: z.string().min(1, 'Head branch is required'),
+  baseBranch: z.string().min(1, 'input.branch.base.error'),
+  headBranch: z.string().min(1, 'input.branch.head.error'),
 });
 
 export type CompareBranchesValidationSchema = z.infer<

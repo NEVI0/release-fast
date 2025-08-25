@@ -1,11 +1,8 @@
 import { z } from 'zod';
 
 const updateUserValidationSchema = z.object({
-  name: z.string().min(1, 'Name is required'),
-  email: z
-    .string()
-    .email('It must be a valid e-mail')
-    .min(1, 'E-mail is required'),
+  name: z.string().min(1, 'input.name.error'),
+  email: z.string().email('input.title.invalid').min(1, 'input.email.error'),
 });
 
 export type UpdateUserValidationSchema = z.infer<

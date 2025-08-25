@@ -537,7 +537,8 @@
         "email": {
           "label": "Your e-mail",
           "placeholder": "E.g.: example@gmail.com",
-          "error": "E-mail is required"
+          "error": "E-mail is required",
+          "invalid": "It must be a valid e-mail"
         }
       },
       "action": {

@@ -67,7 +67,9 @@ export default function Form({ session }: FormProps) {
           label={t('input.title.label')}
           icon={Edit3}
           required
-          error={form.errors.title?.message}
+          error={
+            form.errors.title ? t(form.errors.title.message as any) : undefined
+          }
           {...form.register('title')}
         />
 
@@ -77,7 +79,11 @@ export default function Form({ session }: FormProps) {
           placeholder={t('input.description.placeholder')}
           icon={MessageSquare}
           required
-          error={form.errors.description?.message}
+          error={
+            form.errors.description
+              ? t(form.errors.description.message as any)
+              : undefined
+          }
           {...form.register('description')}
         />
       </div>

@@ -209,7 +209,11 @@ export default function Form({ session, project }: FormProps) {
             icon={Edit3Icon}
             required
             disabled={!alreadyComparatedBranches}
-            error={releaseForm.errors.title?.message}
+            error={
+              releaseForm.errors.title
+                ? t(releaseForm.errors.title.message as any)
+                : undefined
+            }
             {...releaseForm.register('title')}
           />
 
@@ -221,7 +225,11 @@ export default function Form({ session, project }: FormProps) {
             icon={Code2Icon}
             required
             disabled={!alreadyComparatedBranches}
-            error={releaseForm.errors.version?.message}
+            error={
+              releaseForm.errors.version
+                ? t(releaseForm.errors.version.message as any)
+                : undefined
+            }
             {...releaseForm.register('version')}
           />
 
@@ -233,7 +241,11 @@ export default function Form({ session, project }: FormProps) {
             icon={MessageSquare}
             required
             disabled={!alreadyComparatedBranches}
-            error={releaseForm.errors.shortDescription?.message}
+            error={
+              releaseForm.errors.shortDescription
+                ? t(releaseForm.errors.shortDescription.message as any)
+                : undefined
+            }
             {...releaseForm.register('shortDescription')}
           />
 
@@ -244,7 +256,11 @@ export default function Form({ session, project }: FormProps) {
             icon={FileText}
             required
             disabled={!alreadyComparatedBranches}
-            error={releaseForm.errors.fullDescription?.message}
+            error={
+              releaseForm.errors.fullDescription
+                ? t(releaseForm.errors.fullDescription.message as any)
+                : undefined
+            }
             {...releaseForm.register('fullDescription')}
           />
 
@@ -256,7 +272,11 @@ export default function Form({ session, project }: FormProps) {
             required
             min={currentDate}
             disabled={!alreadyComparatedBranches}
-            error={releaseForm.errors.availableAt?.message}
+            error={
+              releaseForm.errors.availableAt
+                ? t(releaseForm.errors.availableAt.message as any)
+                : undefined
+            }
             {...releaseForm.register('availableAt')}
           />
         </div>

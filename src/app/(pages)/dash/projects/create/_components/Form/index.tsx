@@ -98,7 +98,9 @@ export default function Form({ session }: FormProps) {
           placeholder={t('input.name.placeholder')}
           icon={Box}
           required
-          error={form.errors.name?.message}
+          error={
+            form.errors.name ? t(form.errors.name.message as any) : undefined
+          }
           {...form.register('name')}
         />
 
@@ -115,7 +117,11 @@ export default function Form({ session }: FormProps) {
             </small>
           }
           required
-          error={form.errors.description?.message}
+          error={
+            form.errors.description
+              ? t(form.errors.description.message as any)
+              : undefined
+          }
           {...form.register('description')}
         />
 

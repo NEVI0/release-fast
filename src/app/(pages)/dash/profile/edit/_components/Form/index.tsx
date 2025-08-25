@@ -68,7 +68,9 @@ export default function Form({ user }: FormProps) {
           label={t('input.name.label')}
           icon={User}
           required
-          error={form.errors.name?.message}
+          error={
+            form.errors.name ? t(form.errors.name.message as any) : undefined
+          }
           {...form.register('name')}
         />
 
@@ -79,7 +81,9 @@ export default function Form({ user }: FormProps) {
           placeholder={t('input.email.placeholder')}
           icon={Mail}
           required
-          error={form.errors.email?.message}
+          error={
+            form.errors.email ? t(form.errors.email.message as any) : undefined
+          }
           {...form.register('email')}
         />
       </div>
