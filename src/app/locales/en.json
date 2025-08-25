@@ -633,10 +633,13 @@
       "enterprise": "Enterprise",
       "feature": {
         "projects": {
-          "upTo": "Up to {projects} projects",
-          "unlimited": "Unlimited projects"
+          "upTo": {
+            "three": "Up to 3 projects",
+            "fifteen": "Up to 3 projects",
+            "unlimited": "Unlimited projects"
+          }
         },
-        "releases": {
+        "release": {
           "basic": "AI-powered releases generation",
           "advanced": "Advanced AI-powered releases generation"
         },
