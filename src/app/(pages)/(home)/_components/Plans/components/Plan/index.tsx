@@ -1,27 +1,35 @@
 import Link from 'next/link';
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { Check } from 'lucide-react';
+
+import { PlanAbstract, PlanCurrency } from '@domain/entities';
 
 import { Badge, Button } from '@app/components/ui';
 import { concatClasses, formatToCurrency } from '@app/helpers';
 
-type PlanVariant = 'normal' | 'main';
-
 interface PlanProps {
-  title: string;
-  price: number;
-  features: string[];
-  variant?: PlanVariant;
+  plan: PlanAbstract;
 }
 
-export default function Plan({
-  title,
-  price,
-  features,
-  variant = 'normal',
-}: PlanProps) {
-  const t = useTranslations('component.plan');
+const CURRENCY_BY_LOCALE: Record<string, PlanCurrency> = {
+  pt: 'BRL',
+  en: 'USD',
+};
+
+const TITLE_BY_TYPE: Record<PlanAbstract['type'], string> = {
+  free: '',
+  starter: 'component.plan.starter',
+  pro: 'component.plan.pro',
+  enterprise: 'component.plan.enterprise',
+};
+
+export default function Plan({ plan }: PlanProps) {
+  const t = useTranslations();
+  const locale = useLocale();
+
+  const variant = plan.type === 'pro' ? 'main' : 'normal';
+  const price = plan.price[CURRENCY_BY_LOCALE[locale]];
 
   return (
     <div
@@ -32,13 +40,15 @@ export default function Plan({
     >
       {variant === 'main' && (
         <div className="absolute top-[-12px] right-[50%] translate-x-[50%]">
-          <Badge variant="primary">{t('popular')}</Badge>
+          <Badge variant="primary">{t('component.plan.popular')}</Badge>
         </div>
       )}
 
       <div className="flex flex-col gap-8">
         <div className="flex flex-col gap-2">
-          <h3 className="text-2xl font-semibold text-center">{title}</h3>
+          <h3 className="text-2xl font-semibold text-center">
+            {t(TITLE_BY_TYPE[plan.type] as any)}
+          </h3>
 
           <div className="flex items-end justify-center gap-2">
             <p
@@ -47,21 +57,21 @@ export default function Plan({
                 variant === 'main' && 'text-primary'
               )}
             >
-              {formatToCurrency(price)}
+              {formatToCurrency(price, CURRENCY_BY_LOCALE[locale])}
             </p>
             <small className="text-sm text-text-secondary mb-[4px]">
-              /{t('period')}
+              /{t('component.plan.period')}
             </small>
           </div>
         </div>
 
         <ul className="flex flex-col gap-2">
-          {features.map((feature, index) => (
+          {plan.features.map((feature, index) => (
             <li key={`${feature}-${index}`} className="flex items-center gap-2">
               <div>
                 <Check className="text-green-500 size-4" />
               </div>{' '}
-              {feature}
+              {t(feature as any)}
             </li>
           ))}
         </ul>
@@ -72,7 +82,7 @@ export default function Plan({
           variant={variant === 'main' ? 'primary' : 'default'}
           className="w-full"
         >
-          {t('button.start')}
+          {t('component.plan.button.start')}
         </Button>
       </Link>
     </div>

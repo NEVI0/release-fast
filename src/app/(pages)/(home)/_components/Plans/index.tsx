@@ -21,13 +21,7 @@ export default function Plans() {
 
       <div className="flex flex-col lg:flex-row items-center justify-center gap-8">
         {plans.map((plan) => (
-          <Plan
-            key={plan.id}
-            title={PLAN_DETAILS_BY_TYPE[plan.type].name}
-            price={plan.price}
-            features={plan.features}
-            variant={plan.type === 'pro' ? 'main' : 'normal'}
-          />
+          <Plan key={plan.id} plan={plan} />
         ))}
       </div>
 
