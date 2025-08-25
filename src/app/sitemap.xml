@@ -6,7 +6,19 @@
     <changefreq>daily</changefreq>
     <lastmod>2025-08-03</lastmod>
     <video:video>
-      <video:title>Release Fast</video:title>
+      <video:title>How It Works - Home</video:title>
+      <video:description>See how Release Fast works in 1 minute</video:description>
+      <video:thumbnail_loc>https://releasefast.io/images/video-thumbnail.png</video:thumbnail_loc>
+      <video:content_loc>https://releasefast.io/videos/how-it-works.mp4</video:content_loc>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://releasefast.io/how-it-works</loc>
+    <priority>0.6</priority>
+    <changefreq>yearly</changefreq>
+    <lastmod>2025-08-03</lastmod>
+    <video:video>
+      <video:title>How It Works</video:title>
       <video:description>See how Release Fast works in 1 minute</video:description>
       <video:thumbnail_loc>https://releasefast.io/images/video-thumbnail.png</video:thumbnail_loc>
       <video:content_loc>https://releasefast.io/videos/how-it-works.mp4</video:content_loc>

@@ -3,7 +3,8 @@ import { useTranslations } from 'next-intl';
 
 import { Code2, Github, Smile, BrainCircuit } from 'lucide-react';
 
-import { Flow, Video } from './components';
+import { Video } from '@app/components/common';
+import { Flow } from './components';
 
 export default function HowItWorks() {
   const t = useTranslations('page.home.howItWorks');
