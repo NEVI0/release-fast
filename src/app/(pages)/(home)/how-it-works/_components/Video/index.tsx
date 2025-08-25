@@ -1,18 +1,18 @@
+import { useTranslations } from 'next-intl';
+
 import { Video as CommonVideo } from '@app/components/common';
 
 export default function Video() {
+  const t = useTranslations('page.home.howItWorks');
+
   return (
     <section className="flex flex-col items-center gap-8">
       <CommonVideo />
 
       <p className="text-text-secondary text-center w-[90%]">
-        Our service allows you to manage your software versions and
-        automatically generate releases with{' '}
-        <strong className="font-semibold">AI.</strong>. Connect your{' '}
-        <strong className="font-semibold">GitHub</strong> repository, select two
-        branches versions, and our AI. generates a clear and friendly changelog
-        description based on your commit's history. Publish with one click and
-        send it to your user or keep it as a documentation
+        {t.rich('description', {
+          strong: (chunk) => <strong className="font-semibold">{chunk}</strong>,
+        })}
       </p>
     </section>
   );
