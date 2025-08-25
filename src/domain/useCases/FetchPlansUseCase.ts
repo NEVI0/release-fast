@@ -11,9 +11,9 @@ export default class FetchPlansUseCase {
       price: PLAN_DETAILS_BY_TYPE['starter'].value,
       freeTrialDays: 7,
       features: [
-        `Up to ${PLAN_DETAILS_BY_TYPE['starter'].projectsAmount} projects`,
-        'AI-powered releases generation',
-        'Basic support',
+        'component.plan.feature.projects.upTo.three',
+        'component.plan.feature.release.basic',
+        'component.plan.feature.support.basic',
       ],
     };
 
@@ -23,10 +23,10 @@ export default class FetchPlansUseCase {
       price: PLAN_DETAILS_BY_TYPE['pro'].value,
       freeTrialDays: 7,
       features: [
-        `Up to ${PLAN_DETAILS_BY_TYPE['pro'].projectsAmount} projects`,
-        'AI-powered releases generation',
-        'Advanced AI suggestions',
-        'Priority support',
+        'component.plan.feature.projects.upTo.fifteen',
+        'component.plan.feature.release.basic',
+        'component.plan.feature.suggestion',
+        'component.plan.feature.support.priority',
       ],
     };
 
@@ -36,11 +36,11 @@ export default class FetchPlansUseCase {
       price: PLAN_DETAILS_BY_TYPE['enterprise'].value,
       freeTrialDays: 7,
       features: [
-        'Unlimited projects',
-        'Advanced AI-powered releases generation',
-        'Advanced AI suggestions',
-        'Priority support',
-        'Access to future features in advance',
+        'component.plan.feature.projects.upTo.unlimited',
+        'component.plan.feature.release.advanced',
+        'component.plan.feature.suggestion',
+        'component.plan.feature.support.priority',
+        'component.plan.feature.futureFeatures',
       ],
     };
 
