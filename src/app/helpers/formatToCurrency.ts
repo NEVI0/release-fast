@@ -1,4 +1,4 @@
-type CurrencyType = 'BRL' | 'USD' | 'EUR';
+type CurrencyType = 'BRL' | 'USD' | 'EUR' | string;
 
 const FORMAT_BY_CURRENCY: Record<CurrencyType, string> = {
   BRL: 'pt-BR',
