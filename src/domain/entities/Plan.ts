@@ -1,9 +1,12 @@
 export type PlanType = 'free' | 'starter' | 'pro' | 'enterprise';
+export type PlanCurrency = 'BRL' | 'USD' | 'EUR' | string;
 
 export interface PlanAbstract {
   id: string;
   type: PlanType;
-  price: number;
+  price: {
+    [key: PlanCurrency]: number;
+  };
   freeTrialDays: number;
   features: string[];
 }
