@@ -23,7 +23,7 @@ export const PLAN_DETAILS_BY_TYPE: Record<PlanType, Details> = {
   starter: {
     name: 'Starter',
     value: {
-      BRL: 20,
+      BRL: 19.9,
       EUR: 4.9,
       USD: 4.9,
     },
@@ -32,7 +32,7 @@ export const PLAN_DETAILS_BY_TYPE: Record<PlanType, Details> = {
   pro: {
     name: 'Professional',
     value: {
-      BRL: 50,
+      BRL: 69.9,
       EUR: 14.9,
       USD: 14.9,
     },
@@ -41,7 +41,7 @@ export const PLAN_DETAILS_BY_TYPE: Record<PlanType, Details> = {
   enterprise: {
     name: 'Enterprise',
     value: {
-      BRL: 40,
+      BRL: 199.9,
       EUR: 49.9,
       USD: 49.9,
     },
