@@ -180,8 +180,8 @@
       "updatedAt": "Última atualização: {date}"
     },
     "dash": {
-      "title": "Painel",
-      "subtitle": "Visão geral do seu painel",
+      "title": "Dashboard",
+      "subtitle": "Visão geral da suas dashboard",
       "warning": "Seu teste gratuito terminou! Alguns recursos agora estão limitados. Faça upgrade do seu plano para continuar usando todas as funcionalidades.",
       "card": {
         "one": {
@@ -555,7 +555,14 @@
       "title": "Selecione seu <strong>plano</strong>",
       "subtitle": "Escolha uma das 3 opções abaixo",
       "selected": "Seu plano atual é o <strong>{plan}</strong>. Selecione um upgrade para um dos planos acima e aproveite mais!!",
-      "cancel": "Não está satisfeito? <link>Cancele a qualquer momento</link>"
+      "cancel": "Não está satisfeito? <link>Cancele a qualquer momento</link>",
+      "provideEmail": {
+        "title": "E-mail não informado!",
+        "description": "Você precisa informar seu e-mail antes de comprar qualquer plano do Release Fast. Clique no botão abaixo e informe seu e-mail.",
+        "action": {
+          "submit": "Informar e-mail"
+        }
+      }
     },
     "support": {
       "title": "Abra um <strong>chamado</strong> de suporte",
@@ -591,7 +598,7 @@
           "about": "Sobre",
           "plans": "Planos",
           "access": "Entrar",
-          "dashboard": "Painel"
+          "dashboard": "Dashboard"
         }
       },
       "dash": {
@@ -603,7 +610,7 @@
           "upgrade": "Clique aqui para fazer upgrade do seu plano! 🚀"
         },
         "nav": {
-          "dashboard": "Painel",
+          "dashboard": "Dashboard",
           "projects": "Projetos",
           "logout": "Sair",
           "account": "Minha conta"
@@ -628,6 +635,7 @@
         "buy": "Comprar agora",
         "update": "Fazer upgrade"
       },
+      "free": "Free",
       "starter": "Starter",
       "pro": "Profissional",
       "enterprise": "Empresárial",
@@ -656,7 +664,7 @@
       "terms": "Termos e condições de uso",
       "privacy": "Política de privacidade",
       "howItWorks": "Como funciona",
-      "dash": "Painel",
+      "dash": "Dashboard",
       "projects": "Projetos",
       "createProject": "Criar projeto",
       "editProject": "Editar projeto",

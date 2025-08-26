@@ -555,7 +555,14 @@
       "title": "Select your <strong>plan</strong>",
       "subtitle": "Choose between one of the 3 options below",
       "selected": "Your current plan is the <strong>{plan}</strong> plan. Select upgrade to one of the above plan and enjoy more!!",
-      "cancel": "Not satisfied? <link>Cancel at any time</link>"
+      "cancel": "Not satisfied? <link>Cancel at any time</link>",
+      "provideEmail": {
+        "title": "E-mail not provided!",
+        "description": "You need to provide your e-mail first before buying any plan of Release Fast. Click in the button below and provide your e-mail.",
+        "action": {
+          "submit": "Provide e-mail"
+        }
+      }
     },
     "support": {
       "title": "Open a support <strong>ticket</strong>",
@@ -628,6 +635,7 @@
         "buy": "Buy now",
         "update": "Upgrade now"
       },
+      "free": "Grátis",
       "starter": "Starter",
       "pro": "Professional",
       "enterprise": "Enterprise",
