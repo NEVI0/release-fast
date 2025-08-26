@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react';
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import {
   AlertTriangle,
   Calendar,
@@ -42,12 +42,13 @@ interface FormProps {
 
 export default function Form({ session, project }: FormProps) {
   const t = useTranslations('page.createRelease');
+  const locale = useLocale();
 
   const toast = useToast();
   const router = useRouter();
   const aiAgentController = useAiAgent();
 
-  const currentDate = useMemo(() => formatDate(new Date(), 'YYYY-MM-DD'), []);
+  const currentDate = useMemo(() => formatDate(new Date(), locale), []);
 
   const branchesController = useCompareBranches({
     provider: session.provider,

@@ -1,5 +1,5 @@
 import { Calendar, Code2 } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 import { ProjectAbstract } from '@domain/entities';
 import { formatDate } from '@app/helpers';
@@ -12,6 +12,7 @@ interface CardsProps {
 
 export default function Cards({ project }: CardsProps) {
   const t = useTranslations('page.project');
+  const locale = useLocale();
 
   return (
     <section className="flex flex-col md:flex-row items-center justify-between gap-4">
@@ -24,13 +25,13 @@ export default function Cards({ project }: CardsProps) {
 
       <Card
         title={t('card.two.title')}
-        value={formatDate(project.createdAt, 'MMMM DD, YYYY')}
+        value={formatDate(project.createdAt, locale)}
         icon={Calendar}
       />
 
       <Card
         title={t('card.three.title')}
-        value={formatDate(project.updatedAt, 'MMMM DD, YYYY')}
+        value={formatDate(project.updatedAt, locale)}
         icon={Calendar}
       />
     </section>

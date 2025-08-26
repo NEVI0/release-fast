@@ -1,5 +1,5 @@
 import { Calendar, BadgeCheck, Mail } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 import { UserAbstract } from '@domain/entities';
 import { PLAN_DETAILS_BY_TYPE } from '@domain/constants/plan';
@@ -13,6 +13,7 @@ interface CardsProps {
 
 export default function Cards({ user }: CardsProps) {
   const t = useTranslations('page.account');
+  const locale = useLocale();
 
   const currentPlan =
     user.plan === 'free'
@@ -33,7 +34,7 @@ export default function Cards({ user }: CardsProps) {
 
       <Card
         title={t('card.three.title')}
-        value={formatDate(user.createdAt, 'MMMM DD, YYYY')}
+        value={formatDate(user.createdAt, locale)}
         icon={Calendar}
       />
     </section>

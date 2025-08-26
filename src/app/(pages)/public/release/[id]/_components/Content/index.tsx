@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { Share2Icon } from 'lucide-react';
+import { useLocale } from 'next-intl';
 
 import { ReleaseAbstract } from '@domain/entities';
 import { useToast } from '@app/hooks';
@@ -18,6 +19,7 @@ interface ContentProps {
 }
 
 export default function Content({ release }: ContentProps) {
+  const locale = useLocale();
   const toast = useToast();
 
   async function handleCopyLink() {
@@ -64,7 +66,7 @@ export default function Content({ release }: ContentProps) {
         <section className="flex flex-col gap-2">
           <h3 className="font-semibold text-lg">Available on</h3>
           <p className="w-full text-text-secondary">
-            {formatDate(release.availableAt, 'MMMM DD, YYYY')}
+            {formatDate(release.availableAt, locale)}
           </p>
         </section>
       </div>
@@ -75,12 +77,12 @@ export default function Content({ release }: ContentProps) {
         <div className="flex flex-col">
           <small className="text-sm text-text-secondary">
             <strong className="font-semibold">Created on:</strong>{' '}
-            {formatDate(release.createdAt, 'MMMM DD, YYYY')}
+            {formatDate(release.createdAt, locale)}
           </small>
 
           <small className="text-sm text-text-secondary">
             <strong className="font-semibold">Last updated on:</strong>{' '}
-            {formatDate(release.updatedAt, 'MMMM DD, YYYY')}
+            {formatDate(release.updatedAt, locale)}
           </small>
         </div>
 

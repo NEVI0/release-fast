@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { ChevronRight, Plus } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 import { UserAbstract } from '@domain/entities';
 
@@ -18,6 +18,7 @@ interface ListProps {
 
 export default async function List({ user }: ListProps) {
   const t = useTranslations('page.projects');
+  const locale = useLocale();
 
   const { projects } = await fetchAllProjectsAction({
     userId: user.id,
@@ -84,10 +85,10 @@ export default async function List({ user }: ListProps) {
                   <Table.Data>{project.name}</Table.Data>
                   <Table.Data>{project.description}</Table.Data>
                   <Table.Data>
-                    {formatDate(project.createdAt, 'MMMM DD, YYYY')}
+                    {formatDate(project.createdAt, locale)}
                   </Table.Data>
                   <Table.Data>
-                    {formatDate(project.updatedAt, 'MMMM DD, YYYY')}
+                    {formatDate(project.updatedAt, locale)}
                   </Table.Data>
 
                   <Table.Data>

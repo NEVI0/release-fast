@@ -1,8 +1,6 @@
-type Display =
-  | 'DD/MM/YY HHhmm'
-  | 'DD of MMMM of YYYY'
-  | 'MMMM DD, YYYY'
-  | 'YYYY-MM-DD';
+type Locale = 'en' | 'pt';
+
+type Display = 'DD of MM of YYYY' | 'MMMM DD, YYYY';
 
 const SHORT_MONTHS = [
   'Jan.',
@@ -34,10 +32,12 @@ const FULL_MONTHS = [
   'December',
 ];
 
-export default function formatDate(
-  date: Date | string,
-  display: Display = 'DD/MM/YY HHhmm'
-) {
+const DISPLAY_BY_LOCALE: Record<Locale, Display> = {
+  en: 'MMMM DD, YYYY',
+  pt: 'DD of MM of YYYY',
+};
+
+export default function formatDate(date: Date | string, locale: Locale = 'en') {
   try {
     const dateObj = typeof date === 'string' ? new Date(date) : date;
 
@@ -53,7 +53,9 @@ export default function formatDate(
     const hours = dateObj.getHours().toString().padStart(2, '0');
     const minutes = dateObj.getMinutes().toString().padStart(2, '0');
 
-    if (display === 'DD of MMMM of YYYY') {
+    const display = DISPLAY_BY_LOCALE[locale];
+
+    if (display === 'DD of MM of YYYY') {
       const monthName = SHORT_MONTHS[dateObj.getMonth()];
       return `${day} de ${monthName} de ${year}`;
     }
@@ -61,10 +63,6 @@ export default function formatDate(
     if (display === 'MMMM DD, YYYY') {
       const monthName = FULL_MONTHS[dateObj.getMonth()];
       return `${monthName} ${day}, ${year}`;
-    }
-
-    if (display === 'YYYY-MM-DD') {
-      return `${year}-${month}-${day}`;
     }
 
     return `${day}/${month}/${shortYear} ${hours}h${minutes}`;

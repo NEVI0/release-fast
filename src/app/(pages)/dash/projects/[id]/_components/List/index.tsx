@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { ExternalLink, Plus } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 import { ProjectAbstract } from '@domain/entities';
 
@@ -18,6 +18,7 @@ interface ListProps {
 
 export default async function List({ project }: ListProps) {
   const t = useTranslations('page.project');
+  const locale = useLocale();
 
   const { releases } = await fetchAllReleasesAction({ projectId: project.id });
 
@@ -82,10 +83,10 @@ export default async function List({ project }: ListProps) {
                   <Table.Data>{release.title}</Table.Data>
                   <Table.Data>{release.version}</Table.Data>
                   <Table.Data>
-                    {formatDate(release.createdAt, 'MMMM DD, YYYY')}
+                    {formatDate(release.createdAt, locale)}
                   </Table.Data>
                   <Table.Data>
-                    {formatDate(release.updatedAt, 'MMMM DD, YYYY')}
+                    {formatDate(release.updatedAt, locale)}
                   </Table.Data>
 
                   <Table.Data>

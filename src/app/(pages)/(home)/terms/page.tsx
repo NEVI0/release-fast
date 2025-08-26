@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import { ChevronRight } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 import { formatDate } from '@app/helpers';
 import { LINKS } from '@app/constants/links';
@@ -11,6 +11,7 @@ import { Breadcrumb } from '@app/components/ui';
 export default function TermsPage() {
   const t = useTranslations('page.terms');
   const compT = useTranslations('component.breadcrumb');
+  const locale = useLocale();
 
   return (
     <>
@@ -227,7 +228,7 @@ export default function TermsPage() {
 
       <small className="text-sm text-text-secondary">
         {t('updatedAt', {
-          date: formatDate(new Date('08-24-2025'), 'MMMM DD, YYYY'),
+          date: formatDate(new Date('08-24-2025'), locale),
         })}
       </small>
     </>
