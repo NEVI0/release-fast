@@ -463,7 +463,7 @@
           "title": "Plano atual",
           "value": {
             "free": "Gratuito",
-            "starter": "Starter",
+            "starter": "Inicial",
             "pro": "Profissional",
             "enterprise": "Enterprise"
           }
@@ -635,8 +635,8 @@
         "buy": "Comprar agora",
         "update": "Fazer upgrade"
       },
-      "free": "Free",
-      "starter": "Starter",
+      "free": "Grátis",
+      "starter": "Inicial",
       "pro": "Profissional",
       "enterprise": "Empresárial",
       "feature": {

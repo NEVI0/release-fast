@@ -1,30 +1,34 @@
 import { Calendar, BadgeCheck, Mail } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 
-import { UserAbstract } from '@domain/entities';
-import { PLAN_DETAILS_BY_TYPE } from '@domain/constants/plan';
-import { formatDate, formatToCurrency } from '@app/helpers';
+import { PlanAbstract, UserAbstract } from '@domain/entities';
 
+import { formatDate } from '@app/helpers';
 import { Card } from '@app/components/common';
 
 interface CardsProps {
   user: UserAbstract;
 }
 
+const PLAN_NAME_BY_TYPE: Record<PlanAbstract['type'], string> = {
+  free: 'free',
+  starter: 'starter',
+  pro: 'pro',
+  enterprise: 'enterprise',
+};
+
 export default function Cards({ user }: CardsProps) {
   const t = useTranslations('page.account');
+  const compT = useTranslations('component.plan');
   const locale = useLocale();
-
-  const currentPlan =
-    user.plan === 'free'
-      ? t('card.one.value.free')
-      : `${PLAN_DETAILS_BY_TYPE[user.plan].name}, ${formatToCurrency(
-          PLAN_DETAILS_BY_TYPE[user.plan].value
-        )}/m`;
 
   return (
     <section className="flex flex-col md:flex-row items-center gap-4">
-      <Card title={t('card.one.title')} value={currentPlan} icon={BadgeCheck} />
+      <Card
+        title={t('card.one.title')}
+        value={compT(PLAN_NAME_BY_TYPE[user.plan] as any)}
+        icon={BadgeCheck}
+      />
 
       <Card
         title={t('card.two.title')}
