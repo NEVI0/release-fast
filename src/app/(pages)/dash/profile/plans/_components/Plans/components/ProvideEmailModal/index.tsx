@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { MailPlus, MailQuestion } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 import { Button, Modal } from '@app/components/ui';
 
@@ -12,6 +13,8 @@ export default function ProvideEmailModal({
   isOpen,
   onClose,
 }: ProvideEmailModalProps) {
+  const t = useTranslations('page.plans.provideEmail');
+
   return (
     <Modal
       isOpen={isOpen}
@@ -25,18 +28,15 @@ export default function ProvideEmailModal({
 
         <div className="flex flex-col items-center justify-center gap-2">
           <h2 className="text-center text-text-primary font-semibold text-2xl">
-            E-mail not provided!
+            {t('title')}
           </h2>
 
-          <p className="text-center text-text-secondary">
-            You need to provide your e-mail first before buying any plan of
-            Release Fast. Click in the button below and provide your e-mail.
-          </p>
+          <p className="text-center text-text-secondary">{t('description')}</p>
         </div>
 
         <Link href="/dash/profile/edit" className="w-full">
           <Button variant="primary" className="w-full">
-            Provide e-mail <Button.Icon icon={MailPlus} />
+            {t('action.submit')} <Button.Icon icon={MailPlus} />
           </Button>
         </Link>
       </div>
