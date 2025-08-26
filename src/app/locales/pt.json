@@ -1,13 +1,676 @@
 {
-  "home": {
-    "hero": {
-      "badget": "🚀 Beta publico!",
-      "title": "Gere releases de forma <strong>clara</strong> e <strong>eficiente</strong>!",
-      "subtitle": "Gere automaticamente os releases do seu software com IA e notifique seus usuários sobre cada mudança. 😎",
-      "links": {
-        "howItWorks": "Como funciona",
-        "access": "Comece de graça"
+  "page": {
+    "home": {
+      "hero": {
+        "badget": "🚀 Beta pública!",
+        "title": "Gere releases de forma <strong>clara</strong> e <strong>eficiente</strong>!",
+        "subtitle": "Gere automaticamente os releases do seu software com IA e notifique seus usuários sobre cada mudança. 😎",
+        "links": {
+          "howItWorks": "Como funciona",
+          "access": "Comece grátis"
+        }
+      },
+      "howItWorks": {
+        "title": "Clique no vídeo abaixo para uma prévia rápida",
+        "description": "Nosso serviço permite que você gerencie as versões do seu software e gere releases automaticamente com <strong>IA</strong>. Conecte sua conta do <strong>GitHub</strong> ou <strong>GitLab</strong>, selecione duas versões de branches de um repositório, e nossa IA gera uma descrição de changelog clara e amigável baseada no histórico dos seus commits. Publique com um clique e envie para seu usuário ou mantenha como documentação.",
+        "flow": {
+          "step1": "Codifique uma mudança no seu software",
+          "step2": "Atualize o repositório do seu projeto",
+          "step3": "Gere um release com IA",
+          "step4": "Envie para o usuário final"
+        },
+        "link": "Gostou? Continue lendo para saber mais..."
+      },
+      "about": {
+        "title": "Mas... por que essa solução? 🧐",
+        "info": {
+          "one": {
+            "value": "25%",
+            "description": "Dos desenvolvedores de software gastam seu tempo escrevendo documentação do código ou das versões lançadas."
+          },
+          "two": {
+            "value": "90%",
+            "description": "Dos desenvolvedores se sentem frustrados ao ter que documentar mudanças adicionadas aos softwares."
+          },
+          "three": {
+            "value": "72%",
+            "description": "Dos usuários de sistemas se sentem frustrados quando não ficam sabendo das mudanças no sistema."
+          }
+        },
+        "description": "Mas o <strong>Release Fast</strong> veio para facilitar a vida dos desenvolvedores nesse requisito!"
+      },
+      "plans": {
+        "title": "Preços simples e transparentes",
+        "subtitle": "Escolha o plano perfeito para suas necessidades",
+        "description": "Comece a usar o Release Fast agora, com qualquer um dos planos acima você ganha <strong>7 dias de teste grátis</strong> sem precisar informar dados de pagamento, basta conectar sua conta do GitHub ou GitLab e usar!",
+        "link": "Não está satisfeito? <underline>Cancele a qualquer momento</underline>"
       }
+    },
+    "access": {
+      "title": "<strong>Entrar</strong> no Release Fast",
+      "description": "O Release Fast utiliza os providers <strong>GitHub</strong> e <strong>GitLab</strong> para autenticação e acesso (apenas leitura) aos repositórios da sua conta vinculada. Ao vincular sua conta, você <strong>não paga nada</strong> e tem acesso gratuito por <strong>7 dias</strong> para usar como quiser. Selecione um provider para continuar.",
+      "card": {
+        "title": "Continuar com {provider}",
+        "description": "Entre com sua conta {provider} para começar"
+      },
+      "link": "Clique aqui para voltar para a página inicial"
+    },
+    "privacy": {
+      "title": "Política de Privacidade",
+      "intro": {
+        "title": "1. Introdução",
+        "description": "Esta Política de Privacidade explica como o Release Fast coleta, usa e protege suas informações pessoais ao utilizar nossa plataforma. Ao acessar e usar o Release Fast, você concorda com as práticas descritas nesta política."
+      },
+      "collectData": {
+        "title": "2. Informações que Coletamos",
+        "description": "Coletamos os seguintes tipos de informações:",
+        "item": {
+          "one": "Informações de cadastro (nome, e-mail);",
+          "two": "Dados de uso (notas de release, comentários, interações);",
+          "three": "Informações técnicas (tipo de navegador, informações do dispositivo);"
+        }
+      },
+      "useOfInformation": {
+        "title": "3. Como Usamos Suas Informações",
+        "description": "Usamos suas informações para:",
+        "item": {
+          "one": "Fornecer e manter nossos serviços;",
+          "two": "Personalizar sua experiência na plataforma;",
+          "three": "Comunicar com você sobre atualizações, recursos e avisos importantes;",
+          "four": "Melhorar nossa plataforma e garantir sua segurança;"
+        }
+      },
+      "sharedData": {
+        "title": "4. Compartilhamento de Dados",
+        "description": "Não vendemos suas informações pessoais. Podemos compartilhar seus dados apenas nas seguintes situações:",
+        "item": {
+          "one": "Com seu consentimento explícito;",
+          "two": "Para cumprir obrigações legais;",
+          "three": "Com prestadores de serviço que nos ajudam a operar e melhorar o Release Fast (como hospedagem, análise ou suporte);"
+        }
+      },
+      "secure": {
+        "title": "5. Segurança dos Dados",
+        "description": "Implementamos medidas técnicas e organizacionais para proteger suas informações pessoais contra acesso, alteração, divulgação ou destruição não autorizados."
+      },
+      "rights": {
+        "title": "6. Seus Direitos",
+        "description": "Você tem o direito de:",
+        "item": {
+          "one": "Acessar suas informações pessoais;",
+          "two": "Corrigir dados incorretos;",
+          "three": "Solicitar a exclusão dos seus dados;",
+          "four": "Retirar seu consentimento a qualquer momento;"
+        }
+      },
+      "changes": {
+        "title": "7. Alterações nesta Política",
+        "description": "Podemos atualizar esta Política de Privacidade periodicamente. Notificaremos você sobre mudanças significativas pela plataforma ou por e-mail."
+      },
+      "contact": {
+        "title": "8. Contato",
+        "description": "Se você tiver dúvidas sobre privacidade ou esta política, entre em contato conosco em <link>{email}</link>."
+      },
+      "updatedAt": "Última atualização: {date}"
+    },
+    "terms": {
+      "title": "Termos e Condições de Uso",
+      "acceptance": {
+        "title": "1. Aceitação dos Termos",
+        "description": "Ao acessar e usar o Release Fast, você concorda em cumprir e estar vinculado a estes Termos e Condições de Uso. Se não concordar com qualquer parte destes termos, não utilize nossa plataforma."
+      },
+      "serviceUse": {
+        "title": "2. Uso do Serviço",
+        "description": "O Release Fast é uma plataforma criada para ajudar equipes a gerenciar, documentar e compartilhar releases de software de forma eficiente. Ao usar nossos serviços, você concorda em:",
+        "item": {
+          "one": "Fornecer informações precisas e verdadeiras no cadastro;",
+          "two": "Manter suas credenciais de acesso seguras e confidenciais;",
+          "three": "Não compartilhar sua conta com terceiros;",
+          "four": "Respeitar outros usuários e suas contribuições;",
+          "five": "Não publicar conteúdo ilegal, ofensivo ou inadequado;"
+        }
+      },
+      "userContent": {
+        "title": "3. Conteúdo do Usuário",
+        "description": "Ao publicar conteúdo no Release Fast, você:",
+        "item": {
+          "one": "Mantém o direito autoral sobre seu conteúdo;",
+          "two": "Concede ao Release Fast uma licença não exclusiva para usar, modificar e distribuir seu conteúdo para fornecer e melhorar o serviço;",
+          "three": "É responsável por todo conteúdo que publica;",
+          "four": "Garante que possui todos os direitos necessários para compartilhar o conteúdo;"
+        }
+      },
+      "userConduct": {
+        "title": "4. Conduta do Usuário",
+        "description": "É proibido:",
+        "item": {
+          "one": "Publicar conteúdo ilegal, difamatório, obsceno ou ofensivo;",
+          "two": "Usar a plataforma para spam ou publicidade não autorizada;",
+          "three": "Violar direitos de propriedade intelectual de terceiros;",
+          "four": "Realizar atividades que possam danificar ou sobrecarregar nossos sistemas;",
+          "five": "Coletar dados de outros usuários sem autorização;"
+        }
+      },
+      "privacy": {
+        "title": "5. Privacidade e Dados",
+        "description": "Nossa Política de Privacidade descreve como coletamos, usamos e protegemos suas informações pessoais. Ao usar nossa plataforma, você concorda com nossas práticas de privacidade conforme descrito em nossa <link>Política de Privacidade</link>."
+      },
+      "changes": {
+        "title": "6. Alterações nos Termos",
+        "description": "Reservamo-nos o direito de modificar estes termos a qualquer momento. As alterações entram em vigor imediatamente após a publicação. O uso contínuo da plataforma após as mudanças constitui aceitação dos novos termos."
+      },
+      "limitation": {
+        "title": "7. Limitação de Responsabilidade",
+        "description": "O Release Fast não se responsabiliza por:",
+        "item": {
+          "one": "Conteúdo gerado por usuários;",
+          "two": "Danos causados pelo uso inadequado da plataforma;",
+          "three": "Interrupções temporárias do serviço;",
+          "four": "Perda de dados ou conteúdo;"
+        }
+      },
+      "termination": {
+        "title": "8. Encerramento de Conta",
+        "description": "Reservamo-nos o direito de suspender ou encerrar contas que violem estes termos ou tenham conduta inadequada. Você também pode encerrar sua conta a qualquer momento nas configurações da plataforma."
+      },
+      "contact": {
+        "title": "9. Contato",
+        "description": "Se você tiver dúvidas sobre estes termos, entre em contato conosco em <link>{email}</link>."
+      },
+      "updatedAt": "Última atualização: {date}"
+    },
+    "dash": {
+      "title": "Painel",
+      "subtitle": "Visão geral do seu painel",
+      "warning": "Seu teste gratuito terminou! Alguns recursos agora estão limitados. Faça upgrade do seu plano para continuar usando todas as funcionalidades.",
+      "card": {
+        "one": {
+          "title": "Projetos criados"
+        },
+        "two": {
+          "title": "Releases gerados"
+        },
+        "three": {
+          "title": "Provider"
+        }
+      },
+      "feedback": {
+        "title": "Plataforma em construção...",
+        "description": "Esta plataforma está atualmente em <strong>Beta Pública</strong>. Isso significa que <strong>nem</strong> todos os recursos estão disponíveis. Mas estamos ansiosos para entregar tudo que pudermos para você. Envie seu feedback no link abaixo para sabermos o que você quer do Release Fast e podermos entregar! 😃",
+        "link": "Envie seu feedback!"
+      }
+    },
+    "feedback": {
+      "title": "Envie um <strong>feedback</strong>",
+      "subtitle": "Conte-nos o que quiser",
+      "input": {
+        "title": {
+          "label": "Título",
+          "error": "Título é obrigatório"
+        },
+        "description": {
+          "label": "Descrição do feedback",
+          "placeholder": "Conte aqui",
+          "error": "Descrição é obrigatória"
+        }
+      },
+      "action": {
+        "cancel": "Cancelar",
+        "submit": "Enviar feedback",
+        "submitting": "Enviando..."
+      },
+      "toast": {
+        "error": "Não foi possível enviar o feedback!",
+        "success": "Feedback enviado com sucesso!"
+      }
+    },
+    "projects": {
+      "title": "Meus <strong>projetos</strong>",
+      "subtitle": "Gerencie seus projetos e seus releases",
+      "action": {
+        "create": "Criar novo projeto"
+      },
+      "list": {
+        "title": "Lista de projetos",
+        "subtitle": "Total de projetos: <strong>{total}</strong>",
+        "column": {
+          "one": "Nome",
+          "two": "Descrição",
+          "three": "Criado em",
+          "four": "Atualizado em",
+          "five": "Detalhes"
+        }
+      },
+      "notFound": {
+        "title": "Ops... nada encontrado!",
+        "description": "Nenhum projeto foi encontrado. Tente cadastrar um novo clicando no botão abaixo."
+      },
+      "warning": "Você não pode acessar seus projetos a menos que faça upgrade do seu plano atual!"
+    },
+    "createProject": {
+      "title": "Criar <strong>projeto</strong>",
+      "subtitle": "Crie um novo projeto para gerenciar seus releases",
+      "input": {
+        "name": {
+          "label": "Nome do projeto",
+          "placeholder": "Ex.: E-commerce, Blog, etc...",
+          "error": "Nome é obrigatório"
+        },
+        "description": {
+          "label": "Descrição do projeto",
+          "placeholder": "Uma breve descrição do projeto",
+          "max": "{max} caracteres no máx.",
+          "error": "Descrição é obrigatória"
+        },
+        "search": {
+          "label": "Busque o repositório do seu projeto"
+        }
+      },
+      "repository": {
+        "title": {
+          "notFound": "Nenhum repositório encontrado...",
+          "select": "Selecione um repositório"
+        }
+      },
+      "action": {
+        "cancel": "Cancelar",
+        "submit": "Criar projeto",
+        "submitting": "Criando..."
+      },
+      "toast": {
+        "error": "Não foi possível criar o projeto!",
+        "success": "Projeto criado com sucesso!"
+      }
+    },
+    "project": {
+      "card": {
+        "one": {
+          "title": "Repositório",
+          "value": "Acessar repositório"
+        },
+        "two": {
+          "title": "Criado em"
+        },
+        "three": {
+          "title": "Atualizado em"
+        }
+      },
+      "action": {
+        "create": "Criar novo release"
+      },
+      "list": {
+        "title": "Lista de releases",
+        "subtitle": "Total de releases: <strong>{total}</strong>",
+        "column": {
+          "one": "Título",
+          "two": "Versão",
+          "three": "Criado em",
+          "four": "Atualizado em",
+          "five": "Detalhes"
+        }
+      },
+      "notFound": {
+        "title": "Ops... nada encontrado!",
+        "description": "Nenhum release foi encontrado. Tente cadastrar um novo clicando no botão abaixo."
+      },
+      "setting": {
+        "title": "Configurações",
+        "one": {
+          "title": "Editar dados do projeto",
+          "description": "Edite os dados do projeto",
+          "action": "Editar projeto"
+        },
+        "two": {
+          "title": "Excluir projeto",
+          "description": "Exclua o projeto e todos os seus dados (esta ação é irreversível)",
+          "action": "Excluir projeto"
+        }
+      },
+      "delete": {
+        "title": "Excluir projeto",
+        "description": {
+          "one": "Tem certeza que deseja excluir seu projeto? Todos os dados serão apagados e esta ação não poderá ser desfeita.",
+          "two": "Se sim, digite 'Delete' no campo abaixo."
+        },
+        "input": {
+          "password": {
+            "placeholder": "Digite 'Delete' para confirmar"
+          }
+        },
+        "action": {
+          "submit": "Excluir projeto",
+          "submitting": "Excluindo..."
+        },
+        "toast": {
+          "error": "Não foi possível excluir seu projeto. Por favor, tente novamente.",
+          "success": "Projeto excluído com sucesso! Você será redirecionado em 3 segundos..."
+        }
+      }
+    },
+    "editProject": {
+      "title": "Editar <strong>projeto</strong>",
+      "subtitle": "Edite os dados do seu projeto",
+      "input": {
+        "name": {
+          "label": "Nome do projeto",
+          "placeholder": "Ex.: E-commerce, Blog, etc...",
+          "error": "Nome é obrigatório"
+        },
+        "description": {
+          "label": "Descrição do projeto",
+          "placeholder": "Uma breve descrição do projeto",
+          "max": "{max} caracteres no máx.",
+          "error": "Descrição é obrigatória"
+        }
+      },
+      "action": {
+        "cancel": "Cancelar",
+        "submit": "Atualizar projeto",
+        "submitting": "Atualizando..."
+      },
+      "toast": {
+        "error": "Não foi possível atualizar o projeto!",
+        "success": "Projeto atualizado com sucesso!"
+      }
+    },
+    "createRelease": {
+      "title": "Criar <strong>release</strong>",
+      "subtitle": "Crie um novo release para seu projeto: {name}",
+      "section": {
+        "one": {
+          "title": "Informe as branches para comparar",
+          "warning": "Muitas mudanças no código podem demorar para serem processadas."
+        },
+        "two": {
+          "title": "Preencha as informações do seu release"
+        },
+        "three": {
+          "title": "Compare as branches para completar o formulário"
+        }
+      },
+      "input": {
+        "branch": {
+          "base": {
+            "label": "Branch base",
+            "placeholder": "Ex.: master",
+            "error": "Branch base é obrigatória"
+          },
+          "head": {
+            "label": "Branch de comparação",
+            "placeholder": "Ex.: minha-feature",
+            "error": "Branch de comparação é obrigatória"
+          }
+        },
+        "release": {
+          "title": {
+            "label": "Título",
+            "error": "Título é obrigatório"
+          },
+          "version": {
+            "label": "Versão",
+            "placeholder": "Ex.: v1.0.0",
+            "error": "Versão é obrigatória"
+          },
+          "description": {
+            "short": {
+              "label": "Descrição curta",
+              "placeholder": "Uma breve descrição do release",
+              "error": "Descrição curta é obrigatória"
+            },
+            "full": {
+              "label": "Descrição detalhada do seu release para o usuário final",
+              "placeholder": "Uma descrição detalhada do release",
+              "error": "Descrição detalhada é obrigatória"
+            }
+          },
+          "availableAt": {
+            "label": "Disponível em",
+            "error": "Data é obrigatória"
+          }
+        }
+      },
+      "action": {
+        "compare": "Comparar",
+        "comparing": "Comparando...",
+        "cancel": "Cancelar",
+        "submit": "Criar release",
+        "submitting": "Criando..."
+      },
+      "toast": {
+        "error": "Não foi possível criar o novo release!",
+        "success": "Release criado com sucesso!"
+      }
+    },
+    "release": {
+      "description": {
+        "title": "Descrição curta"
+      },
+      "availableAt": {
+        "title": "Disponível em"
+      },
+      "createdAt": "Criado em: {date}",
+      "updatedAt": "Atualizado em: {date}",
+      "powered": "Desenvolvido por",
+      "toast": {
+        "success": "Link da página copiado!"
+      }
+    },
+    "account": {
+      "title": "<strong>Olá</strong>, {name}",
+      "subtitle": "Gerencie suas informações e preferências",
+      "card": {
+        "one": {
+          "title": "Plano atual",
+          "value": {
+            "free": "Gratuito",
+            "starter": "Starter",
+            "pro": "Profissional",
+            "enterprise": "Enterprise"
+          }
+        },
+        "two": {
+          "title": "E-mail da conta",
+          "value": "E-mail não informado"
+        },
+        "three": {
+          "title": "Criado em"
+        }
+      },
+      "setting": {
+        "title": "Configurações",
+        "one": {
+          "title": "Alterar tema",
+          "description": "Alterne entre tema claro e escuro"
+        },
+        "two": {
+          "title": "Editar minha conta",
+          "description": "Edite os dados da sua conta (nome, e-mail, etc.)",
+          "action": "Editar conta"
+        },
+        "three": {
+          "title": "Planos e assinaturas",
+          "description": "Gerencie seus planos e assinaturas",
+          "action": "Gerenciar planos"
+        },
+        "four": {
+          "title": "Reportar problema",
+          "description": "Crie um chamado de suporte para problemas ou bugs",
+          "action": "Reportar problema"
+        },
+        "five": {
+          "title": "Excluir conta",
+          "description": "Exclua sua conta e todos os seus dados (esta ação é irreversível)",
+          "action": "Excluir conta"
+        }
+      },
+      "delete": {
+        "title": "Excluir conta",
+        "description": {
+          "one": "Tem certeza que deseja excluir sua conta? Todos os dados serão apagados e esta ação não poderá ser desfeita.",
+          "two": "Se sim, digite 'Delete' no campo abaixo.",
+          "three": "Antes de excluir sua conta e seus dados, primeiro você precisa cancelar sua assinatura. Para isso, vá em:",
+          "four": "Minha conta > Configurações > Gerenciar Planos > botão 'Cancele a qualquer momento';"
+        },
+        "input": {
+          "password": {
+            "placeholder": "Digite 'Delete' para confirmar"
+          }
+        },
+        "action": {
+          "submit": "Excluir conta",
+          "submitting": "Excluindo..."
+        },
+        "toast": {
+          "error": "Não foi possível excluir sua conta. Por favor, tente novamente.",
+          "success": "Sua conta foi excluída com sucesso! Você será redirecionado em 3 segundos..."
+        }
+      }
+    },
+    "editAccount": {
+      "title": "Editar <strong>conta</strong>",
+      "subtitle": "Edite os dados da sua conta",
+      "input": {
+        "name": {
+          "label": "Seu nome",
+          "error": "Nome é obrigatório"
+        },
+        "email": {
+          "label": "Seu e-mail",
+          "placeholder": "Ex.: exemplo@gmail.com",
+          "error": "E-mail é obrigatório",
+          "invalid": "Deve ser um e-mail válido"
+        }
+      },
+      "action": {
+        "cancel": "Cancelar",
+        "submit": "Atualizar conta",
+        "submitting": "Atualizando..."
+      },
+      "toast": {
+        "error": "Não foi possível atualizar seus dados!",
+        "success": "Dados atualizados com sucesso!"
+      }
+    },
+    "plans": {
+      "title": "Selecione seu <strong>plano</strong>",
+      "subtitle": "Escolha uma das 3 opções abaixo",
+      "selected": "Seu plano atual é o <strong>{plan}</strong>. Selecione um upgrade para um dos planos acima e aproveite mais!!",
+      "cancel": "Não está satisfeito? <link>Cancele a qualquer momento</link>"
+    },
+    "support": {
+      "title": "Abra um <strong>chamado</strong> de suporte",
+      "subtitle": "Reporte problemas ou bugs aqui",
+      "input": {
+        "title": {
+          "label": "Título",
+          "error": "Título é obrigatório"
+        },
+        "description": {
+          "label": "Descreva o problema",
+          "placeholder": "Conte aqui",
+          "error": "Descrição é obrigatória"
+        }
+      },
+      "action": {
+        "cancel": "Cancelar",
+        "submit": "Criar chamado",
+        "submitting": "Criando..."
+      },
+      "toast": {
+        "error": "Não foi possível criar o chamado de suporte!",
+        "success": "Chamado de suporte criado com sucesso!"
+      }
+    }
+  },
+  "component": {
+    "header": {
+      "home": {
+        "nav": {
+          "home": "Início",
+          "howItWorks": "Como funciona",
+          "about": "Sobre",
+          "plans": "Planos",
+          "access": "Entrar",
+          "dashboard": "Painel"
+        }
+      },
+      "dash": {
+        "trial": {
+          "message": {
+            "onTrial": "Você está atualmente no <strong>teste grátis de {days} dias</strong>",
+            "freePlan": "Você está atualmente no plano <strong>gratuito</strong>"
+          },
+          "upgrade": "Clique aqui para fazer upgrade do seu plano! 🚀"
+        },
+        "nav": {
+          "dashboard": "Painel",
+          "projects": "Projetos",
+          "logout": "Sair",
+          "account": "Minha conta"
+        }
+      }
+    },
+    "footer": {
+      "creator": {
+        "name": "Criado por Névio Costa Magagnin",
+        "description": "Engenheiro de Software & UI/UX Designer"
+      },
+      "copyright": "Copyright Névio Costa Magagnin - {year}",
+      "privacy": "Política de Privacidade",
+      "terms": "Termos de Uso"
+    },
+    "plan": {
+      "popular": "Mais popular",
+      "period": "mês",
+      "current": "Este é seu plano atual!",
+      "button": {
+        "start": "Comece grátis",
+        "buy": "Comprar agora",
+        "update": "Fazer upgrade"
+      },
+      "starter": "Starter",
+      "pro": "Profissional",
+      "enterprise": "Empresárial",
+      "feature": {
+        "projects": {
+          "upTo": {
+            "three": "Até 3 projetos",
+            "fifteen": "Até 15 projetos",
+            "unlimited": "Projetos ilimitados"
+          }
+        },
+        "release": {
+          "basic": "Geração de releases com IA",
+          "advanced": "Geração avançada de releases com IA"
+        },
+        "support": {
+          "basic": "Suporte básico",
+          "priority": "Suporte prioritário"
+        },
+        "suggestion": "Sugestões avançadas de IA",
+        "futureFeatures": "Acesso antecipado a novos recursos"
+      }
+    },
+    "breadcrumb": {
+      "home": "Início",
+      "terms": "Termos e condições de uso",
+      "privacy": "Política de privacidade",
+      "howItWorks": "Como funciona",
+      "dash": "Painel",
+      "projects": "Projetos",
+      "createProject": "Criar projeto",
+      "editProject": "Editar projeto",
+      "createRelease": "Criar release",
+      "account": "Minha conta",
+      "editAccount": "Editar conta",
+      "plans": "Selecionar plano",
+      "support": "Suporte",
+      "feedback": "Enviar feedback"
+    },
+    "notFound": {
+      "title": "Ops... nada encontrado aqui 😕",
+      "description": "Esta página não existe... tem certeza que está acessando a página correta?",
+      "action": "Ir para o início"
     }
   }
 }
