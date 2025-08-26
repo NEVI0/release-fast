@@ -17,7 +17,7 @@ export default function Header() {
 
       <div className="flex flex-col gap-2">
         <h1 className="font-bold text-4xl">
-          {t.rich('subtitle', {
+          {t.rich('title', {
             strong: (chunk) => (
               <strong className="text-primary">{chunk}</strong>
             ),
