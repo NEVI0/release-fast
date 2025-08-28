@@ -6,7 +6,12 @@ import { useTranslations } from 'next-intl';
 import { LOGO_DIMENSIONS } from '@app/constants/logo-dimensions';
 import { VerticalDivider } from '@app/components/ui';
 
-import { AuthLink, HomeMobileMenu, NavLink } from '../components';
+import {
+  AuthLink,
+  HomeMobileMenu,
+  LanguageSwitcher,
+  NavLink,
+} from '../components';
 import { fetchUserSession } from '@app/actions';
 
 export default async function HomeHeader() {
@@ -33,8 +38,12 @@ export default async function HomeHeader() {
           <NavLink href="/#about-section">{t('nav.about')}</NavLink>
           <VerticalDivider />
           <NavLink href="/#plans-section">{t('nav.plans')}</NavLink>
-          <VerticalDivider />
+        </nav>
+
+        <nav className="hidden md:flex items-center gap-4 h-full">
           <AuthLink session={session} />
+          <VerticalDivider />
+          <LanguageSwitcher />
         </nav>
 
         <HomeMobileMenu session={session} />
