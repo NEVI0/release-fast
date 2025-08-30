@@ -1,4 +1,4 @@
-type Locale = 'en' | 'pt';
+import { Locale } from '@domain/entities';
 
 type Display = 'DD of MM of YYYY' | 'MMMM DD, YYYY';
 
