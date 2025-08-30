@@ -19,9 +19,9 @@ interface DropdownOption {
 }
 
 interface DropdownProps {
-  value: string;
+  value: any;
   options: DropdownOption[];
-  setValue: (value: string) => void;
+  setValue: (value: any) => void;
 
   children: React.ReactNode;
 }
