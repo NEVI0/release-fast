@@ -1,12 +1,12 @@
 'use client';
 
-import { useState } from 'react';
-
 import Image from 'next/image';
+import { useLocale } from 'next-intl';
+
+import { Locale } from '@domain/entities';
+import { COOKIE_LOCALE_KEY } from '@domain/constants/locales';
 
 import { Dropdown } from '@app/components/ui';
-
-type Locale = 'en' | 'pt' | string;
 
 interface State {
   text: string;
@@ -34,18 +34,23 @@ const STATE_BY_LOCALE: Record<Locale, State> = {
 };
 
 export default function LanguageSwitcher() {
-  const [selectedLanguage, setSelectedLanguage] = useState<Locale>('en');
+  const locale = useLocale();
 
-  const { text, image } = STATE_BY_LOCALE[selectedLanguage];
+  const { text, image } = STATE_BY_LOCALE[locale as Locale];
+
+  async function handleChangeLocale(selectedLocale: Locale) {
+    document.cookie = `${COOKIE_LOCALE_KEY}=${selectedLocale}`;
+    window.location.reload();
+  }
 
   return (
     <Dropdown
-      value={selectedLanguage}
-      setValue={setSelectedLanguage}
+      value={locale}
+      setValue={handleChangeLocale}
       options={[
         {
           label: 'English',
-          value: 'en',
+          value: 'en' as Locale,
           image: {
             src: '/icons/usa.png',
             alt: 'English - USA',
@@ -53,7 +58,7 @@ export default function LanguageSwitcher() {
         },
         {
           label: 'Português',
-          value: 'pt',
+          value: 'pt' as Locale,
           image: {
             src: '/icons/brazil.png',
             alt: 'English - USA',
@@ -61,15 +66,10 @@ export default function LanguageSwitcher() {
         },
       ]}
     >
-      <button
-        type="button"
-        data-popover-target="menu"
-        data-popover-nested="true"
-        className="flex items-center justify-center gap-2 cursor-pointer"
-      >
+      <div className="flex items-center justify-center gap-2 cursor-pointer">
         <Image src={image.src} alt={image.alt} width={24} height={24} />
         <span className="text-text-primary">{text}</span>
-      </button>
+      </div>
     </Dropdown>
   );
 }
