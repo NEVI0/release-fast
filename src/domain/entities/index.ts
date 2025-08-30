@@ -20,3 +20,5 @@ export {
 
 export type { default as SessionAbstract } from './Session';
 export type { SessionProvider } from './SessionProvider';
+
+export type { Locale } from './Locale';
