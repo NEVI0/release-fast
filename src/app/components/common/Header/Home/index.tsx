@@ -40,11 +40,11 @@ export default async function HomeHeader() {
           <NavLink href="/#plans-section">{t('nav.plans')}</NavLink>
         </nav>
 
-        <nav className="hidden md:flex items-center gap-4 h-full">
+        <div className="hidden md:flex items-center gap-4 h-full">
           <AuthLink session={session} />
           <VerticalDivider />
           <LanguageSwitcher />
-        </nav>
+        </div>
 
         <HomeMobileMenu session={session} />
       </div>
