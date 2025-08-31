@@ -591,7 +591,7 @@
     "checkout": {
       "success": {
         "title": "Plan subscribed successfully!",
-        "message": "You will be redirected to your profile page in {secoinds} seconds...",
+        "message": "You will be redirected to your profile page in {seconds} seconds...",
         "action": "Dashboard"
       },
       "error": {

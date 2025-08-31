@@ -591,7 +591,7 @@
     "checkout": {
       "success": {
         "title": "Plano assinado com sucesso!",
-        "message": "Você será redirecionado para sua página de perfil em {secoinds} segundos...",
+        "message": "Você será redirecionado para sua página de perfil em {seconds} segundos...",
         "action": "Dashboard"
       },
       "error": {
