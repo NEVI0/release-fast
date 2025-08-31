@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+
 import { ExternalLink } from 'lucide-react';
 
 import { ReleaseAbstract } from '@domain/entities';
@@ -9,6 +11,8 @@ interface MobileReleaseProps {
 }
 
 export default function MobileRelease({ release }: MobileReleaseProps) {
+  const t = useTranslations('page.project.list');
+
   return (
     <div className="flex flex-col px-8 py-6 gap-6 w-full border border-border rounded-2xl bg-container">
       <div className="flex flex-col">
@@ -23,7 +27,7 @@ export default function MobileRelease({ release }: MobileReleaseProps) {
         className="w-full"
       >
         <Button className="w-full">
-          Details <Button.Icon icon={ExternalLink} />
+          {t('column.five')} <Button.Icon icon={ExternalLink} />
         </Button>
       </Link>
     </div>
