@@ -83,7 +83,7 @@ export default function Form({ session, project }: FormProps) {
       });
 
       const result = await aiAgentController.prompt({
-        prompt: getAiPrompt(diff),
+        prompt: getAiPrompt(diff, session.provider, locale),
       });
 
       const [shortDescription, fullDescription] = await convertAiResult(result);
