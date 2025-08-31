@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { Share2Icon } from 'lucide-react';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 import { ReleaseAbstract } from '@domain/entities';
 import { useToast } from '@app/hooks';
@@ -19,15 +19,16 @@ interface ContentProps {
 }
 
 export default function Content({ release }: ContentProps) {
+  const t = useTranslations('page.release');
   const locale = useLocale();
   const toast = useToast();
 
   async function handleCopyLink() {
     try {
       await navigator.clipboard.writeText(window.location.href);
-      toast.success('Page link copied!');
+      toast.success(t('toast.success'));
     } catch (error) {
-      toast.error('Could not copy the page link!');
+      toast.error(t('toast.error'));
     }
   }
 
@@ -48,7 +49,7 @@ export default function Content({ release }: ContentProps) {
 
       <div className="flex-1 flex flex-col gap-8">
         <section className="flex flex-col gap-2">
-          <h3 className="font-semibold text-lg">Short description</h3>
+          <h3 className="font-semibold text-lg">{t('description.title')}</h3>
 
           {release.shortDescription.split('\n').map((line, index) => (
             <p key={index} className="w-full text-text-secondary">
@@ -64,7 +65,7 @@ export default function Content({ release }: ContentProps) {
         </section>
 
         <section className="flex flex-col gap-2">
-          <h3 className="font-semibold text-lg">Available on</h3>
+          <h3 className="font-semibold text-lg">{t('availableAt.title')}</h3>
           <p className="w-full text-text-secondary">
             {formatDate(release.availableAt, locale)}
           </p>
@@ -76,13 +77,21 @@ export default function Content({ release }: ContentProps) {
       <footer className="flex flex-col gap-4 items-start md:flex-row md:items-center md:justify-between">
         <div className="flex flex-col">
           <small className="text-sm text-text-secondary">
-            <strong className="font-semibold">Created on:</strong>{' '}
-            {formatDate(release.createdAt, locale)}
+            {t.rich('createdAt', {
+              date: formatDate(release.createdAt, locale),
+              strong: (chunk) => (
+                <strong className="font-semibold">{chunk}</strong>
+              ),
+            })}
           </small>
 
           <small className="text-sm text-text-secondary">
-            <strong className="font-semibold">Last updated on:</strong>{' '}
-            {formatDate(release.updatedAt, locale)}
+            {t.rich('updatedAt', {
+              date: formatDate(release.updatedAt, locale),
+              strong: (chunk) => (
+                <strong className="font-semibold">{chunk}</strong>
+              ),
+            })}
           </small>
         </div>
 
@@ -92,7 +101,7 @@ export default function Content({ release }: ContentProps) {
           rel="noopener noreferrer"
           className="h-full flex flex-col md:items-end"
         >
-          <small className="text-text-secondary">Powered by</small>
+          <small className="text-text-secondary">{t('powered')}</small>
 
           <Image
             src="/images/logo-dark.png"

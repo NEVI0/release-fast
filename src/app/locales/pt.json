@@ -448,11 +448,12 @@
       "availableAt": {
         "title": "Disponível em"
       },
-      "createdAt": "Criado em: {date}",
-      "updatedAt": "Atualizado em: {date}",
+      "createdAt": "<strong>Criado em:</strong> {date}",
+      "updatedAt": "<strong>Atualizado em:</strong> {date}",
       "powered": "Desenvolvido por",
       "toast": {
-        "success": "Link da página copiado!"
+        "success": "Link da página copiado!",
+        "error": "Não foi possível copiar o link da página!"
       }
     },
     "account": {
