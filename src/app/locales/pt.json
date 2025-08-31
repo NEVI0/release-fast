@@ -587,6 +587,18 @@
         "error": "Não foi possível criar o chamado de suporte!",
         "success": "Chamado de suporte criado com sucesso!"
       }
+    },
+    "checkout": {
+      "success": {
+        "title": "Plano assinado com sucesso!",
+        "message": "Você será redirecionado para sua página de perfil em {secoinds} segundos...",
+        "action": "Dashboard"
+      },
+      "error": {
+        "title": "Assinatura cancelada! Tente novamente da próxima vez",
+        "message": "Você será redirecionado para sua página de perfil em {seconds} segundos...",
+        "action": "Dashboard"
+      }
     }
   },
   "component": {

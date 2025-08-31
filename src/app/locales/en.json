@@ -587,6 +587,18 @@
         "error": "Could create the support ticket!",
         "success": "Support ticket created successfully!"
       }
+    },
+    "checkout": {
+      "success": {
+        "title": "Plan subscribed successfully!",
+        "message": "You will be redirected to your profile page in {secoinds} seconds...",
+        "action": "Dashboard"
+      },
+      "error": {
+        "title": "Subscription canceled! Try again next time",
+        "message": "You will be redirected to your profile page in {seconds} seconds...",
+        "action": "Dashboard"
+      }
     }
   },
   "component": {
