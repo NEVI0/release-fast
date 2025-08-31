@@ -11,6 +11,7 @@ import { IconButton } from '@app/components/ui';
 
 import LogoutLink from '../LogoutLink';
 import NavLink from '../NavLink';
+import LanguageSwitcher from '../LanguageSwitcher';
 
 export default function DashMobileMenu() {
   const t = useTranslations('component.header.dash');
@@ -38,25 +39,31 @@ export default function DashMobileMenu() {
           <IconButton icon={X} onClick={handleToggleMenu} />
         </div>
 
-        <nav className="flex flex-col items-start gap-8 p-8">
-          <NavLink href="/dash" onClick={handleToggleMenu}>
-            {t('nav.dashboard')}
-          </NavLink>
+        <div className="flex flex-col justify-between border h-[calc(100%-80px)]">
+          <nav className="flex flex-col items-start gap-8 p-8">
+            <NavLink href="/dash" onClick={handleToggleMenu}>
+              {t('nav.dashboard')}
+            </NavLink>
 
-          <NavLink href="/dash/projects" onClick={handleToggleMenu}>
-            {t('nav.projects')}
-          </NavLink>
+            <NavLink href="/dash/projects" onClick={handleToggleMenu}>
+              {t('nav.projects')}
+            </NavLink>
 
-          <LogoutLink />
+            <LogoutLink />
 
-          <Link
-            href="/dash/profile"
-            className="h-full flex items-center justify-center font-semibold underline text-primary"
-            onClick={handleToggleMenu}
-          >
-            {t('nav.account')}
-          </Link>
-        </nav>
+            <Link
+              href="/dash/profile"
+              className="h-full flex items-center justify-center font-semibold underline text-primary"
+              onClick={handleToggleMenu}
+            >
+              {t('nav.account')}
+            </Link>
+          </nav>
+
+          <div className="p-8">
+            <LanguageSwitcher />
+          </div>
+        </div>
       </aside>
     </>
   );

@@ -11,6 +11,7 @@ import { IconButton } from '@app/components/ui';
 
 import AuthLink from '../AuthLink';
 import NavLink from '../NavLink';
+import LanguageSwitcher from '../LanguageSwitcher';
 
 interface HomeMobileMenuProps {
   session: SessionAbstract | null;
@@ -42,25 +43,31 @@ export default function HomeMobileMenu({ session }: HomeMobileMenuProps) {
           <IconButton icon={X} onClick={handleToggleMenu} />
         </div>
 
-        <nav className="flex flex-col items-start gap-8 p-8">
-          <NavLink href="/" onClick={handleToggleMenu}>
-            {t('nav.home')}
-          </NavLink>
+        <div className="flex flex-col justify-between border h-[calc(100%-80px)]">
+          <nav className="flex flex-col items-start gap-8 p-8">
+            <NavLink href="/" onClick={handleToggleMenu}>
+              {t('nav.home')}
+            </NavLink>
 
-          <NavLink href="/#how-it-works-section" onClick={handleToggleMenu}>
-            {t('nav.howItWorks')}
-          </NavLink>
+            <NavLink href="/#how-it-works-section" onClick={handleToggleMenu}>
+              {t('nav.howItWorks')}
+            </NavLink>
 
-          <NavLink href="/#about-section" onClick={handleToggleMenu}>
-            {t('nav.about')}
-          </NavLink>
+            <NavLink href="/#about-section" onClick={handleToggleMenu}>
+              {t('nav.about')}
+            </NavLink>
 
-          <NavLink href="/#plans-section" onClick={handleToggleMenu}>
-            {t('nav.about')}
-          </NavLink>
+            <NavLink href="/#plans-section" onClick={handleToggleMenu}>
+              {t('nav.about')}
+            </NavLink>
 
-          <AuthLink session={session} />
-        </nav>
+            <AuthLink session={session} />
+          </nav>
+
+          <div className="p-8">
+            <LanguageSwitcher />
+          </div>
+        </div>
       </aside>
     </>
   );
