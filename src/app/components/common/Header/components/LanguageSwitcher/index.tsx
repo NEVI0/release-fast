@@ -39,7 +39,7 @@ export default function LanguageSwitcher() {
   const { text, image } = STATE_BY_LOCALE[locale as Locale];
 
   async function handleChangeLocale(selectedLocale: Locale) {
-    document.cookie = `${COOKIE_LOCALE_KEY}=${selectedLocale}`;
+    document.cookie = `${COOKIE_LOCALE_KEY}=${selectedLocale};path=/`;
     window.location.reload();
   }
 
