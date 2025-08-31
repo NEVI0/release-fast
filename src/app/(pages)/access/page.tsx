@@ -7,7 +7,7 @@ export default function AccessPage() {
   const t = useTranslations('page.access');
 
   return (
-    <div className="flex flex-1 flex-col items-center justify-center gap-16">
+    <div className="flex flex-1 flex-col items-center justify-center gap-8 md:gap-16">
       <section className="flex flex-col items-center justify-center gap-4">
         <h1 className="font-bold text-4xl text-center">
           {t.rich('title', {
@@ -24,7 +24,7 @@ export default function AccessPage() {
         </p>
       </section>
 
-      <section className="flex  justify-center gap-4">
+      <section className="flex flex-col md:flex-row justify-center gap-4">
         <ProviderCard provider="github" />
         <ProviderCard provider="gitlab" />
       </section>

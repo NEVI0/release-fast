@@ -29,7 +29,7 @@ export default function ProviderCard({ provider }: ProviderCardProps) {
 
   return (
     <button
-      className="cursor-pointer flex flex-col items-center justify-center gap-8 h-[272px]  bg-container border border-border rounded-3xl p-8 hover:shadow-xl transition-shadow"
+      className="cursor-pointer flex flex-col items-center justify-center gap-8 w-full md:w-auto h-[252px] md:h-[272px] bg-container border border-border rounded-3xl p-8 hover:shadow-xl transition-shadow"
       onClick={() => accessAccountAction(provider)}
     >
       <Icon
