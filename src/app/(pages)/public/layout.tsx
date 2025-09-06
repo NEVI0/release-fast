@@ -1,5 +1,6 @@
 import { Source_Sans_3 } from 'next/font/google';
 
+import { NextIntlClientProvider } from 'next-intl';
 import { GoogleAnalytics } from '@next/third-parties/google';
 
 import { getSEOTags } from '@app/helpers';
@@ -38,7 +39,9 @@ export default function PublicLayout({
       </head>
 
       <body className={sourceSans3.className} suppressHydrationWarning>
-        <Content.Public>{children}</Content.Public>
+        <NextIntlClientProvider>
+          <Content.Public>{children}</Content.Public>
+        </NextIntlClientProvider>
       </body>
 
       <GoogleAnalytics gaId={GOOGLE_ANALYTICS.ID} />

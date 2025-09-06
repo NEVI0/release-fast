@@ -1,0 +1,697 @@
+{
+  "page": {
+    "home": {
+      "hero": {
+        "badget": "🚀 Public beta!",
+        "title": "Generate releases in a <strong>clear</strong> and <strong>efficient</strong> way!",
+        "subtitle": "Automatically generate your software's releases with AI and notify your users of every change. 😎",
+        "links": {
+          "howItWorks": "How it works",
+          "access": "Start for free"
+        }
+      },
+      "howItWorks": {
+        "title": "Click in the video below for a quick preview",
+        "description": "Our service allows you to manage your software versions and automatically generate releases with <strong>AI</strong>. Connect your <strong>GitHub</strong> or <strong>GitLab</strong> account, select two branches versions of a repository, and our AI. generates a clear and friendly changelog description based on your commit's history. Publish with one click and send it to your user or keep it as a documentation",
+        "flow": {
+          "step1": "Code a change in your software",
+          "step2": "Update your project repository",
+          "step3": "Generate a release with AI",
+          "step4": "Send it to our end user"
+        },
+        "link": "Liked it? Keep reading to learn more..."
+      },
+      "about": {
+        "title": "But... why this solution? 🧐",
+        "info": {
+          "one": {
+            "value": "25%",
+            "description": "Of software developers spend their time writing documentation of their code or released software versions."
+          },
+          "two": {
+            "value": "90%",
+            "description": "Of developers feel frustrated having to write documentation of changes that were added to softwares."
+          },
+          "three": {
+            "value": "72%",
+            "description": "Of system users feel frustrated when they are not aware of changes in the system."
+          }
+        },
+        "description": "But <strong>Release Fast</strong> came to make developer's lives easier when it comes to this requirement!"
+      },
+      "plans": {
+        "title": "Simple and transparent pricing",
+        "subtitle": "Choose the perfect plan for your needs",
+        "description": "Start using Release Fast now, with any of the plans above you get <strong>7 days free trial</strong> with no need to inform your payment data, just connect your GitHub ou GitLab account and use it!",
+        "link": "Not satisfied? <underline>Cancel at any time</underline>"
+      }
+    },
+    "access": {
+      "title": "<strong>Sign in</strong> to Release Fast",
+      "description": "Release Fast uses the <strong>GitHub</strong> and <strong>GitLab</strong> providers for authentication and (read-only) access to the repositories of your linked account. By linking your account, you <strong>pay nothing</strong> and get free access to <strong>7 days</strong> to use as you wish. Select a provider to continue.",
+      "card": {
+        "title": "Continue with {provider}",
+        "description": "Sign in with your {provider} account to get started"
+      },
+      "link": "Click here to return home"
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "intro": {
+        "title": "1. Introduction",
+        "description": "This Privacy Policy explains how Release Fast collects, uses, and protects your personal information when you use our platform. By accessing and using Release Fast, you agree to the practices described in this policy."
+      },
+      "collectData": {
+        "title": "2. Information We Collect",
+        "description": "We collect the following types of information:",
+        "item": {
+          "one": "Registration information (name, email);",
+          "two": "Usage data (release notes, comments, interactions);",
+          "three": "Technical information (browser type, device information);"
+        }
+      },
+      "useOfInformation": {
+        "title": "3. How We Use Your Information",
+        "description": "We use your information to:",
+        "item": {
+          "one": "Provide and maintain our services;",
+          "two": "Personalize your experience on the platform;",
+          "three": "Communicate with you about updates, features, and important notices;",
+          "four": "Improve our platform and ensure its security;"
+        }
+      },
+      "sharedData": {
+        "title": "4. Data Sharing",
+        "description": "We do not sell your personal information. We may share your data only in the following situations:",
+        "item": {
+          "one": "With your explicit consent;",
+          "two": "To comply with legal obligations;",
+          "three": "With service providers who help us operate and improve Release Fast (such as hosting, analytics, or support providers);"
+        }
+      },
+      "secure": {
+        "title": "5. Data Security",
+        "description": "We implement technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction."
+      },
+      "rights": {
+        "title": "6. Your Rights",
+        "description": "You have the right to:",
+        "item": {
+          "one": "Access your personal information;",
+          "two": "Correct inaccurate data;",
+          "three": "Request deletion of your data;",
+          "four": "Withdraw your consent at any time;"
+        }
+      },
+      "changes": {
+        "title": "7. Changes to This Policy",
+        "description": "We may update this Privacy Policy from time to time. We will notify you of significant changes through the platform or by email."
+      },
+      "contact": {
+        "title": "8. Contact",
+        "description": "If you have any questions about privacy or this policy, please contact us at <link>{email}</link>."
+      },
+      "updatedAt": "Last updated: {date}"
+    },
+    "terms": {
+      "title": "Terms and Conditions of Use",
+      "acceptance": {
+        "title": "1. Acceptance of Terms",
+        "description": "By accessing and using Release Fast, you agree to comply with and be bound by these Terms and Conditions of Use. If you do not agree with any part of these terms, you should not use our platform."
+      },
+      "serviceUse": {
+        "title": "2. Use of the Service",
+        "description": "Release Fast is a platform designed to help teams manage, document, and share software releases efficiently. By using our services, you agree to:",
+        "item": {
+          "one": "Provide accurate and truthful information during registration;",
+          "two": "Keep your login credentials secure and confidential;",
+          "three": "Not share your account with third parties;",
+          "four": "Respect other users and their contribution;",
+          "five": "Not publish illegal, offensive, or inappropriate content;"
+        }
+      },
+      "userContent": {
+        "title": "3. User Content",
+        "description": "By publishing content on Release Fast, you:",
+        "item": {
+          "one": "Retain copyright over your content;",
+          "two": "Grant Release Fast a non-exclusive license to use, modify, and distribute your content for the purpose of providing and improving the service;",
+          "three": "Are responsible for all content you publish;",
+          "four": "Ensure you have all necessary rights to share the content;"
+        }
+      },
+      "userConduct": {
+        "title": "4. User Conduct",
+        "description": "It is prohibited to:",
+        "item": {
+          "one": "Publish illegal, defamatory, obscene, or offensive content;",
+          "two": "Use the platform for spam or unauthorized advertising;",
+          "three": "Violate third-party intellectual property rights;",
+          "four": "Engage in activities that may damage or overload our systems;",
+          "five": "Collect data from other users without authorization;"
+        }
+      },
+      "privacy": {
+        "title": "5. Privacy and Data",
+        "description": "Our Privacy Policy describes how we collect, use, and protect your personal information. By using our platform, you agree to our privacy practices as described in our <link>Privacy Policy</link>."
+      },
+      "changes": {
+        "title": "6. Changes to the Terms",
+        "description": "We reserve the right to modify these terms at any time. Changes will take effect immediately upon publication. Continued use of the platform after changes constitutes acceptance of the new terms."
+      },
+      "limitation": {
+        "title": "7. Limitation of Liability",
+        "description": "Release Fast is not responsible for:",
+        "item": {
+          "one": "Content generated by users;",
+          "two": "Damages caused by improper use of the platform;",
+          "three": "Temporary service interruptions;",
+          "four": "Loss of data or content;"
+        }
+      },
+      "termination": {
+        "title": "8. Account Termination",
+        "description": "We reserve the right to suspend or terminate accounts that violate these terms or engage in inappropriate conduct. You may also terminate your account at any time through the platform settings."
+      },
+      "contact": {
+        "title": "9. Contact",
+        "description": "If you have any questions about these terms, please contact us at <link>{email}</link>."
+      },
+      "updatedAt": "Last updated: {date}"
+    },
+    "dash": {
+      "title": "Dashboard",
+      "subtitle": "Overview of your dashboard",
+      "warning": "Your free trial has ended! Some features are now limited. Upgrade your plan to keep using it with all the features.",
+      "card": {
+        "one": {
+          "title": "Projects created"
+        },
+        "two": {
+          "title": "Releases generated"
+        },
+        "three": {
+          "title": "Account provider"
+        }
+      },
+      "feedback": {
+        "title": "Platform under construction...",
+        "description": "This platform is current in <strong>Public Beta</strong>. This means <strong>not</strong> all the features are currently available. But, we are eager to give all the features we can provide to your users. You can give us your feedback in the link below so we can now what you want from Release Fast and provide it to you! 😃",
+        "link": "Give us your feedback!"
+      }
+    },
+    "feedback": {
+      "title": "Give a <strong>feedback</strong>",
+      "subtitle": "Tell us anything you want",
+      "input": {
+        "title": {
+          "label": "Title",
+          "error": "Title is required"
+        },
+        "description": {
+          "label": "Feedback description",
+          "placeholder": "Tell us here",
+          "error": "Description is required"
+        }
+      },
+      "action": {
+        "cancel": "Cancel",
+        "submit": "Send feedback",
+        "submitting": "Sending..."
+      },
+      "toast": {
+        "error": "Could not send the feedback!",
+        "success": "Feedback sent successfully!"
+      }
+    },
+    "projects": {
+      "title": "My <strong>projects</strong>",
+      "subtitle": "Manage your projects and their releases",
+      "action": {
+        "create": "Create new project"
+      },
+      "list": {
+        "title": "Project list",
+        "subtitle": "Total projects: <strong>{total}</strong>",
+        "column": {
+          "one": "Name",
+          "two": "Description",
+          "three": "Created at",
+          "four": "Updated at",
+          "five": "Details"
+        }
+      },
+      "notFound": {
+        "title": "Oops... nothing found!",
+        "description": "No projects were found. Try registering a new one by clicking the button below."
+      },
+      "warning": "You can not access your projects unless you upgrade your current plan!"
+    },
+    "createProject": {
+      "title": "Create <strong>project</strong>",
+      "subtitle": "Create a new project to manage your releases",
+      "input": {
+        "name": {
+          "label": "Project name",
+          "placeholder": "E.g.: E-commerce, Blog, etc...",
+          "error": "Name is required"
+        },
+        "description": {
+          "label": "Project description",
+          "placeholder": "A brief description of the project",
+          "max": "{max} characters max.",
+          "error": "Description is required"
+        },
+        "search": {
+          "label": "Search for your project's repository"
+        }
+      },
+      "repository": {
+        "title": {
+          "notFound": "No repositories found...",
+          "select": "Select a repository"
+        }
+      },
+      "action": {
+        "cancel": "Cancel",
+        "submit": "Create project",
+        "submitting": "Creating..."
+      },
+      "toast": {
+        "error": "Could not create the project!",
+        "success": "Project created successfully!"
+      }
+    },
+    "project": {
+      "card": {
+        "one": {
+          "title": "Repository",
+          "value": "Access repository"
+        },
+        "two": {
+          "title": "Created at"
+        },
+        "three": {
+          "title": "Updated at"
+        }
+      },
+      "action": {
+        "create": "Create new release"
+      },
+      "list": {
+        "title": "Release list",
+        "subtitle": "Total releases: <strong>{total}</strong>",
+        "column": {
+          "one": "Title",
+          "two": "Version",
+          "three": "Created at",
+          "four": "Updated at",
+          "five": "Details"
+        }
+      },
+      "notFound": {
+        "title": "Oops... nothing found!",
+        "description": "No releases were found. Try registering a new one by clicking the button below."
+      },
+      "setting": {
+        "title": "Settings",
+        "one": {
+          "title": "Edit project data",
+          "description": "Edit the project data",
+          "action": "Edit project"
+        },
+        "two": {
+          "title": "Delete project",
+          "description": "Delete the project and all its data (this action is irreversible)",
+          "action": "Delete project"
+        }
+      },
+      "delete": {
+        "title": "Delete project",
+        "description": {
+          "one": "Are you sure you want to delete your project? All data will be deleted and this action cannot be undone.",
+          "two": "If so, type 'Delete' in the field below."
+        },
+        "input": {
+          "password": {
+            "placeholder": "Type 'Delete' to confirm"
+          }
+        },
+        "action": {
+          "submit": "Delete project",
+          "submitting": "Deletting..."
+        },
+        "toast": {
+          "error": "It was not possible to delete your project. Please try again.",
+          "success": "Project deleted successfully! You will be redirected in 3 seconds..."
+        }
+      }
+    },
+    "editProject": {
+      "title": "Edit <strong>project</strong>",
+      "subtitle": "Edit your project data",
+      "input": {
+        "name": {
+          "label": "Project name",
+          "placeholder": "E.g.: E-commerce, Blog, etc...",
+          "error": "Name is required"
+        },
+        "description": {
+          "label": "Project description",
+          "placeholder": "A brief description of the project",
+          "max": "{max} characters max.",
+          "error": "Description is required"
+        }
+      },
+      "action": {
+        "cancel": "Cancel",
+        "submit": "Update project",
+        "submitting": "Updating..."
+      },
+      "toast": {
+        "error": "Could not update the project!",
+        "success": "Project updated successfully!"
+      }
+    },
+    "createRelease": {
+      "title": "Create <strong>release</strong>",
+      "subtitle": "Create a new release for your project: {name}",
+      "section": {
+        "one": {
+          "title": "Enter the branches to compare",
+          "warning": "Too many changes in the code can take a while to be processed."
+        },
+        "two": {
+          "title": "Fill in your release information"
+        },
+        "three": {
+          "title": "Compare the branches to complete the form"
+        }
+      },
+      "input": {
+        "branch": {
+          "base": {
+            "label": "Base branch",
+            "placeholder": "E.g.: master",
+            "error": "Base branch is required"
+          },
+          "head": {
+            "label": "Head branch",
+            "placeholder": "E.g.: my-feature",
+            "error": "Head branch is required"
+          }
+        },
+        "release": {
+          "title": {
+            "label": "Title",
+            "error": "Title is required"
+          },
+          "version": {
+            "label": "Version",
+            "placeholder": "E.g.: v1.0.0",
+            "error": "Version is required"
+          },
+          "description": {
+            "short": {
+              "label": "Short description",
+              "placeholder": "A brief description of the release",
+              "error": "Short description is required"
+            },
+            "full": {
+              "label": "Detailed description of your release for the end user",
+              "placeholder": "A detailed description of the release",
+              "error": "Full description is required"
+            }
+          },
+          "availableAt": {
+            "label": "Available on date",
+            "error": "Date is required"
+          }
+        }
+      },
+      "action": {
+        "compare": "Compare",
+        "comparing": "Comparing...",
+        "cancel": "Cancel",
+        "submit": "Create release",
+        "submitting": "Creating..."
+      },
+      "toast": {
+        "error": "Could not create the new release!",
+        "success": "Release created successfully!"
+      }
+    },
+    "release": {
+      "description": {
+        "title": "Short description"
+      },
+      "availableAt": {
+        "title": "Available on"
+      },
+      "createdAt": "<strong>Created on:</strong> {date}",
+      "updatedAt": "<strong>Last updated on:</strong> {date}",
+      "powered": "Powered by",
+      "toast": {
+        "success": "Page link copied!",
+        "error": "Could not copy the page link!"
+      }
+    },
+    "account": {
+      "title": "<strong>Hello</strong>, {name}",
+      "subtitle": "Manage your information and preferences",
+      "card": {
+        "one": {
+          "title": "Current plan",
+          "value": {
+            "free": "Free",
+            "starter": "Starter",
+            "pro": "Professional",
+            "enterprise": "Enterprise"
+          }
+        },
+        "two": {
+          "title": "Account e-mail",
+          "value": "E-mail not provided"
+        },
+        "three": {
+          "title": "Created at"
+        }
+      },
+      "setting": {
+        "title": "Settings",
+        "one": {
+          "title": "Change theme",
+          "description": "Switch between light and dark theme"
+        },
+        "two": {
+          "title": "Edit my account",
+          "description": "Edit your account details (name, email, etc.)",
+          "action": "Edit account"
+        },
+        "three": {
+          "title": "Plans and subscriptions",
+          "description": "Manage your plans and subscriptions",
+          "action": "Manage plans"
+        },
+        "four": {
+          "title": "Report problem",
+          "description": "Create a support ticket of problems or bugs",
+          "action": "Report problem"
+        },
+        "five": {
+          "title": "Delete account",
+          "description": "Delete your account and all your data (this action is irreversible)",
+          "action": "Delete account"
+        }
+      },
+      "delete": {
+        "title": "Delete account",
+        "description": {
+          "one": "Are you sure you want to delete your account? All data will be deleted and this action cannot be undone.",
+          "two": "If so, type 'Delete' in the field below.",
+          "three": "Before deleting your account and it's data, first you need to cancel your subscription. To do that, go to:",
+          "four": "My account > Settings > Manage Plans > 'Cancel at any time' button;"
+        },
+        "input": {
+          "password": {
+            "placeholder": "Type 'Delete' to confirm"
+          }
+        },
+        "action": {
+          "submit": "Delete account",
+          "submitting": "Deleting..."
+        },
+        "toast": {
+          "error": "It was not possible to delete your account. Please try again.",
+          "success": "Your account has been successfully deleted! You will be redirected in 3 seconds..."
+        }
+      }
+    },
+    "editAccount": {
+      "title": "Edit <strong>account</strong>",
+      "subtitle": "Edit your account data",
+      "input": {
+        "name": {
+          "label": "Youy name",
+          "error": "Name is required"
+        },
+        "email": {
+          "label": "Your e-mail",
+          "placeholder": "E.g.: example@gmail.com",
+          "error": "E-mail is required",
+          "invalid": "It must be a valid e-mail"
+        }
+      },
+      "action": {
+        "cancel": "Cancel",
+        "submit": "Update account",
+        "submitting": "Updating..."
+      },
+      "toast": {
+        "error": "Could not update your account data!",
+        "success": "Data updated successfully!"
+      }
+    },
+    "plans": {
+      "title": "Select your <strong>plan</strong>",
+      "subtitle": "Choose between one of the 3 options below",
+      "selected": "Your current plan is the <strong>{plan}</strong> plan. Select upgrade to one of the above plan and enjoy more!!",
+      "cancel": "Not satisfied? <link>Cancel at any time</link>",
+      "provideEmail": {
+        "title": "E-mail not provided!",
+        "description": "You need to provide your e-mail first before buying any plan of Release Fast. Click in the button below and provide your e-mail.",
+        "action": {
+          "submit": "Provide e-mail"
+        }
+      }
+    },
+    "support": {
+      "title": "Open a support <strong>ticket</strong>",
+      "subtitle": "Report problems or bugs here",
+      "input": {
+        "title": {
+          "label": "Title",
+          "error": "Title is required"
+        },
+        "description": {
+          "label": "Type a description of the problem",
+          "placeholder": "Tell us here",
+          "error": "Description is required"
+        }
+      },
+      "action": {
+        "cancel": "Cancel",
+        "submit": "Create ticket",
+        "submitting": "Creating..."
+      },
+      "toast": {
+        "error": "Could create the support ticket!",
+        "success": "Support ticket created successfully!"
+      }
+    },
+    "checkout": {
+      "success": {
+        "title": "Plan subscribed successfully!",
+        "message": "You will be redirected to your profile page in {seconds} seconds...",
+        "action": "Dashboard"
+      },
+      "error": {
+        "title": "Subscription canceled! Try again next time",
+        "message": "You will be redirected to your profile page in {seconds} seconds...",
+        "action": "Dashboard"
+      }
+    }
+  },
+  "component": {
+    "header": {
+      "home": {
+        "nav": {
+          "home": "Home",
+          "howItWorks": "How it works",
+          "about": "About",
+          "plans": "Plans",
+          "access": "Sign In",
+          "dashboard": "Dashboard"
+        }
+      },
+      "dash": {
+        "trial": {
+          "message": {
+            "onTrial": "You are currently on the <strong>free trial of {days} days</strong>",
+            "freePlan": "You are currently on the <strong>free</strong> plan"
+          },
+          "upgrade": "Click here to upgrade your plan! 🚀"
+        },
+        "nav": {
+          "dashboard": "Dashboard",
+          "projects": "Projects",
+          "logout": "Logout",
+          "account": "My account"
+        }
+      }
+    },
+    "footer": {
+      "creator": {
+        "name": "Created by Névio Costa Magagnin",
+        "description": "Software Engineer & UI/UX Designer"
+      },
+      "copyright": "Copyright Névio Costa Magagnin - {year}",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Use"
+    },
+    "plan": {
+      "popular": "Most popular",
+      "period": "month",
+      "current": "This is your current plan!",
+      "button": {
+        "start": "Start for free",
+        "buy": "Buy now",
+        "update": "Upgrade now"
+      },
+      "free": "Free",
+      "starter": "Starter",
+      "pro": "Professional",
+      "enterprise": "Enterprise",
+      "feature": {
+        "projects": {
+          "upTo": {
+            "three": "Up to 3 projects",
+            "fifteen": "Up to 3 projects",
+            "unlimited": "Unlimited projects"
+          }
+        },
+        "release": {
+          "basic": "AI-powered releases generation",
+          "advanced": "Advanced AI-powered releases generation"
+        },
+        "support": {
+          "basic": "Basic support",
+          "priority": "Priority support"
+        },
+        "suggestion": "Advanced AI suggestions",
+        "futureFeatures": "Access to future features in advance"
+      }
+    },
+    "breadcrumb": {
+      "home": "Home",
+      "terms": "Terms and conditions of use",
+      "privacy": "Privacy policy",
+      "howItWorks": "How it works",
+      "dash": "Dashboard",
+      "projects": "Projects",
+      "createProject": "Create project",
+      "editProject": "Edit project",
+      "createRelease": "Create release",
+      "account": "My account",
+      "editAccount": "Edit account",
+      "plans": "Select plan",
+      "support": "Support",
+      "feedback": "Give a feedback"
+    },
+    "notFound": {
+      "title": "Oops... nothing found here 😕",
+      "description": "This page doesn't exist... are you sure you're accessing the right page?",
+      "action": "Go to home"
+    }
+  }
+}

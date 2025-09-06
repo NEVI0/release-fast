@@ -1,5 +1,6 @@
 import { Source_Sans_3 } from 'next/font/google';
 
+import { NextIntlClientProvider } from 'next-intl';
 import { GoogleAnalytics } from '@next/third-parties/google';
 
 import { ThemeProvider } from '@app/contexts';
@@ -46,17 +47,19 @@ export default function DashboardLayout({
       </head>
 
       <body className={sourceSans3.className} suppressHydrationWarning>
-        <QueryProvider>
-          <ThemeProvider>
-            <TopLoader />
+        <NextIntlClientProvider>
+          <QueryProvider>
+            <ThemeProvider>
+              <TopLoader />
 
-            <Header.Dash />
-            <Content.Dash>{children}</Content.Dash>
-            <Footer />
+              <Header.Dash />
+              <Content.Dash>{children}</Content.Dash>
+              <Footer />
 
-            <Toaster />
-          </ThemeProvider>
-        </QueryProvider>
+              <Toaster />
+            </ThemeProvider>
+          </QueryProvider>
+        </NextIntlClientProvider>
       </body>
 
       <GoogleAnalytics gaId={GOOGLE_ANALYTICS.ID} />

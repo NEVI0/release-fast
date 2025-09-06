@@ -67,6 +67,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     Gitlab({
       clientId: AUTH_GITLAB_CLIENT_ID!,
       clientSecret: AUTH_GITLAB_CLIENT_SECRET!,
+      authorization: {
+        url: 'https://gitlab.com/oauth/authorize',
+        params: {
+          scope: 'api read_user',
+        },
+      },
     }),
   ],
 });

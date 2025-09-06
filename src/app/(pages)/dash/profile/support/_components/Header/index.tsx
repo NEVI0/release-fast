@@ -1,23 +1,31 @@
+import { useTranslations } from 'next-intl';
 import { Breadcrumb } from '@app/components/ui';
 
 export default function Header() {
+  const t = useTranslations('page.support');
+  const compT = useTranslations('component.breadcrumb');
+
   return (
     <section className="flex flex-col gap-8">
       <Breadcrumb
         items={[
-          { label: 'Dashboard', href: '/dash' },
-          { label: 'My account', href: '/dash/profile' },
-          { label: 'Support', href: '/dash/profile/support' },
+          { label: compT('dash'), href: '/dash' },
+          { label: compT('account'), href: '/dash/profile' },
+          { label: compT('support'), href: '/dash/profile/support' },
         ]}
       />
 
       <div className="flex flex-col gap-2">
         <h1 className="font-bold text-4xl">
-          Open a support <strong className="text-primary">ticket</strong>
+          {t.rich('title', {
+            strong: (chunk) => (
+              <strong className="text-primary">{chunk}</strong>
+            ),
+          })}
         </h1>
 
         <h2 className="font-semibold text-2xl text-text-secondary">
-          Report problems or bugs here
+          {t('subtitle')}
         </h2>
       </div>
     </section>

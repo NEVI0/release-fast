@@ -26,7 +26,7 @@ export default class GithubUserRepoRepository
     return items.map(
       (repo) =>
         new Repository({
-          id: repo.id,
+          id: String(repo.id),
           name: repo.name,
           fullname: repo.full_name,
           private: repo.private,

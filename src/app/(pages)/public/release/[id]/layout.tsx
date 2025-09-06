@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 
 import { Source_Sans_3 } from 'next/font/google';
-
+import { NextIntlClientProvider } from 'next-intl';
 import { GoogleAnalytics } from '@next/third-parties/google';
 
 import { Content, Toaster, TopLoader } from '@app/components/common';
@@ -40,13 +40,15 @@ export default function PublicLayout({
       </head>
 
       <body className={sourceSans3.className} suppressHydrationWarning>
-        <TopLoader />
+        <NextIntlClientProvider>
+          <TopLoader />
 
-        <Content.Public>
-          <Suspense fallback={<LoadingContent />}>{children}</Suspense>
-        </Content.Public>
+          <Content.Public>
+            <Suspense fallback={<LoadingContent />}>{children}</Suspense>
+          </Content.Public>
 
-        <Toaster />
+          <Toaster />
+        </NextIntlClientProvider>
       </body>
 
       <GoogleAnalytics gaId={GOOGLE_ANALYTICS.ID} />

@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+
 import { ChevronRight } from 'lucide-react';
 
 import { ProjectAbstract } from '@domain/entities';
@@ -9,6 +11,8 @@ interface MobileProjectProps {
 }
 
 export default function MobileProject({ project }: MobileProjectProps) {
+  const t = useTranslations('page.projects.list');
+
   return (
     <div className="flex flex-col px-8 py-6 gap-6 w-full border border-border rounded-2xl bg-container">
       <div className="flex flex-col">
@@ -18,7 +22,7 @@ export default function MobileProject({ project }: MobileProjectProps) {
 
       <Link href={`/dash/projects/${project.id}`} className="w-full">
         <Button className="w-full">
-          Details <Button.Icon icon={ChevronRight} />
+          {t('column.five')} <Button.Icon icon={ChevronRight} />
         </Button>
       </Link>
     </div>

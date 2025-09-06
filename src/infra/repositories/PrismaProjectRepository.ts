@@ -34,7 +34,7 @@ export default class PrismaProjectRepository
     });
 
     if (!project) return null;
-    return new Project(project);
+    return this.toDomain(project);
   }
 
   public async create(project: ProjectAbstract): Promise<ProjectAbstract> {
@@ -43,13 +43,14 @@ export default class PrismaProjectRepository
         name: project.name,
         description: project.description,
         userId: project.userId,
-        repository: project.repository,
-        repositoryUrl: project.repositoryUrl,
-        provider: project.provider,
+        repositoryId: project.repository.id,
+        repositoryName: project.repository.name,
+        repositoryUrl: project.repository.url,
+        provider: project.repository.provider,
       },
     });
 
-    return new Project(newProject);
+    return this.toDomain(newProject);
   }
 
   public async update(project: ProjectAbstract): Promise<ProjectAbstract> {
@@ -59,18 +60,32 @@ export default class PrismaProjectRepository
         name: project.name,
         description: project.description,
         userId: project.userId,
-        repository: project.repository,
-        provider: project.provider,
+        repositoryId: project.repository.id,
+        repositoryName: project.repository.name,
+        repositoryUrl: project.repository.url,
+        provider: project.repository.provider,
       },
     });
 
     if (!updatedProject) throw new Error('Project not found');
-    return new Project(updatedProject);
+    return this.toDomain(updatedProject);
   }
 
   public async deleteById(id: string): Promise<void> {
     await this.prisma.project.delete({
       where: { id },
+    });
+  }
+
+  private toDomain(project: any) {
+    return new Project({
+      ...project,
+      repository: {
+        id: project.repositoryId || '',
+        name: project.repositoryName,
+        url: project.repositoryUrl,
+        provider: project.provider,
+      },
     });
   }
 }

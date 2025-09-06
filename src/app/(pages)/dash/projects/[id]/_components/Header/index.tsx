@@ -1,3 +1,5 @@
+import { useTranslations } from 'next-intl';
+
 import { ProjectAbstract } from '@domain/entities';
 import { Breadcrumb } from '@app/components/ui';
 
@@ -6,12 +8,14 @@ interface HeaderProps {
 }
 
 export default function Header({ project }: HeaderProps) {
+  const compT = useTranslations('component.breadcrumb');
+
   return (
     <section className="flex flex-col gap-8">
       <Breadcrumb
         items={[
-          { label: 'Dashboard', href: '/dash' },
-          { label: 'Projects', href: '/dash/projects' },
+          { label: compT('dash'), href: '/dash' },
+          { label: compT('projects'), href: '/dash/projects' },
           { label: project.name, href: `/dash/projects/${project.id}` },
         ]}
       />

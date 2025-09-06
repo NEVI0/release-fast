@@ -1,34 +1,34 @@
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+
 import { Code2, Github, Smile, BrainCircuit } from 'lucide-react';
 
 import { Video } from '@app/components/common';
 import { Flow } from './components';
 
 export default function HowItWorks() {
+  const t = useTranslations('page.home.howItWorks');
+
   return (
     <>
       <section className="flex flex-col items-center gap-8">
-        <h2 className="text-center text-2xl font-bold">
-          Click in the video below for a quick preview
-        </h2>
+        <h2 className="text-center text-2xl font-bold">{t('title')}</h2>
 
         <Video />
 
         <p className="text-text-secondary text-center w-[90%]">
-          Our service allows you to manage your software versions and
-          automatically generate releases with{' '}
-          <strong className="font-semibold">AI.</strong>. Connect your{' '}
-          <strong className="font-semibold">GitHub</strong> repository, select
-          two branches versions, and our AI. generates a clear and friendly
-          changelog description based on your commit's history. Publish with one
-          click and send it to your user or keep it as a documentation
+          {t.rich('description', {
+            strong: (chunk) => (
+              <strong className="font-semibold">{chunk}</strong>
+            ),
+          })}
         </p>
       </section>
 
       <section className="grid grid-cols-2 md:flex md:flex-row md:items-start md:justify-center gap-2">
         <Flow
           icon={<Code2 className="text-primary size-7" />}
-          text="Code a change in your software"
+          text={t('flow.step1')}
           index={1}
         />
 
@@ -38,7 +38,7 @@ export default function HowItWorks() {
 
         <Flow
           icon={<Github className="text-primary size-7" />}
-          text="Update your project repository"
+          text={t('flow.step2')}
           index={2}
         />
 
@@ -48,7 +48,7 @@ export default function HowItWorks() {
 
         <Flow
           icon={<BrainCircuit className="text-primary size-7" />}
-          text="Generate a release with AI."
+          text={t('flow.step3')}
           index={3}
         />
 
@@ -58,7 +58,7 @@ export default function HowItWorks() {
 
         <Flow
           icon={<Smile className="text-primary size-7" />}
-          text="Send it to our end user"
+          text={t('flow.step4')}
           index={4}
         />
       </section>
@@ -68,7 +68,7 @@ export default function HowItWorks() {
           href="/#about-section"
           className="font-semibold underline text-primary"
         >
-          Liked it? Keep reading to learn more...
+          {t('link')}
         </Link>
       </section>
     </>

@@ -1,5 +1,5 @@
 export interface RepositoryAbstract {
-  id: number;
+  id: string;
   name: string;
   fullname: string;
   private: boolean;

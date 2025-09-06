@@ -1,4 +1,6 @@
 import Link from 'next/link';
+
+import { useTranslations } from 'next-intl';
 import { FaXTwitter } from 'react-icons/fa6';
 import { Instagram, Linkedin, Github } from 'lucide-react';
 
@@ -6,6 +8,8 @@ import { VerticalDivider } from '@app/components/ui';
 import { DeveloperCard, SocialLink, ScrollToTopButton } from './components';
 
 export default function Footer() {
+  const t = useTranslations('component.footer');
+
   return (
     <footer className="relative">
       <div className="flex items-center justify-center w-full border-t border-border bg-container dark:bg-body">
@@ -41,7 +45,10 @@ export default function Footer() {
       <div className="flex items-center justify-center w-full md:h-[52px] py-4 bg-border/25">
         <div className="flex flex-col-reverse md:flex-row items-center justify-between h-full w-6xl px-8 gap-4 mx-auto ">
           <small className="text-text-secondary text-sm">
-            &copy; Copyright Névio Costa Magagnin - {new Date().getFullYear()}
+            &copy;{' '}
+            {t('copyright', {
+              year: new Date().getFullYear(),
+            })}
           </small>
 
           <nav className="flex items-center gap-4 h-full">
@@ -49,7 +56,7 @@ export default function Footer() {
               href="/privacy"
               className="text-text-secondary text-sm focus:underline hover:underline"
             >
-              Privacy Policy
+              {t('privacy')}
             </Link>
 
             <VerticalDivider />
@@ -58,7 +65,7 @@ export default function Footer() {
               href="/terms"
               className="text-text-secondary text-sm focus:underline hover:underline"
             >
-              Terms of Use
+              {t('terms')}
             </Link>
           </nav>
         </div>

@@ -1,4 +1,7 @@
+import Link from 'next/link';
+
 import { ChevronRight } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
 
 import { formatDate } from '@app/helpers';
 import { LINKS } from '@app/constants/links';
@@ -6,223 +9,227 @@ import { LINKS } from '@app/constants/links';
 import { Breadcrumb } from '@app/components/ui';
 
 export default function TermsPage() {
+  const t = useTranslations('page.terms');
+  const compT = useTranslations('component.breadcrumb');
+  const locale = useLocale();
+
   return (
     <>
       <Breadcrumb
         items={[
-          { label: 'Home', href: '/' },
-          { label: 'Terms and Conditions of Use', href: '/terms' },
+          { label: compT('home'), href: '/' },
+          { label: compT('terms'), href: '/terms' },
         ]}
       />
 
       <div className="flex flex-col gap-8">
-        <h1 className="text-2xl font-bold">Terms and Conditions of Use</h1>
+        <h1 className="text-2xl font-bold">{t('title')}</h1>
 
         <section className="flex flex-col gap-4">
-          <h3 className="text-lg font-semibold">1. Acceptance of Terms</h3>
-
-          <p>
-            By accessing and using Release Fast, you agree to comply with and be
-            bound by these Terms and Conditions of Use. If you do not agree with
-            any part of these terms, you should not use our platform.
-          </p>
+          <h3 className="text-lg font-semibold">{t('acceptance.title')}</h3>
+          <p>{t('acceptance.description')}</p>
         </section>
 
         <section className="flex flex-col gap-4">
-          <h3 className="text-lg font-semibold">2. Use of the Service</h3>
-
-          <p>
-            Release Fast is a platform designed to help teams manage, document,
-            and share software releases efficiently. By using our services, you
-            agree to:
-          </p>
+          <h3 className="text-lg font-semibold">{t('serviceUse.title')}</h3>
+          <p>{t('serviceUse.description')}</p>
 
           <ul className="flex flex-col gap-1">
             <li className="flex items-center gap-4">
               <div>
                 <ChevronRight className="text-primary size-4" />
               </div>
-              Provide accurate and truthful information during registration;
+              {t('serviceUse.item.one')}
             </li>
+
             <li className="flex items-center gap-4">
               <div>
                 <ChevronRight className="text-primary size-4" />
               </div>
-              Keep your login credentials secure and confidential;
+              {t('serviceUse.item.two')}
             </li>
+
             <li className="flex items-center gap-4">
               <div>
                 <ChevronRight className="text-primary size-4" />
               </div>
-              Not share your account with third parties;
+              {t('serviceUse.item.three')}
             </li>
+
             <li className="flex items-center gap-4">
               <div>
                 <ChevronRight className="text-primary size-4" />
               </div>
-              Respect other users and their contributions;
+              {t('serviceUse.item.four')}
             </li>
+
             <li className="flex items-center gap-4">
               <div>
                 <ChevronRight className="text-primary size-4" />
               </div>
-              Not publish illegal, offensive, or inappropriate content;
+              {t('serviceUse.item.five')}
             </li>
           </ul>
         </section>
 
         <section className="flex flex-col gap-4">
-          <h3 className="text-lg font-semibold">3. User Content</h3>
-
-          <p>By publishing content on Release Fast, you:</p>
+          <h3 className="text-lg font-semibold">{t('userContent.title')}</h3>
+          <p>{t('userContent.description')}</p>
 
           <ul className="flex flex-col gap-1">
             <li className="flex items-center gap-4">
               <div>
                 <ChevronRight className="text-primary size-4" />
               </div>
-              Retain copyright over your content;
+              {t('userContent.item.one')}
             </li>
+
             <li className="flex items-center gap-4">
               <div>
                 <ChevronRight className="text-primary size-4" />
               </div>
-              Grant Release Fast a non-exclusive license to use, modify, and
-              distribute your content for the purpose of providing and improving
-              the service;
+              {t('userContent.item.two')}
             </li>
+
             <li className="flex items-center gap-4">
               <div>
                 <ChevronRight className="text-primary size-4" />
               </div>
-              Are responsible for all content you publish;
+              {t('userContent.item.three')}
             </li>
+
             <li className="flex items-center gap-4">
               <div>
                 <ChevronRight className="text-primary size-4" />
               </div>
-              Ensure you have all necessary rights to share the content;
+              {t('userContent.item.four')}
             </li>
           </ul>
         </section>
 
         <section className="flex flex-col gap-4">
-          <h3 className="text-lg font-semibold">4. User Conduct</h3>
-
-          <p>It is prohibited to:</p>
+          <h3 className="text-lg font-semibold">{t('userConduct.title')}</h3>
+          <p>{t('userConduct.description')}</p>
 
           <ul className="flex flex-col gap-1">
             <li className="flex items-center gap-4">
               <div>
                 <ChevronRight className="text-primary size-4" />
               </div>
-              Publish illegal, defamatory, obscene, or offensive content;
+              {t('userConduct.item.one')}
             </li>
+
             <li className="flex items-center gap-4">
               <div>
                 <ChevronRight className="text-primary size-4" />
               </div>
-              Use the platform for spam or unauthorized advertising;
+              {t('userConduct.item.two')}
             </li>
+
             <li className="flex items-center gap-4">
               <div>
                 <ChevronRight className="text-primary size-4" />
               </div>
-              Violate third-party intellectual property rights;
+              {t('userConduct.item.three')}
             </li>
+
             <li className="flex items-center gap-4">
               <div>
                 <ChevronRight className="text-primary size-4" />
               </div>
-              Engage in activities that may damage or overload our systems;
+              {t('userConduct.item.four')}
             </li>
+
             <li className="flex items-center gap-4">
               <div>
                 <ChevronRight className="text-primary size-4" />
               </div>
-              Collect data from other users without authorization;
+              {t('userConduct.item.five')}
             </li>
           </ul>
         </section>
 
         <section className="flex flex-col gap-4">
-          <h3 className="text-lg font-semibold">5. Privacy and Data</h3>
-
+          <h3 className="text-lg font-semibold">{t('privacy.title')}</h3>
           <p>
-            Our Privacy Policy describes how we collect, use, and protect your
-            personal information. By using our platform, you agree to our
-            privacy practices as described in our Privacy Policy.
+            {t.rich('privacy.description', {
+              link: (chunk) => (
+                <Link href="/privacy" className="text-primary">
+                  {chunk}
+                </Link>
+              ),
+            })}
           </p>
         </section>
 
         <section className="flex flex-col gap-4">
-          <h3 className="text-lg font-semibold">6. Changes to the Terms</h3>
-
-          <p>
-            We reserve the right to modify these terms at any time. Changes will
-            take effect immediately upon publication. Continued use of the
-            platform after changes constitutes acceptance of the new terms.
-          </p>
+          <h3 className="text-lg font-semibold">{t('changes.title')}</h3>
+          <p>{t('changes.description')}</p>
         </section>
 
         <section className="flex flex-col gap-4">
-          <h3 className="text-lg font-semibold">7. Limitation of Liability</h3>
-
-          <p>Release Fast is not responsible for:</p>
+          <h3 className="text-lg font-semibold">{t('limitation.title')}</h3>
+          <p>{t('limitation.description')}</p>
 
           <ul className="flex flex-col gap-1">
             <li className="flex items-center gap-4">
               <div>
                 <ChevronRight className="text-primary size-4" />
               </div>
-              Content generated by users;
+              {t('limitation.item.one')}
             </li>
+
             <li className="flex items-center gap-4">
               <div>
                 <ChevronRight className="text-primary size-4" />
               </div>
-              Damages caused by improper use of the platform;
+              {t('limitation.item.two')}
             </li>
+
             <li className="flex items-center gap-4">
               <div>
                 <ChevronRight className="text-primary size-4" />
               </div>
-              Temporary service interruptions;
+              {t('limitation.item.three')}
             </li>
+
             <li className="flex items-center gap-4">
               <div>
                 <ChevronRight className="text-primary size-4" />
               </div>
-              Loss of data or content;
+              {t('limitation.item.four')}
             </li>
           </ul>
         </section>
 
         <section className="flex flex-col gap-4">
-          <h3 className="text-lg font-semibold">8. Account Termination</h3>
-
-          <p>
-            We reserve the right to suspend or terminate accounts that violate
-            these terms or engage in inappropriate conduct. You may also
-            terminate your account at any time through the platform settings.
-          </p>
+          <h3 className="text-lg font-semibold">{t('termination.title')}</h3>
+          <p>{t('termination.description')}</p>
         </section>
 
         <section className="flex flex-col gap-4">
-          <h3 className="text-lg font-semibold">9. Contact</h3>
+          <h3 className="text-lg font-semibold">{t('contact.title')}</h3>
 
           <p>
-            For questions regarding these terms, please contact us at{' '}
-            <a href={`mailto:${LINKS.SUPPORT_EMAIL}`} className="text-primary">
-              {LINKS.SUPPORT_EMAIL}
-            </a>
-            .
+            {t.rich('contact.description', {
+              email: LINKS.SUPPORT_EMAIL,
+              link: (chunk) => (
+                <a
+                  href={`mailto:${LINKS.SUPPORT_EMAIL}`}
+                  className="text-primary"
+                >
+                  {chunk}
+                </a>
+              ),
+            })}
           </p>
         </section>
       </div>
 
       <small className="text-sm text-text-secondary">
-        Last updated: {formatDate(new Date('08-03-2025'), 'MMMM DD, YYYY')}
+        {t('updatedAt', {
+          date: formatDate(new Date('08-24-2025'), locale),
+        })}
       </small>
     </>
   );

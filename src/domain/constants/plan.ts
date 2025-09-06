@@ -1,8 +1,10 @@
-import { PlanType } from '@domain/entities';
+import { PlanType, PlanCurrency } from '@domain/entities';
 
 interface Details {
   name: string;
-  value: number;
+  value: {
+    [key: PlanCurrency]: number;
+  };
   projectsAmount: number | 'unlimited';
 }
 
@@ -11,22 +13,38 @@ export const FREE_TRIAL_DAYS = 7;
 export const PLAN_DETAILS_BY_TYPE: Record<PlanType, Details> = {
   free: {
     name: 'Free',
-    value: 0,
+    value: {
+      BRL: 0,
+      EUR: 0,
+      USD: 0,
+    },
     projectsAmount: 0,
   },
   starter: {
     name: 'Starter',
-    value: 4.9,
+    value: {
+      BRL: 19.9,
+      EUR: 4.9,
+      USD: 4.9,
+    },
     projectsAmount: 3,
   },
   pro: {
     name: 'Professional',
-    value: 14.9,
+    value: {
+      BRL: 69.9,
+      EUR: 14.9,
+      USD: 14.9,
+    },
     projectsAmount: 15,
   },
   enterprise: {
     name: 'Enterprise',
-    value: 49.9,
+    value: {
+      BRL: 199.9,
+      EUR: 49.9,
+      USD: 49.9,
+    },
     projectsAmount: 'unlimited',
   },
 };

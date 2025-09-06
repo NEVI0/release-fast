@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import { Box, MessageSquare, RefreshCw, Trash2 } from 'lucide-react';
 
 import { ProjectAbstract } from '@domain/entities';
@@ -24,6 +25,8 @@ interface FormProps {
 }
 
 export default function Form({ project }: FormProps) {
+  const t = useTranslations('page.editProject');
+
   const toast = useToast();
   const router = useRouter();
   const form = useForm<UpdateProjectValidationSchema>({
@@ -44,10 +47,9 @@ export default function Form({ project }: FormProps) {
         ...data,
         id: project.id,
       });
+      if (!updated.project) throw new Error(t('toast.error'));
 
-      if (!updated.project) throw new Error('Could not update the project');
-
-      toast.success('Project updated successfully');
+      toast.success(t('toast.success'));
       router.push('/dash/projects/' + project.id);
     } catch (error) {
       const { message } = handleError(error);
@@ -66,28 +68,34 @@ export default function Form({ project }: FormProps) {
         <Input
           id="name"
           type="text"
-          label="Project name"
-          placeholder="E.g.: E-commerce, Blog, etc."
+          label={t('input.name.label')}
+          placeholder={t('input.name.placeholder')}
           icon={Box}
           required
-          error={form.errors.name?.message}
+          error={
+            form.errors.name ? t(form.errors.name.message as any) : undefined
+          }
           {...form.register('name')}
         />
 
         <Input
           id="description"
           type="text"
-          label="Project description"
-          placeholder="A brief description of the project"
+          label={t('input.description.label')}
+          placeholder={t('input.description.placeholder')}
           icon={MessageSquare}
           maxLength={MAX_DESCRIPTION_LENGTH}
           rightContent={
             <small className="text-text-secondary text-sm">
-              {MAX_DESCRIPTION_LENGTH} characters max.
+              {t('input.description.max', { max: MAX_DESCRIPTION_LENGTH })}
             </small>
           }
           required
-          error={form.errors.description?.message}
+          error={
+            form.errors.description
+              ? t(form.errors.description.message as any)
+              : undefined
+          }
           {...form.register('description')}
         />
       </div>
@@ -99,7 +107,7 @@ export default function Form({ project }: FormProps) {
           className="w-full md:w-[184px]"
           disabled={isLoading || !form.isValid}
         >
-          {isLoading ? 'Updating...' : 'Update project'}
+          {t(isLoading ? 'action.submitting' : 'action.submit')}
           <Button.Icon icon={RefreshCw} loading={isLoading} />
         </Button>
 
@@ -108,7 +116,7 @@ export default function Form({ project }: FormProps) {
           className="w-full md:w-[184px]"
         >
           <Button type="button" className="w-full" disabled={isLoading}>
-            Cancel
+            {t('action.cancel')}
             <Button.Icon icon={Trash2} />
           </Button>
         </Link>

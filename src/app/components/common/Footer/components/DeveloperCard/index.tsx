@@ -1,6 +1,9 @@
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
 export default function DeveloperCard() {
+  const t = useTranslations('component.footer.creator');
+
   return (
     <div className="flex flex-col items-center md:flex-row gap-4">
       <Image
@@ -12,12 +15,10 @@ export default function DeveloperCard() {
       />
 
       <div className="flex flex-col">
-        <p className="text-center md:text-left">
-          Created by Névio Costa Magagnin
-        </p>
+        <p className="text-center md:text-left">{t('name')}</p>
 
         <small className="text-center text-sm md:text-left text-text-secondary">
-          Software Engineer & UI/UX Designer
+          {t('description')}
         </small>
       </div>
     </div>

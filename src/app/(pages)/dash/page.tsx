@@ -5,8 +5,13 @@ import { isUserInFreeTrial } from '@domain/helpers';
 import { fetchUserByIdAction } from '@app/actions';
 
 import { HorizontalDivider } from '@app/components/ui';
-import { Cards, Construction, Header, LoadingCards } from './_components';
-import { Warning } from '@app/components/common';
+import {
+  Cards,
+  Construction,
+  EndedTrial,
+  Header,
+  LoadingCards,
+} from './_components';
 
 export default async function DashboardPage() {
   const { user } = await fetchUserByIdAction();
@@ -22,12 +27,10 @@ export default async function DashboardPage() {
       <Header />
 
       <Suspense fallback={<LoadingCards />}>
-        <Cards />
+        <Cards user={user} />
       </Suspense>
 
-      {!hasFullAccess && (
-        <Warning message="Your free trial has ended! Some features are now limited. Upgrade your plan to keep using it with all the features." />
-      )}
+      {!hasFullAccess && <EndedTrial />}
 
       <HorizontalDivider />
       <Construction />

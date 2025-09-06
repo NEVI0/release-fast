@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react';
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useLocale, useTranslations } from 'next-intl';
 import {
   AlertTriangle,
   Calendar,
@@ -40,11 +41,14 @@ interface FormProps {
 }
 
 export default function Form({ session, project }: FormProps) {
+  const t = useTranslations('page.createRelease');
+  const locale = useLocale();
+
   const toast = useToast();
   const router = useRouter();
   const aiAgentController = useAiAgent();
 
-  const currentDate = useMemo(() => formatDate(new Date(), 'YYYY-MM-DD'), []);
+  const currentDate = useMemo(() => formatDate(new Date(), locale), []);
 
   const branchesController = useCompareBranches({
     provider: session.provider,
@@ -72,13 +76,14 @@ export default function Form({ session, project }: FormProps) {
       setAlreadyComparatedBranches(false);
 
       const diff = await branchesController.compare({
-        repository: project.repository,
+        repository:
+          project.repository[session.provider === 'gitlab' ? 'id' : 'name'],
         baseBranch: data.baseBranch,
         headBranch: data.headBranch,
       });
 
       const result = await aiAgentController.prompt({
-        prompt: getAiPrompt(diff),
+        prompt: getAiPrompt(diff, session.provider, locale),
       });
 
       const [shortDescription, fullDescription] = await convertAiResult(result);
@@ -106,10 +111,9 @@ export default function Form({ session, project }: FormProps) {
         projectId: project.id,
         userId: session.user.id,
       });
+      if (!release) throw new Error(t('toast.error'));
 
-      if (!release) throw new Error('Could not create the new release');
-
-      toast.success('Release created successfully');
+      toast.success(t('toast.success'));
       router.push('/dash/projects/' + project.id);
     } catch (error) {
       const { message } = handleError(error);
@@ -125,16 +129,14 @@ export default function Form({ session, project }: FormProps) {
         className="flex flex-col gap-4"
         onSubmit={branchesForm.handleSubmit(handleCompareBranches)}
       >
-        <h3 className="font-semibold text-2xl">
-          Enter the branches to compare
-        </h3>
+        <h3 className="font-semibold text-2xl">{t('section.one.title')}</h3>
 
         <div className="flex flex-col md:flex-row md:items-end gap-4">
           <Input
             id="baseBranch"
             type="text"
-            label="Base branch"
-            placeholder="E.g.: master"
+            label={t('input.branch.base.label')}
+            placeholder={t('input.branch.base.placeholder')}
             className="flex-1"
             icon={GitBranch}
             disabled={isComparing}
@@ -145,8 +147,8 @@ export default function Form({ session, project }: FormProps) {
           <Input
             id="headBranch"
             type="text"
-            label="Head branch"
-            placeholder="E.g.: my-feature"
+            label={t('input.branch.head.label')}
+            placeholder={t('input.branch.head.placeholder')}
             className="flex-1"
             icon={GitBranch}
             disabled={isComparing}
@@ -160,7 +162,7 @@ export default function Form({ session, project }: FormProps) {
             className="w-full md:w-[200px]"
             disabled={!branchesForm.isValid || isComparing}
           >
-            {isComparing ? 'Comparing...' : 'Compare'}
+            {t(isComparing ? 'action.comparing' : 'action.compare')}
             <Button.Icon icon={GitCompareArrows} loading={isComparing} />
           </Button>
         </div>
@@ -168,7 +170,7 @@ export default function Form({ session, project }: FormProps) {
         <div className="flex items-center gap-2">
           <AlertTriangle className="size-4 text-text-secondary" />{' '}
           <small className="text-sm text-text-secondary">
-            Too many changes in the code can take a while to be processed.
+            {t('section.one.warning')}
           </small>
         </div>
       </form>
@@ -181,9 +183,11 @@ export default function Form({ session, project }: FormProps) {
       >
         <div className="flex flex-col gap-4">
           <h3 className="font-semibold text-2xl">
-            {alreadyComparatedBranches
-              ? 'Fill in your release information'
-              : 'Compare the branches to complete the form'}
+            {t(
+              alreadyComparatedBranches
+                ? 'section.two.title'
+                : 'section.three.title'
+            )}
           </h3>
 
           <input
@@ -202,58 +206,78 @@ export default function Form({ session, project }: FormProps) {
           <Input
             id="title"
             type="text"
-            label="Title"
+            label={t('input.release.title.label')}
             icon={Edit3Icon}
             required
             disabled={!alreadyComparatedBranches}
-            error={releaseForm.errors.title?.message}
+            error={
+              releaseForm.errors.title
+                ? t(releaseForm.errors.title.message as any)
+                : undefined
+            }
             {...releaseForm.register('title')}
           />
 
           <Input
             id="version"
             type="text"
-            label="Version"
-            placeholder="E.g.: v1.0.0"
+            label={t('input.release.version.label')}
+            placeholder={t('input.release.version.placeholder')}
             icon={Code2Icon}
             required
             disabled={!alreadyComparatedBranches}
-            error={releaseForm.errors.version?.message}
+            error={
+              releaseForm.errors.version
+                ? t(releaseForm.errors.version.message as any)
+                : undefined
+            }
             {...releaseForm.register('version')}
           />
 
           <Input
             id="short-description"
             type="text"
-            label="Short description"
-            placeholder="A brief description of the release"
+            label={t('input.release.description.short.label')}
+            placeholder={t('input.release.description.short.placeholder')}
             icon={MessageSquare}
             required
             disabled={!alreadyComparatedBranches}
-            error={releaseForm.errors.shortDescription?.message}
+            error={
+              releaseForm.errors.shortDescription
+                ? t(releaseForm.errors.shortDescription.message as any)
+                : undefined
+            }
             {...releaseForm.register('shortDescription')}
           />
 
           <Textarea
             id="full-description"
-            label="Detailed description of your release for the end user"
-            placeholder="A more detailed description of the release"
+            label={t('input.release.description.full.label')}
+            placeholder={t('input.release.description.full.placeholder')}
             icon={FileText}
             required
             disabled={!alreadyComparatedBranches}
-            error={releaseForm.errors.fullDescription?.message}
+            error={
+              releaseForm.errors.fullDescription
+                ? t(releaseForm.errors.fullDescription.message as any)
+                : undefined
+            }
             {...releaseForm.register('fullDescription')}
           />
 
           <Input
             id="availableAt"
             type="date"
-            label="Available on date"
+            label={t('input.release.availableAt.label')}
             icon={Calendar}
             required
             min={currentDate}
             disabled={!alreadyComparatedBranches}
-            error={releaseForm.errors.availableAt?.message}
+            error={
+              releaseForm.errors.availableAt
+                ? t(releaseForm.errors.availableAt.message as any)
+                : undefined
+            }
             {...releaseForm.register('availableAt')}
           />
         </div>
@@ -267,7 +291,7 @@ export default function Form({ session, project }: FormProps) {
               !releaseForm.isValid || !alreadyComparatedBranches || isCreating
             }
           >
-            {isCreating ? 'Creating...' : 'Create release'}
+            {t(isCreating ? 'action.submitting' : 'action.submit')}
             <Button.Icon icon={Plus} loading={isCreating} />
           </Button>
 
@@ -276,7 +300,7 @@ export default function Form({ session, project }: FormProps) {
             className="w-full md:w-[184px]"
           >
             <Button type="button" className="w-full">
-              Cancel
+              {t('action.cancel')}
               <Button.Icon icon={Trash2} />
             </Button>
           </Link>

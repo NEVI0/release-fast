@@ -1,8 +1,5 @@
 import { Suspense } from 'react';
-
-import Link from 'next/link';
 import { redirect } from 'next/navigation';
-import { Plus } from 'lucide-react';
 
 import { isUserInFreeTrial } from '@domain/helpers';
 
@@ -10,10 +7,15 @@ import { DOCUMENT_HEAD } from '@app/constants/document-head';
 import { fetchProjectByIdAction, fetchUserByIdAction } from '@app/actions';
 import { getSEOTags } from '@app/helpers';
 
-import { ErrorStatus } from '@app/components/common';
-import { Button, HorizontalDivider } from '@app/components/ui';
-
-import { Cards, Header, List, LoadingList, Settings } from './_components';
+import { HorizontalDivider } from '@app/components/ui';
+import {
+  Cards,
+  Header,
+  List,
+  LoadingList,
+  NotFound,
+  Settings,
+} from './_components';
 
 export const metadata = getSEOTags({
   name: `${DOCUMENT_HEAD.TITLE} · Project Details`,
@@ -46,38 +48,15 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   if (!canSeeProjectDetails) return redirect('/dash/projects');
 
   const { project } = await fetchProjectByIdAction({ id });
-
-  if (!project) {
-    return (
-      <ErrorStatus
-        title="Oops... nothing found!"
-        message="No registered project was found. Try registering a new one by clicking the button below."
-      >
-        <Link href="/dash/projects/create">
-          <Button variant="primary">
-            Add new project
-            <Button.Icon icon={Plus} />
-          </Button>
-        </Link>
-      </ErrorStatus>
-    );
-  }
-
-  const columns = [
-    { id: 'title', children: 'Title' },
-    { id: 'version', children: 'Version' },
-    { id: 'createdAt', children: 'Created at' },
-    { id: 'updatedAt', children: 'Last updated at' },
-    { id: 'details', children: 'Details', center: true },
-  ];
+  if (!project) return <NotFound />;
 
   return (
     <>
       <Header project={project} />
       <Cards project={project} />
 
-      <Suspense fallback={<LoadingList columns={columns} project={project} />}>
-        <List columns={columns} project={project} />
+      <Suspense fallback={<LoadingList project={project} />}>
+        <List project={project} />
       </Suspense>
 
       <HorizontalDivider />

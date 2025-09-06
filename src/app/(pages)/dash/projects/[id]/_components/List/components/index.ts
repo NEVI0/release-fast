@@ -1,1 +1,2 @@
-export { default as MobileRelease } from './MobileRelease';
+export { default as Data } from './Data';
+export { default as NotFound } from './NotFound';

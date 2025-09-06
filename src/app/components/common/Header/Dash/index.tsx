@@ -1,11 +1,20 @@
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 import { VerticalDivider } from '@app/components/ui';
 import { ThemeLogo } from '@app/components/common';
 
-import { FreeTrial, LogoutLink, NavLink, DashMobileMenu } from '../components';
+import {
+  FreeTrial,
+  LogoutLink,
+  NavLink,
+  DashMobileMenu,
+  LanguageSwitcher,
+} from '../components';
 
 export default function DashHeader() {
+  const t = useTranslations('component.header.dash');
+
   return (
     <>
       <FreeTrial />
@@ -15,20 +24,24 @@ export default function DashHeader() {
           <ThemeLogo href="/" />
 
           <nav className="hidden md:flex items-center gap-4 h-full">
-            <NavLink href="/dash">Dashboard</NavLink>
+            <NavLink href="/dash">{t('nav.dashboard')}</NavLink>
             <VerticalDivider />
-            <NavLink href="/dash/projects">Projects</NavLink>
+            <NavLink href="/dash/projects">{t('nav.projects')}</NavLink>
             <VerticalDivider />
             <LogoutLink />
-            <VerticalDivider />
+          </nav>
 
+          <div className="hidden md:flex items-center gap-4 h-full">
             <Link
               href="/dash/profile"
               className="h-full flex items-center justify-center font-semibold underline text-primary"
             >
-              My account
+              {t('nav.account')}
             </Link>
-          </nav>
+
+            <VerticalDivider />
+            <LanguageSwitcher />
+          </div>
 
           <DashMobileMenu />
         </div>

@@ -1,5 +1,6 @@
 import { Source_Sans_3 } from 'next/font/google';
 
+import { NextIntlClientProvider } from 'next-intl';
 import { GoogleAnalytics } from '@next/third-parties/google';
 
 import { Header, Content, Footer, TopLoader } from '@app/components/common';
@@ -36,11 +37,13 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
       </head>
 
       <body className={sourceSans3.className} suppressHydrationWarning>
-        <TopLoader />
+        <NextIntlClientProvider>
+          <TopLoader />
 
-        <Header.Home />
-        <Content.Home>{children}</Content.Home>
-        <Footer />
+          <Header.Home />
+          <Content.Home>{children}</Content.Home>
+          <Footer />
+        </NextIntlClientProvider>
       </body>
 
       <GoogleAnalytics gaId={GOOGLE_ANALYTICS.ID} />
