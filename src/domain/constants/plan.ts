@@ -3,7 +3,7 @@ import { PlanType, PlanCurrency } from '@domain/entities';
 interface Details {
   name: string;
   value: {
-    [key: PlanCurrency]: number;
+    [key in PlanCurrency]: number;
   };
   projectsAmount: number | 'unlimited';
 }
