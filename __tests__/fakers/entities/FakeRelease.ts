@@ -9,7 +9,7 @@ interface ReleaseProps {
   fullDescription?: string;
   version?: string;
   baseBranch?: string;
-  headBranch: string;
+  headBranch?: string;
   projectId?: string;
   availableAt?: Date | string;
   createdAt?: Date | string;
