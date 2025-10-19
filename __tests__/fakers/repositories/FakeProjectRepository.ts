@@ -1,7 +1,7 @@
 import { ProjectAbstract } from '@domain/entities';
 import { ProjectRepositoryAbstract } from '@domain/repositories';
 
-export default class FakeProjectsRepository
+export default class FakeProjectRepository
   implements ProjectRepositoryAbstract
 {
   private projects: ProjectAbstract[] = [];
