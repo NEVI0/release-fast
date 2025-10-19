@@ -13,42 +13,40 @@ const makeUseCase = () => {
 };
 
 describe('CreateFeedbackUseCase', () => {
+  const baseDto: CreateFeedbackDTO = {
+    title: faker.word.adjective(),
+    description: faker.lorem.paragraph(),
+    userId: faker.string.uuid(),
+  };
+
   it('should create feedback correctly', async () => {
     const { useCase } = makeUseCase();
 
-    const dto: CreateFeedbackDTO = {
-      userId: faker.string.uuid(),
-      title: faker.word.adjective(),
-      description: faker.lorem.paragraph(),
-    };
-
-    const feedback = await useCase.execute(dto);
+    const feedback = await useCase.execute(baseDto);
 
     expect(feedback.id).toBeDefined();
-    expect(feedback.userId).toBe(dto.userId);
-    expect(feedback.title).toBe(dto.title);
-    expect(feedback.description).toBe(dto.description);
+    expect(feedback.userId).toBe(baseDto.userId);
+    expect(feedback.title).toBe(baseDto.title);
+    expect(feedback.description).toBe(baseDto.description);
     expect(feedback.createdAt).toBeDefined();
   });
 
   it.each([
     {
       field: 'title',
-      dto: {
-        userId: faker.string.uuid(),
-        title: '',
-        description: faker.lorem.sentence(),
-      },
       expectedError: 'You must provide the feedback title',
+      dto: {
+        ...baseDto,
+        title: '',
+      },
     },
     {
       field: 'description',
+      expectedError: 'You must provide the feedback description',
       dto: {
-        userId: faker.string.uuid(),
-        title: faker.word.adjective(),
+        ...baseDto,
         description: '',
       },
-      expectedError: 'You must provide the feedback description',
     },
   ])(
     'should throw an error if "$field" is missing',
