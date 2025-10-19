@@ -39,4 +39,8 @@ export default class FakeUserRepository implements UserRepositoryAbstract {
 
     this.users.splice(index, 1);
   };
+
+  public mockUser(user: UserAbstract) {
+    this.users.push(user);
+  }
 }

@@ -46,4 +46,8 @@ export default class FakeProjectsRepository
 
     this.projects.splice(index, 1);
   };
+
+  public mockProject(project: ProjectAbstract) {
+    this.projects.push(project);
+  }
 }
