@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker';
+import { faker } from '@faker-js/faker/locale/en';
 
 import { MAX_DESCRIPTION_LENGTH } from '@domain/constants/project';
 import { CreateProjectDTO } from '@domain/dtos';

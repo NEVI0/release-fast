@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker';
+import { faker } from '@faker-js/faker/locale/en';
 
 import { RepoBranchRepositoryAbstract } from '@domain/repositories';
 

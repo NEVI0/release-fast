@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker';
+import { faker } from '@faker-js/faker/locale/en';
 
 import { UpdateUserPlanByPaymentIdDTO } from '@domain/dtos';
 import UpdateUserPlanByPaymentIdUseCase from '@domain/useCases/UpdateUserPlanByPaymentIdUseCase';

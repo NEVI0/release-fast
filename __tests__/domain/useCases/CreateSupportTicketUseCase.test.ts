@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker';
+import { faker } from '@faker-js/faker/locale/en';
 
 import { CreateSupportTicketDTO } from '@domain/dtos';
 import CreateSupportTicketUseCase from '@domain/useCases/CreateSupportTicketUseCase';

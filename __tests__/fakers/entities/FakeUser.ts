@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker';
+import { faker } from '@faker-js/faker/locale/en';
 
 import { PLAN_TYPES, UserAbstract } from '@domain/entities';
 import { PlanType } from '@domain/entities';

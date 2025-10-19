@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker';
+import { faker } from '@faker-js/faker/locale/en';
 
 import { UpdateUserDataDTO } from '@domain/dtos';
 import UpdateUserDataUseCase from '@domain/useCases/UpdateUserDataUseCase';

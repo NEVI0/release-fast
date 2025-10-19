@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker';
+import { faker } from '@faker-js/faker/locale/en';
 
 import DeleteReleaseByIdUseCase from '@domain/useCases/DeleteReleaseByIdUseCase';
 
