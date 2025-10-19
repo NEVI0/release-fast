@@ -34,7 +34,7 @@ export default class FakeReleaseRepository
 
   public update: ReleaseRepositoryAbstract['update'] = async (release) => {
     const index = this.releases.findIndex((relea) => relea.id === release.id);
-    if (!index) throw Error('Release not found');
+    if (index === -1) throw Error('Release not found');
 
     this.releases[index] = release;
     return Promise.resolve(release);
@@ -42,7 +42,7 @@ export default class FakeReleaseRepository
 
   public deleteById: ReleaseRepositoryAbstract['deleteById'] = async (id) => {
     const index = this.releases.findIndex((release) => release.id === id);
-    if (!index) throw Error('Release not found');
+    if (index === -1) throw Error('Release not found');
 
     this.releases.splice(index, 1);
   };

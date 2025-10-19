@@ -34,7 +34,7 @@ export default class FakeProjectsRepository
 
   public update: ProjectRepositoryAbstract['update'] = async (project) => {
     const index = this.projects.findIndex((proj) => proj.id === project.id);
-    if (!index) throw Error('Project not found');
+    if (index === -1) throw Error('Project not found');
 
     this.projects[index] = project;
     return Promise.resolve(project);
@@ -42,7 +42,7 @@ export default class FakeProjectsRepository
 
   public deleteById: ProjectRepositoryAbstract['deleteById'] = async (id) => {
     const index = this.projects.findIndex((project) => project.id === id);
-    if (!index) throw Error('Project not found');
+    if (index === -1) throw Error('Project not found');
 
     this.projects.splice(index, 1);
   };
