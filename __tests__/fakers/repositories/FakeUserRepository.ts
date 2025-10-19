@@ -16,22 +16,22 @@ export default class FakeUserRepository implements UserRepositoryAbstract {
     return Promise.resolve(user || null);
   };
 
-  public update: UserRepositoryAbstract['update'] = async (user) => {
+  public update: UserRepositoryAbstract['update'] = jest.fn(async (user) => {
     const index = this.users.findIndex((u) => u.id === user.id);
     if (index === -1) throw Error('User not found');
 
     this.users[index] = user;
     return Promise.resolve(user);
-  };
+  });
 
   public updateByPaymentId: UserRepositoryAbstract['updateByPaymentId'] =
-    async (user) => {
+    jest.fn(async (user) => {
       const index = this.users.findIndex((u) => u.paymentId === user.paymentId);
       if (index === -1) throw Error('User not found');
 
       this.users[index] = user;
       return Promise.resolve(user);
-    };
+    });
 
   public deleteById: UserRepositoryAbstract['deleteById'] = async (id) => {
     const index = this.users.findIndex((u) => u.id === id);
