@@ -40,7 +40,7 @@ export default class Project implements ProjectAbstract {
       url: faker.internet.url(),
     },
     createdAt = faker.date.recent(),
-    updatedAt = faker.date.recent(),
+    updatedAt = faker.date.soon(),
   }: ProjectProps) {
     this.id = id;
     this.name = name;
