@@ -13,7 +13,7 @@ const makeUseCase = () => {
 };
 
 describe('FetchProjectByIdUseCase', () => {
-  it('should return project by ID', async () => {
+  it('should return project by ID correctly', async () => {
     const { repository, useCase } = makeUseCase();
 
     const id = faker.string.uuid();
@@ -27,11 +27,7 @@ describe('FetchProjectByIdUseCase', () => {
   });
 
   it('should return "null" to project not found', async () => {
-    const { repository, useCase } = makeUseCase();
-
-    repository.mockProject(new FakeProject({}));
-    repository.mockProject(new FakeProject({}));
-
+    const { useCase } = makeUseCase();
     const project = await useCase.execute({ id: faker.string.uuid() });
 
     expect(project).toBeNull();

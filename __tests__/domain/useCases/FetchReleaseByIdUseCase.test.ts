@@ -13,7 +13,7 @@ const makeUseCase = () => {
 };
 
 describe('FetchReleaseByIdUseCase', () => {
-  it('should return release by ID', async () => {
+  it('should return release by ID correctly', async () => {
     const { repository, useCase } = makeUseCase();
 
     const id = faker.string.uuid();
@@ -27,11 +27,7 @@ describe('FetchReleaseByIdUseCase', () => {
   });
 
   it('should return "null" to release not found', async () => {
-    const { repository, useCase } = makeUseCase();
-
-    repository.mockRelease(new FakeRelease({}));
-    repository.mockRelease(new FakeRelease({}));
-
+    const { useCase } = makeUseCase();
     const release = await useCase.execute({ id: faker.string.uuid() });
 
     expect(release).toBeNull();
