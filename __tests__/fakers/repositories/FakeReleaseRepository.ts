@@ -46,4 +46,8 @@ export default class FakeReleaseRepository
 
     this.releases.splice(index, 1);
   };
+
+  public mockRelease(release: ReleaseAbstract) {
+    this.releases.push(release);
+  }
 }
