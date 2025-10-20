@@ -7,6 +7,7 @@ const config: Config = {
   testEnvironment: 'node',
   testMatch: ['<rootDir>/__tests__/**/*.test.ts'],
   extensionsToTreatAsEsm: ['.ts'],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   transform: {
     '^.+\\.(ts|tsx)$': ['ts-jest', { useESM: true }],
     '^.+\\.(js|jsx)$': 'babel-jest',
@@ -15,6 +16,7 @@ const config: Config = {
   moduleNameMapper: {
     '^server-only$': '<rootDir>/__mocks__/server-only.ts',
     '^@domain/(.*)$': '<rootDir>/src/domain/$1',
+    '^@configs/(.*)$': '<rootDir>/src/configs/$1',
     '^@tests/(.*)$': '<rootDir>/__tests__/$1',
   },
   collectCoverageFrom: [
