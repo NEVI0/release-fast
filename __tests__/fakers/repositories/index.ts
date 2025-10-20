@@ -1,4 +1,5 @@
 export { default as FakeFeedbackRepository } from './FakeFeedbackRepository';
+export { default as FakePaymentRepository } from './FakePaymentRepository';
 export { default as FakeProjectRepository } from './FakeProjectRepository';
 export { default as FakeReleaseRepository } from './FakeReleaseRepository';
 export { default as FakeRepoBranchRepository } from './FakeRepoBranchRepository';
