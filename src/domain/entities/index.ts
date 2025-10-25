@@ -8,6 +8,8 @@ export {
   type PlanAbstract,
   type PlanType,
   type PlanCurrency,
+  PLAN_TYPES,
+  PLAN_CURRENCIES,
 } from './Plan';
 export { default as Project, type ProjectAbstract } from './Project';
 export { default as Release, type ReleaseAbstract } from './Release';

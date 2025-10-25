@@ -1,11 +1,14 @@
-export type PlanType = 'free' | 'starter' | 'pro' | 'enterprise';
-export type PlanCurrency = 'BRL' | 'USD' | 'EUR' | string;
+export const PLAN_TYPES = ['free', 'starter', 'pro', 'enterprise'] as const;
+export const PLAN_CURRENCIES = ['BRL', 'USD', 'EUR'] as const;
+
+export type PlanType = (typeof PLAN_TYPES)[number];
+export type PlanCurrency = (typeof PLAN_CURRENCIES)[number];
 
 export interface PlanAbstract {
   id: string;
   type: PlanType;
   price: {
-    [key: PlanCurrency]: number;
+    [key in PlanCurrency]: number;
   };
   freeTrialDays: number;
   features: string[];
