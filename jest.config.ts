@@ -10,7 +10,7 @@ const config: Config = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   transform: {
     '^.+\\.(ts|tsx)$': ['ts-jest', { useESM: true }],
-    '^.+\\.(js|jsx)$': 'babel-jest',
+    '^.+\\.(js|jsx)$': ['babel-jest', { configFile: './babel.jest.config.js' }],
   },
   transformIgnorePatterns: ['node_modules/(?!(?:@faker-js/faker)/)'],
   moduleNameMapper: {
